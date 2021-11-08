@@ -197,3 +197,15 @@
 			ex) day05/B.java, C.java //점심시간까지 1번씩 타이핑
 
 	(2) 반복문
+		초기식(루프 밖에), 조건식(루프 안에), 증감식(루프 안에)을 갖추어야 '유한루프'가 됨
+		
+		1) while(boolean형){} //신사
+			//ex) Day06/A.java
+
+		2) for (초기식; 조건식; 증감식){} //신사 (while과 100%호환가능)
+			//ex) Day06/A.java, B.java
+		
+		3) do{} while(boolean형); //조폭
+			//ex) Day06/A.java
+
+		
