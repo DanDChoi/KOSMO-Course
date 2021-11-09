@@ -208,4 +208,38 @@
 		3) do{} while(boolean형); //조폭
 			//ex) Day06/A.java
 
-		
+13. 제어예약어
+	(1) break
+		1) switch블럭 or loop안에서만 나올 수 있음
+		2) 자신을 둘러싼 첫번째 블럭을 '나간다'
+		3) labled break
+
+			//ex) Day07/A.java
+
+	(2) continue
+		1) loop 안에서만 나올 수 있음
+		2) (조건에 맞으면) '건너뛴다'
+		3) labled continue
+
+			//ex) Day07/B.java
+
+	(3)	return
+		1) 생성자나 메소드 안에서 어디서 나올 수 있음
+		2) 호출한 곳 or JVM으로 '되돌린다'
+
+			//ex) Day07.C.java
+
+14. 연산자 (Operator)
+	(1) 연산하게 하는 '기호'
+
+	(2) 종류
+		1) 산술 ex) +, -, *, /, &
+		2) 증감 ex) ++, --
+		3) 대입 ex) =
+		4) 산술대입 ex) +=, -=, /=, %=
+		5) 비트 ex) &, |, ^, ~, 시프트(<<, >>, >>>)
+		6) 비교 ex) ==, !=, <, <=, >, >=
+		7) 논리 ex) &, &&, |, ||
+		8) 논리대입 ex) &=, |=
+		9) 조건 ex) A? B:C
+		10) instanceof ex) 객체 instanceof 클래스
