@@ -40,16 +40,20 @@ class Lotto
 			fr = new FileReader(fName+".txt");
 			brFile = new BufferedReader(fr);
 
-			int i = 0; 
+			int i = 0;
+			String arr[] = new String[30];
+
+
 			while(true){
 				String line = brFile.readLine();
+				arr[i] = line;
+			
 				if(this.i == i){
-					pln("´çÃ·ÀÚ: " + line);
+					pln("´çÃ·ÀÚ: " + arr[i]);
 					break;
-				}
-				i++;
+				}i++;
 			}
-			//pln("#ÃÑ: "+i+"¸í");
+			
 		}catch(IOException ie){
 		}
 	}
