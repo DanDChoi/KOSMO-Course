@@ -227,7 +227,7 @@
 		1) 생성자나 메소드 안에서 어디서 나올 수 있음
 		2) 호출한 곳 or JVM으로 '되돌린다'
 
-			//ex) Day07.C.java
+			//ex) Day07/C.java
 
 14. 연산자 (Operator)
 	(1) 연산하게 하는 '기호'
@@ -243,3 +243,24 @@
 		8) 논리대입 ex) &=, |=
 		9) 조건 ex) A? B:C
 		10) instanceof ex) 객체 instanceof 클래스
+
+		//ex) Day07/E.java
+
+15. 배열(Array)
+	같은 타입의 데이터 '저장소'로서, 생성될 때 그 크기가 고정되는 '객체'
+
+	(1) 선언
+		type 배열변수[];
+		( ex: int is[]; , String strs[]; ..)
+
+	(2) 생성
+		배열변수 = new type[크기];
+		( ex: is = new int[4]; , strs = new String[4]; ..)
+
+	(3) 초기화
+		배열변수[인덱스] = 데이터;
+		( ex: is[0]=10;, strs[0]="봄";..)
+
+		//ex) Day08/A.java
+
+	(4) 선언 및 생성 

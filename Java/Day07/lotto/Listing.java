@@ -1,10 +1,14 @@
 import java.io.*;
+import java.util.*;
 
 class Listing 
 {
 	String fName = "우리반";
 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	BufferedReader brFile;
+	Random r = new Random();
+	String name;
+
 	void inputFName(){
 		FileReader fr = null;
 		p("#읽을 파일 이름: ");
@@ -21,14 +25,12 @@ class Listing
 	}
 	void list(){
 		try{
-			int i = 0; 
-			while(true){
-				String line = brFile.readLine();
-				if(line == null) break;
-				pln(line);
-				i++;
+			int i = r.nextInt(30); 
+			for (int j=1; j<=30; j++){
+				String name = brFile.readLine();
+				if(i==j) break;
 			}
-			pln("#총: "+i+"명");
+			pln("당첨자: " + name);
 		}catch(IOException ie){
 		}
 	}
