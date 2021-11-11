@@ -263,4 +263,90 @@
 
 		//ex) Day08/A.java
 
-	(4) 선언 및 생성 
+	(4) 선언 및 생성
+	    type 배열변수[] = new type[크기];
+		( 예: int is[]=new int[4]; String strs[]=new String[4]; .. ) 
+
+	(5) 선언 및 생성 및 초기화
+	    type 배열변수[] = {데이터1, 데이터2, 데이터3, .. };
+		( 예: int is[]={10, 20, 30, 40}; String strs[]={"봄", "여름"}; .. )
+
+		//ex) day08/A.java
+
+    (6) 분리 주의 사항 
+	    '선언'과 '생성 및 초기화'는 분리될 수 없음
+		
+		//ex) day08/B.java
+
+	(7) 배열방의 default 값 ( by JVM )
+		byte, short, char, int : 0
+		long : 0L
+		float : 0.0f
+		double : 0.0
+		boolean : false
+		참조형 : null
+
+		//ex) day08/C.java
+
+	(8) 형변환 
+	    자동형변환이 가능한 데이터라면 변환되어져서 저장됨
+	    ( 예: int is[] = {b, s, c, i, (int)f}; )
+
+		//ex) day08/D.java
+
+	(9) length 속성 
+		배열방의 크기를 리턴 
+
+		//ex) day08/E.java 
+
+	(10) 2차원 
+		1차원 배열을 데이터(element)로 갖는 배열 
+
+	    //ex) day08/F.java 	
+		
+	(11) n차원 
+		(n-1)차원 배열을 데이터(element)로 갖는 배열 
+
+		//ex) day08/G.java
+
+16. 컬렉션 ( Collection ) 계열 ( Data Structure, 가변배열 )
+	같은 타입의 '참조형'데이터 '저장소'로써 그 크기가 변하는 '객체'
+
+	(1) 종류
+		1)			java.util.Collection
+					  |				|
+			java.util.List		java.util.Set
+				|						|
+		ArrayList, Vector,..	TreeSet, SortedSet,..
+
+
+
+		2)			java.util.Map
+						|
+				Hashtable, HashMap,..
+
+
+	(2) 특징
+		1) List
+			- 순서를 보존한다
+			- 중복을 허용한다
+
+			//ex) Day09/A1.java
+
+		2) Set ( 비유: 수학에서의 집합 )
+			- 순서를 보존하지 않는다
+			- 중복을 허용하지 않는다
+
+			//ex) Day09/B1~B3.java
+		
+		3) Map ( 비유: 1대1 대응)
+			- key와 value값으로 저장
+			- 순서를 보존하지 않는다
+			- key는 중복 X, value는 중복 O
+				(key가 중복된다면, value는 새로운 값으로 덮어씀)
+			
+			//ex) Day09/C1~C3.java
+		
+		cf) Generic, AutoBoxing, Enhanced Loop
+
+17.
