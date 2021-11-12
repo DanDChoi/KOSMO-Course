@@ -349,4 +349,25 @@
 		
 		cf) Generic, AutoBoxing, Enhanced Loop
 
-17.
+17. OOP(Object Oriented Programming) 특성
+	(1) 상속성 ( Inheritance )
+		부모의 '모든 것'을 자식에서 '상속 받는 것'
+
+		1) 다른 생성자가 하나도 없을 때만 JVM이 기본생성자를 만들어 줌
+			( 자식 객체가 생성되려면 먼저 부모객체가 생성되어야 함 )
+		2) 모든 생성자의 첫라인에는 super();가 생략되어 있음
+			( 단, 다른 super(..)가 있다면 예외 )
+		3) 자식메소드에서 부모메소드의 내용을 변경할 수 있음 ( overriding )
+		4) 모든 객체는 Object 의 자식 ( 묵시적 상속 )
+		5) 형변환
+			- 자동형변환 by JVM ( 자식 -> 부모 )
+			- 강제형변환 by 개발자 ( 부모 -> 자식 )
+		6) 형제관계(남남)는 상속과 무관 ( 형변환 X )
+
+		//ex) Day10/Human.java
+
+	(2) 다형성 ( Polimorphism )
+
+	(3) 은닉성 ( Information Hiding )
+
+	(4) 캡슐화 ( Encapsulation )
