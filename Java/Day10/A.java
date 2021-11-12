@@ -1,75 +1,76 @@
 import java.lang.*;
 
-class Human extends Object {
-	String name = "È«ï¿½æµ¿";
+class Human //extends Object 
+{
+	String name = "È«±æµ¿";
 	//Human(){}
 	Human(String name){
-		super(); //new Object();
+		//super(); //new Object();
 		this.name = name;
 	}
 	void move(){
-		System.out.println("ï¿½È´Â´ï¿½");
+		System.out.println("°È´Â´Ù");
 	}
 }
 class Superman extends Human {
 	int power = 1000;
 	Superman(){
-		super("Å¬ï¿½ï¿½");
+		super("Å¬¶ô");
 	}
-	void move(){ //(ï¿½Þ¼Òµï¿½)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½ 
-		System.out.println("ï¿½ï¿½ï¿½ó°£´ï¿½");
+	void move(){ //(¸Þ¼Òµå)¿À¹ö¶óÀÌµù 
+		System.out.println("³¯¶ó°£´Ù");
 	}
 	void shot(){
-		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿?");
+		System.out.println("±¤¼±À»½ð´Ù");
 	}
 }
 class Hulk extends Human {
 	int muscle = 500;
-	Superman(){
-		super("ï¿½ï¿½ç½?");
+	Hulk(){
+		super("ºê·ç½º");
 	}
 	void move(){
-		System.out.println("ï¿½Ù¾ï¿½Ù´Ñ´ï¿?");
+		System.out.println("¶Ù¾î´Ù´Ñ´Ù");
 	}
 	void tranfer(){
-		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½");
+		System.out.println("º¯½ÅÇÑ´Ù");
 	}
 }
 
 class God {
 	public static void main(String args[]){
 		Superman sm = new Superman();
-		System.out.print(sm.power + "Nï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ " + sm.name+"ï¿½ï¿½ ");
+		System.out.print(sm.power + "NÀÇ ÈûÀ» °¡Áø " + sm.name+"ÀÌ ");
 		sm.move(); 
 		sm.shot();
 		System.out.println();
 
-        //(1) ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½È¯
+        //(1) ÀÚµ¿Çüº¯È¯
 		Human m = sm;
-		//System.out.print(m.power + "Nï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ "); //ï¿½ï¿½ï¿½ï¿½1
-		System.out.print(m.name+"ï¿½ï¿½ ");
+		//System.out.print(m.power + "NÀÇ ÈûÀ» °¡Áø "); //Á¦¾à1
+		System.out.print(m.name+"ÀÌ ");
 		m.move(); 
-		//m.shot(); //ï¿½ï¿½ï¿½ï¿½2
+		//m.shot(); //Á¦¾à2
 		System.out.println();
 
-        //(2) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¯
+        //(2) °­Á¦Çüº¯È¯
         Superman sm2 = (Superman)m;
-		System.out.print(sm2.power + "Nï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ");
-		System.out.print(sm2.name+"ï¿½ï¿½ ");
+		System.out.print(sm2.power + "NÀÇ ÈûÀ» °¡Áø ");
+		System.out.print(sm2.name+"ÀÌ ");
 		sm2.move(); 
 		sm2.shot();
 
         /*
-        Human m2 = new Human("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿?");
-		Superman sm3 = (Superman)m2; //ï¿½ß¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È¯ 
+        Human m2 = new Human("¼¼Á¾´ë¿Õ");
+		Superman sm3 = (Superman)m2; //Àß¸øµÈ Çüº¯È¯ 
 		sm3.move();
-		//1. ï¿½ï¿½O, ï¿½ï¿½X
-		//2. ï¿½ï¿½X, ï¿½ï¿½X
-		//3. ï¿½ï¿½O, ï¿½ï¿½O */
+		//1. ÄÄO, ½ÇX
+		//2. ÄÄX, ½ÇX
+		//3. ÄÄO, ½ÇO */
 
         //Superman sm4 = new Hulk();
-		//1. ï¿½ï¿½O, ï¿½ï¿½X
-		//2. ï¿½ï¿½X, ï¿½ï¿½X
-		//3. ï¿½ï¿½O, ï¿½ï¿½O
+		//1. ÄÄO, ½ÇX
+		//2. ÄÄX, ½ÇX
+		//3. ÄÄO, ½ÇO
 	}
 }

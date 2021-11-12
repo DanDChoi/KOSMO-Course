@@ -1,5 +1,5 @@
 import java.io.*;
-import java.util.Random;
+import java.util.*;
 
 class Lotto
 {
@@ -7,6 +7,9 @@ class Lotto
 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	BufferedReader brFile;
 	FileReader fr;
+	Vector<String> v = new Vector<String>();
+	Random r = new Random();
+
 	void inputFName(){
 		p("#읽을 파일 이름(기본:우리반): ");
 		try{
@@ -15,47 +18,30 @@ class Lotto
 			if(fName.length() == 0) fName = "우리반";
 			fr = new FileReader(fName+".txt");
 			brFile = new BufferedReader(fr);
-		}catch(FileNotFoundException fe){
+			}catch(FileNotFoundException fe){
 			System.out.println(fName+"파일을 찾을 수 없음");
 			inputFName();
 		}catch(IOException ie){
 		}
 	}
 
-	Random r = new Random();
-	int i;
-	void setIndex(){
-		int size = 0;
+	void in(){
 		try{
-			String line = "";
-			while ((line = brFile.readLine()) != null){
-				size++;
-			} 
-		}catch(IOException ie){
-		}
-		i = r.nextInt(size); //0~(n-1) //0~29
-	}
-	void list(){
-		try{
-			fr = new FileReader(fName+".txt");
-			brFile = new BufferedReader(fr);
-
-			int i = 0;
-			String arr[] = new String[30];
-
-
-			while(true){
-				String line = brFile.readLine();
-				arr[i] = line;
-			
-				if(this.i == i){
-					pln("당첨자: " + arr[i]);
-					break;
-				}i++;
+			String line = null;
+			while((line =brFile.readLine()) != null){
+				if(line != null) line = line.trim();
+				if(line.length() != 0) v.add(line);
 			}
-			
 		}catch(IOException ie){
 		}
+	}
+	void out(){
+		for(String name : v) System.out.println(name);
+	}
+	void select(){
+		int i =r.nextInt(v.size());
+		String selector = v.get(i);
+		System.out.println("당첨자: "+selector);
 	}
     void p(String str){
 		System.out.print(str);
@@ -66,9 +52,11 @@ class Lotto
 	public static void main(String[] args) 
 	{
 		Lotto lo = new Lotto();
-		lo.inputFName();
-		lo.setIndex();
-		lo.list();
+		lo.inputFName(); //리스트 파일이름을 입력받는다
+		lo.in(); // 저장소(v)에 이름들을 넣는다
+		//lo.out(); // 저장소의 이름들을 출력한다
+		lo.select(); // 임의의 1명을 뽑아서 출력한다
+
 	}
 }
 

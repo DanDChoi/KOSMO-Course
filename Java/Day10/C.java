@@ -1,10 +1,10 @@
 class Account {
    private String ssn = "123456-1234567";
    private long balance = 10000L;
-    /*
+    
    void setSsn(String ssn){ //setter 메소드
        this.ssn = ssn;
-   }*/
+   }
    String getSsn(){ //getter 메소드
        return ssn;
    }
