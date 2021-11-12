@@ -1,75 +1,75 @@
 import java.lang.*;
 
 class Human extends Object {
-	String name = "È«±æµ¿";
+	String name = "È«ï¿½æµ¿";
 	//Human(){}
 	Human(String name){
 		super(); //new Object();
 		this.name = name;
 	}
 	void move(){
-		System.out.println("°È´Â´Ù");
+		System.out.println("ï¿½È´Â´ï¿½");
 	}
 }
 class Superman extends Human {
 	int power = 1000;
 	Superman(){
-		super("Å¬¶ô");
+		super("Å¬ï¿½ï¿½");
 	}
-	void move(){ //(¸Þ¼Òµå)¿À¹ö¶óÀÌµù 
-		System.out.println("³¯¶ó°£´Ù");
+	void move(){ //(ï¿½Þ¼Òµï¿½)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½ 
+		System.out.println("ï¿½ï¿½ï¿½ó°£´ï¿½");
 	}
 	void shot(){
-		System.out.println("±¤¼±À»½ð´Ù");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿?");
 	}
 }
 class Hulk extends Human {
 	int muscle = 500;
 	Superman(){
-		super("ºê·ç½º");
+		super("ï¿½ï¿½ç½?");
 	}
 	void move(){
-		System.out.println("¶Ù¾î´Ù´Ñ´Ù");
+		System.out.println("ï¿½Ù¾ï¿½Ù´Ñ´ï¿?");
 	}
 	void tranfer(){
-		System.out.println("º¯½ÅÇÑ´Ù");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½");
 	}
 }
 
 class God {
 	public static void main(String args[]){
 		Superman sm = new Superman();
-		System.out.print(sm.power + "NÀÇ ÈûÀ» °¡Áø " + sm.name+"ÀÌ ");
+		System.out.print(sm.power + "Nï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ " + sm.name+"ï¿½ï¿½ ");
 		sm.move(); 
 		sm.shot();
 		System.out.println();
 
-        //(1) ÀÚµ¿Çüº¯È¯
+        //(1) ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½È¯
 		Human m = sm;
-		//System.out.print(m.power + "NÀÇ ÈûÀ» °¡Áø "); //Á¦¾à1
-		System.out.print(m.name+"ÀÌ ");
+		//System.out.print(m.power + "Nï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ "); //ï¿½ï¿½ï¿½ï¿½1
+		System.out.print(m.name+"ï¿½ï¿½ ");
 		m.move(); 
-		//m.shot(); //Á¦¾à2
+		//m.shot(); //ï¿½ï¿½ï¿½ï¿½2
 		System.out.println();
 
-        //(2) °­Á¦Çüº¯È¯
+        //(2) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¯
         Superman sm2 = (Superman)m;
-		System.out.print(sm2.power + "NÀÇ ÈûÀ» °¡Áø ");
-		System.out.print(sm2.name+"ÀÌ ");
+		System.out.print(sm2.power + "Nï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ");
+		System.out.print(sm2.name+"ï¿½ï¿½ ");
 		sm2.move(); 
 		sm2.shot();
 
         /*
-        Human m2 = new Human("¼¼Á¾´ë¿Õ");
-		Superman sm3 = (Superman)m2; //Àß¸øµÈ Çüº¯È¯ 
+        Human m2 = new Human("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿?");
+		Superman sm3 = (Superman)m2; //ï¿½ß¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È¯ 
 		sm3.move();
-		//1. ÄÄO, ½ÇX
-		//2. ÄÄX, ½ÇX
-		//3. ÄÄO, ½ÇO */
+		//1. ï¿½ï¿½O, ï¿½ï¿½X
+		//2. ï¿½ï¿½X, ï¿½ï¿½X
+		//3. ï¿½ï¿½O, ï¿½ï¿½O */
 
         //Superman sm4 = new Hulk();
-		//1. ÄÄO, ½ÇX
-		//2. ÄÄX, ½ÇX
-		//3. ÄÄO, ½ÇO
+		//1. ï¿½ï¿½O, ï¿½ï¿½X
+		//2. ï¿½ï¿½X, ï¿½ï¿½X
+		//3. ï¿½ï¿½O, ï¿½ï¿½O
 	}
 }

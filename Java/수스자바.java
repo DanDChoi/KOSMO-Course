@@ -364,10 +364,19 @@
 			- 강제형변환 by 개발자 ( 부모 -> 자식 )
 		6) 형제관계(남남)는 상속과 무관 ( 형변환 X )
 
-		//ex) Day10/Human.java
+		//ex) Day10/A.java
 
 	(2) 다형성 ( Polimorphism )
+		같은 타입 객체의 같은 메소드가 다른 일을 하는 것
+
+		//ex) Day10/B.java
 
 	(3) 은닉성 ( Information Hiding )
-
+		외부 프로그램으로부터 '속성값'을 감추는 것
+		( 멤버를 private 으로 놓고 선택적으로 메소드(getter/setter)를 정의해서 접근 )
+		//ex) Day10/C.java
+		
 	(4) 캡슐화 ( Encapsulation )
+		메소드의 구현 내용을 몰라도 그 형태만 알면 호출해서 사용할 수 있는 것
+
+		//ex) Day10/D.java
