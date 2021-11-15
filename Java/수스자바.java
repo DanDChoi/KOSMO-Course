@@ -453,4 +453,20 @@
 
 	(7) 2개 이상의 예외를 떠넘길 때
 		throws MyExceptin, YourException, ..... , Exception
+			//ex) Day11/D.java
+
+	(8) finally 절
+		1) try절이 나오면
+			catch절이 나오던지.. finally절이 나오던지..
+			둘 다 나오던지 해야 함
+		
+		2) 항상 수행되는 절
+			- 예외 발생과 상관 없이 수행
+			- 심지어 return을 만나더라도 finally 절을 수행 후 리턴
+
+		3) 얘는 못이김
+			System.exit(0); //normal termination
+			System.exit(-1); //abnormal termination
+
+		
 			//ex) Day11/E.java
