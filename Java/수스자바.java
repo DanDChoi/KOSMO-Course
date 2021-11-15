@@ -380,3 +380,77 @@
 		메소드의 구현 내용을 몰라도 그 형태만 알면 호출해서 사용할 수 있는 것
 
 		//ex) Day10/D.java
+
+
+18. 예외 처리
+
+	(1) 예외( Exception )
+		프로그램이 정상적으로 진행되지 못하게 하는 '돌발 상황'
+
+		예) 숫자가 아닌 형태의 문자열을 숫자로 바꾸려할 때 
+		    채팅하다가 상대방이 나가 버릴때
+			온라인 게임하고 있는 중에 전원케이블이 빠짐
+			게임 서버 다운됨 
+			...
+
+	(2) 처리 목적 
+		프로그램 진행시 발생할 수 있는 '돌발 상황'을 예외로 미리 정해놓고, 
+		해당하는 예외가 발생했을 경우 적적한 조치를 취해서, 프로그램이
+		'정상 작동'하도록 하는 것 
+
+	(3) 계층도 
+			              Object 
+						    | 
+						 Throwable
+						 |        | 
+					  Error     Exception 
+					            |        | 
+				    CompileException   RuntimeException  
+				   (CheckedException) 
+
+			예) IOException is a CompileException 
+			    NumberFormatException is a RuntimeException 
+
+			//ex) Day11/A.java 
+		
+	(4) 특징
+		1) 일(생성자 or 메소드)할 때 발생할 수 있음
+		2) throw 로 예외 객체를 던짐 (발생시킴)
+		3) throws 로 예외 발생 가능 표식을 함 ( == (소극적으로) 떠넘김 )
+		4) try catch 로 잡을 수 있음 ( == (적극적으로) 때려잡음 )
+
+
+			//ex) Day11/B.java
+
+	(5) 방법
+		1) 때려 잡는 방법
+			try{
+				예외가 발생할 수 있는 구문 (생성자 or 메소드)
+			}catch(예외타입 예외객체){
+				처리로직
+			}
+
+		2) 떠넘기는 방법
+			throws 예외타입
+		
+			//ex) Day11/C.java
+
+			
+	(6) 순서 ( try절 안에 2개 이상의 예외가 발생시 )
+		1) 상속관계X
+			[순서존재X] 아무 예외나 먼저 잡아줌
+			예) catch(MyException me)
+				catch(YourException ye)
+
+		2) 상속관계O
+			[순서존재O] 하위예외부터 잡아줌
+			예) catch(MyException me)
+				catch(Exception e)
+
+			질문) 자식예외를 먼저 잡는 이유? 구체적이고 세련된 예외처리를 위해서
+
+			//ex) Day11/D.java
+
+	(7) 2개 이상의 예외를 떠넘길 때
+		throws MyExceptin, YourException, ..... , Exception
+			//ex) Day11/E.java
