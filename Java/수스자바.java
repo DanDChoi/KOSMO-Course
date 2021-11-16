@@ -470,3 +470,36 @@
 
 		
 			//ex) Day11/E.java
+
+19. 제한자 ( Modifier )
+	클래스(인터페이스), 변수, 생성자, 메소드 앞에 붙어서 기능을 '제한'하는 예약어
+
+	(1) 접근제한자 ( Access Modifier )
+			1) 종류
+				<1> public : 접근 제한이 없음
+				<2> protected : 같은 패키지의 자원 or 상속관계의 부모 자원
+				<3> default : 같은 패키지의 자원
+				<4> private : 클래스 안
+			
+			2) 붙는 특성
+				<1> 클래스나 인터페이스 앞의 접근제한자는 public 과 default 만 가능
+				<2> public 클래스나 인터페이스는 파일이름과 이름이 같아야 한다
+				<3> 멤버, 생성자, 메소드는 제한없이 붙을 수 있음
+				<4> 지역변수는 default만 붙음
+				
+			3) 범위
+				<1> 넓은 순위 : public > protected > default > private
+				<2> 강력 순위 : public < protected < default < private
+
+			//ex) Day12/A.java, AUser.java
+
+	(2) 소유제한자 ( static )
+			-> 붙으면 클래스 소유 됨
+			1) 멤버와 메소드에만 붙을 수 있음
+			2) static 자원은 클래스 이름으로 접근 가능
+			3) static 메소드에서는 자원접근시 자신의 클래스 이름 생략가능
+				(단, 다른 클래스에서는 클래스이름 생략 불가)
+			4) 
+
+			//ex) Day12/C.java
+			
