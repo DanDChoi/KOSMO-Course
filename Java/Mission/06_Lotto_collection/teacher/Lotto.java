@@ -11,15 +11,15 @@ class Lotto
 	Random r = new Random();
 	
 	void inputFName(){
-		p("#ÀĞÀ» ÆÄÀÏ ÀÌ¸§(±âº»:¿ì¸®¹İ): ");
+		p("#ì½ì„ íŒŒì¼ ì´ë¦„(ê¸°ë³¸:ìš°ë¦¬ë°˜): ");
 		try{
 			fName = br.readLine();
 			if(fName != null) fName = fName.trim();
-			if(fName.length() == 0) fName = "¿ì¸®¹İ";
+			if(fName.length() == 0) fName = "ìš°ë¦¬ë°˜";
 			fr = new FileReader(fName+".txt");
 			brFile = new BufferedReader(fr);
 		}catch(FileNotFoundException fe){
-			System.out.println(fName+"ÆÄÀÏÀ» Ã£À» ¼ö ¾øÀ½");
+			System.out.println(fName+"íŒŒì¼ì„ ì°¾ì„ ìˆ˜ ì—†ìŒ");
 			inputFName();
 		}catch(IOException ie){
 		}
@@ -41,7 +41,7 @@ class Lotto
 	void select(){
 		int i = r.nextInt(v.size()); //0~ (size-1)
 		String selector = v.get(i);
-		System.out.println("´çÃ·ÀÚ: " + selector);
+		System.out.println("ë‹¹ì²¨ì: " + selector);
 	}
 	
     void p(String str){
@@ -53,10 +53,10 @@ class Lotto
 	public static void main(String[] args) 
 	{
 		Lotto lo = new Lotto();
-		lo.inputFName(); //(1)¸®½ºÆ®¸¦ ÆÄÀÏÀÌ¸§À» ÀÔ·Â ¹Ş´Â´Ù
-		lo.in(); //(2)ÀúÀå¼Ò(v)¿¡ ÀÌ¸§µéÀ» ³Ö´Â´Ù
-		//lo.out(); //(3)ÀúÀå¼ÒÀÇ ÀÌ¸§µéÀ» Ãâ·ÂÇØº»´Ù
-		lo.select(); //(4)ÀÓÀÇÀÇ 1¸íÀ» »Ì¾Æ¼­ Ãâ·ÂÇÑ´Ù
+		lo.inputFName(); //(1)ë¦¬ìŠ¤íŠ¸ë¥¼ íŒŒì¼ì´ë¦„ì„ ì…ë ¥ ë°›ëŠ”ë‹¤
+		lo.in(); //(2)ì €ì¥ì†Œ(v)ì— ì´ë¦„ë“¤ì„ ë„£ëŠ”ë‹¤
+		//lo.out(); //(3)ì €ì¥ì†Œì˜ ì´ë¦„ë“¤ì„ ì¶œë ¥í•´ë³¸ë‹¤
+		lo.select(); //(4)ì„ì˜ì˜ 1ëª…ì„ ë½‘ì•„ì„œ ì¶œë ¥í•œë‹¤
 	}
 }
 

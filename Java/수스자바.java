@@ -491,7 +491,7 @@
 				<1> 넓은 순위 : public > protected > default > private
 				<2> 강력 순위 : public < protected < default < private
 
-			//ex) Day12/A.java, AUser.java
+			//ex) Day12/A.java, AUser.java, B.java
 
 	(2) 소유제한자 ( static )
 			-> 붙으면 클래스 소유 됨
