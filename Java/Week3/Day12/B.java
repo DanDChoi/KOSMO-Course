@@ -16,9 +16,9 @@ class B
 
 class BUser{
 	BUser(){
-		//B b = new B(); //ºÒ°¡
-		//System.out.println("b.i: " + b.i); //ºÒ°¡
-		//b.m(); //ºÒ°¡
+		//B b = new B(); //ë¶ˆê°€
+		//System.out.println("b.i: " + b.i); //ë¶ˆê°€
+		//b.m(); //ë¶ˆê°€
 	}
 	public static void main(String[] args) {
 		new BUser();
