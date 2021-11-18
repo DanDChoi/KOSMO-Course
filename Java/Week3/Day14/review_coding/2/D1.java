@@ -1,25 +1,3 @@
-/* 가능 
-class D0{
-	class D1{
-		class D2{
-			class D3{
-			}
-		}
-	}
-}
-*/
-/* 가능 
-class D0 {
-	interface D1{
-	}
-}
-*/
-/* 가능 
-interface D0{
-	class D1{
-	}
-}
-*/
 interface D0 {
 	interface D1 {
 		void m1();

@@ -24,14 +24,14 @@ class A {
 		//System.out.println("ao.i: " + ao.i);
 		//ao.m();
 
-		AOut.AIn1 ai1 = ao.new AIn1(); //ë‚´ë¶€í´ë˜ìŠ¤ ê°ì²´ìƒì„±1
+		AOut.AIn1 ai1 = ao.new AIn1(); //³»ºÎÅ¬·¡½º °´Ã¼»ı¼º1
 		System.out.println("ai1.j: " + ai1.j);
 		ai1.m1();
 
-		AOut.AIn2 ai2 = new AOut.AIn2();//ë‚´ë¶€í´ë˜ìŠ¤ ê°ì²´ìƒì„±2
-		System.out.println("ai2.k: " + ai2.k); //ê°ì²´ë¡œì ‘ê·¼
+		AOut.AIn2 ai2 = new AOut.AIn2();//³»ºÎÅ¬·¡½º °´Ã¼»ı¼º2
+		System.out.println("ai2.k: " + ai2.k); //°´Ã¼·ÎÁ¢±Ù
 		ai2.m2();
-		System.out.println("AOut.AIn2.k: " + AOut.AIn2.k); //í´ë˜ìŠ¤ë¡œì ‘ê·¼
+		System.out.println("AOut.AIn2.k: " + AOut.AIn2.k); //Å¬·¡½º·ÎÁ¢±Ù
 		AOut.AIn2.m2();
 	}
 }

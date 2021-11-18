@@ -1,9 +1,9 @@
-class F extends Thread { //MultiThread 
-	F(){
+class F3 extends Thread { 
+	F3(){
 		start();
 
 		for(int i=0; i<10; i++){
-			System.out.println("main의 일");
+			System.out.println("main");
 			try{
 				Thread.sleep(1000);
 			}catch(Exception e){}
@@ -11,13 +11,13 @@ class F extends Thread { //MultiThread
 	}
 	public void run(){
 		for(int i=0; i<10; i++){
-			System.out.println("자식Thread 일");
+			System.out.println("Thread");
 			try{
 				Thread.sleep(700);
 			}catch(Exception e){}
 		}
 	}
-	public static void main(String[] args) { //SingleThread 
-		new F();
+	public static void main(String[] args) { 
+		new F3();
 	}
 }

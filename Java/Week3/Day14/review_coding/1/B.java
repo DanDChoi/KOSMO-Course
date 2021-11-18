@@ -11,13 +11,11 @@ class BOut {
 		}
 	}
 	private static class BIn2{
-		//(1) static자원 
 		static int k = 2; 
 		static void m2(){
 			System.out.println("m2()");
 		}	
 
-        //(2) obj 자원 
 		int m = 3;
 		void m3(){
 			System.out.println("m3()");

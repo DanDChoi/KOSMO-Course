@@ -662,7 +662,7 @@ import javax.swing.plaf.basic.BasicInternalFrameTitlePane.TitlePaneLayout;
 		- inner interface 객체 생성 방법은 동일
 		//ex) Day14/D.java
 
-29. @ 이노테이션 ( JDK6 이상 지원 )
+29. @ 어노테이션 ( JDK6 이상 지원 )
 	(1) 모양 : @
 	(2) 기능 
 		1) 클래스나 생성자, 메소드에 붙어서 '정체성'부여
@@ -674,18 +674,75 @@ import javax.swing.plaf.basic.BasicInternalFrameTitlePane.TitlePaneLayout;
 30. 쓰레드 ( Thread )
 	(1) 정의
 		'제어의 흐름'
+
 	(2) Process 와 Thread
 		1) Process : 프로그램의 '실행단위'
 		2) Thread : Process를 구성하는 '작업단위'
 			//ex) Day14/F.java
+
 	(3) 장점
 		1) 1Process로 여러개의 일을 동시에 수행
 		2) '경량 Process'로 불리기도 할 정도로 가볍다
 			( 이유: 공통 Resource를 공유하기 때문 )
+	
 	(4) 비유 : '피고용인' ( Employee )
+	
 	(5) 생성
 		1) java.lang.Thread 상속
 		2) java.lang.Runnable 상속
 			//ex) Day14/G.java
+
 	(6) 시작
 		th.start();
+
+	(7) LifeCycle
+		1) 5가지 상태
+		2) 각 상태는 '메소드'나 '스케쥴러'나 '시간'이나 '상황'에 의해 이동함
+		3) 한 번 돌아가면 살아나지 못함
+
+	(8) Priority
+		1) Ready상태의 쓰레드중에서
+		   우선적으로 CPU를 점유할 수 있는 쓰레드를 판별하기 위한 LEVEL 값
+
+		2) 범위
+		   1~10
+		
+		3) Thread.MAX_PRIORITY //10
+		   Thread.MIN_PRIORITY //1
+		   Thread.NORM_PRIORITY //5
+
+		4) 부여/조회
+		   th.setPriority(int newPriority)
+		   th.getPriority()
+
+		5) 우선순위를 높이면 스케쥴러에 의해 뽑힐 확률이 높아짐 
+			//ex) Day14/H.java
+	
+	(9) 동기화
+		1) 무결성이 깨지는 극단적인 예
+			int i = 0;
+			i++;
+			
+			# CPU 연산 단계 #
+			<1> 현재 i값을 읽는 단계			  i==0
+			<2> i값 증가 단계					i==0
+			<3> 증가된 값을 i에 저장하는 단계		i==1
+
+		2) 비유: 화장실 문고리
+		
+		3) 설명: 하나 이상의 쓰레드가 어떤 연산 or 로직에 동시에 접근했을 때,
+				그 연산에 대한 값의 무결성을 보장하기 위해서 수행 영역에 대한 lock을 걸어주는 것
+			
+		4) 방법
+			<1> synchronized void m(){
+				동기화가 필요한 로직;
+				}		
+
+			<2> void m(){
+					일반로직;
+					synchronized(this){
+						동기화가 필요한 로직;
+					}
+				}
+
+			//ex) Day14/I.java

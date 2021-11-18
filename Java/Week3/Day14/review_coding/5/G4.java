@@ -1,26 +1,26 @@
-class Gth1 extends Thread { //¹æ¹ı1
+class Gth1 extends Thread { 
 	@Override
 	public void run(){
 		while(true){
-			System.out.println("¼­ºùÀ» ÇÑ´Ù");	
+			System.out.println("ì„œë¹™ì„ í•œë‹¤");	
 			try{ 
 				Thread.sleep(2000); 
 			}catch(InterruptedException e){}
 		}
 	}
 }
-class Gth2 implements Runnable { //¹æ¹ı2
+class Gth2 implements Runnable { 
 	@Override
 	public void run() {
 		try{
 			while(true){
-				System.out.println("¿ä¸®¸¦ ÇÑ´Ù");
+				System.out.println("ìš”ë¦¬ë¥¼ í•œë‹¤");
 				Thread.sleep(2000); 
 			}
 		}catch(InterruptedException e){}
 	}
 }
-class G {
+class G4 {
 	void mainW(){
 		Thread th11 = new Gth1();
 		th11.start();
@@ -32,7 +32,7 @@ class G {
 		th2.start();
 
 		while(true){
-			System.out.println("»çÀå´ÔÀÌ °è»êÇÑ´Ù");
+			System.out.println("ì‚¬ì¥ë‹˜ì´ ê³„ì‚°ì„ í•œë‹¤");
 			try{ 
 				Thread.sleep(3000); 
 			}catch(InterruptedException e){}
@@ -40,6 +40,6 @@ class G {
 	}
 	public static void main(String[] args) 
 	{
-		new G().mainW();
+		new G4().mainW();
 	}
 }
