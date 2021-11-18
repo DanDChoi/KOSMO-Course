@@ -1,3 +1,5 @@
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.TitlePaneLayout;
+
 1. HW ( OS + JVM + App1, App2, ... )
    (1) CPU, GPU : 두뇌 
    (2) RAM(메모리) : 책상 
@@ -623,3 +625,67 @@
 	(2) 차이점
 		1) 클래스이고 인터페이스 임
 		2) 추상클래스는 일반멤버(상수X)와 일반메소드와 생성자를 가질 수 있음
+
+27. 추상클래스나 인터페이스를 사용하는 이유 (why?) '본질'
+	(1)
+
+28. 내부클래스 ( Inner Class )
+	클래스 안의 클래스
+
+	(1) 모양
+		//ex) Day14/A.java
+	
+	(2) 객체 생성 방법
+		1) 외클.내클 변수 = new 외클().new 내클();
+			( 예: AOut.AIn ai = new AOut().new AIn(); )
+		2) 외클.내클 변수 = new 외클.내클();
+			( 예: AOut.AIn2 ai2 = new AOut.AIn2(); )
+		//ex) Day14/A.java
+	
+	(3) 접근제한자
+		내부클래스는 모든 접근제한자가 가능
+
+	(4) main 위치
+		1) static 이 아닌 내부클래스는 main()을 가질 수 없음
+			( static 자원(멤버/메소드)을 아예 가질 수 없음 )
+		2) static Inner class 안에는 main()을 가질 수 있음
+
+		//ex) Day14/B.java
+
+	(5)	왜 쓰는가?
+		'외부클래의 자원을 내것처럼 사용'하기 위해
+		//ex) Day14/C.java
+	(6) Tip
+		- depth는 무한대 가능
+		- class안에 내부 interface, interface안에 내부 class가능
+		- interface 안에 내부 static interface와 내부 일반 interface 가능
+		- inner interface 객체 생성 방법은 동일
+		//ex) Day14/D.java
+
+29. @ 이노테이션 ( JDK6 이상 지원 )
+	(1) 모양 : @
+	(2) 기능 
+		1) 클래스나 생성자, 메소드에 붙어서 '정체성'부여
+		2) 기능을 확장하는 표식
+		3) xml을 대신해서 배치(deploy)하는 역할
+	(3) JDK6 이상 지원
+		//ex) Day14/E.java
+
+30. 쓰레드 ( Thread )
+	(1) 정의
+		'제어의 흐름'
+	(2) Process 와 Thread
+		1) Process : 프로그램의 '실행단위'
+		2) Thread : Process를 구성하는 '작업단위'
+			//ex) Day14/F.java
+	(3) 장점
+		1) 1Process로 여러개의 일을 동시에 수행
+		2) '경량 Process'로 불리기도 할 정도로 가볍다
+			( 이유: 공통 Resource를 공유하기 때문 )
+	(4) 비유 : '피고용인' ( Employee )
+	(5) 생성
+		1) java.lang.Thread 상속
+		2) java.lang.Runnable 상속
+			//ex) Day14/G.java
+	(6) 시작
+		th.start();

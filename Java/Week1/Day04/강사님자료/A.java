@@ -1,6 +1,6 @@
 class A {
-	int i = 10; //¸â¹ö(°´Ã¼)
-	static int j = 20; //¸â¹ö(Å¬·¡½º)
+	int i = 10; //Â¸Ã¢Â¹Ã¶(Â°Â´ÃƒÂ¼)
+	static int j = 20; //Â¸Ã¢Â¹Ã¶(Ã…Â¬Â·Â¡Â½Âº)
 
     A(){
 		//System.out.println("i1: " + i); 
