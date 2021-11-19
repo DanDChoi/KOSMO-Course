@@ -1,37 +1,37 @@
 class E 
 {
 	/*
-	1) »ê¼ú ex) +, -, *, /, %
-	2) Áõ°¨ ex) ++, -- 
-	3) ´ëÀÔ ex) = 
-	4) »ê¼ú´ëÀÔ ex) +=, -=, *=, /=, %=
-	5) ºñÆ® ex) &, |, ^, ~, ½ÃÇÁÆ®(<<, >>, >>>)
-	6) ºñ±³ ex) ==, !=, <, <=, >, >=
-	7) ³í¸® ex) &, &&, |, ||
-	8) ³í¸®´ëÀÔ ex) &=, |=
-	9) Á¶°Ç ex) A? B:C
-	10) instanceof  ex) °´Ã¼ instanceof Å¬·¡½º */
+	1) ì‚°ìˆ  ex) +, -, *, /, %
+	2) ì¦ê° ex) ++, -- 
+	3) ëŒ€ì… ex) = 
+	4) ì‚°ìˆ ëŒ€ì… ex) +=, -=, *=, /=, %=
+	5) ë¹„íŠ¸ ex) &, |, ^, ~, ì‹œí”„íŠ¸(<<, >>, >>>)
+	6) ë¹„êµ ex) ==, !=, <, <=, >, >=
+	7) ë…¼ë¦¬ ex) &, &&, |, ||
+	8) ë…¼ë¦¬ëŒ€ì… ex) &=, |=
+	9) ì¡°ê±´ ex) A? B:C
+	10) instanceof  ex) ê°ì²´ instanceof í´ë˜ìŠ¤ */
 
-	void m1(){ //1) »ê¼ú ex) +, -, *, /, %
+	void m1(){ //1) ì‚°ìˆ  ex) +, -, *, /, %
 		int i = 1;
 		int j = 2;
 		int k = i%j;
         pln("k: " + k);
 	}
-	void m2(){ //2) Áõ°¨ ex) ++, --
+	void m2(){ //2) ì¦ê° ex) ++, --
 		int i = 0;
-		int j = i++;//¿¬»êÀÚ¿ì¼±¼øÀ§ 
+		int j = i++;//ì—°ì‚°ììš°ì„ ìˆœìœ„ 
 		pln("i: " + i + ", j: " + j);
 
 		int k = (j++ + 1);
 		pln("j: " + j + ", k: " + k);
 	}
-	void m3(){ //4) »ê¼ú´ëÀÔ ex) +=, -=, *=, /=, %=
+	void m3(){ //4) ì‚°ìˆ ëŒ€ì… ex) +=, -=, *=, /=, %=
 		int i = 1;
 		i %= 2;
 		pln("i: " + i);
 	}
-	void m4(){ //5) ºñÆ® ex) &, |, ^, ~, ½ÃÇÁÆ®(<<, >>, >>>)
+	void m4(){ //5) ë¹„íŠ¸ ex) &, |, ^, ~, ì‹œí”„íŠ¸(<<, >>, >>>)
 		int i = 8;
         i = i>>2;
 		System.out.println("i: " + i);
@@ -41,37 +41,37 @@ class E
 		int m = j&k;
         System.out.println("m: " + m);
 	}
-	void m5(){ //6) ºñ±³ ex) ==, !=, <, <=, >, >=
+	void m5(){ //6) ë¹„êµ ex) ==, !=, <, <=, >, >=
 		int i = 0;
 		//boolean flag = i!=0;
 		boolean flag = i>(i-1);
 		System.out.println("flag: " + flag);
 	}
-	void m6(){ //7) ³í¸® ex) &, &&, |, ||
+	void m6(){ //7) ë…¼ë¦¬ ex) &, &&, |, ||
 		int i = 0;
 		int j = 2;
 		boolean flag = (++i==1) | (i==j--); 
 		System.out.println("j: " + j);
 	}
-	void m7(){ //8) ³í¸®´ëÀÔ ex) &=, |=
+	void m7(){ //8) ë…¼ë¦¬ëŒ€ì… ex) &=, |=
 		boolean b = false;
 		b |= true;	
 		System.out.println("b : " + b); 
 	}
-	void m8(){ //9) Á¶°Ç ex) A? B:C
+	void m8(){ //9) ì¡°ê±´ ex) A? B:C
 		int i = 1;
 		int j = 2;
-		String k = i>j? "¿©¼º": "³²¼º";
+		String k = i>j? "ì—¬ì„±": "ë‚¨ì„±";
 		/*String k = "";
 		if(i>j) {
-			k = "¿©¼º";
+			k = "ì—¬ì„±";
 		}else {
-			k = "³²¼º";
+			k = "ë‚¨ì„±";
 		}*/
 		System.out.println("k: " +k);
 	}
-	void m9(){ //10) instanceof  ex) °´Ã¼ instanceof Å¬·¡½º
-        String str = "±èÄ¡";
+	void m9(){ //10) instanceof  ex) ê°ì²´ instanceof í´ë˜ìŠ¤
+        String str = "ê¹€ì¹˜";
 		boolean flag1 = str instanceof Object;
 		System.out.println("flag1: " + flag1);
 

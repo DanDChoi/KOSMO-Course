@@ -4,7 +4,7 @@ class B3
 {
 	TreeSet<String> ts = new TreeSet<String>(); //Generic
 	void in(){
-		ts.add("º½");ts.add("¿©¸§");ts.add("°¡À»");ts.add("°Ü¿ï");ts.add("°¡À»");
+		ts.add("ë´„");ts.add("ì—¬ë¦„");ts.add("ê°€ì„");ts.add("ê²¨ìš¸");ts.add("ê°€ì„");
 	}
 	void out(){
 		for(String str: ts) System.out.println(str);

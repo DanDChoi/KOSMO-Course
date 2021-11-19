@@ -5,17 +5,17 @@ class B
 		int j = 2;
 		boolean b = i==j;
 		if(b){
-			System.out.println("Âü");
+			System.out.println("ì°¸");
 		}else{
-			System.out.println("°ÅÁþ");
+			System.out.println("ê±°ì§“");
 		}
 	}
 	void m2(){
 		int i = 0;
 		if(i<0){
-			System.out.println("À½¼ö");
+			System.out.println("ìŒìˆ˜");
 		}else if(i>0){
-			System.out.println("¾ç¼ö");
+			System.out.println("ì–‘ìˆ˜");
 		}else{
 			System.out.println("0");
 		}

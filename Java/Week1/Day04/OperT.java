@@ -2,13 +2,13 @@ class OperT
 {
 	// + , - , * , / , % 
 	void m1(){
-		int j = 100; //Á¡¼ö1
-		int k = 100; //Á¡¼ö2
+		int j = 100; //ì ìˆ˜1
+		int k = 100; //ì ìˆ˜2
 
-		int t = j + k; //ÃÑÁ¡ 
-        int a = t/2; //Æò±Õ
-	    String grade = m2(a); //ÇĞÁ¡
-		System.out.println("ÃÑÁ¡: " + t + ", Æò±Õ: "+a + ", ÇĞÁ¡: " + grade);
+		int t = j + k; //ì´ì  
+        int a = t/2; //í‰ê· 
+	    String grade = m2(a); //í•™ì 
+		System.out.println("ì´ì : " + t + ", í‰ê· : "+a + ", í•™ì : " + grade);
 	}
 	String m2(int a){
 		if(a>=90) return "A";

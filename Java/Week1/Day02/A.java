@@ -1,15 +1,15 @@
-package aa.bb; //(1)ÆĞÅ°Áö ¼±¾ğ 
+package aa.bb; //(1)íŒ¨í‚¤ì§€ ì„ ì–¸ 
 
-import java.lang.*; //(2) ÀÓÆ÷Æ® ±¸¹® 
+import java.lang.*; //(2) ì„í¬íŠ¸ êµ¬ë¬¸ 
 import java.util.*;
 
-public class A{ //(3) Å¬·¡½º ¼±¾ğ 
-	Random r = new Random(); //(4) ¸â¹öº¯¼ö 
-	String shape = "Àß»ı±ä "; //¼Ó¼º(member variable)
-    public A(){ //(5) »ı¼ºÀÚ(Constructor)
-		System.out.print(shape + "º´Ã¶ÀÌ°¡ ");
+public class A{ //(3) í´ë˜ìŠ¤ ì„ ì–¸ 
+	Random r = new Random(); //(4) ë©¤ë²„ë³€ìˆ˜ 
+	String shape = "ì˜ìƒê¸´ "; //ì†ì„±(member variable)
+    public A(){ //(5) ìƒì„±ì(Constructor)
+		System.out.print(shape + "ë³‘ì² ì´ê°€ ");
 	}
-	public void m(){ //(6) ¸Ş¼Òµå(Method) 
-		System.out.print("´Ş¸°´Ù");
+	public void m(){ //(6) ë©”ì†Œë“œ(Method) 
+		System.out.print("ë‹¬ë¦°ë‹¤");
 	}
 }

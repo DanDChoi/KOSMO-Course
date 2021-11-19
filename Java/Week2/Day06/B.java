@@ -2,12 +2,12 @@ class B
 {
 	void m1(){
 		for(;;){ // == while(true)
-			System.out.println("ÇÏÇÏ");
+			System.out.println("í•˜í•˜");
 		}
 	}
 
 	void m2(){
-		for(int i=0; i<3; i++) //for¹®¿¡ ¹Ùµð({})°¡ ¾øÀ¸¸é Ã¹¹øÂ° ¶óÀÎ¸¸ forÀÇ ¹Ùµð·Î ÀÎ½Ä
+		for(int i=0; i<3; i++) //forë¬¸ì— ë°”ë””({})ê°€ ì—†ìœ¼ë©´ ì²«ë²ˆì§¸ ë¼ì¸ë§Œ forì˜ ë°”ë””ë¡œ ì¸ì‹
 			System.out.println("1");
 		
 		System.out.println("2");	

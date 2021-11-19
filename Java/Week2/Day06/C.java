@@ -8,7 +8,7 @@ class C
 		System.out.println("2^31-1: "+ Integer.MAX_VALUE);
 		System.out.println("-2^31: "+ Integer.MIN_VALUE);
 	}*/
-	void m1(){ //1~10 ÇÕÀ» Ãâ·ÂÇÏ½Ã¿À
+	void m1(){ //1~10 í•©ì„ ì¶œë ¥í•˜ì‹œì˜¤
 		int sum = 0;
 		for(int i=1; i<=10; i++){
 			sum = sum + i;
@@ -16,7 +16,7 @@ class C
 		System.out.println("sum: "+ sum);
 	}
 
-	void m2(){ //1~100 Â¦¼öÇÕ°ú È¦¼öÇÕÀ» Ãâ·ÂÇÏ½Ã¿À
+	void m2(){ //1~100 ì§ìˆ˜í•©ê³¼ í™€ìˆ˜í•©ì„ ì¶œë ¥í•˜ì‹œì˜¤
 		int sum = 0;
 		for (int i=0; i<=100; i+=2){
 			sum = sum + i;
@@ -30,14 +30,14 @@ class C
 		System.out.println("odd_sum: "+sum1);
 	}
 
-	/*void ¹Î°æ´ÔÄÚµå(){ // Â¦¼öÇÕ°ú È¦¼öÀÇ ÇÕ
+	/*void ë¯¼ê²½ë‹˜ì½”ë“œ(){ // ì§ìˆ˜í•©ê³¼ í™€ìˆ˜ì˜ í•©
 		for (int i=1; i<101; i++){
         if(i % 2 == 0){
             evensum +=i;
          }else {
             oddsum +=i;
          }
-      }System.out.println("Â¦¼öÀÇ ÇÕÀº "+ evensum + " ÀÌ°í, È¦¼öÀÇ ÇÕÀº "+ oddsum + "ÀÌ´Ù");
+      }System.out.println("ì§ìˆ˜ì˜ í•©ì€ "+ evensum + " ì´ê³ , í™€ìˆ˜ì˜ í•©ì€ "+ oddsum + "ì´ë‹¤");
    }*/
 
 	public static void main(String[] args) 

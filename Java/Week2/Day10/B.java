@@ -1,21 +1,21 @@
 class Figure  {
 	void draw(){
-		System.out.println("µµÇüÀ» ±×¸®´Ù");
+		System.out.println("ë„í˜•ì„ ê·¸ë¦¬ë‹¤");
 	}
 }
 class Circle extends Figure {
-	void draw(){ //¿À¹ö¶óÀÌµù
-		System.out.println("¿øÇüÀ» ±×¸®´Ù");
+	void draw(){ //ì˜¤ë²„ë¼ì´ë”©
+		System.out.println("ì›í˜•ì„ ê·¸ë¦¬ë‹¤");
 	}
 }
 class Rect extends Figure {
-	void draw(){ //¿À¹ö¶óÀÌµù
-		System.out.println("»ç°¢ÇüÀ» ±×¸®´Ù");
+	void draw(){ //ì˜¤ë²„ë¼ì´ë”©
+		System.out.println("ì‚¬ê°í˜•ì„ ê·¸ë¦¬ë‹¤");
 	}
 }
 class Tri extends Figure  {
-	void draw(){ //¿À¹ö¶óÀÌµù
-		System.out.println("»ï°¢ÇüÀ» ±×¸®´Ù");
+	void draw(){ //ì˜¤ë²„ë¼ì´ë”©
+		System.out.println("ì‚¼ê°í˜•ì„ ê·¸ë¦¬ë‹¤");
 	}
 }
 

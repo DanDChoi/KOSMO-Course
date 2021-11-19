@@ -9,13 +9,13 @@ class OneTo100
 			String line = br.readLine();
 			int i = Integer.parseInt(line);
 			if(i<0){
-				System.out.println("Á¡¼ö´Â À½¼ö°¡ µÉ ¼ø ¾øÀ½");
+				System.out.println("ì ìˆ˜ëŠ” ìŒìˆ˜ê°€ ë  ìˆœ ì—†ìŒ");
 				input();
 			}else if(i>100){
-				System.out.println("Á¡¼ö´Â 100ÀÌ ³ÑÀ» ¼ö ¾øÀ½");
+				System.out.println("ì ìˆ˜ëŠ” 100ì´ ë„˜ì„ ìˆ˜ ì—†ìŒ");
 				input();
 			}else{
-				System.out.println("Á¤»óÀûÀÎ Á¡¼ö i : " +i);
+				System.out.println("ì •ìƒì ì¸ ì ìˆ˜ i : " +i);
 			}
 		}catch(Exception e){}
 	}

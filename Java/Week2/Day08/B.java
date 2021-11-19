@@ -1,8 +1,8 @@
 class B 
 {
-	int is[]; //¼±¾ğ 
+	int is[]; //ì„ ì–¸ 
 	B(){
-		is = {10, 20, 30}; //»ı¼º ¹× ÃÊ±âÈ­ 
+		is = {10, 20, 30}; //ìƒì„± ë° ì´ˆê¸°í™” 
 	}
 	public static void main(String[] args) 
 	{

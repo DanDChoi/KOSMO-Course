@@ -1,12 +1,12 @@
 class D 
 {
-	void m1(){ //2´ÜÀ» Ãâ·Â
+	void m1(){ //2ë‹¨ì„ ì¶œë ¥
 		for (int i=1; i<=9; i++){
 			System.out.println("2 * "+i+" = " + 2*i);
 		}
 	}
 
-	void m2(){ //±¸±¸´ÜÀ» Ãâ·Â
+	void m2(){ //êµ¬êµ¬ë‹¨ì„ ì¶œë ¥
 		for (int a=2; a<=9; a++){
 			for (int b=1; b<=9; b++){
 				System.out.println(a+" * "+b+" = "+b*a);
@@ -14,14 +14,14 @@ class D
 		}
 	}
 
-	void m3(){ //±¸±¸±¸´Ü Ãâ·Â
+	void m3(){ //êµ¬êµ¬êµ¬ë‹¨ ì¶œë ¥
 		for(int q=2; q<=9; q++)
 			for(int w=1; w<=9; w++)
 				for(int e=1; e<=9; e++)
 					System.out.println(q+" * "+w+" * "+e+" = "+q*w*e);
 	}
 
-	void m4(){ //m3() -> while¹®
+	void m4(){ //m3() -> whileë¬¸
 		int z = 2;
 		while(z<=9){
 			int x = 1;

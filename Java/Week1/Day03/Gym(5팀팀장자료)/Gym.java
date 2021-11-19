@@ -1,13 +1,13 @@
 class Body {
 	String part;
 	Body(){
-		part = "µî";
+		part = "ë“±";
 	}
 	Body(String part){
 		this.part = part;
 	}
 	void Proud(){
-		System.out.println(part + "±ÙÀ°À» ÀÚ¶û½º·¯¿ö ÇÑ´Ù");
+		System.out.println(part + "ê·¼ìœ¡ì„ ìë‘ìŠ¤ëŸ¬ì›Œ í•œë‹¤");
 	}
 }
 
@@ -16,7 +16,7 @@ class Trainer {
 	Body muscle1,muscle2;
 	int age;
 	Trainer(){
-		sex = "¿©ÀÚ";
+		sex = "ì—¬ì";
 		age = 25;
 	}
 	Trainer(String sex, int age){
@@ -24,15 +24,15 @@ class Trainer {
 		this.age = age;
 	}
 	void Trainning(){
-		System.out.println("¿îµ¿À» ½ÃÅ²´Ù");
+		System.out.println("ìš´ë™ì„ ì‹œí‚¨ë‹¤");
 	}
 	void Care(){
-		System.out.println("½Ä´ÜÀ» °ü¸®ÇÑ´Ù");
+		System.out.println("ì‹ë‹¨ì„ ê´€ë¦¬í•œë‹¤");
 	}
 	void Exercise(){
-		muscle1 = new Body("°¡½¿");
-		muscle2 = new Body("¾î±ú");
-		System.out.println("Æ®·¹ÀÌ³Ê°¡ "+ muscle1.part +"±ÙÀ° ¿îµ¿À» ÇÑ´Ù");
+		muscle1 = new Body("ê°€ìŠ´");
+		muscle2 = new Body("ì–´ê¹¨");
+		System.out.println("íŠ¸ë ˆì´ë„ˆê°€ "+ muscle1.part +"ê·¼ìœ¡ ìš´ë™ì„ í•œë‹¤");
 	}
 }
 
@@ -40,7 +40,7 @@ class Customer {
 	String Csex;
 	int weight;
 	Customer(){
-		Csex = "¿©ÀÚ";
+		Csex = "ì—¬ì";
 		weight = 40;
 	}
 	Customer(String Csex, int weight){
@@ -48,7 +48,7 @@ class Customer {
 		this.weight = weight;
 	}
 	void Minus(){
-		System.out.println("»ìÀ» »«´Ù");
+		System.out.println("ì‚´ì„ ëº€ë‹¤");
 	}
 }
 
@@ -57,27 +57,27 @@ class Gym
 	public static void main(String[] args) 
 	{
 		Trainer tra = new Trainer();
-		System.out.print("¼ºº°ÀÌ " + tra.sex +"ÀÌ°í ³ªÀÌ°¡ " + tra.age + "»ìÀÎ Æ®·¹ÀÌ³Ê°¡ ");
+		System.out.print("ì„±ë³„ì´ " + tra.sex +"ì´ê³  ë‚˜ì´ê°€ " + tra.age + "ì‚´ì¸ íŠ¸ë ˆì´ë„ˆê°€ ");
 		tra.Trainning();
 
-		Trainer tra1 = new Trainer("³²ÀÚ",28);
-		System.out.print("¼ºº°ÀÌ " + tra1.sex +"ÀÌ°í ³ªÀÌ°¡ " + tra1.age + "»ìÀÎ Æ®·¹ÀÌ³Ê°¡ ");
+		Trainer tra1 = new Trainer("ë‚¨ì",28);
+		System.out.print("ì„±ë³„ì´ " + tra1.sex +"ì´ê³  ë‚˜ì´ê°€ " + tra1.age + "ì‚´ì¸ íŠ¸ë ˆì´ë„ˆê°€ ");
 		tra.Care();
 		
 		Body b = new Body();
-		System.out.print("¼ºº°ÀÌ " + tra1.sex +"ÀÌ°í ³ªÀÌ°¡ " + tra1.age + "»ìÀÎ Æ®·¹ÀÌ³Ê°¡ " + b.part + "±ÙÀ°À» ");
+		System.out.print("ì„±ë³„ì´ " + tra1.sex +"ì´ê³  ë‚˜ì´ê°€ " + tra1.age + "ì‚´ì¸ íŠ¸ë ˆì´ë„ˆê°€ " + b.part + "ê·¼ìœ¡ì„ ");
 		b.Proud();
 
 		tra.Exercise();
 
 		Customer cus = new Customer();
-		System.out.print("¼ºº°ÀÌ " + cus.Csex + "ÀÌ°í ¸ö¹«°Ô°¡ " + cus.weight + "kgÀÎ °í°´ÀÌ ");
+		System.out.print("ì„±ë³„ì´ " + cus.Csex + "ì´ê³  ëª¸ë¬´ê²Œê°€ " + cus.weight + "kgì¸ ê³ ê°ì´ ");
 		cus.Minus();
-		Customer cus1 = new Customer("³²ÀÚ",75);
-		System.out.print("¼ºº°ÀÌ " + cus1.Csex + "ÀÌ°í ¸ö¹«°Ô°¡ " + cus1.weight + "kgÀÎ °í°´ÀÌ ");
+		Customer cus1 = new Customer("ë‚¨ì",75);
+		System.out.print("ì„±ë³„ì´ " + cus1.Csex + "ì´ê³  ëª¸ë¬´ê²Œê°€ " + cus1.weight + "kgì¸ ê³ ê°ì´ ");
 		cus.Minus();
 
-		System.out.print("Æ®³×ÀÌ³Ê´Â ");
+		System.out.print("íŠ¸ë„¤ì´ë„ˆëŠ” ");
 		tra.muscle1.Proud();
 
 	}

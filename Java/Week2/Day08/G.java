@@ -29,10 +29,10 @@ class G
 		}
 	}
 
-	void out2(){ //ÁÂÇ¥ (0,1,2)ÀÇ µ¥ÀÌÅÍ¸¦ Ãâ·Â
+	void out2(){ //ì¢Œí‘œ (0,1,2)ì˜ ë°ì´í„°ë¥¼ ì¶œë ¥
 		System.out.println(isss[0][1][2]);
 	}
-	void out3(){ //80ÀÇ ÁÂÇ¥¸¦ Ãâ·Â
+	void out3(){ //80ì˜ ì¢Œí‘œë¥¼ ì¶œë ¥
 		aa:
 		for (int i=0; i<isss.length; i++){
 			for (int j=0; j<isss[i].length; j++){

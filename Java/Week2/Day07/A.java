@@ -12,9 +12,9 @@ class A
 				if(j==1) break;
 				System.out.println("i: " + i + ", j: " + j);
 			}//1
-			System.out.println("¾È for¹Û");
+			System.out.println("ì•ˆ forë°–");
 		}//2
-		System.out.println("¹Û for¹Û");
+		System.out.println("ë°– forë°–");
 	}
 	void m3(){
 		int i = 10;
@@ -25,13 +25,13 @@ class A
 				System.out.println("10"); 
 			    switch(c){
 					case 'A': System.out.println("A"); break;
-					default: System.out.println("A´Â ¾Æ´Ô"); break;
+					default: System.out.println("AëŠ” ì•„ë‹˜"); break;
 				}//1
-				System.out.println("¾È switch¹Û");
+				System.out.println("ì•ˆ switchë°–");
 			    break;
-			default: System.out.println("5 or 10 ¾Æ´Ô"); break;
+			default: System.out.println("5 or 10 ì•„ë‹˜"); break;
 		}//2
-		System.out.println("¹Û switch¹Û");
+		System.out.println("ë°– switchë°–");
 	}
 	public static void main(String[] args) 
 	{

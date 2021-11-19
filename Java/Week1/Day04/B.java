@@ -1,13 +1,13 @@
 class B 
 {
 	int i;
-	B(int i){ //ÆÄ¶ó¹ÌÅÍÁö¿ª 
+	B(int i){ //íŒŒë¼ë¯¸í„°ì§€ì—­ 
 		System.out.println("i1: " + i);
 		this.i = i;
 	}
 	void m(){
 		System.out.println("i2: " + i);
-		int j = 10; //¼±ÃÊÁö¿ª 
+		int j = 10; //ì„ ì´ˆì§€ì—­ 
 		System.out.println("j: " + j);
 	}
 

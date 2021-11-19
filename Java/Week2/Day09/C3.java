@@ -5,7 +5,7 @@ class C3
 	Hashtable<Integer, String> ht = new Hashtable<Integer, String>(); //Generic
 
 	void in(){//int -> Integer -> Object 
-		ht.put(10, "º½");ht.put(20, "¿©¸§");ht.put(30, "°¡À»");ht.put(40, "°Ü¿ï");ht.put(30, "ÃÊ°¡À»");
+		ht.put(10, "ë´„");ht.put(20, "ì—¬ë¦„");ht.put(30, "ê°€ì„");ht.put(40, "ê²¨ìš¸");ht.put(30, "ì´ˆê°€ì„");
 	}
 	void out(){
 		Set<Integer> keys = ht.keySet();

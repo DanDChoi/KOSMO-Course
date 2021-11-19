@@ -2,16 +2,16 @@ class Account {
    private String ssn = "123456-1234567";
    private long balance = 10000L;
     
-   void setSsn(String ssn){ //setter ¸Þ¼Òµå
+   void setSsn(String ssn){ //setter ë©”ì†Œë“œ
        this.ssn = ssn;
    }
-   String getSsn(){ //getter ¸Þ¼Òµå
+   String getSsn(){ //getter ë©”ì†Œë“œ
        return ssn;
    }
-   void setBalance(long balance){ //setter ¸Þ¼Òµå
+   void setBalance(long balance){ //setter ë©”ì†Œë“œ
        this.balance = balance;
    }
-   long getBalance(){ //getter ¸Þ¼Òµå
+   long getBalance(){ //getter ë©”ì†Œë“œ
        return balance;
    }
 }
@@ -19,12 +19,12 @@ class Account {
 class Banker {
     public static void main(String[] args){
         Account a = new Account();
-        System.out.println("1)°èÁÂÁÖ: "+ a.getSsn());
-        System.out.println("1)ÀÜ¾×: "+ a.getBalance());
+        System.out.println("1)ê³„ì¢Œì£¼: "+ a.getSsn());
+        System.out.println("1)ìž”ì•¡: "+ a.getBalance());
     
-        //a.setSsn("123456-2234567");//ºÒ°¡´É!
+        //a.setSsn("123456-2234567");//ë¶ˆê°€ëŠ¥!
         a.setBalance(20000L);
-        System.out.println("2)°èÁÂÁÖ: "+a.getSsn());
-        System.out.println("2)ÀÜ¾× :"+a.getBalance());
+        System.out.println("2)ê³„ì¢Œì£¼: "+a.getSsn());
+        System.out.println("2)ìž”ì•¡ :"+a.getBalance());
     }
 }

@@ -1,4 +1,4 @@
-import java.io.*;		//·£´ı¹øÈ£»ı¼º Test ÄÚµå
+import java.io.*;		//ëœë¤ë²ˆí˜¸ìƒì„± Test ì½”ë“œ
 import java.util.*;
 
 class Rnumbertest{

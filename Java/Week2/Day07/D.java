@@ -8,9 +8,9 @@ class D
 
 	String m2(boolean flag){
 		if(flag){
-			return "½Â";
+			return "ìŠ¹";
 		}else {
-			return "ÆĞ";
+			return "íŒ¨";
 		}
 	}
 

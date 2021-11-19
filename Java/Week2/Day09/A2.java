@@ -5,7 +5,7 @@ class A2
 	Vector<String> v = new Vector<String>(); //Generic
 	
 	void in(){
-		v.add("º½");v.add("¿©¸§");v.add("°¡À»");v.add("°Ü¿ï");v.add("°¡À»");
+		v.add("ë´„");v.add("ì—¬ë¦„");v.add("ê°€ì„");v.add("ê²¨ìš¸");v.add("ê°€ì„");
 	}
 	void out(){
 		for(int i=0; i<v.size(); i++){

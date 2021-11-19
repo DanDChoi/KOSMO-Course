@@ -12,7 +12,7 @@ class C
 			if(i==2) return; //to C()
 			System.out.println("i: "+i);
 		}
-		System.out.println("for¹Û");
+		System.out.println("forë°–");
 	}
 
 	public static void main(String[] args) 

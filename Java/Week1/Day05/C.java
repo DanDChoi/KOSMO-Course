@@ -9,16 +9,16 @@ class C
 				System.out.println("20-2"); 
 				break;
 			case 30: System.out.println("30"); break;
-			default: System.out.println("10 or 20 or 30Àº ¾Æ´Ï´Ù");
+			default: System.out.println("10 or 20 or 30ì€ ì•„ë‹ˆë‹¤");
 		}
-		System.out.println("switch¹Û");
+		System.out.println("switchë°–");
 	}
 	void m2(){
-	    String str = "¿©Çà";
+	    String str = "ì—¬í–‰";
 		switch(str){
-			case "¿¬¾Ö": System.out.println("º´Ã¶"); break;
-		    case "¿©Çà": System.out.println("Á¦ÇĞ"); break;
-			case "½ºÆ÷Ã÷": System.out.println("¼öÈ¯"); break;
+			case "ì—°ì• ": System.out.println("ë³‘ì² "); break;
+		    case "ì—¬í–‰": System.out.println("ì œí•™"); break;
+			case "ìŠ¤í¬ì¸ ": System.out.println("ìˆ˜í™˜"); break;
 		}
 	}
 	void m3(){
@@ -29,14 +29,14 @@ class C
 				System.out.println("10"); 
 			    switch(c){
 					case 'A': System.out.println("A"); break;
-					default : System.out.println("A´Â ¾Æ´Ô");
+					default : System.out.println("AëŠ” ì•„ë‹˜");
 				}
-				System.out.println("¾È switchºí·° ³ª¿È");
+				System.out.println("ì•ˆ switchë¸”ëŸ­ ë‚˜ì˜´");
 				break;
 			case 20: System.out.println("30"); break;
-			default: System.out.println("10 or 20¾Æ´Ï´Ù");
+			default: System.out.println("10 or 20ì•„ë‹ˆë‹¤");
 		}
-		System.out.println("¹Û switchºí·° ³ª¿È");
+		System.out.println("ë°– switchë¸”ëŸ­ ë‚˜ì˜´");
 	}
 	void m4(){
 		int i = 10;
@@ -46,12 +46,12 @@ class C
 			if(c == 'A'){
 				System.out.println("A");
 			}else{
-				System.out.println("A´Â ¾Æ´Ô");
+				System.out.println("AëŠ” ì•„ë‹˜");
 			}
 		}else if(i == 20){
 			System.out.println("30"); 
 		}else{
-			System.out.println("10 or 20¾Æ´Ï´Ù");
+			System.out.println("10 or 20ì•„ë‹ˆë‹¤");
 		}
 	}
 	public static void main(String[] args) 

@@ -5,7 +5,7 @@ class A1
 	Vector v = new Vector();
 
 	void in(){
-		v.add("º½");v.add("¿©¸§");v.add("°¡À»");v.add("°Ü¿ï");
+		v.add("ë´„");v.add("ì—¬ë¦„");v.add("ê°€ì„");v.add("ê²¨ìš¸");
 	}
 	void out(){
 		for (int i=0; i<v.size(); i++){

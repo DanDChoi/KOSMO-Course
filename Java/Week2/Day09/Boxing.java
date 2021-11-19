@@ -4,12 +4,12 @@ class Boxing
 	Integer iObj;
 
 	void m1(){
-		//Integer iObj = new Integer(i); //(JDK5πÃ∏∏)
-		iObj = i; // AutoBoxing(JDK5¿ÃªÛ~)
+		//Integer iObj = new Integer(i); //(JDK5ÎØ∏Îßå)
+		iObj = i; // AutoBoxing(JDK5Ïù¥ÏÉÅ~)
 	}
 	void m2(){
-		//int j = iObj.intValue(); //(JDK5πÃ∏∏)
-		int j = iObj; //UnBoxing(JDK5¿ÃªÛ~)
+		//int j = iObj.intValue(); //(JDK5ÎØ∏Îßå)
+		int j = iObj; //UnBoxing(JDK5Ïù¥ÏÉÅ~)
 	}
 	public static void main(String[] args) 
 	{

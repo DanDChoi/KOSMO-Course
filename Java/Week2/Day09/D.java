@@ -1,6 +1,6 @@
 class D 
 {
-	String items[] = {"ÇÏ³ª", "µÑ", "¼Â", "³Ý"};
+	String items[] = {"í•˜ë‚˜", "ë‘˜", "ì…‹", "ë„·"};
 	
 	void out(){
 		/*

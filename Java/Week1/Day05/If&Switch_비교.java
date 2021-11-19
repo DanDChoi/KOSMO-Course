@@ -1,4 +1,4 @@
-void cal() { //if¹®
+void cal() { //ifë¬¸
 	avg = total/3;
 	if(avg >= 90){
 		grade = "A";

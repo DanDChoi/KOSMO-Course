@@ -1,6 +1,6 @@
 class E {
 
-	String strs[] = {"º½", "¿©¸§", "°¡À»", "°Ü¿ï", "1", "2"};
+	String strs[] = {"ë´„", "ì—¬ë¦„", "ê°€ì„", "ê²¨ìš¸", "1", "2"};
 	void out(){
 		for (int i=0; i<strs.length; i++){
 			System.out.println("strs["+i+"]: "+strs[i]);

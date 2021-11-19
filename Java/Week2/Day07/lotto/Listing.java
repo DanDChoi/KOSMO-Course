@@ -3,7 +3,7 @@ import java.util.*;
 
 class Listing 
 {
-	String fName = "¿ì¸®¹İ";
+	String fName = "ìš°ë¦¬ë°˜";
 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	BufferedReader brFile;
 	Random r = new Random();
@@ -11,14 +11,14 @@ class Listing
 
 	void inputFName(){
 		FileReader fr = null;
-		p("#ÀĞÀ» ÆÄÀÏ ÀÌ¸§: ");
+		p("#ì½ì„ íŒŒì¼ ì´ë¦„: ");
 		try{
 			fName = br.readLine();
 			if(fName != null) fName = fName.trim();
 			fr = new FileReader(fName+".txt");
 			brFile = new BufferedReader(fr);
 		}catch(FileNotFoundException fe){
-			System.out.println(fName+"ÆÄÀÏÀ» Ã£À» ¼ö ¾øÀ½");
+			System.out.println(fName+"íŒŒì¼ì„ ì°¾ì„ ìˆ˜ ì—†ìŒ");
 			inputFName();
 		}catch(IOException ie){
 		}
@@ -30,7 +30,7 @@ class Listing
 				String name = brFile.readLine();
 				if(i==j) break;
 			}
-			pln("´çÃ·ÀÚ: " + name);
+			pln("ë‹¹ì²¨ì: " + name);
 		}catch(IOException ie){
 		}
 	}

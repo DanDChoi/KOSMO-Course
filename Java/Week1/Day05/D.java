@@ -4,8 +4,8 @@ class D
 	int b = 2;
 		 
 	void m1(){
-		int i = a/b; //‘œ
-		int j = a%b; //³ª¸ÓÁö
+		int i = a/b; //ëª«
+		int j = a%b; //ë‚˜ë¨¸ì§€
 		System.out.println("i : " + i  + ", j: " + j);
 	}
 	public static void main(String[] args) 
