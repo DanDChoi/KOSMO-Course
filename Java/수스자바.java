@@ -1,18 +1,18 @@
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane.TitlePaneLayout;
 
 1. HW ( OS + JVM + App1, App2, ... )
-   (1) CPU, GPU : µÎ³ú 
-   (2) RAM(¸Þ¸ð¸®) : Ã¥»ó 
-   (3) HDD/SSD : Ã¥²ÉÀÌ
-   (4) MainBoard : ¹æ
+   (1) CPU, GPU : ë‘ë‡Œ 
+   (2) RAM(ë©”ëª¨ë¦¬) : ì±…ìƒ 
+   (3) HDD/SSD : ì±…ê½ƒì´
+   (4) MainBoard : ë°©
    (5) Card : Sound, Video, Ran, WLRan, .. 
-   (6) ÁÖº¯±â±â: Å°º¸µå, ¸ð´ÏÅÍ, ¸¶¿ì½º, ÇÁ¸°ÅÍ, º»Ã¼.. 
+   (6) ì£¼ë³€ê¸°ê¸°: í‚¤ë³´ë“œ, ëª¨ë‹ˆí„°, ë§ˆìš°ìŠ¤, í”„ë¦°í„°, ë³¸ì²´.. 
 
-2. È¯°æ ¼³Á¤ 
-   (1) JDK (file) ¼³Ä¡ 
+2. í™˜ê²½ ì„¤ì • 
+   (1) JDK (file) ì„¤ì¹˜ 
 	   - jdk ( Java Development Kit )
 	   - jre (Java Runtime Environment )
-   (2) È¯°æº¯¼ö 
+   (2) í™˜ê²½ë³€ìˆ˜ 
 	   - JAVA_HOME => C:\Program Files\Java\jdk-11.0.13 
 	   - Path => %C:\Program Files\Java\jdk-11.0.13%\bin
 	   - classpath => .
@@ -23,298 +23,298 @@ import javax.swing.plaf.basic.BasicInternalFrameTitlePane.TitlePaneLayout;
 	   - IntelliJ
 
    (4) API
-       - jdk-11.0.13_doc-all.zip ¾ÐÃàÇØÁ¦ / Áñ°ÜÃ£±â 
+       - jdk-11.0.13_doc-all.zip ì••ì¶•í•´ì œ / ì¦ê²¨ì°¾ê¸° 
 
-3. ½ÇÇà ¿ø¸® 
-   (1) ÀÛ¼º(.java) -> ÄÄÆÄÀÏ(javac.exe) -> Å¬·¡½ºÆÄÀÏ»ý¼º(.class) -> ½ÇÇà(java.exe)
+3. ì‹¤í–‰ ì›ë¦¬ 
+   (1) ìž‘ì„±(.java) -> ì»´íŒŒì¼(javac.exe) -> í´ëž˜ìŠ¤íŒŒì¼ìƒì„±(.class) -> ì‹¤í–‰(java.exe)
    (2) .java ( for Man) -> .class ( for Com )
 
-4. ½ÇÇàµÇ´Â Å¬·¡½º 
+4. ì‹¤í–‰ë˜ëŠ” í´ëž˜ìŠ¤ 
     public static void main(String args[]){}
 
 	ex) day01/A.java 
 
-5. Å¬·¡½º ±¸Á¶ 
-   (1) ÆÐÅ°Áö ¼±¾ð 
-   (2) ÀÓÆ÷Æ® ±¸¹® 
-   (3) Å¬·¡½º ¼±¾ð {
-		(4) ¸â¹öº¯¼ö 
-		(5) »ý¼ºÀÚ(Constructor)
-		(6) ¸Þ¼Òµå(Method) 
+5. í´ëž˜ìŠ¤ êµ¬ì¡° 
+   (1) íŒ¨í‚¤ì§€ ì„ ì–¸ 
+   (2) ìž„í¬íŠ¸ êµ¬ë¬¸ 
+   (3) í´ëž˜ìŠ¤ ì„ ì–¸ {
+		(4) ë©¤ë²„ë³€ìˆ˜ 
+		(5) ìƒì„±ìž(Constructor)
+		(6) ë©”ì†Œë“œ(Method) 
     }
 
 	ex) day02/A.java, AUser.java 
 
-6. ÆÐÅ°Áö ÄÄÆÄÀÏ / ½ÇÇà 
+6. íŒ¨í‚¤ì§€ ì»´íŒŒì¼ / ì‹¤í–‰ 
    > javac -d . *.java 
    > java AUser 
-   > java aa.bb.AUser //AUser.java ¿¡ ÆÐÅ°Áö°¡ ¼±¾ðµÈ °æ¿ì
+   > java aa.bb.AUser //AUser.java ì— íŒ¨í‚¤ì§€ê°€ ì„ ì–¸ëœ ê²½ìš°
 
-7. ÁÖ¼® ( Comment )
-   (1) 1¶óÀÎ //
-   (2) N¶óÀÎ 
+7. ì£¼ì„ ( Comment )
+   (1) 1ë¼ì¸ //
+   (2) Në¼ì¸ 
        /*
-	      ¶óÀÎ1
-		  ¶óÀÎ2 .... 
+	      ë¼ì¸1
+		  ë¼ì¸2 .... 
 	   */
-   (3) ¹®¼­È­ÁÖ¼® 
+   (3) ë¬¸ì„œí™”ì£¼ì„ 
        /**
-	      ¶óÀÎ1
-		  ¶óÀÎ2 .... 
+	      ë¼ì¸1
+		  ë¼ì¸2 .... 
 	   */
 
 	ex) day02/B.java 
 
-8. °´Ã¼ÁöÇâ( OOP: Object Oriented Programming ) ¿ë¾î   
-	(1) Å¬·¡½º ( Class ) : '°´Ã¼'¸¦ ¸¸µå´Â Æ²
-	    ex) ºØ¾î»§Æ² 
+8. ê°ì²´ì§€í–¥( OOP: Object Oriented Programming ) ìš©ì–´   
+	(1) í´ëž˜ìŠ¤ ( Class ) : 'ê°ì²´'ë¥¼ ë§Œë“œëŠ” í‹€
+	    ex) ë¶•ì–´ë¹µí‹€ 
 
-	(2) °´Ã¼ ( Object ) : Å¬·¡½º¸¦ ÅëÇØ ³ª¿Â ±¸Çö¹°, ¸ðµç °Í 
-        ex) ºØ¾î»§ 
+	(2) ê°ì²´ ( Object ) : í´ëž˜ìŠ¤ë¥¼ í†µí•´ ë‚˜ì˜¨ êµ¬í˜„ë¬¼, ëª¨ë“  ê²ƒ 
+        ex) ë¶•ì–´ë¹µ 
 
-	(3) »ý¼ºÀÚ ( Constructor ) : '°´Ã¼'°¡ »ý¼ºµÉ ¶§ ÇÏ´Â ÀÏ(ÇàÀ§)
+	(3) ìƒì„±ìž ( Constructor ) : 'ê°ì²´'ê°€ ìƒì„±ë  ë•Œ í•˜ëŠ” ì¼(í–‰ìœ„)
 	   
-	(4) ¸Þ¼Òµå ( Method ) : '°´Ã¼'°¡ ÇÒ ¼ö ÀÖ´Â ÀÏ(ÇàÀ§)
+	(4) ë©”ì†Œë“œ ( Method ) : 'ê°ì²´'ê°€ í•  ìˆ˜ ìžˆëŠ” ì¼(í–‰ìœ„)
 
-	(5) ¼Ó¼º ( Attribute == Member == Field ) : '°´Ã¼'ÀÇ Æ¯¼º 
-	    ( ´Ù¾çÇÑ °´Ã¼¸¦ Ç¥ÇöÇÏ±â À§ÇØ¼­ Á¸Àç )  
-	    ex) ¾Ó²¿, °¡°Ý  
+	(5) ì†ì„± ( Attribute == Member == Field ) : 'ê°ì²´'ì˜ íŠ¹ì„± 
+	    ( ë‹¤ì–‘í•œ ê°ì²´ë¥¼ í‘œí˜„í•˜ê¸° ìœ„í•´ì„œ ì¡´ìž¬ )  
+	    ex) ì•™ê¼¬, ê°€ê²©  
 
 		ex) day02/D.java 
 
-9. Å¬·¡½º ¼³°è 
+9. í´ëž˜ìŠ¤ ì„¤ê³„ 
 /*
-    ÀÏ»óÀÇ ¾î¶² Çö»óÀ» »ó»óÇØ¼­.. 
-    Å¬·¡½º ¼³°è¸¦ ÇÏ°í, °´Ã¼¸¦ »ý¼ºÇÏ¿© Ç¥Çö(¸Þ¼Òµå/¼Ó¼º)ÇÏ½Ã¿À
+    ì¼ìƒì˜ ì–´ë–¤ í˜„ìƒì„ ìƒìƒí•´ì„œ.. 
+    í´ëž˜ìŠ¤ ì„¤ê³„ë¥¼ í•˜ê³ , ê°ì²´ë¥¼ ìƒì„±í•˜ì—¬ í‘œí˜„(ë©”ì†Œë“œ/ì†ì„±)í•˜ì‹œì˜¤
 	
 */
-    //Á¡½É½Ä»ç ÈÄ¿¡ ¹ßÇ¥! 
+    //ì ì‹¬ì‹ì‚¬ í›„ì— ë°œí‘œ! 
 
-   ex) day03/»§¾î»§.java 
+   ex) day03/ë¹µì–´ë¹µ.java 
 
-10. º¯¼ö( Variable )
-	(1) À¯È¿¹üÀ§ 
-		1) ¸â¹ö(==Àü¿ª) 
-			<1> Å¬·¡½º(¼Ò¼Ó) 
-			<2> °´Ã¼(¼Ò¼Ó) ( == ÀÎ½ºÅÏ½º ) 
-		2) Áö¿ª 
-			<1> ÆÄ¶ó¹ÌÅÍ(==¸Å°³==¾Æ±Ô¸ÕÆ®)
-			<2> ¼±¾ðÃÊ±âÈ­ 
+10. ë³€ìˆ˜( Variable )
+	(1) ìœ íš¨ë²”ìœ„ 
+		1) ë©¤ë²„(==ì „ì—­) 
+			<1> í´ëž˜ìŠ¤(ì†Œì†) 
+			<2> ê°ì²´(ì†Œì†) ( == ì¸ìŠ¤í„´ìŠ¤ ) 
+		2) ì§€ì—­ 
+			<1> íŒŒë¼ë¯¸í„°(==ë§¤ê°œ==ì•„ê·œë¨¼íŠ¸)
+			<2> ì„ ì–¸ì´ˆê¸°í™” 
 
 		ex) day04/A.java, B.java
 		   
 
-	(2) ¸Þ¸ð¸® 
-		1) ±âº»Çü(primitive==¿ø½Ãµ¥ÀÌÅÍ) : 8°¡Áö 
+	(2) ë©”ëª¨ë¦¬ 
+		1) ê¸°ë³¸í˜•(primitive==ì›ì‹œë°ì´í„°) : 8ê°€ì§€ 
 			<1> call by value 
-			<2> ÇüÅÂ : ¸ðµÎ ¼Ò¹®ÀÚ 
-			<3> Á¾·ù 
-			    byte ¢º short ¢º int ¢º long ¢º float ¢º double 
-                        char ¢º
+			<2> í˜•íƒœ : ëª¨ë‘ ì†Œë¬¸ìž 
+			<3> ì¢…ë¥˜ 
+			    byte â–¶ short â–¶ int â–¶ long â–¶ float â–¶ double 
+                        char â–¶
 
 				boolean 
-		    <4> ´ãÀ» ¼ö ÀÖ´Â °ªÀÇ ¹üÀ§
-			    1> byte(1) : -2^7 ~ 2^7-1 (°æ¿ìÀÇ¼ö: 2^8)
-				2> short(2) : -2^15 ~ 2^15-1(°æ¿ìÀÇ¼ö: 2^16)
-				3> char(2) : 0 ~ 2^16-1 (°æ¿ìÀÇ¼ö: 2^16)
-				4> int(4) : -2^31 ~ 2^31-1 (°æ¿ìÀÇ¼ö: 2^32)
-				5> long(8) : -2^63 ~ 2^63-1 (°æ¿ìÀÇ¼ö: 2^64)
-				6> float(4) : ¹«ÇÑ´ë (°æ¿ìÀÇ¼ö: 2^32)
-				7> double(8) : ¹«ÇÑ´ë (°æ¿ìÀÇ¼ö: 2^64) 
+		    <4> ë‹´ì„ ìˆ˜ ìžˆëŠ” ê°’ì˜ ë²”ìœ„
+			    1> byte(1) : -2^7 ~ 2^7-1 (ê²½ìš°ì˜ìˆ˜: 2^8)
+				2> short(2) : -2^15 ~ 2^15-1(ê²½ìš°ì˜ìˆ˜: 2^16)
+				3> char(2) : 0 ~ 2^16-1 (ê²½ìš°ì˜ìˆ˜: 2^16)
+				4> int(4) : -2^31 ~ 2^31-1 (ê²½ìš°ì˜ìˆ˜: 2^32)
+				5> long(8) : -2^63 ~ 2^63-1 (ê²½ìš°ì˜ìˆ˜: 2^64)
+				6> float(4) : ë¬´í•œëŒ€ (ê²½ìš°ì˜ìˆ˜: 2^32)
+				7> double(8) : ë¬´í•œëŒ€ (ê²½ìš°ì˜ìˆ˜: 2^64) 
 				8> boolean(1) : false / true 
 
 				ex) day04/C.java, D.java,  
 
-		    <5> Çüº¯È¯( Type Casting )
-				1> ÀÚµ¿Çüº¯È¯(¾Ï½ÃÀû/Implicit) by JVM
-				   - ¹üÀ§ ÀÛÀº Type -> Å« Type 
+		    <5> í˜•ë³€í™˜( Type Casting )
+				1> ìžë™í˜•ë³€í™˜(ì•”ì‹œì /Implicit) by JVM
+				   - ë²”ìœ„ ìž‘ì€ Type -> í° Type 
 
-				2> °­Á¦Çüº¯È¯(¸í½ÃÀû/Explicit) by °³¹ßÀÚ 
-				   - ¹üÀ§ Å« Type -> ÀÛÀº Type 
+				2> ê°•ì œí˜•ë³€í™˜(ëª…ì‹œì /Explicit) by ê°œë°œìž 
+				   - ë²”ìœ„ í° Type -> ìž‘ì€ Type 
 				 
 				ex) day04/E.java
 
-			<6> ¿¹¿Ü Çüº¯È¯ 
-			   Á¤¼öÇü(byte, short, char, int)³¢¸®ÀÇ ¿¬»êÀÇ °á°ú´Â int 
+			<6> ì˜ˆì™¸ í˜•ë³€í™˜ 
+			   ì •ìˆ˜í˜•(byte, short, char, int)ë¼ë¦¬ì˜ ì—°ì‚°ì˜ ê²°ê³¼ëŠ” int 
 
 			    ex) day04/E.java
 
-			<7> ÄÄÇ»ÅÍ ¼Ò¼ö ¿¬»ê ¿ÀÂ÷ 
-			   float ¿ÀÂ÷°¡ double º¸´Ù Å­ 
+			<7> ì»´í“¨í„° ì†Œìˆ˜ ì—°ì‚° ì˜¤ì°¨ 
+			   float ì˜¤ì°¨ê°€ double ë³´ë‹¤ í¼ 
 
-			<8> µðÆúÆ® ÃÊ±â°ª by JVM
-			   Á¤¼ö(0, 0L), ½Ç¼ö(0.0f, 0.0), ºÒ¸°(false)
+			<8> ë””í´íŠ¸ ì´ˆê¸°ê°’ by JVM
+			   ì •ìˆ˜(0, 0L), ì‹¤ìˆ˜(0.0f, 0.0), ë¶ˆë¦°(false)
 			    ex) day04/F.java
 
-		    <9> Á¸ÀçÀÌÀ¯ 
-			   ½ÇÇàÀÇ È¿À²¼º 
+		    <9> ì¡´ìž¬ì´ìœ  
+			   ì‹¤í–‰ì˜ íš¨ìœ¨ì„± 
 
 			   cf) Wrapper class 
 			   Byte, Short, Character, Integer, Long, Float, Double, Boolean 
 			   
-		2) ÂüÁ¶Çü(reference==·¹ÆÛ·±½º) : ¹«ÇÑ´ë
+		2) ì°¸ì¡°í˜•(reference==ë ˆí¼ëŸ°ìŠ¤) : ë¬´í•œëŒ€
 			<1> call by reference  
-			<2> ÇüÅÂ: (°ü·Ê»ó)Ã¹¹®ÀÚ ´ë¹®ÀÚ 
-			<3> µðÆúÆ®ÃÊ±â°ª: null
-            <4> Çüº¯È¯
-			      //³ªÁß¿¡... 
+			<2> í˜•íƒœ: (ê´€ë¡€ìƒ)ì²«ë¬¸ìž ëŒ€ë¬¸ìž 
+			<3> ë””í´íŠ¸ì´ˆê¸°ê°’: null
+            <4> í˜•ë³€í™˜
+			      //ë‚˜ì¤‘ì—... 
 
 			ex) day04/G.java
 
-	(3) ¼ÒÀ¯ 
-		1) Å¬·¡½º(==Á¤Àû)
-			static ºÙÀ¸¸é Å¬·¡½º ¼ÒÀ¯ 
-		2) °´Ã¼(==µ¿Àû)
-		    static ºÙÁö ¾ÊÀ¸¸é °´Ã¼ ¼ÒÀ¯
+	(3) ì†Œìœ  
+		1) í´ëž˜ìŠ¤(==ì •ì )
+			static ë¶™ìœ¼ë©´ í´ëž˜ìŠ¤ ì†Œìœ  
+		2) ê°ì²´(==ë™ì )
+		    static ë¶™ì§€ ì•Šìœ¼ë©´ ê°ì²´ ì†Œìœ 
 
            ex) day04/A.java 
 
 	(4) final 
-		1) »ó¼ö( Constant )
-		    final ºÙÀ¸¸é 'ÃÊ±â'°ªÀ» ¸ø ¹Ù²Þ 
+		1) ìƒìˆ˜( Constant )
+		    final ë¶™ìœ¼ë©´ 'ì´ˆê¸°'ê°’ì„ ëª» ë°”ê¿ˆ 
 
-		2) º¯¼ö( Variable ) 
+		2) ë³€ìˆ˜( Variable ) 
 
 		    ex) day04/H.java 
 	
-11. Á¦¾î
-    ¾î¶² ÇÁ·Î±×·¥ÀÌ ½ÇÇàµÇ°í ÀÖÀ» ¶§..
-	¾î´À ÇÑ ½ÃÁ¡ÀÇ (CPU/GPU)¿¬»êÀº ¾î¶² Æ¯Á¤ ÄÚµåºÎºÐÀ» ½ÇÇàÇÏ°í ÀÖÀ» °ÍÀÌ´Ù
-	±× ÄÚµå ºÎºÐÀ» 'Á¦¾îÁ¡'ÀÌ¶ó°í ÇÏ°í, ±× Á¦¾îÁ¡µéÀÇ ÁýÇÕÀ» 'Á¦¾î'¶ó°í ÇÑ´Ù
-	Áï, "ÇÁ·Î±×·¥ÀÇ ½ÇÇà Èå¸§(line)"
+11. ì œì–´
+    ì–´ë–¤ í”„ë¡œê·¸ëž¨ì´ ì‹¤í–‰ë˜ê³  ìžˆì„ ë•Œ..
+	ì–´ëŠ í•œ ì‹œì ì˜ (CPU/GPU)ì—°ì‚°ì€ ì–´ë–¤ íŠ¹ì • ì½”ë“œë¶€ë¶„ì„ ì‹¤í–‰í•˜ê³  ìžˆì„ ê²ƒì´ë‹¤
+	ê·¸ ì½”ë“œ ë¶€ë¶„ì„ 'ì œì–´ì 'ì´ë¼ê³  í•˜ê³ , ê·¸ ì œì–´ì ë“¤ì˜ ì§‘í•©ì„ 'ì œì–´'ë¼ê³  í•œë‹¤
+	ì¦‰, "í”„ë¡œê·¸ëž¨ì˜ ì‹¤í–‰ íë¦„(line)"
 
 	JVM -> main() ..... main() -> JVM
 
-	cf ºñÀ¯ : 'ºÎ¸Þ¶û'
+	cf ë¹„ìœ  : 'ë¶€ë©”ëž‘'
 
 	ex) Day05/A.java
 
-12. Á¦¾î¹®
-	(1) Á¶°Ç¹®
-		1)if(booleanÇü){}
-		2)if(booleanÇü){}.. else if(booleanÇü){}.. else{}
-		3)switch(Á¤¼öÇü){case: .... default: } ¹®
-			=>Á¤¼öÇü+String, break, defaultÀ§Ä¡X, case¾È¿¡ ºí·°À» »ý·«°¡´É
+12. ì œì–´ë¬¸
+	(1) ì¡°ê±´ë¬¸
+		1)if(booleaní˜•){}
+		2)if(booleaní˜•){}.. else if(booleaní˜•){}.. else{}
+		3)switch(ì •ìˆ˜í˜•){case: .... default: } ë¬¸
+			=>ì •ìˆ˜í˜•+String, break, defaultìœ„ì¹˜X, caseì•ˆì— ë¸”ëŸ­ì„ ìƒëžµê°€ëŠ¥
 
-			ex) day05/B.java, C.java //Á¡½É½Ã°£±îÁö 1¹ø¾¿ Å¸ÀÌÇÎ
+			ex) day05/B.java, C.java //ì ì‹¬ì‹œê°„ê¹Œì§€ 1ë²ˆì”© íƒ€ì´í•‘
 
-	(2) ¹Ýº¹¹®
-		ÃÊ±â½Ä(·çÇÁ ¹Û¿¡), Á¶°Ç½Ä(·çÇÁ ¾È¿¡), Áõ°¨½Ä(·çÇÁ ¾È¿¡)À» °®Ãß¾î¾ß 'À¯ÇÑ·çÇÁ'°¡ µÊ
+	(2) ë°˜ë³µë¬¸
+		ì´ˆê¸°ì‹(ë£¨í”„ ë°–ì—), ì¡°ê±´ì‹(ë£¨í”„ ì•ˆì—), ì¦ê°ì‹(ë£¨í”„ ì•ˆì—)ì„ ê°–ì¶”ì–´ì•¼ 'ìœ í•œë£¨í”„'ê°€ ë¨
 		
-		1) while(booleanÇü){} //½Å»ç
+		1) while(booleaní˜•){} //ì‹ ì‚¬
 			//ex) Day06/A.java
 
-		2) for (ÃÊ±â½Ä; Á¶°Ç½Ä; Áõ°¨½Ä){} //½Å»ç (while°ú 100%È£È¯°¡´É)
+		2) for (ì´ˆê¸°ì‹; ì¡°ê±´ì‹; ì¦ê°ì‹){} //ì‹ ì‚¬ (whileê³¼ 100%í˜¸í™˜ê°€ëŠ¥)
 			//ex) Day06/A.java, B.java
 		
-		3) do{} while(booleanÇü); //Á¶Æø
+		3) do{} while(booleaní˜•); //ì¡°í­
 			//ex) Day06/A.java
 
-13. Á¦¾î¿¹¾à¾î
+13. ì œì–´ì˜ˆì•½ì–´
 	(1) break
-		1) switchºí·° or loop¾È¿¡¼­¸¸ ³ª¿Ã ¼ö ÀÖÀ½
-		2) ÀÚ½ÅÀ» µÑ·¯½Ñ Ã¹¹øÂ° ºí·°À» '³ª°£´Ù'
+		1) switchë¸”ëŸ­ or loopì•ˆì—ì„œë§Œ ë‚˜ì˜¬ ìˆ˜ ìžˆìŒ
+		2) ìžì‹ ì„ ë‘˜ëŸ¬ì‹¼ ì²«ë²ˆì§¸ ë¸”ëŸ­ì„ 'ë‚˜ê°„ë‹¤'
 		3) labled break
 
 			//ex) Day07/A.java
 
 	(2) continue
-		1) loop ¾È¿¡¼­¸¸ ³ª¿Ã ¼ö ÀÖÀ½
-		2) (Á¶°Ç¿¡ ¸ÂÀ¸¸é) '°Ç³Ê¶Ú´Ù'
+		1) loop ì•ˆì—ì„œë§Œ ë‚˜ì˜¬ ìˆ˜ ìžˆìŒ
+		2) (ì¡°ê±´ì— ë§žìœ¼ë©´) 'ê±´ë„ˆë›´ë‹¤'
 		3) labled continue
 
 			//ex) Day07/B.java
 
 	(3)	return
-		1) »ý¼ºÀÚ³ª ¸Þ¼Òµå ¾È¿¡¼­ ¾îµð¼­ ³ª¿Ã ¼ö ÀÖÀ½
-		2) È£ÃâÇÑ °÷ or JVMÀ¸·Î 'µÇµ¹¸°´Ù'
+		1) ìƒì„±ìžë‚˜ ë©”ì†Œë“œ ì•ˆì—ì„œ ì–´ë””ì„œ ë‚˜ì˜¬ ìˆ˜ ìžˆìŒ
+		2) í˜¸ì¶œí•œ ê³³ or JVMìœ¼ë¡œ 'ë˜ëŒë¦°ë‹¤'
 
 			//ex) Day07/C.java
 
-14. ¿¬»êÀÚ (Operator)
-	(1) ¿¬»êÇÏ°Ô ÇÏ´Â '±âÈ£'
+14. ì—°ì‚°ìž (Operator)
+	(1) ì—°ì‚°í•˜ê²Œ í•˜ëŠ” 'ê¸°í˜¸'
 
-	(2) Á¾·ù
-		1) »ê¼ú ex) +, -, *, /, &
-		2) Áõ°¨ ex) ++, --
-		3) ´ëÀÔ ex) =
-		4) »ê¼ú´ëÀÔ ex) +=, -=, /=, %=
-		5) ºñÆ® ex) &, |, ^, ~, ½ÃÇÁÆ®(<<, >>, >>>)
-		6) ºñ±³ ex) ==, !=, <, <=, >, >=
-		7) ³í¸® ex) &, &&, |, ||
-		8) ³í¸®´ëÀÔ ex) &=, |=
-		9) Á¶°Ç ex) A? B:C
-		10) instanceof ex) °´Ã¼ instanceof Å¬·¡½º
+	(2) ì¢…ë¥˜
+		1) ì‚°ìˆ  ex) +, -, *, /, &
+		2) ì¦ê° ex) ++, --
+		3) ëŒ€ìž… ex) =
+		4) ì‚°ìˆ ëŒ€ìž… ex) +=, -=, /=, %=
+		5) ë¹„íŠ¸ ex) &, |, ^, ~, ì‹œí”„íŠ¸(<<, >>, >>>)
+		6) ë¹„êµ ex) ==, !=, <, <=, >, >=
+		7) ë…¼ë¦¬ ex) &, &&, |, ||
+		8) ë…¼ë¦¬ëŒ€ìž… ex) &=, |=
+		9) ì¡°ê±´ ex) A? B:C
+		10) instanceof ex) ê°ì²´ instanceof í´ëž˜ìŠ¤
 
 		//ex) Day07/E.java
 
-15. ¹è¿­(Array)
-	°°Àº Å¸ÀÔÀÇ µ¥ÀÌÅÍ 'ÀúÀå¼Ò'·Î¼­, »ý¼ºµÉ ¶§ ±× Å©±â°¡ °íÁ¤µÇ´Â '°´Ã¼'
+15. ë°°ì—´(Array)
+	ê°™ì€ íƒ€ìž…ì˜ ë°ì´í„° 'ì €ìž¥ì†Œ'ë¡œì„œ, ìƒì„±ë  ë•Œ ê·¸ í¬ê¸°ê°€ ê³ ì •ë˜ëŠ” 'ê°ì²´'
 
-	(1) ¼±¾ð
-		type ¹è¿­º¯¼ö[];
+	(1) ì„ ì–¸
+		type ë°°ì—´ë³€ìˆ˜[];
 		( ex: int is[]; , String strs[]; ..)
 
-	(2) »ý¼º
-		¹è¿­º¯¼ö = new type[Å©±â];
+	(2) ìƒì„±
+		ë°°ì—´ë³€ìˆ˜ = new type[í¬ê¸°];
 		( ex: is = new int[4]; , strs = new String[4]; ..)
 
-	(3) ÃÊ±âÈ­
-		¹è¿­º¯¼ö[ÀÎµ¦½º] = µ¥ÀÌÅÍ;
-		( ex: is[0]=10;, strs[0]="º½";..)
+	(3) ì´ˆê¸°í™”
+		ë°°ì—´ë³€ìˆ˜[ì¸ë±ìŠ¤] = ë°ì´í„°;
+		( ex: is[0]=10;, strs[0]="ë´„";..)
 
 		//ex) Day08/A.java
 
-	(4) ¼±¾ð ¹× »ý¼º
-	    type ¹è¿­º¯¼ö[] = new type[Å©±â];
-		( ¿¹: int is[]=new int[4]; String strs[]=new String[4]; .. ) 
+	(4) ì„ ì–¸ ë° ìƒì„±
+	    type ë°°ì—´ë³€ìˆ˜[] = new type[í¬ê¸°];
+		( ì˜ˆ: int is[]=new int[4]; String strs[]=new String[4]; .. ) 
 
-	(5) ¼±¾ð ¹× »ý¼º ¹× ÃÊ±âÈ­
-	    type ¹è¿­º¯¼ö[] = {µ¥ÀÌÅÍ1, µ¥ÀÌÅÍ2, µ¥ÀÌÅÍ3, .. };
-		( ¿¹: int is[]={10, 20, 30, 40}; String strs[]={"º½", "¿©¸§"}; .. )
+	(5) ì„ ì–¸ ë° ìƒì„± ë° ì´ˆê¸°í™”
+	    type ë°°ì—´ë³€ìˆ˜[] = {ë°ì´í„°1, ë°ì´í„°2, ë°ì´í„°3, .. };
+		( ì˜ˆ: int is[]={10, 20, 30, 40}; String strs[]={"ë´„", "ì—¬ë¦„"}; .. )
 
 		//ex) day08/A.java
 
-    (6) ºÐ¸® ÁÖÀÇ »çÇ× 
-	    '¼±¾ð'°ú '»ý¼º ¹× ÃÊ±âÈ­'´Â ºÐ¸®µÉ ¼ö ¾øÀ½
+    (6) ë¶„ë¦¬ ì£¼ì˜ ì‚¬í•­ 
+	    'ì„ ì–¸'ê³¼ 'ìƒì„± ë° ì´ˆê¸°í™”'ëŠ” ë¶„ë¦¬ë  ìˆ˜ ì—†ìŒ
 		
 		//ex) day08/B.java
 
-	(7) ¹è¿­¹æÀÇ default °ª ( by JVM )
+	(7) ë°°ì—´ë°©ì˜ default ê°’ ( by JVM )
 		byte, short, char, int : 0
 		long : 0L
 		float : 0.0f
 		double : 0.0
 		boolean : false
-		ÂüÁ¶Çü : null
+		ì°¸ì¡°í˜• : null
 
 		//ex) day08/C.java
 
-	(8) Çüº¯È¯ 
-	    ÀÚµ¿Çüº¯È¯ÀÌ °¡´ÉÇÑ µ¥ÀÌÅÍ¶ó¸é º¯È¯µÇ¾îÁ®¼­ ÀúÀåµÊ
-	    ( ¿¹: int is[] = {b, s, c, i, (int)f}; )
+	(8) í˜•ë³€í™˜ 
+	    ìžë™í˜•ë³€í™˜ì´ ê°€ëŠ¥í•œ ë°ì´í„°ë¼ë©´ ë³€í™˜ë˜ì–´ì ¸ì„œ ì €ìž¥ë¨
+	    ( ì˜ˆ: int is[] = {b, s, c, i, (int)f}; )
 
 		//ex) day08/D.java
 
-	(9) length ¼Ó¼º 
-		¹è¿­¹æÀÇ Å©±â¸¦ ¸®ÅÏ 
+	(9) length ì†ì„± 
+		ë°°ì—´ë°©ì˜ í¬ê¸°ë¥¼ ë¦¬í„´ 
 
 		//ex) day08/E.java 
 
-	(10) 2Â÷¿ø 
-		1Â÷¿ø ¹è¿­À» µ¥ÀÌÅÍ(element)·Î °®´Â ¹è¿­ 
+	(10) 2ì°¨ì› 
+		1ì°¨ì› ë°°ì—´ì„ ë°ì´í„°(element)ë¡œ ê°–ëŠ” ë°°ì—´ 
 
 	    //ex) day08/F.java 	
 		
-	(11) nÂ÷¿ø 
-		(n-1)Â÷¿ø ¹è¿­À» µ¥ÀÌÅÍ(element)·Î °®´Â ¹è¿­ 
+	(11) nì°¨ì› 
+		(n-1)ì°¨ì› ë°°ì—´ì„ ë°ì´í„°(element)ë¡œ ê°–ëŠ” ë°°ì—´ 
 
 		//ex) day08/G.java
 
-16. ÄÃ·º¼Ç ( Collection ) °è¿­ ( Data Structure, °¡º¯¹è¿­ )
-	°°Àº Å¸ÀÔÀÇ 'ÂüÁ¶Çü'µ¥ÀÌÅÍ 'ÀúÀå¼Ò'·Î½á ±× Å©±â°¡ º¯ÇÏ´Â '°´Ã¼'
+16. ì»¬ë ‰ì…˜ ( Collection ) ê³„ì—´ ( Data Structure, ê°€ë³€ë°°ì—´ )
+	ê°™ì€ íƒ€ìž…ì˜ 'ì°¸ì¡°í˜•'ë°ì´í„° 'ì €ìž¥ì†Œ'ë¡œì¨ ê·¸ í¬ê¸°ê°€ ë³€í•˜ëŠ” 'ê°ì²´'
 
-	(1) Á¾·ù
+	(1) ì¢…ë¥˜
 		1)			java.util.Collection
 					  |				|
 			java.util.List		java.util.Set
@@ -328,79 +328,79 @@ import javax.swing.plaf.basic.BasicInternalFrameTitlePane.TitlePaneLayout;
 				Hashtable, HashMap,..
 
 
-	(2) Æ¯Â¡
+	(2) íŠ¹ì§•
 		1) List
-			- ¼ø¼­¸¦ º¸Á¸ÇÑ´Ù
-			- Áßº¹À» Çã¿ëÇÑ´Ù
+			- ìˆœì„œë¥¼ ë³´ì¡´í•œë‹¤
+			- ì¤‘ë³µì„ í—ˆìš©í•œë‹¤
 
 			//ex) Day09/A1.java
 
-		2) Set ( ºñÀ¯: ¼öÇÐ¿¡¼­ÀÇ ÁýÇÕ )
-			- ¼ø¼­¸¦ º¸Á¸ÇÏÁö ¾Ê´Â´Ù
-			- Áßº¹À» Çã¿ëÇÏÁö ¾Ê´Â´Ù
+		2) Set ( ë¹„ìœ : ìˆ˜í•™ì—ì„œì˜ ì§‘í•© )
+			- ìˆœì„œë¥¼ ë³´ì¡´í•˜ì§€ ì•ŠëŠ”ë‹¤
+			- ì¤‘ë³µì„ í—ˆìš©í•˜ì§€ ì•ŠëŠ”ë‹¤
 
 			//ex) Day09/B1~B3.java
 		
-		3) Map ( ºñÀ¯: 1´ë1 ´ëÀÀ)
-			- key¿Í value°ªÀ¸·Î ÀúÀå
-			- ¼ø¼­¸¦ º¸Á¸ÇÏÁö ¾Ê´Â´Ù
-			- key´Â Áßº¹ X, value´Â Áßº¹ O
-				(key°¡ Áßº¹µÈ´Ù¸é, value´Â »õ·Î¿î °ªÀ¸·Î µ¤¾î¾¸)
+		3) Map ( ë¹„ìœ : 1ëŒ€1 ëŒ€ì‘)
+			- keyì™€ valueê°’ìœ¼ë¡œ ì €ìž¥
+			- ìˆœì„œë¥¼ ë³´ì¡´í•˜ì§€ ì•ŠëŠ”ë‹¤
+			- keyëŠ” ì¤‘ë³µ X, valueëŠ” ì¤‘ë³µ O
+				(keyê°€ ì¤‘ë³µëœë‹¤ë©´, valueëŠ” ìƒˆë¡œìš´ ê°’ìœ¼ë¡œ ë®ì–´ì”€)
 			
 			//ex) Day09/C1~C3.java
 		
 		cf) Generic, AutoBoxing, Enhanced Loop
 
-17. OOP(Object Oriented Programming) Æ¯¼º
-	(1) »ó¼Ó¼º ( Inheritance )
-		ºÎ¸ðÀÇ '¸ðµç °Í'À» ÀÚ½Ä¿¡¼­ '»ó¼Ó ¹Þ´Â °Í'
+17. OOP(Object Oriented Programming) íŠ¹ì„±
+	(1) ìƒì†ì„± ( Inheritance )
+		ë¶€ëª¨ì˜ 'ëª¨ë“  ê²ƒ'ì„ ìžì‹ì—ì„œ 'ìƒì† ë°›ëŠ” ê²ƒ'
 
-		1) ´Ù¸¥ »ý¼ºÀÚ°¡ ÇÏ³ªµµ ¾øÀ» ¶§¸¸ JVMÀÌ ±âº»»ý¼ºÀÚ¸¦ ¸¸µé¾î ÁÜ
-			( ÀÚ½Ä °´Ã¼°¡ »ý¼ºµÇ·Á¸é ¸ÕÀú ºÎ¸ð°´Ã¼°¡ »ý¼ºµÇ¾î¾ß ÇÔ )
-		2) ¸ðµç »ý¼ºÀÚÀÇ Ã¹¶óÀÎ¿¡´Â super();°¡ »ý·«µÇ¾î ÀÖÀ½
-			( ´Ü, ´Ù¸¥ super(..)°¡ ÀÖ´Ù¸é ¿¹¿Ü )
-		3) ÀÚ½Ä¸Þ¼Òµå¿¡¼­ ºÎ¸ð¸Þ¼ÒµåÀÇ ³»¿ëÀ» º¯°æÇÒ ¼ö ÀÖÀ½ ( overriding )
-		4) ¸ðµç °´Ã¼´Â Object ÀÇ ÀÚ½Ä ( ¹¬½ÃÀû »ó¼Ó )
-		5) Çüº¯È¯
-			- ÀÚµ¿Çüº¯È¯ by JVM ( ÀÚ½Ä -> ºÎ¸ð )
-			- °­Á¦Çüº¯È¯ by °³¹ßÀÚ ( ºÎ¸ð -> ÀÚ½Ä )
-		6) ÇüÁ¦°ü°è(³²³²)´Â »ó¼Ó°ú ¹«°ü ( Çüº¯È¯ X )
+		1) ë‹¤ë¥¸ ìƒì„±ìžê°€ í•˜ë‚˜ë„ ì—†ì„ ë•Œë§Œ JVMì´ ê¸°ë³¸ìƒì„±ìžë¥¼ ë§Œë“¤ì–´ ì¤Œ
+			( ìžì‹ ê°ì²´ê°€ ìƒì„±ë˜ë ¤ë©´ ë¨¼ì € ë¶€ëª¨ê°ì²´ê°€ ìƒì„±ë˜ì–´ì•¼ í•¨ )
+		2) ëª¨ë“  ìƒì„±ìžì˜ ì²«ë¼ì¸ì—ëŠ” super();ê°€ ìƒëžµë˜ì–´ ìžˆìŒ
+			( ë‹¨, ë‹¤ë¥¸ super(..)ê°€ ìžˆë‹¤ë©´ ì˜ˆì™¸ )
+		3) ìžì‹ë©”ì†Œë“œì—ì„œ ë¶€ëª¨ë©”ì†Œë“œì˜ ë‚´ìš©ì„ ë³€ê²½í•  ìˆ˜ ìžˆìŒ ( overriding )
+		4) ëª¨ë“  ê°ì²´ëŠ” Object ì˜ ìžì‹ ( ë¬µì‹œì  ìƒì† )
+		5) í˜•ë³€í™˜
+			- ìžë™í˜•ë³€í™˜ by JVM ( ìžì‹ -> ë¶€ëª¨ )
+			- ê°•ì œí˜•ë³€í™˜ by ê°œë°œìž ( ë¶€ëª¨ -> ìžì‹ )
+		6) í˜•ì œê´€ê³„(ë‚¨ë‚¨)ëŠ” ìƒì†ê³¼ ë¬´ê´€ ( í˜•ë³€í™˜ X )
 
 		//ex) Day10/A.java
 
-	(2) ´ÙÇü¼º ( Polimorphism )
-		°°Àº Å¸ÀÔ °´Ã¼ÀÇ °°Àº ¸Þ¼Òµå°¡ ´Ù¸¥ ÀÏÀ» ÇÏ´Â °Í
+	(2) ë‹¤í˜•ì„± ( Polimorphism )
+		ê°™ì€ íƒ€ìž… ê°ì²´ì˜ ê°™ì€ ë©”ì†Œë“œê°€ ë‹¤ë¥¸ ì¼ì„ í•˜ëŠ” ê²ƒ
 
 		//ex) Day10/B.java
 
-	(3) Àº´Ð¼º ( Information Hiding )
-		¿ÜºÎ ÇÁ·Î±×·¥À¸·ÎºÎÅÍ '¼Ó¼º°ª'À» °¨Ãß´Â °Í
-		( ¸â¹ö¸¦ private À¸·Î ³õ°í ¼±ÅÃÀûÀ¸·Î ¸Þ¼Òµå(getter/setter)¸¦ Á¤ÀÇÇØ¼­ Á¢±Ù )
+	(3) ì€ë‹‰ì„± ( Information Hiding )
+		ì™¸ë¶€ í”„ë¡œê·¸ëž¨ìœ¼ë¡œë¶€í„° 'ì†ì„±ê°’'ì„ ê°ì¶”ëŠ” ê²ƒ
+		( ë©¤ë²„ë¥¼ private ìœ¼ë¡œ ë†“ê³  ì„ íƒì ìœ¼ë¡œ ë©”ì†Œë“œ(getter/setter)ë¥¼ ì •ì˜í•´ì„œ ì ‘ê·¼ )
 		//ex) Day10/C.java
 		
-	(4) Ä¸½¶È­ ( Encapsulation )
-		¸Þ¼ÒµåÀÇ ±¸Çö ³»¿ëÀ» ¸ô¶óµµ ±× ÇüÅÂ¸¸ ¾Ë¸é È£ÃâÇØ¼­ »ç¿ëÇÒ ¼ö ÀÖ´Â °Í
+	(4) ìº¡ìŠí™” ( Encapsulation )
+		ë©”ì†Œë“œì˜ êµ¬í˜„ ë‚´ìš©ì„ ëª°ë¼ë„ ê·¸ í˜•íƒœë§Œ ì•Œë©´ í˜¸ì¶œí•´ì„œ ì‚¬ìš©í•  ìˆ˜ ìžˆëŠ” ê²ƒ
 
 		//ex) Day10/D.java
 
 
-18. ¿¹¿Ü Ã³¸®
+18. ì˜ˆì™¸ ì²˜ë¦¬
 
-	(1) ¿¹¿Ü( Exception )
-		ÇÁ·Î±×·¥ÀÌ Á¤»óÀûÀ¸·Î ÁøÇàµÇÁö ¸øÇÏ°Ô ÇÏ´Â 'µ¹¹ß »óÈ²'
+	(1) ì˜ˆì™¸( Exception )
+		í”„ë¡œê·¸ëž¨ì´ ì •ìƒì ìœ¼ë¡œ ì§„í–‰ë˜ì§€ ëª»í•˜ê²Œ í•˜ëŠ” 'ëŒë°œ ìƒí™©'
 
-		¿¹) ¼ýÀÚ°¡ ¾Æ´Ñ ÇüÅÂÀÇ ¹®ÀÚ¿­À» ¼ýÀÚ·Î ¹Ù²Ù·ÁÇÒ ¶§ 
-		    Ã¤ÆÃÇÏ´Ù°¡ »ó´ë¹æÀÌ ³ª°¡ ¹ö¸±¶§
-			¿Â¶óÀÎ °ÔÀÓÇÏ°í ÀÖ´Â Áß¿¡ Àü¿øÄÉÀÌºíÀÌ ºüÁü
-			°ÔÀÓ ¼­¹ö ´Ù¿îµÊ 
+		ì˜ˆ) ìˆ«ìžê°€ ì•„ë‹Œ í˜•íƒœì˜ ë¬¸ìžì—´ì„ ìˆ«ìžë¡œ ë°”ê¾¸ë ¤í•  ë•Œ 
+		    ì±„íŒ…í•˜ë‹¤ê°€ ìƒëŒ€ë°©ì´ ë‚˜ê°€ ë²„ë¦´ë•Œ
+			ì˜¨ë¼ì¸ ê²Œìž„í•˜ê³  ìžˆëŠ” ì¤‘ì— ì „ì›ì¼€ì´ë¸”ì´ ë¹ ì§
+			ê²Œìž„ ì„œë²„ ë‹¤ìš´ë¨ 
 			...
 
-	(2) Ã³¸® ¸ñÀû 
-		ÇÁ·Î±×·¥ ÁøÇà½Ã ¹ß»ýÇÒ ¼ö ÀÖ´Â 'µ¹¹ß »óÈ²'À» ¿¹¿Ü·Î ¹Ì¸® Á¤ÇØ³õ°í, 
-		ÇØ´çÇÏ´Â ¿¹¿Ü°¡ ¹ß»ýÇßÀ» °æ¿ì ÀûÀûÇÑ Á¶Ä¡¸¦ ÃëÇØ¼­, ÇÁ·Î±×·¥ÀÌ
-		'Á¤»ó ÀÛµ¿'ÇÏµµ·Ï ÇÏ´Â °Í 
+	(2) ì²˜ë¦¬ ëª©ì  
+		í”„ë¡œê·¸ëž¨ ì§„í–‰ì‹œ ë°œìƒí•  ìˆ˜ ìžˆëŠ” 'ëŒë°œ ìƒí™©'ì„ ì˜ˆì™¸ë¡œ ë¯¸ë¦¬ ì •í•´ë†“ê³ , 
+		í•´ë‹¹í•˜ëŠ” ì˜ˆì™¸ê°€ ë°œìƒí–ˆì„ ê²½ìš° ì ì í•œ ì¡°ì¹˜ë¥¼ ì·¨í•´ì„œ, í”„ë¡œê·¸ëž¨ì´
+		'ì •ìƒ ìž‘ë™'í•˜ë„ë¡ í•˜ëŠ” ê²ƒ 
 
-	(3) °èÃþµµ 
+	(3) ê³„ì¸µë„ 
 			              Object 
 						    | 
 						 Throwable
@@ -410,339 +410,353 @@ import javax.swing.plaf.basic.BasicInternalFrameTitlePane.TitlePaneLayout;
 				    CompileException   RuntimeException  
 				   (CheckedException) 
 
-			¿¹) IOException is a CompileException 
+			ì˜ˆ) IOException is a CompileException 
 			    NumberFormatException is a RuntimeException 
 
 			//ex) Day11/A.java 
 		
-	(4) Æ¯Â¡
-		1) ÀÏ(»ý¼ºÀÚ or ¸Þ¼Òµå)ÇÒ ¶§ ¹ß»ýÇÒ ¼ö ÀÖÀ½
-		2) throw ·Î ¿¹¿Ü °´Ã¼¸¦ ´øÁü (¹ß»ý½ÃÅ´)
-		3) throws ·Î ¿¹¿Ü ¹ß»ý °¡´É Ç¥½ÄÀ» ÇÔ ( == (¼Ò±ØÀûÀ¸·Î) ¶°³Ñ±è )
-		4) try catch ·Î ÀâÀ» ¼ö ÀÖÀ½ ( == (Àû±ØÀûÀ¸·Î) ¶§·ÁÀâÀ½ )
+	(4) íŠ¹ì§•
+		1) ì¼(ìƒì„±ìž or ë©”ì†Œë“œ)í•  ë•Œ ë°œìƒí•  ìˆ˜ ìžˆìŒ
+		2) throw ë¡œ ì˜ˆì™¸ ê°ì²´ë¥¼ ë˜ì§ (ë°œìƒì‹œí‚´)
+		3) throws ë¡œ ì˜ˆì™¸ ë°œìƒ ê°€ëŠ¥ í‘œì‹ì„ í•¨ ( == (ì†Œê·¹ì ìœ¼ë¡œ) ë– ë„˜ê¹€ )
+		4) try catch ë¡œ ìž¡ì„ ìˆ˜ ìžˆìŒ ( == (ì ê·¹ì ìœ¼ë¡œ) ë•Œë ¤ìž¡ìŒ )
 
 
 			//ex) Day11/B.java
 
-	(5) ¹æ¹ý
-		1) ¶§·Á Àâ´Â ¹æ¹ý
+	(5) ë°©ë²•
+		1) ë•Œë ¤ ìž¡ëŠ” ë°©ë²•
 			try{
-				¿¹¿Ü°¡ ¹ß»ýÇÒ ¼ö ÀÖ´Â ±¸¹® (»ý¼ºÀÚ or ¸Þ¼Òµå)
-			}catch(¿¹¿ÜÅ¸ÀÔ ¿¹¿Ü°´Ã¼){
-				Ã³¸®·ÎÁ÷
+				ì˜ˆì™¸ê°€ ë°œìƒí•  ìˆ˜ ìžˆëŠ” êµ¬ë¬¸ (ìƒì„±ìž or ë©”ì†Œë“œ)
+			}catch(ì˜ˆì™¸íƒ€ìž… ì˜ˆì™¸ê°ì²´){
+				ì²˜ë¦¬ë¡œì§
 			}
 
-		2) ¶°³Ñ±â´Â ¹æ¹ý
-			throws ¿¹¿ÜÅ¸ÀÔ
+		2) ë– ë„˜ê¸°ëŠ” ë°©ë²•
+			throws ì˜ˆì™¸íƒ€ìž…
 		
 			//ex) Day11/C.java
 
 			
-	(6) ¼ø¼­ ( tryÀý ¾È¿¡ 2°³ ÀÌ»óÀÇ ¿¹¿Ü°¡ ¹ß»ý½Ã )
-		1) »ó¼Ó°ü°èX
-			[¼ø¼­Á¸ÀçX] ¾Æ¹« ¿¹¿Ü³ª ¸ÕÀú Àâ¾ÆÁÜ
-			¿¹) catch(MyException me)
+	(6) ìˆœì„œ ( tryì ˆ ì•ˆì— 2ê°œ ì´ìƒì˜ ì˜ˆì™¸ê°€ ë°œìƒì‹œ )
+		1) ìƒì†ê´€ê³„X
+			[ìˆœì„œì¡´ìž¬X] ì•„ë¬´ ì˜ˆì™¸ë‚˜ ë¨¼ì € ìž¡ì•„ì¤Œ
+			ì˜ˆ) catch(MyException me)
 				catch(YourException ye)
 
-		2) »ó¼Ó°ü°èO
-			[¼ø¼­Á¸ÀçO] ÇÏÀ§¿¹¿ÜºÎÅÍ Àâ¾ÆÁÜ
-			¿¹) catch(MyException me)
+		2) ìƒì†ê´€ê³„O
+			[ìˆœì„œì¡´ìž¬O] í•˜ìœ„ì˜ˆì™¸ë¶€í„° ìž¡ì•„ì¤Œ
+			ì˜ˆ) catch(MyException me)
 				catch(Exception e)
 
-			Áú¹®) ÀÚ½Ä¿¹¿Ü¸¦ ¸ÕÀú Àâ´Â ÀÌÀ¯? ±¸Ã¼ÀûÀÌ°í ¼¼·ÃµÈ ¿¹¿ÜÃ³¸®¸¦ À§ÇØ¼­
+			ì§ˆë¬¸) ìžì‹ì˜ˆì™¸ë¥¼ ë¨¼ì € ìž¡ëŠ” ì´ìœ ? êµ¬ì²´ì ì´ê³  ì„¸ë ¨ëœ ì˜ˆì™¸ì²˜ë¦¬ë¥¼ ìœ„í•´ì„œ
 
 			//ex) Day11/D.java
 
-	(7) 2°³ ÀÌ»óÀÇ ¿¹¿Ü¸¦ ¶°³Ñ±æ ¶§
+	(7) 2ê°œ ì´ìƒì˜ ì˜ˆì™¸ë¥¼ ë– ë„˜ê¸¸ ë•Œ
 		throws MyExceptin, YourException, ..... , Exception
 			//ex) Day11/D.java
 
-	(8) finally Àý
-		1) tryÀýÀÌ ³ª¿À¸é
-			catchÀýÀÌ ³ª¿À´øÁö.. finallyÀýÀÌ ³ª¿À´øÁö..
-			µÑ ´Ù ³ª¿À´øÁö ÇØ¾ß ÇÔ
+	(8) finally ì ˆ
+		1) tryì ˆì´ ë‚˜ì˜¤ë©´
+			catchì ˆì´ ë‚˜ì˜¤ë˜ì§€.. finallyì ˆì´ ë‚˜ì˜¤ë˜ì§€..
+			ë‘˜ ë‹¤ ë‚˜ì˜¤ë˜ì§€ í•´ì•¼ í•¨
 		
-		2) Ç×»ó ¼öÇàµÇ´Â Àý
-			- ¿¹¿Ü ¹ß»ý°ú »ó°ü ¾øÀÌ ¼öÇà
-			- ½ÉÁö¾î returnÀ» ¸¸³ª´õ¶óµµ finally ÀýÀ» ¼öÇà ÈÄ ¸®ÅÏ
+		2) í•­ìƒ ìˆ˜í–‰ë˜ëŠ” ì ˆ
+			- ì˜ˆì™¸ ë°œìƒê³¼ ìƒê´€ ì—†ì´ ìˆ˜í–‰
+			- ì‹¬ì§€ì–´ returnì„ ë§Œë‚˜ë”ë¼ë„ finally ì ˆì„ ìˆ˜í–‰ í›„ ë¦¬í„´
 
-		3) ¾ê´Â ¸øÀÌ±è
+		3) ì–˜ëŠ” ëª»ì´ê¹€
 			System.exit(0); //normal termination
 			System.exit(-1); //abnormal termination
 
 		
 			//ex) Day11/E.java
 
-19. Á¦ÇÑÀÚ ( Modifier )
-	Å¬·¡½º(ÀÎÅÍÆäÀÌ½º), º¯¼ö, »ý¼ºÀÚ, ¸Þ¼Òµå ¾Õ¿¡ ºÙ¾î¼­ ±â´ÉÀ» 'Á¦ÇÑ'ÇÏ´Â ¿¹¾à¾î
+19. ì œí•œìž ( Modifier )
+	í´ëž˜ìŠ¤(ì¸í„°íŽ˜ì´ìŠ¤), ë³€ìˆ˜, ìƒì„±ìž, ë©”ì†Œë“œ ì•žì— ë¶™ì–´ì„œ ê¸°ëŠ¥ì„ 'ì œí•œ'í•˜ëŠ” ì˜ˆì•½ì–´
 
-	(1) Á¢±ÙÁ¦ÇÑÀÚ ( Access Modifier )
-			1) Á¾·ù
-				<1> public : Á¢±Ù Á¦ÇÑÀÌ ¾øÀ½
-				<2> protected : °°Àº ÆÐÅ°ÁöÀÇ ÀÚ¿ø or »ó¼Ó°ü°èÀÇ ºÎ¸ð ÀÚ¿ø
-				<3> default : °°Àº ÆÐÅ°ÁöÀÇ ÀÚ¿ø
-				<4> private : Å¬·¡½º ¾È
+	(1) ì ‘ê·¼ì œí•œìž ( Access Modifier )
+			1) ì¢…ë¥˜
+				<1> public : ì ‘ê·¼ ì œí•œì´ ì—†ìŒ
+				<2> protected : ê°™ì€ íŒ¨í‚¤ì§€ì˜ ìžì› or ìƒì†ê´€ê³„ì˜ ë¶€ëª¨ ìžì›
+				<3> default : ê°™ì€ íŒ¨í‚¤ì§€ì˜ ìžì›
+				<4> private : í´ëž˜ìŠ¤ ì•ˆ
 			
-			2) ºÙ´Â Æ¯¼º
-				<1> Å¬·¡½º³ª ÀÎÅÍÆäÀÌ½º ¾ÕÀÇ Á¢±ÙÁ¦ÇÑÀÚ´Â public °ú default ¸¸ °¡´É
-				<2> public Å¬·¡½º³ª ÀÎÅÍÆäÀÌ½º´Â ÆÄÀÏÀÌ¸§°ú ÀÌ¸§ÀÌ °°¾Æ¾ß ÇÑ´Ù
-				<3> ¸â¹ö, »ý¼ºÀÚ, ¸Þ¼Òµå´Â Á¦ÇÑ¾øÀÌ ºÙÀ» ¼ö ÀÖÀ½
-				<4> Áö¿ªº¯¼ö´Â default¸¸ ºÙÀ½
+			2) ë¶™ëŠ” íŠ¹ì„±
+				<1> í´ëž˜ìŠ¤ë‚˜ ì¸í„°íŽ˜ì´ìŠ¤ ì•žì˜ ì ‘ê·¼ì œí•œìžëŠ” public ê³¼ default ë§Œ ê°€ëŠ¥
+				<2> public í´ëž˜ìŠ¤ë‚˜ ì¸í„°íŽ˜ì´ìŠ¤ëŠ” íŒŒì¼ì´ë¦„ê³¼ ì´ë¦„ì´ ê°™ì•„ì•¼ í•œë‹¤
+				<3> ë©¤ë²„, ìƒì„±ìž, ë©”ì†Œë“œëŠ” ì œí•œì—†ì´ ë¶™ì„ ìˆ˜ ìžˆìŒ
+				<4> ì§€ì—­ë³€ìˆ˜ëŠ” defaultë§Œ ë¶™ìŒ
 				
-			3) ¹üÀ§
-				<1> ³ÐÀº ¼øÀ§ : public > protected > default > private
-				<2> °­·Â ¼øÀ§ : public < protected < default < private
+			3) ë²”ìœ„
+				<1> ë„“ì€ ìˆœìœ„ : public > protected > default > private
+				<2> ê°•ë ¥ ìˆœìœ„ : public < protected < default < private
 
 			//ex) Day12/A.java, AUser.java, B.java
 
-	(2) ¼ÒÀ¯Á¦ÇÑÀÚ ( static )
-			-> ºÙÀ¸¸é Å¬·¡½º ¼ÒÀ¯ µÊ
-			1) ¸â¹ö¿Í ¸Þ¼Òµå¿¡¸¸ ºÙÀ» ¼ö ÀÖÀ½
-			2) static ÀÚ¿øÀº Å¬·¡½º ÀÌ¸§À¸·Î Á¢±Ù °¡´É
-			3) static ¸Þ¼Òµå¿¡¼­´Â ÀÚ¿øÁ¢±Ù½Ã ÀÚ½ÅÀÇ Å¬·¡½º ÀÌ¸§ »ý·«°¡´É
-				(´Ü, ´Ù¸¥ Å¬·¡½º¿¡¼­´Â Å¬·¡½ºÀÌ¸§ »ý·« ºÒ°¡)
-			4) static ¸Þ¼Òµå³»¿¡¼­ °´Ã¼ÀÚ¿øÀ» Á¢±Ù½Ã¿¡´Â °´Ã¼¸¦ »ý¼º½ÃÄÑ¼­ ±× °´Ã¼·Î Á¢±ÙÇÔ
-			5) static ÀÚ¿øÀº ¸Þ¸ð¸®¿¡ 1°³ »ý¼ºµÇ¾î ¸ðµç °´Ã¼¿¡°Ô °øÀ¯ µÊ
+	(2) ì†Œìœ ì œí•œìž ( static )
+			-> ë¶™ìœ¼ë©´ í´ëž˜ìŠ¤ ì†Œìœ  ë¨
+			1) ë©¤ë²„ì™€ ë©”ì†Œë“œì—ë§Œ ë¶™ì„ ìˆ˜ ìžˆìŒ
+			2) static ìžì›ì€ í´ëž˜ìŠ¤ ì´ë¦„ìœ¼ë¡œ ì ‘ê·¼ ê°€ëŠ¥
+			3) static ë©”ì†Œë“œì—ì„œëŠ” ìžì›ì ‘ê·¼ì‹œ ìžì‹ ì˜ í´ëž˜ìŠ¤ ì´ë¦„ ìƒëžµê°€ëŠ¥
+				(ë‹¨, ë‹¤ë¥¸ í´ëž˜ìŠ¤ì—ì„œëŠ” í´ëž˜ìŠ¤ì´ë¦„ ìƒëžµ ë¶ˆê°€)
+			4) static ë©”ì†Œë“œë‚´ì—ì„œ ê°ì²´ìžì›ì„ ì ‘ê·¼ì‹œì—ëŠ” ê°ì²´ë¥¼ ìƒì„±ì‹œì¼œì„œ ê·¸ ê°ì²´ë¡œ ì ‘ê·¼í•¨
+			5) static ìžì›ì€ ë©”ëª¨ë¦¬ì— 1ê°œ ìƒì„±ë˜ì–´ ëª¨ë“  ê°ì²´ì—ê²Œ ê³µìœ  ë¨
 
 			//ex) Day12/C.java, D.java
 
-	(3) ¼öÁ¤Á¦ÇÑÀÚ ( final )
-		-> ºÙÀ¸¸é ¼öÁ¤À» ¸øÇÏ°Ô ÇÔ
-		1) Å¬·¡½º, º¯¼ö(Áö¿ªº¯¼ö Æ÷ÇÔ), ¸Þ¼Òµå ¾Õ¿¡ ºÙÀ» ¼ö ÀÖÀ½
-		2) Å¬·¡½º ¾Õ¿¡ ºÙÀ¸¸é ÀÚ½ÄÀ» ¸ø³º°í,
-		   º¯¼ö ¾Õ¿¡ ºÙÀ¸¸é ÃÊ±â°ªÀ» ¸ø¹Ù²Ù°í,
-		   	¸Þ¼Òµå ¾Õ¿¡ ºÙÀ¸¸é ¿À¹ö¶óÀÌµùÀ» ¸·À½
+	(3) ìˆ˜ì •ì œí•œìž ( final )
+		-> ë¶™ìœ¼ë©´ ìˆ˜ì •ì„ ëª»í•˜ê²Œ í•¨
+		1) í´ëž˜ìŠ¤, ë³€ìˆ˜(ì§€ì—­ë³€ìˆ˜ í¬í•¨), ë©”ì†Œë“œ ì•žì— ë¶™ì„ ìˆ˜ ìžˆìŒ
+		2) í´ëž˜ìŠ¤ ì•žì— ë¶™ìœ¼ë©´ ìžì‹ì„ ëª»ë‚³ê³ ,
+		   ë³€ìˆ˜ ì•žì— ë¶™ìœ¼ë©´ ì´ˆê¸°ê°’ì„ ëª»ë°”ê¾¸ê³ ,
+		   	ë©”ì†Œë“œ ì•žì— ë¶™ìœ¼ë©´ ì˜¤ë²„ë¼ì´ë”©ì„ ë§‰ìŒ
 
 			//ex) Day12/E.java
 			
-	(4) Ãß»óÁ¦ÇÑÀÚ ( abstract )
-		->ºÙÀ¸¸é Ãß»óÈ­ µÊ
-		1) Å¬·¡½º¿Í ¸Þ¼Òµå ¾Õ¿¡¼­¸¸ ºÙÀ» ¼ö ÀÖÀ½
-		2) ÇÏ³ª ÀÌ»óÀÇ 'Ãß»ó¸Þ¼Òµå'¸¦ °¡Áø Å¬·¡½º´Â ¹Ýµå½Ã 'Ãß»óÅ¬·¡½º'°¡ µÇ¾î¾ß ÇÔ
-		3) Ãß»ó Å¬·¡½º °´Ã¼´Â ¿Ïº®ÇÑ ÀÚ½ÄÅ¬·¡½º °´Ã¼¸¦ »ý¼ºÇØ¼­ Çüº¯È¯ÇÏ¿© »ý¼º ÇÔ
-			- Ãß»óÅ¬·¡½º: abstract °¡ ºÙÀº Å¬·¡½º 
-			- Ãß»ó¸Þ¼Òµå: abstract °¡ ºÙÀº ¸Þ¼Òµå
+	(4) ì¶”ìƒì œí•œìž ( abstract )
+		->ë¶™ìœ¼ë©´ ì¶”ìƒí™” ë¨
+		1) í´ëž˜ìŠ¤ì™€ ë©”ì†Œë“œ ì•žì—ì„œë§Œ ë¶™ì„ ìˆ˜ ìžˆìŒ
+		2) í•˜ë‚˜ ì´ìƒì˜ 'ì¶”ìƒë©”ì†Œë“œ'ë¥¼ ê°€ì§„ í´ëž˜ìŠ¤ëŠ” ë°˜ë“œì‹œ 'ì¶”ìƒí´ëž˜ìŠ¤'ê°€ ë˜ì–´ì•¼ í•¨
+		3) ì¶”ìƒ í´ëž˜ìŠ¤ ê°ì²´ëŠ” ì™„ë²½í•œ ìžì‹í´ëž˜ìŠ¤ ê°ì²´ë¥¼ ìƒì„±í•´ì„œ í˜•ë³€í™˜í•˜ì—¬ ìƒì„± í•¨
+			- ì¶”ìƒí´ëž˜ìŠ¤: abstract ê°€ ë¶™ì€ í´ëž˜ìŠ¤ 
+			- ì¶”ìƒë©”ì†Œë“œ: abstract ê°€ ë¶™ì€ ë©”ì†Œë“œ
 
 			//ex) Day12/F.java
 
-	(5) ±âÅ¸Á¦ÇÑÀÚ
-		synchronized(¾²·¹µå), transient(º¸¾È), native(OSÀÚ¿ø) 
+	(5) ê¸°íƒ€ì œí•œìž
+		synchronized(ì“°ë ˆë“œ), transient(ë³´ì•ˆ), native(OSìžì›) 
 
 
-20. ½Äº°ÀÚ ( Identifier )
-	ÇÁ·Î±×·¡¸Ó°¡ ÀÓÀÇ·Î ¼³Á¤ÇÏ´Â ÆÐÅ°Áö, Å¬·¡½º, º¯¼ö, »ý¼ºÀÚ, ¸Þ¼Òµå 'ÀÌ¸§'
-	(1) ±ÔÄ¢
-		1) ¼ýÀÚ°¡ ¸Ç ¾Õ¿¡ ³ª¿Ã ¼ö ¾øÀ½
-		2) Æ¯¼ö¹®ÀÚ´Â _¿Í $¸¸ °¡´É ( ¸Ç ¾Õ¿¡ ³ª¿Íµµ µÊ )
-		3) ±æÀÌÀÇ Á¦¾àÀº ¾øÀ½
+20. ì‹ë³„ìž ( Identifier )
+	í”„ë¡œê·¸ëž˜ë¨¸ê°€ ìž„ì˜ë¡œ ì„¤ì •í•˜ëŠ” íŒ¨í‚¤ì§€, í´ëž˜ìŠ¤, ë³€ìˆ˜, ìƒì„±ìž, ë©”ì†Œë“œ 'ì´ë¦„'
+	(1) ê·œì¹™
+		1) ìˆ«ìžê°€ ë§¨ ì•žì— ë‚˜ì˜¬ ìˆ˜ ì—†ìŒ
+		2) íŠ¹ìˆ˜ë¬¸ìžëŠ” _ì™€ $ë§Œ ê°€ëŠ¥ ( ë§¨ ì•žì— ë‚˜ì™€ë„ ë¨ )
+		3) ê¸¸ì´ì˜ ì œì•½ì€ ì—†ìŒ
 
-	(2) °ü·Ê
-		1) Å¬·¡½º¿Í ÀÎÅÍÆäÀÌ½ºÀÇ Ã¹¹®ÀÚ´Â ´ë¹®ÀÚ
-		2) »ó¼ö´Â ÀüÃ¼ ¹®ÀÚ¸¦ ´ë¹®ÀÚ
-		3) ÆÐÅ°Áö, º¯¼ö, ¸Þ¼Òµå ÀÌ¸§Àº Ã¹¹®ÀÚ¸¦ ¼Ò¹®ÀÚ·Î ½ÃÀÛ
-		4) 2°³ ÀÌ»óÀÇ ´Ü¾îÀÇ Á¶ÇÕÀº ´ÙÀ½ ´Ü¾îÀÇ Ã¹¹®ÀÚ¸¦ '´ë¹®ÀÚ'·Î ÇÏ°Å³ª '_'·Î ¿¬°á
-		5) _¿Í $´Â ÀÚÁ¦ÇÔ
-		6) ÀÇ¹ÌÀÖ´Â ´Ü¾î¸¦ »ç¿ëÇÔ
+	(2) ê´€ë¡€
+		1) í´ëž˜ìŠ¤ì™€ ì¸í„°íŽ˜ì´ìŠ¤ì˜ ì²«ë¬¸ìžëŠ” ëŒ€ë¬¸ìž
+		2) ìƒìˆ˜ëŠ” ì „ì²´ ë¬¸ìžë¥¼ ëŒ€ë¬¸ìž
+		3) íŒ¨í‚¤ì§€, ë³€ìˆ˜, ë©”ì†Œë“œ ì´ë¦„ì€ ì²«ë¬¸ìžë¥¼ ì†Œë¬¸ìžë¡œ ì‹œìž‘
+		4) 2ê°œ ì´ìƒì˜ ë‹¨ì–´ì˜ ì¡°í•©ì€ ë‹¤ìŒ ë‹¨ì–´ì˜ ì²«ë¬¸ìžë¥¼ 'ëŒ€ë¬¸ìž'ë¡œ í•˜ê±°ë‚˜ '_'ë¡œ ì—°ê²°
+		5) _ì™€ $ëŠ” ìžì œí•¨
+		6) ì˜ë¯¸ìžˆëŠ” ë‹¨ì–´ë¥¼ ì‚¬ìš©í•¨
 
 			//ex) Day13/A.java
 
 21. this
-	(1) Á¤ÀÇ
-		ÀÚ½ÅÀÇ '°´Ã¼' or '»ý¼ºÀÚ'¸¦ °¡¸®Å°´Â '´ë¸í»ç'
+	(1) ì •ì˜
+		ìžì‹ ì˜ 'ê°ì²´' or 'ìƒì„±ìž'ë¥¼ ê°€ë¦¬í‚¤ëŠ” 'ëŒ€ëª…ì‚¬'
 
 	(2) Case
-		1) Áö¿ªº¯¼ö¿Í ÀÌ¸§ÀÌ °°Àº ¸â¹öº¯¼ö¸¦ ÇØ´ç Áö¿ª¿¡¼­ Á¢±ÙÇÒ ¶§
-		2) ÀÚ½ÅÀÇ °´Ã¼¸¦ ´Ù¸¥ Å¬·¡½º¿¡°Ô ³Ñ±æ ¶§
-		3) ÀÚ½ÅÀÇ »ý¼ºÀÚ¸¦ È£ÃâÇÒ ¶§
+		1) ì§€ì—­ë³€ìˆ˜ì™€ ì´ë¦„ì´ ê°™ì€ ë©¤ë²„ë³€ìˆ˜ë¥¼ í•´ë‹¹ ì§€ì—­ì—ì„œ ì ‘ê·¼í•  ë•Œ
+		2) ìžì‹ ì˜ ê°ì²´ë¥¼ ë‹¤ë¥¸ í´ëž˜ìŠ¤ì—ê²Œ ë„˜ê¸¸ ë•Œ
+		3) ìžì‹ ì˜ ìƒì„±ìžë¥¼ í˜¸ì¶œí•  ë•Œ
 
 			//ex) Day13/B.java
 
 22. super
-	(1) Á¤ÀÇ
-		ºÎ¸ðÀÇ '°´Ã¼' or '»ý¼ºÀÚ'¸¦ °¡¸®Å°´Â '´ë¸í»ç'
+	(1) ì •ì˜
+		ë¶€ëª¨ì˜ 'ê°ì²´' or 'ìƒì„±ìž'ë¥¼ ê°€ë¦¬í‚¤ëŠ” 'ëŒ€ëª…ì‚¬'
 
 	(2) Case
-		1) ºÎ¸ðÀÇ »ý¼ºÀÚ¸¦ È£ÃâÇÒ ¶§
-		2) ¿À¹ö¶óÀÌµù µÇ±â ÀüÀÇ ºÎ¸ð¸Þ¼Òµå¸¦ È£ÃâÇÒ ¶§
-		3) ÀÌ¸§ÀÌ µ¿ÀÏÇÑ ºÎ¸ðÀÇ ¸â¹ö¸¦ È£ÃâÇÒ ¶§
+		1) ë¶€ëª¨ì˜ ìƒì„±ìžë¥¼ í˜¸ì¶œí•  ë•Œ
+		2) ì˜¤ë²„ë¼ì´ë”© ë˜ê¸° ì „ì˜ ë¶€ëª¨ë©”ì†Œë“œë¥¼ í˜¸ì¶œí•  ë•Œ
+		3) ì´ë¦„ì´ ë™ì¼í•œ ë¶€ëª¨ì˜ ë©¤ë²„ë¥¼ í˜¸ì¶œí•  ë•Œ
 
 			//ex) Day13/C.java
 
 
-23. (¸Þ¼Òµå) ¿À¹ö¶óÀÌµù ( Overriding )
-	(1) (»ó¼Ó°ü°è¿¡¼­)ºÎ¸ðÀÇ ¸Þ¼Òµå ³»¿ëÀ» ÀÚ½Ä¿¡¼­ ¹Ù²Ù´Â °Í
+23. (ë©”ì†Œë“œ) ì˜¤ë²„ë¼ì´ë”© ( Overriding )
+	(1) (ìƒì†ê´€ê³„ì—ì„œ)ë¶€ëª¨ì˜ ë©”ì†Œë“œ ë‚´ìš©ì„ ìžì‹ì—ì„œ ë°”ê¾¸ëŠ” ê²ƒ
 
-	(2) Á¶°Ç
-		1) ¸Þ¼Òµå ÀÌ¸§ÀÌ °°¾Æ¾ß ÇÔ
-		2) ¹ÝÈ¯Å¸ÀÔÀÌ ÀÏÄ¡ÇØ¾ß ÇÔ
-		3) ÆÄ¶ó¹ÌÅÍÀÇ Å¸ÀÔ°ú ¼ø¼­¿Í °¹¼ö°¡ ¸ðµÎ ÀÏÄ¡µÇ¾î¾ß ÇÔ
-		4) »ý¼ºÀÚ ºÒ°¡
-		5) ÀÚ½Ä¸Þ¼ÒµåÀÇ Á¢±ÙÁ¦ÇÑÀÚ´Â ºÎ¸ð¸Þ¼ÒµåÀÇ Á¢±ÙÁ¦ÇÑÀÚº¸´Ù °°°Å³ª ³Ð¾î¾ß ÇÔ
+	(2) ì¡°ê±´
+		1) ë©”ì†Œë“œ ì´ë¦„ì´ ê°™ì•„ì•¼ í•¨
+		2) ë°˜í™˜íƒ€ìž…ì´ ì¼ì¹˜í•´ì•¼ í•¨
+		3) íŒŒë¼ë¯¸í„°ì˜ íƒ€ìž…ê³¼ ìˆœì„œì™€ ê°¯ìˆ˜ê°€ ëª¨ë‘ ì¼ì¹˜ë˜ì–´ì•¼ í•¨
+		4) ìƒì„±ìž ë¶ˆê°€
+		5) ìžì‹ë©”ì†Œë“œì˜ ì ‘ê·¼ì œí•œìžëŠ” ë¶€ëª¨ë©”ì†Œë“œì˜ ì ‘ê·¼ì œí•œìžë³´ë‹¤ ê°™ê±°ë‚˜ ë„“ì–´ì•¼ í•¨
 
 			//ex) Day13/D.java
 
-24. ¿À¹ö·Îµù ( OverLoading )
-	(1) Á¤ÀÇ
-		(±× ÇüÅÂ¿¡ µû¶ó ¸ÅÇÎµÇ¾î È£ÃâµÇµµ·Ï)
-		ÆÄ¶ó¹ÌÅÍÀÇ Á¾·ù³ª ¼ø¼­³ª °¹¼ö°¡ ´Ù¸¥, °°Àº ÀÌ¸§ÀÇ ¸Þ¼Òµå³ª »ý¼ºÀÚ¸¦ '¿©·¯°³ Á¤ÀÇÇÏ´Â °Í'
-	(2) Á¾·ù
-		1) »ý¼ºÀÚ
-		2) ¸Þ¼Òµå
+24. ì˜¤ë²„ë¡œë”© ( OverLoading )
+	(1) ì •ì˜
+		(ê·¸ í˜•íƒœì— ë”°ë¼ ë§¤í•‘ë˜ì–´ í˜¸ì¶œë˜ë„ë¡)
+		íŒŒë¼ë¯¸í„°ì˜ ì¢…ë¥˜ë‚˜ ìˆœì„œë‚˜ ê°¯ìˆ˜ê°€ ë‹¤ë¥¸, ê°™ì€ ì´ë¦„ì˜ ë©”ì†Œë“œë‚˜ ìƒì„±ìžë¥¼ 'ì—¬ëŸ¬ê°œ ì •ì˜í•˜ëŠ” ê²ƒ'
+	(2) ì¢…ë¥˜
+		1) ìƒì„±ìž
+		2) ë©”ì†Œë“œ
 
-	(3) Æ¯Â¡
-		1) º¯È¯Å¸ÀÔ°ú´Â °ü·Ã¾øÀ½
-		2) »ó¼Ó°ü°è¶ó¸é ´Ù¸¥ Å¬·¡½º¿¡¼­µµ ¿À¹ö·ÎµùÀÌ °¡´É
-		3) Çüº¯È¯ÀÌ °¡´ÉÇÑ ÆÄ¶ó¹ÌÅÍ¶óµµ ¿À¹ö·ÎµùÀ¸·Î ÀÎÁ¤
+	(3) íŠ¹ì§•
+		1) ë³€í™˜íƒ€ìž…ê³¼ëŠ” ê´€ë ¨ì—†ìŒ
+		2) ìƒì†ê´€ê³„ë¼ë©´ ë‹¤ë¥¸ í´ëž˜ìŠ¤ì—ì„œë„ ì˜¤ë²„ë¡œë”©ì´ ê°€ëŠ¥
+		3) í˜•ë³€í™˜ì´ ê°€ëŠ¥í•œ íŒŒë¼ë¯¸í„°ë¼ë„ ì˜¤ë²„ë¡œë”©ìœ¼ë¡œ ì¸ì •
 
 			//ex) Day13/E.java
 
 
-25. ÀÎÅÍÆäÀÌ½º  ( interface )
-	(1) Á¤ÀÇ
-		- JDK7ÀÌÇÏ: '»ó¼ö'¿Í 'Ãß»ó¸Þ¼Òµå'·Î ±¸¼ºµÈ ²®µ¥±â
-		- JDK8ÀÌ»ó: '»ó¼ö'¿Í 'Ãß»ó¸Þ¼Òµå'¿Í 'staic¸Þ¼Òµå'¿Í 'default¸Þ¼Òµå'·Î ±¸¼ºµÈ ²®µ¥±â
+25. ì¸í„°íŽ˜ì´ìŠ¤  ( interface )
+	(1) ì •ì˜
+		- JDK7ì´í•˜: 'ìƒìˆ˜'ì™€ 'ì¶”ìƒë©”ì†Œë“œ'ë¡œ êµ¬ì„±ëœ ê»ë°ê¸°
+		- JDK8ì´ìƒ: 'ìƒìˆ˜'ì™€ 'ì¶”ìƒë©”ì†Œë“œ'ì™€ 'staicë©”ì†Œë“œ'ì™€ 'defaultë©”ì†Œë“œ'ë¡œ êµ¬ì„±ëœ ê»ë°ê¸°
 
-	(2) Æ¯Â¡
-		1) ÀÎÅÍÆäÀÌ½º °´Ã¼´Â ¿Ïº®ÇÑ ÀÚ½ÄÅ¬·¡½º¸¦ ¸¸µé¾î¼­ °´Ã¼ »ý¼ºÈÄ Çü¹øÈ¯ÇØ¼­ ¸¸µë
-		2) interface ÀÇ static ¸Þ¼Òµå´Â ÀÎÅÍÆäÀÌ½º ÀÌ¸§À¸·Î¸¸ Á¢±Ù °¡´É
-		3) ÀÚ½ÄÅ¬·¡½º¸¦ ¸¸µé ¶§´Â implements ¸¦ »ç¿ëÇÏ°í ´ÙÁß»ó¼Óµµ °¡´É
-			( ¿¹: class Child implements Inter1, Inter2, ... )
-		4) ÀÎÅÍÆäÀÌ½º³¢¸®ÀÇ »ó¼ÓÀ» extends »ç¿ëÇÏ°í ´ÙÁß»ó¼Óµµ °¡´É
-			( ¿¹: interface inter extends Inter1, Inter2, ... )
-		5) ÀÏ¹ÝÀûÀÎ ÇüÅÂÀÇ ÀÚ½ÄÅ¬·¡½º
-			( ¿¹: class Child extends Human implements Inter1, Inter2, ... )
-		6) »ó¼ö ¾Õ¿¡´Â public static final »ý·«
-		   ¸Þ¼Òµå¾Õ¿¡´Â public abstract »ý·«
-		   ÀÎÅÍÆäÀÌ½º ¾Õ¿¡´Â abstract »ý·« µÊ
+	(2) íŠ¹ì§•
+		1) ì¸í„°íŽ˜ì´ìŠ¤ ê°ì²´ëŠ” ì™„ë²½í•œ ìžì‹í´ëž˜ìŠ¤ë¥¼ ë§Œë“¤ì–´ì„œ ê°ì²´ ìƒì„±í›„ í˜•ë²ˆí™˜í•´ì„œ ë§Œë“¬
+		2) interface ì˜ static ë©”ì†Œë“œëŠ” ì¸í„°íŽ˜ì´ìŠ¤ ì´ë¦„ìœ¼ë¡œë§Œ ì ‘ê·¼ ê°€ëŠ¥
+		3) ìžì‹í´ëž˜ìŠ¤ë¥¼ ë§Œë“¤ ë•ŒëŠ” implements ë¥¼ ì‚¬ìš©í•˜ê³  ë‹¤ì¤‘ìƒì†ë„ ê°€ëŠ¥
+			( ì˜ˆ: class Child implements Inter1, Inter2, ... )
+		4) ì¸í„°íŽ˜ì´ìŠ¤ë¼ë¦¬ì˜ ìƒì†ì„ extends ì‚¬ìš©í•˜ê³  ë‹¤ì¤‘ìƒì†ë„ ê°€ëŠ¥
+			( ì˜ˆ: interface inter extends Inter1, Inter2, ... )
+		5) ì¼ë°˜ì ì¸ í˜•íƒœì˜ ìžì‹í´ëž˜ìŠ¤
+			( ì˜ˆ: class Child extends Human implements Inter1, Inter2, ... )
+		6) ìƒìˆ˜ ì•žì—ëŠ” public static final ìƒëžµ
+		   ë©”ì†Œë“œì•žì—ëŠ” public abstract ìƒëžµ
+		   ì¸í„°íŽ˜ì´ìŠ¤ ì•žì—ëŠ” abstract ìƒëžµ ë¨
 
 			//ex) Day13/F.java
 
-26. Ãß»óÅ¬·¡½º¿Í ÀÎÅÍÆäÀÌ½º °øÅëÁ¡/Â÷ÀÌÁ¡
-	(1) °øÅëÁ¡
-		1) Ãß»ó¸Þ¼Òµå¸¦ °¡Áú ¼ö ÀÖÀ½
-		2) ¿Ïº®ÇÑ ÀÚ½Ä°´Ã¼¸¦ »ý¼ºÇØ¼­ Çüº¯È¯ÇØ¼­ °´Ã¼¸¦ »ý¼º
+26. ì¶”ìƒí´ëž˜ìŠ¤ì™€ ì¸í„°íŽ˜ì´ìŠ¤ ê³µí†µì /ì°¨ì´ì 
+	(1) ê³µí†µì 
+		1) ì¶”ìƒë©”ì†Œë“œë¥¼ ê°€ì§ˆ ìˆ˜ ìžˆìŒ
+		2) ì™„ë²½í•œ ìžì‹ê°ì²´ë¥¼ ìƒì„±í•´ì„œ í˜•ë³€í™˜í•´ì„œ ê°ì²´ë¥¼ ìƒì„±
 
-	(2) Â÷ÀÌÁ¡
-		1) Å¬·¡½ºÀÌ°í ÀÎÅÍÆäÀÌ½º ÀÓ
-		2) Ãß»óÅ¬·¡½º´Â ÀÏ¹Ý¸â¹ö(»ó¼öX)¿Í ÀÏ¹Ý¸Þ¼Òµå¿Í »ý¼ºÀÚ¸¦ °¡Áú ¼ö ÀÖÀ½
+	(2) ì°¨ì´ì 
+		1) í´ëž˜ìŠ¤ì´ê³  ì¸í„°íŽ˜ì´ìŠ¤ ìž„
+		2) ì¶”ìƒí´ëž˜ìŠ¤ëŠ” ì¼ë°˜ë©¤ë²„(ìƒìˆ˜X)ì™€ ì¼ë°˜ë©”ì†Œë“œì™€ ìƒì„±ìžë¥¼ ê°€ì§ˆ ìˆ˜ ìžˆìŒ
 
-27. Ãß»óÅ¬·¡½º³ª ÀÎÅÍÆäÀÌ½º¸¦ »ç¿ëÇÏ´Â ÀÌÀ¯ (why?) 'º»Áú'
+27. ì¶”ìƒí´ëž˜ìŠ¤ë‚˜ ì¸í„°íŽ˜ì´ìŠ¤ë¥¼ ì‚¬ìš©í•˜ëŠ” ì´ìœ  (why?) 'ë³¸ì§ˆ'
 	(1)
 
-28. ³»ºÎÅ¬·¡½º ( Inner Class )
-	Å¬·¡½º ¾ÈÀÇ Å¬·¡½º
+28. ë‚´ë¶€í´ëž˜ìŠ¤ ( Inner Class )
+	í´ëž˜ìŠ¤ ì•ˆì˜ í´ëž˜ìŠ¤
 
-	(1) ¸ð¾ç
+	(1) ëª¨ì–‘
 		//ex) Day14/A.java
 	
-	(2) °´Ã¼ »ý¼º ¹æ¹ý
-		1) ¿ÜÅ¬.³»Å¬ º¯¼ö = new ¿ÜÅ¬().new ³»Å¬();
-			( ¿¹: AOut.AIn ai = new AOut().new AIn(); )
-		2) ¿ÜÅ¬.³»Å¬ º¯¼ö = new ¿ÜÅ¬.³»Å¬();
-			( ¿¹: AOut.AIn2 ai2 = new AOut.AIn2(); )
+	(2) ê°ì²´ ìƒì„± ë°©ë²•
+		1) ì™¸í´.ë‚´í´ ë³€ìˆ˜ = new ì™¸í´().new ë‚´í´();
+			( ì˜ˆ: AOut.AIn ai = new AOut().new AIn(); )
+		2) ì™¸í´.ë‚´í´ ë³€ìˆ˜ = new ì™¸í´.ë‚´í´();
+			( ì˜ˆ: AOut.AIn2 ai2 = new AOut.AIn2(); )
 		//ex) Day14/A.java
 	
-	(3) Á¢±ÙÁ¦ÇÑÀÚ
-		³»ºÎÅ¬·¡½º´Â ¸ðµç Á¢±ÙÁ¦ÇÑÀÚ°¡ °¡´É
+	(3) ì ‘ê·¼ì œí•œìž
+		ë‚´ë¶€í´ëž˜ìŠ¤ëŠ” ëª¨ë“  ì ‘ê·¼ì œí•œìžê°€ ê°€ëŠ¥
 
-	(4) main À§Ä¡
-		1) static ÀÌ ¾Æ´Ñ ³»ºÎÅ¬·¡½º´Â main()À» °¡Áú ¼ö ¾øÀ½
-			( static ÀÚ¿ø(¸â¹ö/¸Þ¼Òµå)À» ¾Æ¿¹ °¡Áú ¼ö ¾øÀ½ )
-		2) static Inner class ¾È¿¡´Â main()À» °¡Áú ¼ö ÀÖÀ½
+	(4) main ìœ„ì¹˜
+		1) static ì´ ì•„ë‹Œ ë‚´ë¶€í´ëž˜ìŠ¤ëŠ” main()ì„ ê°€ì§ˆ ìˆ˜ ì—†ìŒ
+			( static ìžì›(ë©¤ë²„/ë©”ì†Œë“œ)ì„ ì•„ì˜ˆ ê°€ì§ˆ ìˆ˜ ì—†ìŒ )
+		2) static Inner class ì•ˆì—ëŠ” main()ì„ ê°€ì§ˆ ìˆ˜ ìžˆìŒ
 
 		//ex) Day14/B.java
 
-	(5)	¿Ö ¾²´Â°¡?
-		'¿ÜºÎÅ¬·¡ÀÇ ÀÚ¿øÀ» ³»°ÍÃ³·³ »ç¿ë'ÇÏ±â À§ÇØ
+	(5)	ì™œ ì“°ëŠ”ê°€?
+		'ì™¸ë¶€í´ëž˜ì˜ ìžì›ì„ ë‚´ê²ƒì²˜ëŸ¼ ì‚¬ìš©'í•˜ê¸° ìœ„í•´
 		//ex) Day14/C.java
 	(6) Tip
-		- depth´Â ¹«ÇÑ´ë °¡´É
-		- class¾È¿¡ ³»ºÎ interface, interface¾È¿¡ ³»ºÎ class°¡´É
-		- interface ¾È¿¡ ³»ºÎ static interface¿Í ³»ºÎ ÀÏ¹Ý interface °¡´É
-		- inner interface °´Ã¼ »ý¼º ¹æ¹ýÀº µ¿ÀÏ
+		- depthëŠ” ë¬´í•œëŒ€ ê°€ëŠ¥
+		- classì•ˆì— ë‚´ë¶€ interface, interfaceì•ˆì— ë‚´ë¶€ classê°€ëŠ¥
+		- interface ì•ˆì— ë‚´ë¶€ static interfaceì™€ ë‚´ë¶€ ì¼ë°˜ interface ê°€ëŠ¥
+		- inner interface ê°ì²´ ìƒì„± ë°©ë²•ì€ ë™ì¼
 		//ex) Day14/D.java
 
-29. @ ¾î³ëÅ×ÀÌ¼Ç ( JDK6 ÀÌ»ó Áö¿ø )
-	(1) ¸ð¾ç : @
-	(2) ±â´É 
-		1) Å¬·¡½º³ª »ý¼ºÀÚ, ¸Þ¼Òµå¿¡ ºÙ¾î¼­ 'Á¤Ã¼¼º'ºÎ¿©
-		2) ±â´ÉÀ» È®ÀåÇÏ´Â Ç¥½Ä
-		3) xmlÀ» ´ë½ÅÇØ¼­ ¹èÄ¡(deploy)ÇÏ´Â ¿ªÇÒ
-	(3) JDK6 ÀÌ»ó Áö¿ø
+29. @ ì–´ë…¸í…Œì´ì…˜ ( JDK6 ì´ìƒ ì§€ì› )
+	(1) ëª¨ì–‘ : @
+	(2) ê¸°ëŠ¥ 
+		1) í´ëž˜ìŠ¤ë‚˜ ìƒì„±ìž, ë©”ì†Œë“œì— ë¶™ì–´ì„œ 'ì •ì²´ì„±'ë¶€ì—¬
+		2) ê¸°ëŠ¥ì„ í™•ìž¥í•˜ëŠ” í‘œì‹
+		3) xmlì„ ëŒ€ì‹ í•´ì„œ ë°°ì¹˜(deploy)í•˜ëŠ” ì—­í• 
+	(3) JDK6 ì´ìƒ ì§€ì›
 		//ex) Day14/E.java
 
-30. ¾²·¹µå ( Thread )
-	(1) Á¤ÀÇ
-		'Á¦¾îÀÇ Èå¸§'
+30. ì“°ë ˆë“œ ( Thread )
+	(1) ì •ì˜
+		'ì œì–´ì˜ íë¦„'
 
-	(2) Process ¿Í Thread
-		1) Process : ÇÁ·Î±×·¥ÀÇ '½ÇÇà´ÜÀ§'
-		2) Thread : Process¸¦ ±¸¼ºÇÏ´Â 'ÀÛ¾÷´ÜÀ§'
+	(2) Process ì™€ Thread
+		1) Process : í”„ë¡œê·¸ëž¨ì˜ 'ì‹¤í–‰ë‹¨ìœ„'
+		2) Thread : Processë¥¼ êµ¬ì„±í•˜ëŠ” 'ìž‘ì—…ë‹¨ìœ„'
 			//ex) Day14/F.java
 
-	(3) ÀåÁ¡
-		1) 1Process·Î ¿©·¯°³ÀÇ ÀÏÀ» µ¿½Ã¿¡ ¼öÇà
-		2) '°æ·® Process'·Î ºÒ¸®±âµµ ÇÒ Á¤µµ·Î °¡º±´Ù
-			( ÀÌÀ¯: °øÅë Resource¸¦ °øÀ¯ÇÏ±â ¶§¹® )
+	(3) ìž¥ì 
+		1) 1Processë¡œ ì—¬ëŸ¬ê°œì˜ ì¼ì„ ë™ì‹œì— ìˆ˜í–‰
+		2) 'ê²½ëŸ‰ Process'ë¡œ ë¶ˆë¦¬ê¸°ë„ í•  ì •ë„ë¡œ ê°€ë³ë‹¤
+			( ì´ìœ : ê³µí†µ Resourceë¥¼ ê³µìœ í•˜ê¸° ë•Œë¬¸ )
 	
-	(4) ºñÀ¯ : 'ÇÇ°í¿ëÀÎ' ( Employee )
+	(4) ë¹„ìœ  : 'í”¼ê³ ìš©ì¸' ( Employee )
 	
-	(5) »ý¼º
-		1) java.lang.Thread »ó¼Ó
-		2) java.lang.Runnable »ó¼Ó
+	(5) ìƒì„±
+		1) java.lang.Thread ìƒì†
+		2) java.lang.Runnable ìƒì†
 			//ex) Day14/G.java
 
-	(6) ½ÃÀÛ
+	(6) ì‹œìž‘
 		th.start();
 
 	(7) LifeCycle
-		1) 5°¡Áö »óÅÂ
-		2) °¢ »óÅÂ´Â '¸Þ¼Òµå'³ª '½ºÄÉÁì·¯'³ª '½Ã°£'ÀÌ³ª '»óÈ²'¿¡ ÀÇÇØ ÀÌµ¿ÇÔ
-		3) ÇÑ ¹ø µ¹¾Æ°¡¸é »ì¾Æ³ªÁö ¸øÇÔ
+		1) 5ê°€ì§€ ìƒíƒœ
+		2) ê° ìƒíƒœëŠ” 'ë©”ì†Œë“œ'ë‚˜ 'ìŠ¤ì¼€ì¥´ëŸ¬'ë‚˜ 'ì‹œê°„'ì´ë‚˜ 'ìƒí™©'ì— ì˜í•´ ì´ë™í•¨
+		3) í•œ ë²ˆ ëŒì•„ê°€ë©´ ì‚´ì•„ë‚˜ì§€ ëª»í•¨
 
 	(8) Priority
-		1) Ready»óÅÂÀÇ ¾²·¹µåÁß¿¡¼­
-		   ¿ì¼±ÀûÀ¸·Î CPU¸¦ Á¡À¯ÇÒ ¼ö ÀÖ´Â ¾²·¹µå¸¦ ÆÇº°ÇÏ±â À§ÇÑ LEVEL °ª
+		1) Readyìƒíƒœì˜ ì“°ë ˆë“œì¤‘ì—ì„œ
+		   ìš°ì„ ì ìœ¼ë¡œ CPUë¥¼ ì ìœ í•  ìˆ˜ ìžˆëŠ” ì“°ë ˆë“œë¥¼ íŒë³„í•˜ê¸° ìœ„í•œ LEVEL ê°’
 
-		2) ¹üÀ§
+		2) ë²”ìœ„
 		   1~10
 		
 		3) Thread.MAX_PRIORITY //10
 		   Thread.MIN_PRIORITY //1
 		   Thread.NORM_PRIORITY //5
 
-		4) ºÎ¿©/Á¶È¸
+		4) ë¶€ì—¬/ì¡°íšŒ
 		   th.setPriority(int newPriority)
 		   th.getPriority()
 
-		5) ¿ì¼±¼øÀ§¸¦ ³ôÀÌ¸é ½ºÄÉÁì·¯¿¡ ÀÇÇØ »ÌÈú È®·üÀÌ ³ô¾ÆÁü 
+		5) ìš°ì„ ìˆœìœ„ë¥¼ ë†’ì´ë©´ ìŠ¤ì¼€ì¥´ëŸ¬ì— ì˜í•´ ë½‘íž í™•ë¥ ì´ ë†’ì•„ì§ 
 			//ex) Day14/H.java
 	
-	(9) µ¿±âÈ­
-		1) ¹«°á¼ºÀÌ ±úÁö´Â ±Ø´ÜÀûÀÎ ¿¹
+	(9) ë™ê¸°í™”
+		1) ë¬´ê²°ì„±ì´ ê¹¨ì§€ëŠ” ê·¹ë‹¨ì ì¸ ì˜ˆ
 			int i = 0;
 			i++;
 			
-			# CPU ¿¬»ê ´Ü°è #
-			<1> ÇöÀç i°ªÀ» ÀÐ´Â ´Ü°è			  i==0
-			<2> i°ª Áõ°¡ ´Ü°è					i==0
-			<3> Áõ°¡µÈ °ªÀ» i¿¡ ÀúÀåÇÏ´Â ´Ü°è		i==1
+			# CPU ì—°ì‚° ë‹¨ê³„ #
+			<1> í˜„ìž¬ iê°’ì„ ì½ëŠ” ë‹¨ê³„			  i==0
+			<2> iê°’ ì¦ê°€ ë‹¨ê³„					i==0
+			<3> ì¦ê°€ëœ ê°’ì„ iì— ì €ìž¥í•˜ëŠ” ë‹¨ê³„		i==1
 
-		2) ºñÀ¯: È­Àå½Ç ¹®°í¸®
+		2) ë¹„ìœ : í™”ìž¥ì‹¤ ë¬¸ê³ ë¦¬
 		
-		3) ¼³¸í: ÇÏ³ª ÀÌ»óÀÇ ¾²·¹µå°¡ ¾î¶² ¿¬»ê or ·ÎÁ÷¿¡ µ¿½Ã¿¡ Á¢±ÙÇßÀ» ¶§,
-				±× ¿¬»ê¿¡ ´ëÇÑ °ªÀÇ ¹«°á¼ºÀ» º¸ÀåÇÏ±â À§ÇØ¼­ ¼öÇà ¿µ¿ª¿¡ ´ëÇÑ lockÀ» °É¾îÁÖ´Â °Í
+		3) ì„¤ëª…: í•˜ë‚˜ ì´ìƒì˜ ì“°ë ˆë“œê°€ ì–´ë–¤ ì—°ì‚° or ë¡œì§ì— ë™ì‹œì— ì ‘ê·¼í–ˆì„ ë•Œ,
+				ê·¸ ì—°ì‚°ì— ëŒ€í•œ ê°’ì˜ ë¬´ê²°ì„±ì„ ë³´ìž¥í•˜ê¸° ìœ„í•´ì„œ ìˆ˜í–‰ ì˜ì—­ì— ëŒ€í•œ lockì„ ê±¸ì–´ì£¼ëŠ” ê²ƒ
 			
-		4) ¹æ¹ý
+		4) ë°©ë²•
 			<1> synchronized void m(){
-				µ¿±âÈ­°¡ ÇÊ¿äÇÑ ·ÎÁ÷;
+				ë™ê¸°í™”ê°€ í•„ìš”í•œ ë¡œì§;
 				}		
 
 			<2> void m(){
-					ÀÏ¹Ý·ÎÁ÷;
+					ì¼ë°˜ë¡œì§;
 					synchronized(this){
-						µ¿±âÈ­°¡ ÇÊ¿äÇÑ ·ÎÁ÷;
+						ë™ê¸°í™”ê°€ í•„ìš”í•œ ë¡œì§;
 					}
 				}
 
 			//ex) Day14/I.java
+
+31. ëžŒë‹¤ì‹
+	ìµëª…í•¨ìˆ˜ ( Anonymous functions ) ë¥¼ ì§€ì¹­í•˜ëŠ” ìš©ì–´
+	(1) íŒŒë¼ë¯¸í„°ì™€ ë¦¬í„´ê°’ì„ ë‹¬ë¦¬í•œ ëžŒë‹¤ì‹ ì˜ˆ
+			//ex) Day15/A.java
+	
+	(2) ë‚´ë¶€í´ëž˜ìŠ¤ì˜ ëžŒë‹¤ì‹ì—ì„œ ë©¤ë²„ë³€ìˆ˜ë¥¼ ì ‘ê·¼í•˜ëŠ” ì˜ˆ
+			//ex) Day15/B.java
+
+	(3) ëžŒë‹¤ì‹ì—ì„œ ì§€ì—­ë³€ìˆ˜ë¥¼ ì ‘ê·¼í•˜ëŠ” ì˜ˆ
+			//ex) Day15/C.java
+	
+	(4) ì“°ë ˆë“œì˜ Runnableì„ êµ¬í˜„í•˜ëŠ” ëžŒë‹¤ì‹ì˜ ì˜ˆ
+			//ex) Day15/D.java
