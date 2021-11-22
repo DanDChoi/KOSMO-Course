@@ -1,5 +1,6 @@
 {
     "java.project.sourcePaths": [
-        "JavaAdvanced/Week1/Day01"
+        "JavaAdvanced/Week1/Day01",
+        "."
     ]
 }
