@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class M{
@@ -11,48 +12,35 @@ public class M{
     BufferedReader br = new BufferedReader(r);
     PrintStream ps = System.out;
     OutputStream os = System.out;
+    String fname = "";
+    String str, fcopy = "";
+    String filePath;
+    Scanner scan = new Scanner(System.in);
     
     M(){
-       
+
     }
     
-    String fname, str;
-    String fco;
-    Scanner scan = new Scanner(System.in);
-    void input(){
-        ps.println("1. 복사   2.잘라내기");
-        int i = scan.nextInt();
-        if(i == 1){
-            fCopy();
-        }else{
-            //fCut();
-        }
-    }
 
-    void in(){
-        ps.println("복사할 파일의 경로를 입력하세요");
-        String add = scan.next();
-        fname = add;
+    public void input(){
         try{
-            fis = new FileInputStream(fname);
-            fos = new FileOutputStream(fco);
-            bis = new BufferedInputStream(fis, 4096);
-            bos = new BufferedOutputStream(fos, 4096);
-            }catch(FileNotFoundException fnfe){ 
-                System.out.println("파일이 없습니다.");
+            ps.println("1. 복사   2.잘라내기");
+            int i = scan.nextInt();
+            if(i == 1){
+                fCopy();
+            }else if(i == 2){
+                fCut();
+            }else{
+                System.out.println("1 또는 2를 입력하세요");
+                input();
             }
-            getFname(add,fco);
+        }catch(InputMismatchException ime){
+                System.out.println("1 또는 2를 입력하세요");
+                input();
+        }
+        
     }
-    String getFname(String add, String fco){
-		int i = add.lastIndexOf("/");
-		System.out.println("i: " + i);
-		String str = add.substring(i+1);
-		System.out.println("파일이름: " + str);
-        fco = str;
-        return fco;
-	}
-
-    void fCopy(){
+    public void fCopy(){
         in();
         byte bs[] = new byte[1024];  
 		try{
@@ -63,49 +51,85 @@ public class M{
 				total += i;
 			}
 			bos.flush();
-
-			System.out.println("복사("+fco+") 완료("+total+")bytes!!");
+			System.out.println("복사("+fcopy+") 완료("+total+")bytes!!");
 		}catch(IOException ie){
 		}finally{
 			try{
-				bis.close();
-				bos.close();
-				fis.close();
-				fos.close();
+				if(bis != null) bis.close();
+				if(bos != null) bos.close();
+				if(fis != null) fis.close();
+				if(fos != null) fos.close();
 			}catch(IOException ie){}
 		}
     }
+
+    public void in(){
+        
+        ps.println("복사할 파일의 경로를 입력하세요");
+        String add = scan.next();
+        fname = add;
+        int i = add.lastIndexOf("/");
+		fcopy = add.substring(i+1);
+        //System.out.println("i: " + i);
+        //System.out.println("add:" +add);
+        try{
+            fis = new FileInputStream(add);
+            fos = new FileOutputStream(fcopy);
+            bis = new BufferedInputStream(fis, 4096);
+            bos = new BufferedOutputStream(fos, 4096);
+            }catch(FileNotFoundException fnfe){ 
+                System.out.println(fname+" 이라는 파일이 없습니다.");
+                in();
+            }
+        
+    }
     
-    /*
-    void fCut(){
-
-    }
-
-
-    void output(){
-
-    }
-
-    void creatD(){
-        File f = new File(str);
-		if(f.exists()){
-			System.out.println("존재함");
-		}else{
-			System.out.println("존재하지않음.. 만들까요(y/n)?");
-			f.mkdirs();
+    
+    public void fCut(){
+        in();
+        byte bs[] = new byte[1024];  
+		try{
+			int i = 0;
+			long total = 0L;
+			while((i=bis.read(bs)) != -1){
+				bos.write(bs, 0, i);
+				total += i;
+			}
+			bos.flush();
+			System.out.println("복사("+fcopy+") 완료("+total+")bytes!!");
+		}catch(IOException ie){
+		}finally{
+			try{
+				if(bis != null) bis.close();
+				if(bos != null) bos.close();
+				if(fis != null) fis.close();
+				if(fos != null) fos.close();
+			}catch(IOException ie){}
 		}
-    }
 
+
+    }
+    
+    void creatD(){
+        System.out.println("디렉토리 생성합니다. 다시한번 경로를 입력해주세요.");
+        String str = scan.next();
+        File f = new File(fname);
+        if (str != null)
+            str = str.trim();
+        if (str.equalsIgnoreCase("yes")) {
+            if (f.mkdirs())
+                fCopy(); // 디렉토리 생성
+        } else {
+            if (str.equalsIgnoreCase("no"))
+                return;
+        }
+    }
+    /*
     void del(){
         File f = new File(str);
 		f.delete();
     }
     
-    void getFname(){
-        int i = str.lastIndexOf("\\");
-		System.out.println("i: " + i);
-		String fname = str.substring(i+1);
-		System.out.println("파일이름: " + fname);
     } */
 
 
