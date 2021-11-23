@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class M{
@@ -42,7 +41,7 @@ public class M{
         
     }
     public void fCopy(){
-        String destination = dirName + "/" + fcopy;
+        String destination = dirName + "\\" + fcopy;
         try{
             this.fos = new FileOutputStream(destination);
             this.bos = new BufferedOutputStream(this.fos, 4096);
@@ -75,7 +74,7 @@ public class M{
         ps.println("복사할 파일의 경로를 입력하세요");
         String add = scan.next();
         fname = add;
-        int i = add.lastIndexOf("/");
+        int i = add.lastIndexOf("\\");
       fcopy = add.substring(i+1);
         //System.out.println("i: " + i);
         //System.out.println("add:" +add);
@@ -95,7 +94,7 @@ public class M{
         ps.println("잘라낼 파일의 경로를 입력하세요");
         String add = scan.next();
         fname = add;
-        int i = add.lastIndexOf("/");
+        int i = add.lastIndexOf("\\");
       fcopy = add.substring(i+1);
         //System.out.println("i: " + i);
         //System.out.println("add:" +add);
@@ -112,7 +111,7 @@ public class M{
     
     
     public void fCut() {
-        String destination = dirName + "/" + fcopy;
+        String destination = dirName + "\\" + fcopy;
         try{
             this.fos = new FileOutputStream(destination);
             this.bos = new BufferedOutputStream(this.fos, 4096);
