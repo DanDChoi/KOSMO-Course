@@ -1,34 +1,15 @@
 import java.net.*;
 import java.io.*;
 
-public class AClient implements Runnable {
+class AClient {
     Socket s;
-    String ip = "192.168.0.63"; // at home: 115.91.81.106 , at class: 192.168.0.142
+    String ip = "115.91.81.106"; // at home: 115.91.81.106 , at class: 192.168.0.142
     int port = 4000;
     OutputStream os;
     DataOutputStream dos;
-    BufferedReader br1, br2;
-    PrintWriter pw1;
-    Thread t1, t2;
-    String in = "", out = "";
 
     AClient() {
-        try{
-        t1 = new Thread(this);
-        t1 = new Thread(this);
-        s = new Socket(ip, port);
-        t1.start();
-        t2.start();
-        }catch(IOException ie){    
-        }finally {
-            try {
-                if (s != null)
-                    s.close();
-            } catch (IOException ie) {
-            }
-        }
-
-        /*try {
+        try {
             s = new Socket(ip, port);
             pln("서버(" + ip + ")와 접속 성공");
             os = s.getOutputStream();
@@ -42,39 +23,11 @@ public class AClient implements Runnable {
                     s.close();
             } catch (IOException ie) {
             }
-        }*/
-    }
-
-    public void run(){
-        try{
-            if(Thread.currentThread() == t2){
-                do{
-                    br1 = new BufferedReader(new InputStreamReader(System.in));
-                    pw1 = new PrintWriter(s.getOutputStream(), true);
-                    in = br1.readLine();
-                    pw1.println(in);
-                }while(!in.equals("END"));
-            }else{
-                do{
-                    br2 = new BufferedReader(new InputStreamReader(s.getInputStream()));
-                    out = br2.readLine();
-                    pln("Server Says :" + out); 
-                }while(!out.equals("END"));
-            }
-        }catch(IOException ie){  
-        }finally {
-            try {
-                if (dos != null)
-                    dos.close();
-                if (os != null)
-                    dos.close();
-            } catch (IOException ie) {
-            }
         }
     }
 
-    
-/*
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
     void speak() { // keyboard -> socket
         dos = new DataOutputStream(os);
         try {
@@ -99,7 +52,6 @@ public class AClient implements Runnable {
             }
         }
     }
-    */
 
     void p(String str) {
         System.out.print(str);
