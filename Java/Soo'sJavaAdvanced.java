@@ -46,3 +46,11 @@
 
         4) DataInputStream / DataOutputStream
             ex) Day01/E.java
+
+2. NetWork
+    (1) TCP(Transmission Control Protocol): 연결지향 프로토콜 (신뢰성 +실시간, 비유: 전화)
+        // ex) Day03/AServer.java , AClient.java
+        // ex) Day05/MtServer.java, MtClient.java
+        // ex) Day05/FServer.java, FClient.java
+        
+    (2) UDP(User Datagram Protocol): 비연결지향 프로토콜 (비신뢰성, 비유:편지)
