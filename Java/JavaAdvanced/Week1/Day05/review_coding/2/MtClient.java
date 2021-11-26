@@ -1,12 +1,5 @@
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.Socket;
-import java.net.UnknownHostException;
+import java.io.*;
+import java.net.*;
 
 class MtClient extends Thread {
 
@@ -37,7 +30,7 @@ class MtClient extends Thread {
                 portStr = "3000";
             int port = Integer.parseInt(portStr);
             if (port < 0 || port > 65535) {
-                pln("범위가 유효하지 않는 포트입니다.");
+                pln("범위가 유호하지 않는 포트입니다.");
                 connect();
                 return;
             }
@@ -51,14 +44,15 @@ class MtClient extends Thread {
             start();
             speak();
         } catch (UnknownHostException ue) {
-            pln("해당서버를 찾지 못함");
+            pln("해당 서버를 찾지 못함");
             connect();
         } catch (IOException ie) {
             connect();
         } catch (NumberFormatException ne) {
-            pln("숫자만 입력하세요");
+            pln("숫자 형태의 포맷이 아님");
             connect();
         }
+
     }
 
     public void run() {
@@ -68,7 +62,7 @@ class MtClient extends Thread {
                 pln(msg);
             }
         } catch (IOException ie) {
-            pln("서버다운, 2초후 종료.");
+            pln("서버다운, 2초 후 종료.");
             try {
                 Thread.sleep(2000);
                 System.exit(0);
@@ -79,35 +73,32 @@ class MtClient extends Thread {
         }
     }
 
-    void speak(){
-        p("채팅ID(기본:GUEST): ");
-        try{
+    void speak() {
+        p("ID(default:GUEST): ");
+        try {
             chatId = br.readLine();
             chatId = chatId.trim();
-            if(chatId.length() == 0)
+            if (chatId.length() == 0)
                 chatId = "GUEST";
             dos.writeUTF(chatId);
             dos.flush();
 
             inputMsg();
-        }catch(IOException ie){
-
+        } catch (IOException ie) {
         }
     }
 
-    void inputMsg(){
-        try{
-            while(true){
+    void imputMsg() {
+        try {
+            while (true) {
                 String msg = br.readLine();
-                dos.writeUTF(chatId+":"+msg);
+                dos.writeUTF(chatId + ":" + msg);
                 dos.flush();
             }
-        }catch(IOException ie){
-
-        }finally{
+        } catch (IOException ie) {
+        } finally {
             closeAll();
         }
-
     }
 
     void closeAll() {
