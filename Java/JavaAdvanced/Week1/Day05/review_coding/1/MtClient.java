@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.DataInput;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -28,9 +29,9 @@ class MtClient extends Thread {
             String ip = br.readLine();
             ip = ip.trim();
             if (ip.length() == 0)
-                ip = "192.168.0.63"; // local host
+                ip = "192.168.0.63";
 
-            p("port(default:3000): ");
+            p("port(default: 3000): ");
             String portStr = br.readLine();
             portStr = portStr.trim();
             if (portStr.length() == 0)
@@ -51,17 +52,17 @@ class MtClient extends Thread {
             start();
             speak();
         } catch (UnknownHostException ue) {
-            pln("해당 서버를 찾지 못함");
+            pln("해당서버를 찾지 못함");
             connect();
         } catch (IOException ie) {
             connect();
         } catch (NumberFormatException ne) {
-            pln("숫자 형태의 포맷이 아님");
+            pln("숫자만 입력하세요");
             connect();
         }
     }
 
-    public void run() { // listen의 역할 = (socket -> monitor)
+    public void run() {
         try {
             while (true) {
                 String msg = dis.readUTF();
@@ -79,32 +80,35 @@ class MtClient extends Thread {
         }
     }
 
-    void speak() { // keyboard -> socket
+    void speak(){
         p("채팅ID(기본:GUEST): ");
-        try {
+        try{
             chatId = br.readLine();
             chatId = chatId.trim();
-            if (chatId.length() == 0)
+            if(chatId.length() == 0)
                 chatId = "GUEST";
             dos.writeUTF(chatId);
             dos.flush();
 
             inputMsg();
-        } catch (IOException ie) {
+        }catch(IOException ie){
+
         }
     }
 
-    void inputMsg() {
-        try {
-            while (true) {
+    void inputMsg(){
+        try{
+            while(true){
                 String msg = br.readLine();
-                dos.writeUTF(chatId + " : " + msg);
+                dos.writeUTF(chatId+":"+msg);
                 dos.flush();
             }
-        } catch (IOException ie) {
-        } finally {
+        }catch(IOException ie){
+
+        }finally{
             closeAll();
         }
+
     }
 
     void closeAll() {
