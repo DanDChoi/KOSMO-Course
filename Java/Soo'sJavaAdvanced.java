@@ -54,3 +54,8 @@
         // ex) Day05/FServer.java, FClient.java
         
     (2) UDP(User Datagram Protocol): 비연결지향 프로토콜 (비신뢰성, 비유:편지)
+        // ex) Day05/UServer.java, UClient.java
+
+3. GUI( Graphic User Interface )
+    (1) 배치 : 
+        Component 1, 2, ...
