@@ -30,6 +30,7 @@ class MtServer {
         }
     }
 
+
     void p(String str) {
         System.out.print(str);
     }

@@ -29,10 +29,13 @@ public class MOption {
         }
     }
     void list(){
-        pln(Vector)
+        
+        for(OneCliMod oneCliMod : this.v){
+
+        }
     }
     void kick(){
-        String str = inputTarget("");
+        String str = inputTar get("");
         if (str == null){
             pln("");
             kick();
