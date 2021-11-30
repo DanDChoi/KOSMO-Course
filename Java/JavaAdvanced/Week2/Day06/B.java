@@ -15,22 +15,22 @@ class B extends JFrame {
 	void init(){
 		pN = new JPanel();
 		pN.setLayout(new BorderLayout());
-		bWpN = new JButton("¼­ÂÊatºÏÆĞ³Î");
-		bEpN = new JButton("µ¿ÂÊatºÏÆĞ³Î");
+		bWpN = new JButton("ì„œìª½atë¶íŒ¨ë„");
+		bEpN = new JButton("ë™ìª½atë¶íŒ¨ë„");
 		pN.add(bWpN, BorderLayout.WEST);
 		pN.add(bEpN, BorderLayout.EAST);
 
 		pC = new JPanel();
 		pC.setLayout(new BorderLayout());
-		bCpC = new JButton("ÀÔ·ÂÃ¢");
+		bCpC = new JButton("ì…ë ¥ì°½");
 		pC.add(bCpC, BorderLayout.SOUTH);
 
-		bE = new JButton("µ¿ÂÊ");
-		bW = new JButton("¼­ÂÊ");
-		bS = new JButton("³²ÂÊ");
-		bN = new JButton("ºÏÂÊ");
+		bE = new JButton("ë™ìª½");
+		bW = new JButton("ì„œìª½");
+		bS = new JButton("ë‚¨ìª½");
+		bN = new JButton("ë¶ìª½");
 		pN.add(bN);
-		bC = new JButton("¸ğ´ÏÅÍÃ¢");
+		bC = new JButton("ëª¨ë‹ˆí„°ì°½");
 		pC.add(bC);
 
 		cp = getContentPane();

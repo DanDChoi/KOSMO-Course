@@ -57,5 +57,25 @@
         // ex) Day05/UServer.java, UClient.java
 
 3. GUI( Graphic User Interface )
-    (1) 배치 : 
-        Component 1, 2, ...
+    (1) 배치
+        1)모양
+            Component 1, 2, ...
+            ---------------------
+                Container
+
+            //ex) Day06/A.java
+
+        2) 배치관리자 ( LayoutManager )
+            - BorderLayout 
+            - GridLayout
+            - CardLayout
+            - FlowLayout
+            //ex) Day06/B.java ~ E.java
+
+        3) Event
+            - 위임형 이벤트처리 모델 ( Delegation Event Model ) 
+              (예: A1 ~ A3 )
+              
+            - 셀프 이벤트처리 모델 ( Self Event Model) //강사님이 이름 지음.
+
+            //ex) Day07/A1.java ~ A3.java
