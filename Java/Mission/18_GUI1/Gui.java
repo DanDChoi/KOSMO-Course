@@ -13,9 +13,9 @@ class Gui extends JFrame implements ActionListener {
     void init() {
 
         bE = new JButton("Fun?");
-        bW = new JButton("How are you?");
+        bW = new JButton("No");
         bS = new JButton("Exit");
-        bN = new JButton("No");
+        bN = new JButton("How are you");
         pC = new JPanel(new GridLayout(2, 2));
 
         //pC.setBackground(Color.WHITE);
@@ -69,14 +69,14 @@ class Gui extends JFrame implements ActionListener {
         bE.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int answer = JOptionPane.showConfirmDialog(
-                        null, "ì¬ë°Œë‚˜ìš”?", "ì§ˆë¬¸",
+                        null, "Àç¹Õ³ª¿ä?", "Áú¹®",
                         JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if (answer == JOptionPane.YES_OPTION) {
-                    JOptionPane.showMessageDialog(null, "ã…‹ ì¬ë°Œêµ°ìš”!!");
+                    JOptionPane.showMessageDialog(null, "¤» Àç¹Õ±º¿ä!!");
                 } else if (answer == JOptionPane.NO_OPTION) {
-                    JOptionPane.showMessageDialog(null, "ã…  ë…¸ì¼!!");
+                    JOptionPane.showMessageDialog(null, "¤Ğ ³ëÀë!!");
                 } else { // CANCEL_OPTION
-                    JOptionPane.showMessageDialog(null, "ì•„.. ëŒ€ë‹µë„ ì‹«êµ°ìš”!!");
+                    JOptionPane.showMessageDialog(null, "¾Æ.. ´ë´äµµ ½È±º¿ä!!");
                 }
             }
         });
@@ -85,7 +85,7 @@ class Gui extends JFrame implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 String feel[] = {"Good","Not bad","Not good"};
                 String answer = (String) JOptionPane.showInputDialog(
-                        null, "How are you?", "ì§ˆë¬¸",
+                        null, "How are you?", "Áú¹®",
                         JOptionPane.WARNING_MESSAGE, null, feel, feel[0]);
                         if(answer == null){
                             JOptionPane.showMessageDialog(null, "???");
@@ -103,13 +103,13 @@ class Gui extends JFrame implements ActionListener {
         bS.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int answer = JOptionPane.showConfirmDialog(
-                        null, "í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤", "MESSAGE",
+                        null, "ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù", "MESSAGE",
                         JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if (answer == JOptionPane.YES_OPTION) {
-                    JOptionPane.showMessageDialog(null, "ê°ì‚¬í•©ë‹ˆë‹¤");
+                    JOptionPane.showMessageDialog(null, "°¨»çÇÕ´Ï´Ù");
                     System.exit(0);
                 }else{
-                    JOptionPane.showMessageDialog(null, "ì¢…ë£Œí•˜ì§€ ì•ŠìŠµë‹ˆë‹¤");
+                    JOptionPane.showMessageDialog(null, "Á¾·áÇÏÁö ¾Ê½À´Ï´Ù");
                 }
             }
         });
@@ -117,21 +117,21 @@ class Gui extends JFrame implements ActionListener {
         bW.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int answer = JOptionPane.showConfirmDialog(
-                        null, "Noë¥¼ í´ë¦­í•˜ì„¸ìš”", "ì§ˆë¬¸",
+                        null, "No¸¦ Å¬¸¯ÇÏ¼¼¿ä", "Áú¹®",
                         JOptionPane.NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if (answer == JOptionPane.YES_OPTION) {
-                    JOptionPane.showMessageDialog(null, "Noê°€ ì•„ë‹™ë‹ˆë‹¤");
+                    JOptionPane.showMessageDialog(null, "No°¡ ¾Æ´Õ´Ï´Ù");
                 } else if (answer == JOptionPane.NO_OPTION) {
                     JOptionPane.showConfirmDialog(
-                            null, "í•œë²ˆ ë” Noë¥¼ í´ë¦­í•˜ì„¸ìš”", "ì§ˆë¬¸",
+                            null, "ÇÑ¹ø ´õ No¸¦ Å¬¸¯ÇÏ¼¼¿ä", "Áú¹®",
                             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                     if (answer == JOptionPane.YES_OPTION) {
-                        JOptionPane.showMessageDialog(null, "Noë¥¼ í´ë¦­í•˜ì„¸ìš”");
+                        JOptionPane.showMessageDialog(null, "No¸¦ Å¬¸¯ÇÏ¼¼¿ä");
                     } else {
-                        JOptionPane.showMessageDialog(null, "ì˜í•˜ì…¨ìŠµë‹ˆë‹¤");
+                        JOptionPane.showMessageDialog(null, "ÀßÇÏ¼Ì½À´Ï´Ù");
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Noê°€ ì•„ë‹™ë‹ˆë‹¤");
+                    JOptionPane.showMessageDialog(null, "No°¡ ¾Æ´Õ´Ï´Ù");
                 }
 
             }
