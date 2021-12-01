@@ -12,10 +12,10 @@ class Gui extends JFrame implements ActionListener {
 
     void init() {
 
-        bE = new JButton("동쪽");
-        bW = new JButton("서쪽");
-        bS = new JButton("남쪽");
-        bN = new JButton("북쪽");
+        bE = new JButton("Fun?");
+        bW = new JButton("How are you?");
+        bS = new JButton("Exit");
+        bN = new JButton("No");
         pC = new JPanel(new GridLayout(2, 2));
 
         //pC.setBackground(Color.WHITE);
@@ -71,8 +71,6 @@ class Gui extends JFrame implements ActionListener {
                 int answer = JOptionPane.showConfirmDialog(
                         null, "재밌나요?", "질문",
                         JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
-                // System.out.println("answer: " + answer);
-
                 if (answer == JOptionPane.YES_OPTION) {
                     JOptionPane.showMessageDialog(null, "ㅋ 재밌군요!!");
                 } else if (answer == JOptionPane.NO_OPTION) {
@@ -80,6 +78,62 @@ class Gui extends JFrame implements ActionListener {
                 } else { // CANCEL_OPTION
                     JOptionPane.showMessageDialog(null, "아.. 대답도 싫군요!!");
                 }
+            }
+        });
+
+        bN.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String feel[] = {"Good","Not bad","Not good"};
+                String answer = (String) JOptionPane.showInputDialog(
+                        null, "How are you?", "질문",
+                        JOptionPane.WARNING_MESSAGE, null, feel, feel[0]);
+                        if(answer == null){
+                            JOptionPane.showMessageDialog(null, "???");
+                        }else if(answer.equals("Good")){
+                            JOptionPane.showMessageDialog(null, " :) ");
+                        }else if(answer.equals("Not bad")){
+                            JOptionPane.showMessageDialog(null, " :( ");
+                        }else{
+                            JOptionPane.showMessageDialog(null, " X( ");
+                        }
+            }
+        }
+        );
+
+        bS.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                int answer = JOptionPane.showConfirmDialog(
+                        null, "프로그램을 종료합니다", "MESSAGE",
+                        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if (answer == JOptionPane.YES_OPTION) {
+                    JOptionPane.showMessageDialog(null, "감사합니다");
+                    System.exit(0);
+                }else{
+                    JOptionPane.showMessageDialog(null, "종료하지 않습니다");
+                }
+            }
+        });
+
+        bW.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                int answer = JOptionPane.showConfirmDialog(
+                        null, "No를 클릭하세요", "질문",
+                        JOptionPane.NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if (answer == JOptionPane.YES_OPTION) {
+                    JOptionPane.showMessageDialog(null, "No가 아닙니다");
+                } else if (answer == JOptionPane.NO_OPTION) {
+                    JOptionPane.showConfirmDialog(
+                            null, "한번 더 No를 클릭하세요", "질문",
+                            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                    if (answer == JOptionPane.YES_OPTION) {
+                        JOptionPane.showMessageDialog(null, "No를 클릭하세요");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "잘하셨습니다");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "No가 아닙니다");
+                }
+
             }
         });
 
