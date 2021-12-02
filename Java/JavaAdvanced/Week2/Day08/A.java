@@ -2,15 +2,14 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-class A extends JFrame 
-{
+class A extends JFrame {
 	Container cp;
 	ImageIcon ii;
 	JLabel laImg;
 	JLabel laMsgT, laMsgB;
 	JPanel p;
 
-	void init(){
+	void init() {
 		cp = getContentPane();
 		ii = new ImageIcon(getClass().getResource("imgs/move.gif"));
 		laImg = new JLabel(ii);
@@ -18,7 +17,7 @@ class A extends JFrame
 
 		p = new JPanel();
 		p.setBackground(Color.yellow);
-		p.setBorder(BorderFactory.createEmptyBorder(30 , 0 , 30 , 0));
+		p.setBorder(BorderFactory.createEmptyBorder(30, 0, 30, 0));
 		p.setLayout(new GridLayout(2, 1));
 		laMsgT = new JLabel();
 		laMsgT.setForeground(Color.blue);
@@ -37,17 +36,19 @@ class A extends JFrame
 
 		setUI();
 	}
-	void setUI(){
+
+	void setUI() {
 		setTitle("움직이는 gif 테스팅");
-		//setSize(400, 400);
+		// setSize(400, 400);
 		pack();
 		setVisible(true);
-		//setLocation(200, 100); 
-		setLocationRelativeTo(null); //해상도와 관계없이 화면의 가운데에 띄움
+		// setLocation(200, 100);
+		setLocationRelativeTo(null); // 해상도와 관계없이 화면의 가운데에 띄움
 
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+
 	public static void main(String[] args) {
 		new A().init();
 	}

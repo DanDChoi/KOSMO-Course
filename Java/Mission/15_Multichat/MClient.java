@@ -5,7 +5,7 @@ public class MClient {
 	public static void main(String[] args)
 	{
 		try {
-			Socket sock = new Socket("172.30.1.8",4000);
+			Socket sock = new Socket("192.168.0.37",4000);
 			SendThread sendThread = new SendThread(sock);
 			Thread thread = new Thread(sendThread);thread.start();
 			RecieveThread recieveThread = new RecieveThread(sock);
