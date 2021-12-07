@@ -23,12 +23,12 @@ public class Mine_Client extends JFrame implements ActionListener
 	MediaPlayer p;
 	
 	int port = 7777;
-	String playerName, playerScore, playerIdx; // Å¬¶óÀÌ¾ğÆ® ÀÌ¸§, Á¡¼ö, ÀÎµ¦½º °ü¸®
-	boolean gameStart, auth; // °ÔÀÓ ½ÃÀÛ »óÅÂ Ã¼Å© & ÃâÁ¦ÀÚ ±ÇÇÑ º¯¼ö
+	String playerName, playerScore, playerIdx; // í´ë¼ì´ì–¸íŠ¸ ì´ë¦„, ì ìˆ˜, ì¸ë±ìŠ¤ ê´€ë¦¬
+	boolean gameStart, auth; // ê²Œì„ ì‹œì‘ ìƒíƒœ ì²´í¬ & ì¶œì œì ê¶Œí•œ ë³€ìˆ˜
 	
 	public Mine_Client(){
-		// ±âº» GUI ¼³Á¤
-		setFont(new Font("³ª´®¹Ù¸¥°íµñ", Font.PLAIN, 13));
+		// ê¸°ë³¸ GUI ì„¤ì •
+		setFont(new Font("ë‚˜ëˆ”ë°”ë¥¸ê³ ë”•", Font.PLAIN, 13));
 		setVisible(true);
 		setResizable(false);
 		setTitle("JAVA CatchMind Client");
@@ -36,19 +36,19 @@ public class Mine_Client extends JFrame implements ActionListener
 		setBounds(100, 100, 1280, 720);
 		setLocationRelativeTo(null);
 		
-		// º£ÀÌ½º ÆĞ³Î
+		// ë² ì´ìŠ¤ íŒ¨ë„
 		contentPane = new JPanel();
 		contentPane.setBorder(null);
 		setContentPane(contentPane);
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
 		
 		panel_Main = new JPanel();
-		panel_Main.setFont(new Font("³ª´®¹Ù¸¥°íµñ", Font.PLAIN, 13));
+		panel_Main.setFont(new Font("ë‚˜ëˆ”ë°”ë¥¸ê³ ë”•", Font.PLAIN, 13));
 		panel_Main.setBackground(new Color(228, 242, 254));
 		contentPane.add(panel_Main);
 		panel_Main.setLayout(null);
 		
-		// Âü¿©ÀÚ ¸ñ·Ï ¿µ¿ª
+		// ì°¸ì—¬ì ëª©ë¡ ì˜ì—­
 		JPanel panel_ClientList = new JPanel();
 		JLabel label_ClientList = new JLabel(new ImageIcon("image\\user.png"));
 		panel_ClientList.setOpaque(false);
@@ -65,8 +65,8 @@ public class Mine_Client extends JFrame implements ActionListener
 		label_Client1.setBounds(18, 15, 120, 80);
 		panel_ClientList.add(label_Client1);
 		
-		label_Client1_Sub = new Label("[ ´Ğ³×ÀÓ & Á¡¼ö ]");
-		label_Client1_Sub.setFont(new Font("³ª´®¹Ù¸¥°íµñ", Font.BOLD, 13));
+		label_Client1_Sub = new Label("[ ë‹‰ë„¤ì„ & ì ìˆ˜ ]");
+		label_Client1_Sub.setFont(new Font("ë‚˜ëˆ”ë°”ë¥¸ê³ ë”•", Font.BOLD, 13));
 		label_Client1_Sub.setAlignment(Label.CENTER);
 		label_Client1_Sub.setBackground(Color.WHITE);
 		label_Client1_Sub.setBounds(18, 95, 120, 30);
@@ -77,8 +77,8 @@ public class Mine_Client extends JFrame implements ActionListener
 		label_Client2.setBounds(18, 135, 120, 80);
 		panel_ClientList.add(label_Client2);
 		
-		label_Client2_Sub = new Label("[ ´Ğ³×ÀÓ & Á¡¼ö ]");
-		label_Client2_Sub.setFont(new Font("³ª´®¹Ù¸¥°íµñ", Font.BOLD, 13));
+		label_Client2_Sub = new Label("[ ë‹‰ë„¤ì„ & ì ìˆ˜ ]");
+		label_Client2_Sub.setFont(new Font("ë‚˜ëˆ”ë°”ë¥¸ê³ ë”•", Font.BOLD, 13));
 		label_Client2_Sub.setAlignment(Label.CENTER);
 		label_Client2_Sub.setBackground(Color.WHITE);
 		label_Client2_Sub.setBounds(18, 215, 120, 30);
@@ -89,8 +89,8 @@ public class Mine_Client extends JFrame implements ActionListener
 		label_Client3.setBounds(18, 255, 120, 80);
 		panel_ClientList.add(label_Client3);
 		
-		label_Client3_Sub = new Label("[ ´Ğ³×ÀÓ & Á¡¼ö ]");
-		label_Client3_Sub.setFont(new Font("³ª´®¹Ù¸¥°íµñ", Font.BOLD, 13));
+		label_Client3_Sub = new Label("[ ë‹‰ë„¤ì„ & ì ìˆ˜ ]");
+		label_Client3_Sub.setFont(new Font("ë‚˜ëˆ”ë°”ë¥¸ê³ ë”•", Font.BOLD, 13));
 		label_Client3_Sub.setAlignment(Label.CENTER);
 		label_Client3_Sub.setBackground(Color.WHITE);
 		label_Client3_Sub.setBounds(18, 335, 120, 30);
@@ -101,14 +101,14 @@ public class Mine_Client extends JFrame implements ActionListener
 		label_Client4.setBounds(18, 375, 120, 80);
 		panel_ClientList.add(label_Client4);
 		
-		label_Client4_Sub = new Label("[ ´Ğ³×ÀÓ & Á¡¼ö ]");
-		label_Client4_Sub.setFont(new Font("³ª´®¹Ù¸¥°íµñ", Font.BOLD, 13));
+		label_Client4_Sub = new Label("[ ë‹‰ë„¤ì„ & ì ìˆ˜ ]");
+		label_Client4_Sub.setFont(new Font("ë‚˜ëˆ”ë°”ë¥¸ê³ ë”•", Font.BOLD, 13));
 		label_Client4_Sub.setAlignment(Label.CENTER);
 		label_Client4_Sub.setBackground(Color.WHITE);
 		label_Client4_Sub.setBounds(18, 455, 120, 30);
 		panel_ClientList.add(label_Client4_Sub);
 		
-		// ¹®Á¦ ÃâÁ¦ ¿µ¿ª
+		// ë¬¸ì œ ì¶œì œ ì˜ì—­
 		panel_Exam = new JPanel();
 		panel_Exam.setBounds(10, 10, 1245, 85);
 		panel_Main.add(panel_Exam);
@@ -128,12 +128,12 @@ public class Mine_Client extends JFrame implements ActionListener
 		label_Exam_Sub = new JLabel();
 		label_Exam_Sub.setOpaque(false);
 		label_Exam_Sub.setBounds(45, 0, 803, 65);
-		label_Exam_Sub.setFont(new Font("³ª´®¹Ù¸¥°íµñ", Font.PLAIN, 24));
+		label_Exam_Sub.setFont(new Font("ë‚˜ëˆ”ë°”ë¥¸ê³ ë”•", Font.PLAIN, 24));
 		label_Exam_Sub.setForeground(Color.BLACK);
 		label_Exam_Sub.setHorizontalAlignment(SwingConstants.CENTER);
 		label_Exam.add(label_Exam_Sub);
 		
-		// ¿ì»ó´Ü ¹öÆ° ¿µ¿ª
+		// ìš°ìƒë‹¨ ë²„íŠ¼ ì˜ì—­
 		btn_Ready = new JButton(new ImageIcon("image\\ready.png"));
 		btn_Ready.setFocusPainted(false);
 		btn_Ready.setBorderPainted(false);
@@ -150,21 +150,21 @@ public class Mine_Client extends JFrame implements ActionListener
 		label_Exam_Back.add(btn_Exit);
 		btn_Exit.addActionListener(this);
 		
-		// ·Î°í ¿µ¿ª
+		// ë¡œê³  ì˜ì—­
 		JLabel label_Logo = new JLabel(new ImageIcon("image\\logo.png"));
 		label_Logo.setOpaque(false);
 		label_Logo.setBorder(null);
 		label_Logo.setBounds(12, 10, 142, 65);
 		label_Exam_Back.add(label_Logo);
 		
-		// Ã¤ÆÃ ¿µ¿ª
+		// ì±„íŒ… ì˜ì—­
 		panel_Chat = new JPanel();
 		panel_Chat.setBounds(992, 105, 263, 567);
 		panel_Main.add(panel_Chat);
 		panel_Chat.setLayout(null);
 		
 		scrollPane = new JScrollPane(textArea);
-		scrollPane.setFont(new Font("³ª´®¹Ù¸¥°íµñ", Font.PLAIN, 13));
+		scrollPane.setFont(new Font("ë‚˜ëˆ”ë°”ë¥¸ê³ ë”•", Font.PLAIN, 13));
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setBounds(0, 0, 263, 535);
@@ -172,7 +172,7 @@ public class Mine_Client extends JFrame implements ActionListener
 		
 		textArea = new JTextArea();
 		textArea.setBorder(new LineBorder(new Color(127, 219, 254), 4, true));
-		textArea.setFont(new Font("³ª´®¹Ù¸¥°íµñ", Font.PLAIN, 13));
+		textArea.setFont(new Font("ë‚˜ëˆ”ë°”ë¥¸ê³ ë”•", Font.PLAIN, 13));
 		textArea.setEditable(false);
 		textArea.setLineWrap(true);
 		scrollPane.setViewportView(textArea);
@@ -185,7 +185,7 @@ public class Mine_Client extends JFrame implements ActionListener
 		panel_Chat.add(textField);
 		textField.setColumns(10);
 		
-		// Äµ¹ö½º ¿µ¿ª
+		// ìº”ë²„ìŠ¤ ì˜ì—­
 		JLabel labell_Canvas_Top = new JLabel(new ImageIcon("image\\canvas.png"));
 		labell_Canvas_Top.setBounds(176, 105, 802, 34);
 		labell_Canvas_Top.setOpaque(true);
@@ -200,7 +200,7 @@ public class Mine_Client extends JFrame implements ActionListener
 		canvas = new Brush();
 		canvas.setBackground(Color.WHITE);
 		panel_Canvas.add(canvas, BorderLayout.CENTER);
-		CanvasHandler ch = new CanvasHandler(); // Äµ¹ö½º ÇÚµé·¯
+		CanvasHandler ch = new CanvasHandler(); // ìº”ë²„ìŠ¤ í•¸ë“¤ëŸ¬
 		canvas.addMouseMotionListener(ch);
 		
 		panel_Option = new JPanel();
@@ -281,13 +281,13 @@ public class Mine_Client extends JFrame implements ActionListener
 		btn_GG.setBounds(855, 10, 100, 37);
 		panel_Option.add(btn_GG);
 		
-		// Å¸ÀÌ¸Ó ¿µ¿ª
+		// íƒ€ì´ë¨¸ ì˜ì—­
 		JLabel label_Timer_Back = new JLabel(new ImageIcon("image\\time.png"));
 		label_Timer_Back.setOpaque(true);
 		label_Timer = new JLabel("00 : 00");
 		label_Timer.setHorizontalTextPosition(SwingConstants.CENTER);
 		label_Timer.setHorizontalAlignment(SwingConstants.CENTER);
-		label_Timer.setFont(new Font("³ª´®¹Ù¸¥°íµñ", Font.PLAIN, 24));
+		label_Timer.setFont(new Font("ë‚˜ëˆ”ë°”ë¥¸ê³ ë”•", Font.PLAIN, 24));
 		label_Timer.setForeground(Color.BLACK);
 		label_Timer_Back.setBounds(0, 0, 158, 57);
 		label_Timer.setBounds(0, 10, 158, 57);
@@ -297,7 +297,7 @@ public class Mine_Client extends JFrame implements ActionListener
 		startChat();
 	}
 	
-	// Ã¤ÆÃ ¼ÒÄÏ »ı¼º
+	// ì±„íŒ… ì†Œì¼“ ìƒì„±
 	public void startChat(){
 		String nickName = Mine_Login.nickName;
 		String ip = Mine_Login.ip;
@@ -309,7 +309,7 @@ public class Mine_Client extends JFrame implements ActionListener
 			new Thread(sender).start();
 			new Thread(listener).start();
 			
-			// ÀÌº¥Æ® ¸®½º³Ê Ãß°¡
+			// ì´ë²¤íŠ¸ ë¦¬ìŠ¤ë„ˆ ì¶”ê°€
 			textField.addKeyListener(new Sender(s, nickName));
 			btn_Ready.addActionListener(new Sender(s, nickName));
 			btn_Color1.addActionListener(new Sender(s, nickName));
@@ -322,22 +322,22 @@ public class Mine_Client extends JFrame implements ActionListener
 			btn_GG.addActionListener(new Sender(s, nickName));
 			canvas.addMouseMotionListener(new Sender(s, nickName));
 		}catch(UnknownHostException uh){
-			JOptionPane.showMessageDialog(null, "È£½ºÆ®¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù!", "ERROR", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "í˜¸ìŠ¤íŠ¸ë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤!", "ERROR", JOptionPane.WARNING_MESSAGE);
 		}catch(IOException io){
-			JOptionPane.showMessageDialog(null, "¼­¹ö Á¢¼Ó ½ÇÆĞ!\n¼­¹ö°¡ ´İÇô ÀÖ´Â °Í °°½À´Ï´Ù.", "ERROR", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "ì„œë²„ ì ‘ì† ì‹¤íŒ¨!\nì„œë²„ê°€ ë‹«í˜€ ìˆëŠ” ê²ƒ ê°™ìŠµë‹ˆë‹¤.", "ERROR", JOptionPane.WARNING_MESSAGE);
 			System.exit(0);
 		}
 	}
 	
-	// Á¾·á ¹öÆ° ¾×¼Ç ÀÌº¥Æ® Ã³¸®
+	// ì¢…ë£Œ ë²„íŠ¼ ì•¡ì…˜ ì´ë²¤íŠ¸ ì²˜ë¦¬
 	public void actionPerformed(ActionEvent e){
 		if(e.getSource() == btn_Exit){
-			int select = JOptionPane.showConfirmDialog(null, "Á¤¸» °ÔÀÓÀ» Á¾·áÇÏ½Ã°Ú½À´Ï±î?", "Exit", JOptionPane.OK_CANCEL_OPTION);
+			int select = JOptionPane.showConfirmDialog(null, "ì •ë§ ê²Œì„ì„ ì¢…ë£Œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?", "Exit", JOptionPane.OK_CANCEL_OPTION);
 			if(select == JOptionPane.YES_OPTION) System.exit(0);
 		}
 	}
 	
-	// ³»ºÎ Å¬·¡½º - ¼Û½Å
+	// ë‚´ë¶€ í´ë˜ìŠ¤ - ì†¡ì‹ 
 	class Sender extends Thread implements KeyListener, ActionListener, MouseMotionListener
 	{
 		DataOutputStream dos;
@@ -359,15 +359,15 @@ public class Mine_Client extends JFrame implements ActionListener
 		}
 		
 		public void actionPerformed(ActionEvent e){
-			if(e.getSource() == btn_Ready){ // 'ÁØºñ' ¹öÆ°
+			if(e.getSource() == btn_Ready){ // 'ì¤€ë¹„' ë²„íŠ¼
 				try{
-					dos.writeUTF("//Chat " + "[ " + nickName + " ´Ô ÁØºñ ¿Ï·á ! ]");
+					dos.writeUTF("//Chat " + "[ " + nickName + " ë‹˜ ì¤€ë¹„ ì™„ë£Œ ! ]");
 					dos.flush();
 					dos.writeUTF("//Ready");
 					dos.flush();
 					btn_Ready.setEnabled(false);
 				}catch(IOException io){}
-			}else if(e.getSource() == btn_Color1 && auth == true){ // »ö»ó ¼³Á¤ ¹öÆ°
+			}else if(e.getSource() == btn_Color1 && auth == true){ // ìƒ‰ìƒ ì„¤ì • ë²„íŠ¼
 				try{
 					dos.writeUTF("//Color" + "Red");
 					dos.flush();
@@ -392,19 +392,19 @@ public class Mine_Client extends JFrame implements ActionListener
 					dos.writeUTF("//Color" + "Black");
 					dos.flush();
 				}catch(IOException io){}
-			}else if(e.getSource() == btn_Erase && auth == true){ // 'Áö¿ì±â' ¹öÆ°
+			}else if(e.getSource() == btn_Erase && auth == true){ // 'ì§€ìš°ê¸°' ë²„íŠ¼
 				try{
 					dos.writeUTF("//Erase");
 					dos.flush();
 				}catch(IOException io){}
-			}else if(e.getSource() == btn_EraseAll && auth == true){ // '¸ğµÎ Áö¿ì±â' ¹öÆ°
+			}else if(e.getSource() == btn_EraseAll && auth == true){ // 'ëª¨ë‘ ì§€ìš°ê¸°' ë²„íŠ¼
 				try{
 					if(auth == true){
 						dos.writeUTF("//ErAll");
 						dos.flush();
 					}
 				}catch(IOException io){}
-			}else if(e.getSource() == btn_GG && auth == true){ // 'Æ÷±â' ¹öÆ°
+			}else if(e.getSource() == btn_GG && auth == true){ // 'í¬ê¸°' ë²„íŠ¼
 				try{
 					if(auth == true){
 						dos.writeUTF("//GmGG ");
@@ -414,7 +414,7 @@ public class Mine_Client extends JFrame implements ActionListener
 			}
 		}
 		
-		public void keyReleased(KeyEvent e){ // Ã¤ÆÃ ÀÔ·Â
+		public void keyReleased(KeyEvent e){ // ì±„íŒ… ì…ë ¥
 			if(e.getKeyCode() == KeyEvent.VK_ENTER){
 				String chat = textField.getText();
 				textField.setText("");
@@ -427,7 +427,7 @@ public class Mine_Client extends JFrame implements ActionListener
 		public void keyTyped(KeyEvent e){}
 		public void keyPressed(KeyEvent e){}
 		
-		public void mouseDragged(MouseEvent e){ // ¸¶¿ì½º ÁÂÇ¥ Àü¼Û
+		public void mouseDragged(MouseEvent e){ // ë§ˆìš°ìŠ¤ ì¢Œí‘œ ì „ì†¡
 		    try{
 		    	if(auth == true){
 		    		int x = e.getX(); int y = e.getY();
@@ -440,7 +440,7 @@ public class Mine_Client extends JFrame implements ActionListener
 		public void mouseMoved(MouseEvent e){}
 	}
 
-	// ³»ºÎ Å¬·¡½º - ¼ö½Å
+	// ë‚´ë¶€ í´ë˜ìŠ¤ - ìˆ˜ì‹ 
 	class Listener extends Thread
 	{
 		Socket s;
@@ -457,45 +457,45 @@ public class Mine_Client extends JFrame implements ActionListener
 			while(dis != null){
 				try{
 					String msg = dis.readUTF();
-					if(msg.startsWith("//CList")){ // ¸í·É¾î : Å¬¶óÀÌ¾ğÆ® ¸ñ·Ï °»½Å
+					if(msg.startsWith("//CList")){ // ëª…ë ¹ì–´ : í´ë¼ì´ì–¸íŠ¸ ëª©ë¡ ê°±ì‹ 
 						playerName = msg.substring(7, msg.indexOf(" "));
 						playerScore = msg.substring(msg.indexOf(" ") + 1, msg.indexOf("#"));
 						playerIdx = msg.substring(msg.indexOf("#") + 1);
-						updateClientList(); // Å¬¶óÀÌ¾ğÆ® ¸ñ·Ï °»½Å
-					}else if(msg.startsWith("//Start")){ // ¸í·É¾î : °ÔÀÓ ½ÃÀÛ ( + Å¸ÀÌ¸Ó)
+						updateClientList(); // í´ë¼ì´ì–¸íŠ¸ ëª©ë¡ ê°±ì‹ 
+					}else if(msg.startsWith("//Start")){ // ëª…ë ¹ì–´ : ê²Œì„ ì‹œì‘ ( + íƒ€ì´ë¨¸)
 						gameStart = true;
-						g = canvas.getGraphics(); // Äµ¹ö½º ¼³Á¤ ÃÊ±âÈ­
+						g = canvas.getGraphics(); // ìº”ë²„ìŠ¤ ì„¤ì • ì´ˆê¸°í™”
 						g.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 						Brush canvas2 = (Brush)canvas;
 						canvas2.color = Color.BLACK;
 						color = Color.BLACK;
-						bgm("//Play"); // BGM Àç»ı
-					}else if(msg.equals("//GmGG ")){ // ¸í·É¾î : ÃâÁ¦ÀÚ °ÔÀÓ Æ÷±â
+						bgm("//Play"); // BGM ì¬ìƒ
+					}else if(msg.equals("//GmGG ")){ // ëª…ë ¹ì–´ : ì¶œì œì ê²Œì„ í¬ê¸°
 						gameStart = false;
 						auth = false;
 						textField.setEnabled(true);
 						btn_Ready.setEnabled(true);
-						bgm("//Stop"); // BGM Á¤Áö
-					}else if(msg.equals("//GmEnd")){ // ¸í·É¾î : °ÔÀÓ Á¾·á
+						bgm("//Stop"); // BGM ì •ì§€
+					}else if(msg.equals("//GmEnd")){ // ëª…ë ¹ì–´ : ê²Œì„ ì¢…ë£Œ
 						gameStart = false;
 						auth = false;
 						textField.setEnabled(true);
 						btn_Ready.setEnabled(true);
 						label_Timer.setText("00 : 00");
-						bgm("//Stop"); // BGM Á¤Áö
-					}else if(msg.startsWith("//RExam")){ // ¸í·É¾î : ¹®Á¦ ·£´ı ÃâÁ¦
+						bgm("//Stop"); // BGM ì •ì§€
+					}else if(msg.startsWith("//RExam")){ // ëª…ë ¹ì–´ : ë¬¸ì œ ëœë¤ ì¶œì œ
 						if(auth == true){
 							label_Exam_Sub.setText(msg.substring(7));
 						}else{
 							label_Exam_Sub.setText(" ??? ");
 						}
-					}else if(msg.startsWith("//Auth ")){ // ¸í·É¾î : ÃâÁ¦ÀÚ ±ÇÇÑ ºÎ¿©
+					}else if(msg.startsWith("//Auth ")){ // ëª…ë ¹ì–´ : ì¶œì œì ê¶Œí•œ ë¶€ì—¬
 						if(Mine_Login.nickName.equals(msg.substring(7))){
 							auth = true;
-							textArea.append("\n[ ´ç½ÅÀÌ ¹®Á¦ ÃâÁ¦ÀÚÀÔ´Ï´Ù !! ]" + "\n\n");
+							textArea.append("\n[ ë‹¹ì‹ ì´ ë¬¸ì œ ì¶œì œìì…ë‹ˆë‹¤ !! ]" + "\n\n");
 							textField.setEnabled(false);
 						}
-					}else if(msg.startsWith("//Mouse")){ // ¸í·É¾î : Äµ¹ö½º °øÀ¯ (¸¶¿ì½º ÁÂÇ¥ ¼ö½Å)
+					}else if(msg.startsWith("//Mouse")){ // ëª…ë ¹ì–´ : ìº”ë²„ìŠ¤ ê³µìœ  (ë§ˆìš°ìŠ¤ ì¢Œí‘œ ìˆ˜ì‹ )
 						if(auth == false){
 							int tempX = Integer.parseInt(msg.substring(7, msg.indexOf("."))); 
 							int tempY = Integer.parseInt(msg.substring(msg.indexOf(".") + 1));
@@ -506,9 +506,9 @@ public class Mine_Client extends JFrame implements ActionListener
 				            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		                    g.drawLine(tempX, tempY, tempX, tempY);
 						}
-					}else if(msg.startsWith("//Timer")){ // ¸í·É¾î : Å¸ÀÌ¸Ó ½Ã°£ Ç¥½Ã
+					}else if(msg.startsWith("//Timer")){ // ëª…ë ¹ì–´ : íƒ€ì´ë¨¸ ì‹œê°„ í‘œì‹œ
 						label_Timer.setText(msg.substring(7));
-					}else if(msg.startsWith("//Color")){ // ¸í·É¾î : ÄÃ·¯ ¼³Á¤
+					}else if(msg.startsWith("//Color")){ // ëª…ë ¹ì–´ : ì»¬ëŸ¬ ì„¤ì •
 						String temp = msg.substring(7);
 						switch(temp){
 							case "Red": color = Color.RED; break;
@@ -517,17 +517,17 @@ public class Mine_Client extends JFrame implements ActionListener
 							case "Yellow": color = Color.YELLOW; break;
 							case "Black": color = Color.BLACK; break;
 						}
-					}else if(msg.equals("//Erase")){ // ¸í·É¾î : Áö¿ì±â
+					}else if(msg.equals("//Erase")){ // ëª…ë ¹ì–´ : ì§€ìš°ê¸°
 						color = Color.WHITE;
-					}else if(msg.equals("//ErAll")){ // ¸í·É¾î : ¸ğµÎ Áö¿ì±â
+					}else if(msg.equals("//ErAll")){ // ëª…ë ¹ì–´ : ëª¨ë‘ ì§€ìš°ê¸°
 						g = canvas.getGraphics();
 						g.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-					}else{ // ÀÏ¹İ Ã¤ÆÃ Ãâ·Â
+					}else{ // ì¼ë°˜ ì±„íŒ… ì¶œë ¥
 						textArea.append(msg + "\n");
 						scrollPane.getVerticalScrollBar().setValue(scrollPane.getVerticalScrollBar().getMaximum());
 					}
 				}catch(IOException io){
-					textArea.append("[ ¼­¹ö¿ÍÀÇ ¿¬°áÀÌ ²÷¾îÁ³½À´Ï´Ù. ´Ğ³×ÀÓ Áßº¹, ¼­¹ö Á¤¿ø ÃÊ°ú, °ÔÀÓ ÁøÇàÁßÀÎ °æ¿ì ¿¬°áÀÌ °ÅºÎµË´Ï´Ù. ]\n[ 3ÃÊ ÈÄ ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù .. ]");
+					textArea.append("[ ì„œë²„ì™€ì˜ ì—°ê²°ì´ ëŠì–´ì¡ŒìŠµë‹ˆë‹¤. ë‹‰ë„¤ì„ ì¤‘ë³µ, ì„œë²„ ì •ì› ì´ˆê³¼, ê²Œì„ ì§„í–‰ì¤‘ì¸ ê²½ìš° ì—°ê²°ì´ ê±°ë¶€ë©ë‹ˆë‹¤. ]\n[ 3ì´ˆ í›„ í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤ .. ]");
 					try{
 						Thread.sleep(3000);
 						System.exit(0);
@@ -536,57 +536,57 @@ public class Mine_Client extends JFrame implements ActionListener
 			}
 		}
 		
-		public void updateClientList(){ // Å¬¶óÀÌ¾ğÆ® ¸ñ·Ï Ãß°¡
+		public void updateClientList(){ // í´ë¼ì´ì–¸íŠ¸ ëª©ë¡ ì¶”ê°€
 			ImageIcon ii;
 			if(Integer.parseInt(playerIdx) == 0){
 				ii = new ImageIcon("image\\p1.png");
 				ii.getImage().flush();
 				label_Client1.setIcon(ii);
-				label_Client1_Sub.setText("[" + playerName + " / " + "Á¡¼ö: " + playerScore + "]");
+				label_Client1_Sub.setText("[" + playerName + " / " + "ì ìˆ˜: " + playerScore + "]");
 				deleteClientList();
 			}else if(Integer.parseInt(playerIdx) == 1){
 				ii = new ImageIcon("image\\p2.png");
 				ii.getImage().flush();
 				label_Client2.setIcon(ii);
-				label_Client2_Sub.setText("[" + playerName + " / " + "Á¡¼ö: " + playerScore + "]");
+				label_Client2_Sub.setText("[" + playerName + " / " + "ì ìˆ˜: " + playerScore + "]");
 				deleteClientList();
 			}else if(Integer.parseInt(playerIdx) == 2){
 				ii = new ImageIcon("image\\p3.png");
 				ii.getImage().flush();
 				label_Client3.setIcon(ii);
-				label_Client3_Sub.setText("[" + playerName + " / " + "Á¡¼ö: " + playerScore + "]");
+				label_Client3_Sub.setText("[" + playerName + " / " + "ì ìˆ˜: " + playerScore + "]");
 				deleteClientList();
 			}else if(Integer.parseInt(playerIdx) == 3){
 				ii = new ImageIcon("image\\p4.png");
 				ii.getImage().flush();
 				label_Client4.setIcon(ii);
-				label_Client4_Sub.setText("[" + playerName + " / " + "Á¡¼ö: " + playerScore + "]");
+				label_Client4_Sub.setText("[" + playerName + " / " + "ì ìˆ˜: " + playerScore + "]");
 				deleteClientList();
 			}
 		}
 		
-		public void deleteClientList(){ // Å¬¶óÀÌ¾ğÆ® ¸ñ·Ï Á¦°Å
+		public void deleteClientList(){ // í´ë¼ì´ì–¸íŠ¸ ëª©ë¡ ì œê±°
 			ImageIcon ii2;
 			ii2 = new ImageIcon("image\\p0.png");
 			if(Integer.parseInt(playerIdx) == 0){
 				label_Client2.setIcon(ii2);
-				label_Client2_Sub.setText("[ ´Ğ³×ÀÓ / Á¡¼ö ]");
+				label_Client2_Sub.setText("[ ë‹‰ë„¤ì„ / ì ìˆ˜ ]");
 				label_Client3.setIcon(ii2);
-				label_Client3_Sub.setText("[ ´Ğ³×ÀÓ / Á¡¼ö ]");
+				label_Client3_Sub.setText("[ ë‹‰ë„¤ì„ / ì ìˆ˜ ]");
 				label_Client4.setIcon(ii2);
-				label_Client4_Sub.setText("[ ´Ğ³×ÀÓ / Á¡¼ö ]");
+				label_Client4_Sub.setText("[ ë‹‰ë„¤ì„ / ì ìˆ˜ ]");
 			}else if(Integer.parseInt(playerIdx) == 1){
 				label_Client3.setIcon(ii2);
-				label_Client3_Sub.setText("[ ´Ğ³×ÀÓ / Á¡¼ö ]");
+				label_Client3_Sub.setText("[ ë‹‰ë„¤ì„ / ì ìˆ˜ ]");
 				label_Client4.setIcon(ii2);
-				label_Client4_Sub.setText("[ ´Ğ³×ÀÓ / Á¡¼ö ]");
+				label_Client4_Sub.setText("[ ë‹‰ë„¤ì„ / ì ìˆ˜ ]");
 			}else if(Integer.parseInt(playerIdx) == 2){
 				label_Client4.setIcon(ii2);
-				label_Client4_Sub.setText("[ ´Ğ³×ÀÓ / Á¡¼ö ]");
+				label_Client4_Sub.setText("[ ë‹‰ë„¤ì„ / ì ìˆ˜ ]");
 			}
 		}
-		
-		public void bgm(String play){ // BGM Àç»ı & Á¤Áö
+		/*
+		public void bgm(String play){ // BGM ì¬ìƒ & ì •ì§€
 			try{
 				if(play.equals("//Play")){
 					JFXPanel panel = new JFXPanel();
@@ -601,9 +601,9 @@ public class Mine_Client extends JFrame implements ActionListener
 				}
 			}catch(Exception e){}
 		}
-	}
+	}*/
 
-	// ³»ºÎ Å¬·¡½º - Äµ¹ö½º ÇÚµé·¯
+	// ë‚´ë¶€ í´ë˜ìŠ¤ - ìº”ë²„ìŠ¤ í•¸ë“¤ëŸ¬
 	class CanvasHandler extends JFrame implements ActionListener, MouseMotionListener
 	{	
 		int x1, x2, y1, y2;
@@ -619,7 +619,7 @@ public class Mine_Client extends JFrame implements ActionListener
 			Object obj = e.getSource();
 			Brush canvas2 = (Brush)canvas;
 		   
-			if(auth == true){ // ÃâÁ¦ÀÚ ±ÇÇÑÀ» °¡Áø »óÅÂ¿©¾ß¸¸ Äµ¹ö½º Á¶ÀÛ °¡´É
+			if(auth == true){ // ì¶œì œì ê¶Œí•œì„ ê°€ì§„ ìƒíƒœì—¬ì•¼ë§Œ ìº”ë²„ìŠ¤ ì¡°ì‘ ê°€ëŠ¥
 			    if(obj == btn_Color1){
 				    canvas2.color = Color.RED;
 			    }else if(obj == btn_Color2){
@@ -640,7 +640,7 @@ public class Mine_Client extends JFrame implements ActionListener
 		}
 	}
 	
-	// ³»ºÎ Å¬·¡½º - Äµ¹ö½º ºê·¯½¬ ¼³Á¤
+	// ë‚´ë¶€ í´ë˜ìŠ¤ - ìº”ë²„ìŠ¤ ë¸ŒëŸ¬ì‰¬ ì„¤ì •
 	class Brush extends Canvas
 	{
 		int x;
@@ -648,7 +648,7 @@ public class Mine_Client extends JFrame implements ActionListener
 		Color color = Color.BLACK;
 
 		public void paintComponent(Graphics g){
-			if(gameStart == true && auth == true){ // °ÔÀÓÀÌ ½ÃÀÛµÇ¾ú°í, ÃâÁ¦ÀÚ ±ÇÇÑÀ» °¡Áø »óÅÂ¿©¾ß ±×¸®±â °¡´É
+			if(gameStart == true && auth == true){ // ê²Œì„ì´ ì‹œì‘ë˜ì—ˆê³ , ì¶œì œì ê¶Œí•œì„ ê°€ì§„ ìƒíƒœì—¬ì•¼ ê·¸ë¦¬ê¸° ê°€ëŠ¥
 				Graphics2D g2d = (Graphics2D)g;
 	            g2d.setColor(color);
 	            g2d.setStroke(new BasicStroke(6));

@@ -23,17 +23,17 @@ public class Mine_Login extends JFrame implements ActionListener {
 		label_Main = new JLabel(new ImageIcon("image/Main.png"));
 		tf_nickName = new JTextField(15);
 		tf_Ip = new JTextField(15);
-		btn_Connect = new JButton("Á¢¼Ó");
-		btn_Exit = new JButton("Á¾·á");
+		btn_Connect = new JButton("ì ‘ì†");
+		btn_Exit = new JButton("ì¢…ë£Œ");
 
-		// ¹è°æ»ö±ò
+		// ë°°ê²½ìƒ‰ê¹”
 		panel_TOP.setBackground(new Color(255, 255, 255));
 		panel_CENTER.setBackground(new Color(255, 255, 255));
 		panel_CENTER_TOP.setBackground(new Color(255, 255, 255));
 		panel_CENTER_BOTTOM.setBackground(new Color(255, 255, 255));
 		panel_BOTTOM.setBackground(new Color(255, 255, 255));
 
-		// ·¹ÀÌ¾Æ¿ô ¼¼ÆÃ
+		// ë ˆì´ì•„ì›ƒ ì„¸íŒ…
 		panel_TOP.setLayout(new FlowLayout());
 		panel_TOP.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
 		panel_CENTER.setLayout(new BorderLayout());
@@ -87,7 +87,7 @@ public class Mine_Login extends JFrame implements ActionListener {
 		add(panel_CENTER, BorderLayout.CENTER);
 		add(panel_BOTTOM, BorderLayout.SOUTH);
 
-		// ±âº» GUI ¼³Á¤
+		// ê¸°ë³¸ GUI ì„¤ì •
 		setVisible(true);
 		setTitle("Covid Sweepers Login");
 		setSize(450, 300);
@@ -100,11 +100,11 @@ public class Mine_Login extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btn_Connect) {
 			if (tf_nickName.getText().equals("")) {
-				JOptionPane.showMessageDialog(null, "´Ğ³×ÀÓÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä!", "ERROR!", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null, "ë‹‰ë„¤ì„ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”!", "ERROR!", JOptionPane.WARNING_MESSAGE);
 			} else if (tf_Ip.getText().equals("")) {
-				JOptionPane.showMessageDialog(null, "IP ÁÖ¼Ò¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä!", "ERROR!", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null, "IP ì£¼ì†Œë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”!", "ERROR!", JOptionPane.WARNING_MESSAGE);
 			} else if (tf_nickName.getText().trim().length() > 5) {
-				JOptionPane.showMessageDialog(null, "´Ğ³×ÀÓÀº 5±ÛÀÚ±îÁö¸¸ ÀÔ·ÂÇÒ ¼ö ÀÖ½À´Ï´Ù!", "ERROR!", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null, "ë‹‰ë„¤ì„ì€ 5ê¸€ìê¹Œì§€ë§Œ ì…ë ¥í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤!", "ERROR!", JOptionPane.WARNING_MESSAGE);
 				tf_nickName.setText("");
 			} else {
 				nickName = tf_nickName.getText().trim();
@@ -112,7 +112,7 @@ public class Mine_Login extends JFrame implements ActionListener {
 				if (temp.matches(
 						"(^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$)")) {
 					ip = temp;
-					JOptionPane.showMessageDialog(null, "             ·Î±×ÀÎ ¼º°ø!", "JAVA CatchMind LOGIN",
+					JOptionPane.showMessageDialog(null, "             ë¡œê·¸ì¸ ì„±ê³µ!", "JAVA CatchMind LOGIN",
 							JOptionPane.INFORMATION_MESSAGE);
 					btn_Connect.setEnabled(false);
 					tf_nickName.setEnabled(false);
@@ -120,7 +120,7 @@ public class Mine_Login extends JFrame implements ActionListener {
 					setVisible(false);
 					// Mine_Client mc = new Mine_Client();
 				} else {
-					JOptionPane.showMessageDialog(null, "IP ÁÖ¼Ò¸¦ Á¤È®ÇÏ°Ô ÀÔ·ÂÇØ ÁÖ¼¼¿ä! ", "ERROR!", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "IP ì£¼ì†Œë¥¼ ì •í™•í•˜ê²Œ ì…ë ¥í•´ ì£¼ì„¸ìš”! ", "ERROR!", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 		} else if (e.getSource() == btn_Exit) {

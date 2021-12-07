@@ -18,12 +18,12 @@ public class Mine_Server extends JFrame implements ActionListener
 	Socket s;
 	int port = 7777;
 	public static final int MAX_CLIENT = 4;
-	int readyPlayer; // °ÔÀÓ ÁØºñµÈ Å¬¶óÀÌ¾ğÆ® Ä«¿îÆ®
+	int readyPlayer; // ê²Œì„ ì¤€ë¹„ëœ í´ë¼ì´ì–¸íŠ¸ ì¹´ìš´íŠ¸
 	int score;
-	boolean gameStart; // °ÔÀÓ ½ÃÀÛ »óÅÂ
+	boolean gameStart; // ê²Œì„ ì‹œì‘ ìƒíƒœ
 	String line = "";
-	LinkedHashMap<String, DataOutputStream> clientList = new LinkedHashMap<String, DataOutputStream>(); // Å¬¶óÀÌ¾ğÆ® ÀÌ¸§, ½ºÆ®¸² °ü¸®
-	LinkedHashMap<String, Integer> clientInfo = new LinkedHashMap<String, Integer>(); // Å¬¶óÀÌ¾ğÆ® ÀÌ¸§, Á¡¼ö °ü¸®
+	LinkedHashMap<String, DataOutputStream> clientList = new LinkedHashMap<String, DataOutputStream>(); // í´ë¼ì´ì–¸íŠ¸ ì´ë¦„, ìŠ¤íŠ¸ë¦¼ ê´€ë¦¬
+	LinkedHashMap<String, Integer> clientInfo = new LinkedHashMap<String, Integer>(); // í´ë¼ì´ì–¸íŠ¸ ì´ë¦„, ì ìˆ˜ ê´€ë¦¬
 	
 	public void init(){
 		setTitle("JAVA CatchMind Server");
@@ -46,7 +46,7 @@ public class Mine_Server extends JFrame implements ActionListener
 		panel_Main.add(label_ServerStatus);
 		label_ServerStatus.setHorizontalTextPosition(SwingConstants.CENTER);
 		label_ServerStatus.setHorizontalAlignment(SwingConstants.CENTER);
-		label_ServerStatus.setFont(new Font("³ª´®¹Ù¸¥°íµñ", Font.PLAIN, 20));
+		label_ServerStatus.setFont(new Font("ë‚˜ëˆ”ë°”ë¥¸ê³ ë”•", Font.PLAIN, 20));
 		
 		panel_TextArea = new JPanel();
 		panel_Main.add(panel_TextArea);
@@ -67,11 +67,11 @@ public class Mine_Server extends JFrame implements ActionListener
 		panel_Main.add(panel_Btn);
 		panel_Btn.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		btn_ServerStart = new JButton(" ¼­¹ö ½ÃÀÛ ");
+		btn_ServerStart = new JButton(" ì„œë²„ ì‹œì‘ ");
 		btn_ServerStart.setHorizontalTextPosition(SwingConstants.CENTER);
 		btn_ServerStart.setPreferredSize(new Dimension(120, 40));
 		btn_ServerStart.setFocusPainted(false);
-		btn_ServerStart.setFont(new Font("³ª´®¹Ù¸¥°íµñ", Font.BOLD, 16));
+		btn_ServerStart.setFont(new Font("ë‚˜ëˆ”ë°”ë¥¸ê³ ë”•", Font.BOLD, 16));
 		btn_ServerStart.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btn_ServerStart.setForeground(Color.WHITE);
 		btn_ServerStart.setBackground(Color.DARK_GRAY);
@@ -79,11 +79,11 @@ public class Mine_Server extends JFrame implements ActionListener
 		panel_Btn.add(btn_ServerStart);
 		btn_ServerStart.addActionListener(this);
 		
-		btn_ServerClose = new JButton(" ¼­¹ö Á¾·á ");
+		btn_ServerClose = new JButton(" ì„œë²„ ì¢…ë£Œ ");
 		btn_ServerClose.setHorizontalTextPosition(SwingConstants.CENTER);
 		btn_ServerClose.setPreferredSize(new Dimension(120, 40));
 		btn_ServerClose.setFocusPainted(false);
-		btn_ServerClose.setFont(new Font("³ª´®¹Ù¸¥°íµñ", Font.BOLD, 16));
+		btn_ServerClose.setFont(new Font("ë‚˜ëˆ”ë°”ë¥¸ê³ ë”•", Font.BOLD, 16));
 		btn_ServerClose.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btn_ServerClose.setForeground(Color.WHITE);
 		btn_ServerClose.setBackground(Color.DARK_GRAY);
@@ -93,7 +93,7 @@ public class Mine_Server extends JFrame implements ActionListener
 		btn_ServerClose.setEnabled(false);
 	}
 
-	public void actionPerformed(ActionEvent e){ // '¼­¹ö ½ÃÀÛ & Á¾·á' ¹öÆ° ÀÌº¥Æ®
+	public void actionPerformed(ActionEvent e){ // 'ì„œë²„ ì‹œì‘ & ì¢…ë£Œ' ë²„íŠ¼ ì´ë²¤íŠ¸
 		if(e.getSource() == btn_ServerStart){
 			new Thread(){
 				public void run() {
@@ -101,12 +101,12 @@ public class Mine_Server extends JFrame implements ActionListener
 						Collections.synchronizedMap(clientList);
 						ss = new ServerSocket(port);
 						label_ServerStatus.setText("[ Server Started ]");
-						textArea.append("[ ¼­¹ö°¡ ½ÃÀÛµÇ¾ú½À´Ï´Ù ]" + "\n");
+						textArea.append("[ ì„œë²„ê°€ ì‹œì‘ë˜ì—ˆìŠµë‹ˆë‹¤ ]" + "\n");
 						btn_ServerStart.setEnabled(false);
 						btn_ServerClose.setEnabled(true);
 						while(true){
 							s = ss.accept();
-							if((clientList.size() + 1) > MAX_CLIENT || gameStart == true){ // Á¤¿øÀÌ ÃÊ°úµÇ¾ú°Å³ª, °ÔÀÓÁßÀÌ¶ó¸é ¼ÒÄÏ ¿¬°á °ÅºÎ
+							if((clientList.size() + 1) > MAX_CLIENT || gameStart == true){ // ì •ì›ì´ ì´ˆê³¼ë˜ì—ˆê±°ë‚˜, ê²Œì„ì¤‘ì´ë¼ë©´ ì†Œì¼“ ì—°ê²° ê±°ë¶€
 								s.close();
 							}else{
 								Thread gm = new GameManager(s);
@@ -117,12 +117,12 @@ public class Mine_Server extends JFrame implements ActionListener
 				}
 			}.start();
 		}else if(e.getSource() == btn_ServerClose){
-			int select = JOptionPane.showConfirmDialog(null, "¼­¹ö¸¦ Á¤¸» Á¾·áÇÏ½Ã°Ú½À´Ï±î?", "JAVA CatchMind Server", JOptionPane.OK_CANCEL_OPTION);
+			int select = JOptionPane.showConfirmDialog(null, "ì„œë²„ë¥¼ ì •ë§ ì¢…ë£Œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?", "JAVA CatchMind Server", JOptionPane.OK_CANCEL_OPTION);
 			try{
 				if(select == JOptionPane.YES_OPTION){
 					ss.close();
 					label_ServerStatus.setText("[ Server Closed ]");
-					textArea.append("[ ¼­¹ö°¡ Á¾·áµÇ¾ú½À´Ï´Ù ]" + "\n");
+					textArea.append("[ ì„œë²„ê°€ ì¢…ë£Œë˜ì—ˆìŠµë‹ˆë‹¤ ]" + "\n");
 					btn_ServerStart.setEnabled(true);
 					btn_ServerClose.setEnabled(false);
 				}
@@ -130,7 +130,7 @@ public class Mine_Server extends JFrame implements ActionListener
 		}
 	}
 	
-	public void showSystemMsg(String msg){ // ½Ã½ºÅÛ ¸Ş½ÃÁö ¹× ¸í·É¾î ¼Û½Å
+	public void showSystemMsg(String msg){ // ì‹œìŠ¤í…œ ë©”ì‹œì§€ ë° ëª…ë ¹ì–´ ì†¡ì‹ 
 		Iterator<String> it = clientList.keySet().iterator();
 		while(it.hasNext()){
 			try{
@@ -141,7 +141,7 @@ public class Mine_Server extends JFrame implements ActionListener
 		}
 	}
 
-	// ³»ºÎ Å¬·¡½º (°ÔÀÓ °ü¸® ¹× ÅëÁ¦)
+	// ë‚´ë¶€ í´ë˜ìŠ¤ (ê²Œì„ ê´€ë¦¬ ë° í†µì œ)
 	public class GameManager extends Thread
 	{
 		Socket s;
@@ -160,39 +160,39 @@ public class Mine_Server extends JFrame implements ActionListener
 			String clientName = "";
 			try{
 				clientName = dis.readUTF();
-				if(!clientList.containsKey(clientName)){ // Áßº¹ ´Ğ³×ÀÓ ¹æÁö
+				if(!clientList.containsKey(clientName)){ // ì¤‘ë³µ ë‹‰ë„¤ì„ ë°©ì§€
 					clientList.put(clientName, dos);
 					clientInfo.put(clientName, score);
 				}else if(clientList.containsKey(clientName)){
-					s.close(); // ´Ğ³×ÀÓ Áßº¹½Ã, ¼ÒÄÏ ¿¬°á °ÅºÎ
+					s.close(); // ë‹‰ë„¤ì„ ì¤‘ë³µì‹œ, ì†Œì¼“ ì—°ê²° ê±°ë¶€
 				}
-				showSystemMsg("[ " + clientName + "´ÔÀÌ ÀÔÀåÇÏ¼Ì½À´Ï´Ù. ]\n(ÇöÀç Á¢¼ÓÀÚ ¼ö : " + clientList.size() + "¸í / 4¸í)");
-				textArea.append("[ ÇöÀç Á¢¼ÓÀÚ ¸í´Ü (ÃÑ " + clientList.size() + "¸í Á¢¼ÓÁß) ]\n");
+				showSystemMsg("[ " + clientName + "ë‹˜ì´ ì…ì¥í•˜ì…¨ìŠµë‹ˆë‹¤. ]\n(í˜„ì¬ ì ‘ì†ì ìˆ˜ : " + clientList.size() + "ëª… / 4ëª…)");
+				textArea.append("[ í˜„ì¬ ì ‘ì†ì ëª…ë‹¨ (ì´ " + clientList.size() + "ëª… ì ‘ì†ì¤‘) ]\n");
 				Iterator<String> it1 = clientList.keySet().iterator();
 				while(it1.hasNext()) textArea.append(it1.next() + "\n");
 				scrollPane.getVerticalScrollBar().setValue(scrollPane.getVerticalScrollBar().getMaximum());
-				setClientInfo(); // Å¬¶óÀÌ¾ğÆ® ¸ñ·Ï °»½Å
+				setClientInfo(); // í´ë¼ì´ì–¸íŠ¸ ëª©ë¡ ê°±ì‹ 
 				while(dis != null){
 					String msg = dis.readUTF();
-					filter(msg); // ¸í·É¾î ÇÊÅÍ¸µ
+					filter(msg); // ëª…ë ¹ì–´ í•„í„°ë§
 				}
 			}catch(IOException io){
-				clientList.remove(clientName); clientInfo.remove(clientName); // Å¬¶óÀÌ¾ğÆ® ÅğÀå½Ã Á¦°Å
+				clientList.remove(clientName); clientInfo.remove(clientName); // í´ë¼ì´ì–¸íŠ¸ í‡´ì¥ì‹œ ì œê±°
 				closeAll();
-				if(clientList.isEmpty() == true){ // ¼­¹ö¿¡ ³²Àº Å¬¶óÀÌ¾ğÆ®°¡ ÇÏ³ªµµ ¾ø´Ù¸é, ¼­¹ö ´İ±â
+				if(clientList.isEmpty() == true){ // ì„œë²„ì— ë‚¨ì€ í´ë¼ì´ì–¸íŠ¸ê°€ í•˜ë‚˜ë„ ì—†ë‹¤ë©´, ì„œë²„ ë‹«ê¸°
 					try{
 						ss.close(); System.exit(0);
 					}catch(IOException e){}
 				}
-				showSystemMsg("[ " + clientName + "´ÔÀÌ ÅğÀåÇÏ¼Ì½À´Ï´Ù. ]\n(ÇöÀç Á¢¼ÓÀÚ ¼ö : " + clientList.size() + "¸í / 4¸í)");
-				textArea.append("[ ÇöÀç Á¢¼ÓÀÚ ¸í´Ü (ÃÑ " + clientList.size() + "¸í Á¢¼ÓÁß) ]\n");
+				showSystemMsg("[ " + clientName + "ë‹˜ì´ í‡´ì¥í•˜ì…¨ìŠµë‹ˆë‹¤. ]\n(í˜„ì¬ ì ‘ì†ì ìˆ˜ : " + clientList.size() + "ëª… / 4ëª…)");
+				textArea.append("[ í˜„ì¬ ì ‘ì†ì ëª…ë‹¨ (ì´ " + clientList.size() + "ëª… ì ‘ì†ì¤‘) ]\n");
 				Iterator<String> it1 = clientList.keySet().iterator();
 				while(it1.hasNext()) textArea.append(it1.next() + "\n");
 				scrollPane.getVerticalScrollBar().setValue(scrollPane.getVerticalScrollBar().getMaximum());
-				setClientInfo(); // Å¬¶óÀÌ¾ğÆ® ¸ñ·Ï °»½Å
-				readyPlayer = 0; // »õ·Î¿î Å¬¶óÀÌ¾ğÆ®°¡ Á¢¼ÓÇØµµ °ÔÀÓ ½ÃÀÛ¿¡ ¹®Á¦°¡ ¾øµµ·Ï º¯¼ö ÃÊ±âÈ­
+				setClientInfo(); // í´ë¼ì´ì–¸íŠ¸ ëª©ë¡ ê°±ì‹ 
+				readyPlayer = 0; // ìƒˆë¡œìš´ í´ë¼ì´ì–¸íŠ¸ê°€ ì ‘ì†í•´ë„ ê²Œì„ ì‹œì‘ì— ë¬¸ì œê°€ ì—†ë„ë¡ ë³€ìˆ˜ ì´ˆê¸°í™”
 				gameStart = false;
-				showSystemMsg("//GmEnd"); // Å¬¶óÀÌ¾ğÆ® ÅğÀå½Ã, Áï½Ã ¶ó¿îµå Á¾·á
+				showSystemMsg("//GmEnd"); // í´ë¼ì´ì–¸íŠ¸ í‡´ì¥ì‹œ, ì¦‰ì‹œ ë¼ìš´ë“œ ì¢…ë£Œ
 			}
 		}
 		
@@ -214,70 +214,70 @@ public class Mine_Server extends JFrame implements ActionListener
 			    index++;
 			}
 			for(int i=0; i<clientList.size(); i++){
-				showSystemMsg("//CList" + keys[i] + " " + values[i] + "#" + i); // ¸í·É¾î : Å¬¶óÀÌ¾ğÆ® ¸ñ·Ï °»½Å
+				showSystemMsg("//CList" + keys[i] + " " + values[i] + "#" + i); // ëª…ë ¹ì–´ : í´ë¼ì´ì–¸íŠ¸ ëª©ë¡ ê°±ì‹ 
 			}
 		}
 		
-		public void filter(String msg) { // ¸í·É¾î ÇÊÅÍ¸µ
+		public void filter(String msg) { // ëª…ë ¹ì–´ í•„í„°ë§
 			String temp = msg.substring(0, 7);
-			if(temp.equals("//Chat ")){ // ¸í·É¾î : ÀÏ¹İ Ã¤ÆÃ
+			if(temp.equals("//Chat ")){ // ëª…ë ¹ì–´ : ì¼ë°˜ ì±„íŒ…
 				answerCheck(msg.substring(7).trim());
 				showSystemMsg(msg.substring(7));
-			}else if(temp.equals("//Ready")){ // ¸í·É¾î : Å¬¶óÀÌ¾ğÆ® ÁØºñ »óÅÂ Ã¼Å©
+			}else if(temp.equals("//Ready")){ // ëª…ë ¹ì–´ : í´ë¼ì´ì–¸íŠ¸ ì¤€ë¹„ ìƒíƒœ ì²´í¬
 				 readyPlayer++;
-				 if(readyPlayer >= 2 && readyPlayer == clientList.size()){ // 2¸í ÀÌ»ó && ¸ğµç Å¬¶óÀÌ¾ğÆ®°¡ ÁØºñµÇ¾úÀ» °æ¿ì
+				 if(readyPlayer >= 2 && readyPlayer == clientList.size()){ // 2ëª… ì´ìƒ && ëª¨ë“  í´ë¼ì´ì–¸íŠ¸ê°€ ì¤€ë¹„ë˜ì—ˆì„ ê²½ìš°
 					 for(int i=3; i>0; i--){
 						 try{
-						 	showSystemMsg("[ ¸ğµç Âü¿©ÀÚµéÀÌ ÁØºñµÇ¾ú½À´Ï´Ù. ]\n[ " + i + "ÃÊ ÈÄ °ÔÀÓÀ» ½ÃÀÛÇÕ´Ï´Ù .. ]");
+						 	showSystemMsg("[ ëª¨ë“  ì°¸ì—¬ìë“¤ì´ ì¤€ë¹„ë˜ì—ˆìŠµë‹ˆë‹¤. ]\n[ " + i + "ì´ˆ í›„ ê²Œì„ì„ ì‹œì‘í•©ë‹ˆë‹¤ .. ]");
 						 	Thread.sleep(1000);
 						 }catch(InterruptedException ie){}
 					 }
-					 ArrayList<String> authList = new ArrayList<String>(); // ¹®Á¦ ÃâÁ¦ÀÚ ·£´ı ¼±ÅÃ
+					 ArrayList<String> authList = new ArrayList<String>(); // ë¬¸ì œ ì¶œì œì ëœë¤ ì„ íƒ
 					 Iterator<String> it = clientList.keySet().iterator();
 					 while(it.hasNext()) authList.add(it.next());
 					 Random rd = new Random();
-					 showSystemMsg("//Auth " + authList.get(rd.nextInt(authList.size()))); // ¸í·É¾î : ¹®Á¦ ÃâÁ¦ÀÚ ·£´ı ¼±ÅÃ
-					 Exam ex = new Exam(); ex.start(); // ¹®Á¦ ÃâÁ¦
-					 StopWatch tm = new StopWatch(); tm.start(); // Å¸ÀÌ¸Ó ½ÃÀÛ
+					 showSystemMsg("//Auth " + authList.get(rd.nextInt(authList.size()))); // ëª…ë ¹ì–´ : ë¬¸ì œ ì¶œì œì ëœë¤ ì„ íƒ
+					 Exam ex = new Exam(); ex.start(); // ë¬¸ì œ ì¶œì œ
+					 StopWatch tm = new StopWatch(); tm.start(); // íƒ€ì´ë¨¸ ì‹œì‘
 					 gameStart = true;
-					 showSystemMsg("//Start"); // ¸í·É¾î : °ÔÀÓ ½ÃÀÛ
+					 showSystemMsg("//Start"); // ëª…ë ¹ì–´ : ê²Œì„ ì‹œì‘
 				 }
-			}else if(temp.equals("//Mouse")){ // ¸í·É¾î : ¸¶¿ì½º ÁÂÇ¥ ¼ö½Å
+			}else if(temp.equals("//Mouse")){ // ëª…ë ¹ì–´ : ë§ˆìš°ìŠ¤ ì¢Œí‘œ ìˆ˜ì‹ 
 				showSystemMsg(msg);
-			}else if(temp.equals("//Color")){ // ¸í·É¾î : ÄÃ·¯ ¼³Á¤
+			}else if(temp.equals("//Color")){ // ëª…ë ¹ì–´ : ì»¬ëŸ¬ ì„¤ì •
 				showSystemMsg(msg);
-			}else if(temp.equals("//Erase")){ // ¸í·É¾î : Áö¿ì±â
+			}else if(temp.equals("//Erase")){ // ëª…ë ¹ì–´ : ì§€ìš°ê¸°
 				showSystemMsg(msg);
-			}else if(temp.equals("//ErAll")){ // ¸í·É¾î : ¸ğµÎ Áö¿ì±â
+			}else if(temp.equals("//ErAll")){ // ëª…ë ¹ì–´ : ëª¨ë‘ ì§€ìš°ê¸°
 				showSystemMsg(msg);
-			}else if(temp.equals("//GmGG ")){ // ¸í·É¾î : °ÔÀÓ Á¾·á (ÃâÁ¦ÀÚ°¡ °ÔÀÓÀ» Æ÷±âÇßÀ» °æ¿ì)
-				showSystemMsg("[ ÃâÁ¦ÀÚ°¡ °ÔÀÓÀ» Æ÷±âÇß½À´Ï´Ù !! ]");
+			}else if(temp.equals("//GmGG ")){ // ëª…ë ¹ì–´ : ê²Œì„ ì¢…ë£Œ (ì¶œì œìê°€ ê²Œì„ì„ í¬ê¸°í–ˆì„ ê²½ìš°)
+				showSystemMsg("[ ì¶œì œìê°€ ê²Œì„ì„ í¬ê¸°í–ˆìŠµë‹ˆë‹¤ !! ]");
 				showSystemMsg(msg);
 				readyPlayer = 0;
 				gameStart = false;
-			}else if(temp.equals("//GmEnd")){ // ¸í·É¾î : °ÔÀÓ Á¾·á (½Ã°£ ÃÊ°ú³ª ÀÌÅ»ÀÚ ¹ß»ıÀ¸·Î °ÔÀÓÀÌ Á¾·áµÇ´Â °æ¿ì)
-				showSystemMsg("[ °ÔÀÓÀÌ Á¾·áµÇ¾ú½À´Ï´Ù !! ]");
+			}else if(temp.equals("//GmEnd")){ // ëª…ë ¹ì–´ : ê²Œì„ ì¢…ë£Œ (ì‹œê°„ ì´ˆê³¼ë‚˜ ì´íƒˆì ë°œìƒìœ¼ë¡œ ê²Œì„ì´ ì¢…ë£Œë˜ëŠ” ê²½ìš°)
+				showSystemMsg("[ ê²Œì„ì´ ì¢…ë£Œë˜ì—ˆìŠµë‹ˆë‹¤ !! ]");
 				showSystemMsg(msg);
 				readyPlayer = 0;
 				gameStart = false;
 			}
 		}
 		
-		public void answerCheck(String msg){ // Á¤´ä Ã¼Å©
-			String tempNick = msg.substring(0, msg.indexOf(" ")); // Á¤´äÀÚ ´Ğ³×ÀÓ Ã¼Å©
-			String tempAns = msg.substring(msg.lastIndexOf(" ") + 1); // Á¤´ä ³»¿ë Ã¼Å©
-			if(tempAns.equals(line) && gameStart == true){ // Á¤´äÀÚ Áßº¹ ¹æÁö¸¦ À§ÇÑ °ÔÀÓ ½ÃÀÛ »óÅÂ Ã¼Å©
+		public void answerCheck(String msg){ // ì •ë‹µ ì²´í¬
+			String tempNick = msg.substring(0, msg.indexOf(" ")); // ì •ë‹µì ë‹‰ë„¤ì„ ì²´í¬
+			String tempAns = msg.substring(msg.lastIndexOf(" ") + 1); // ì •ë‹µ ë‚´ìš© ì²´í¬
+			if(tempAns.equals(line) && gameStart == true){ // ì •ë‹µì ì¤‘ë³µ ë°©ì§€ë¥¼ ìœ„í•œ ê²Œì„ ì‹œì‘ ìƒíƒœ ì²´í¬
 				showSystemMsg("//GmEnd");
 				gameStart = false;
-				readyPlayer = 0; // »õ·Î¿î °ÔÀÓÀ» ½ÃÀÛÇÏ±â À§ÇÑ º¯¼ö ÃÊ±âÈ­
-				showSystemMsg("[ " + tempNick + "´Ô Á¤´ä !! ]");
-				clientInfo.put(tempNick, clientInfo.get(tempNick) + 1); // Á¤´äÀÚ Á¡¼ö Ãß°¡
-				setClientInfo(); // Á¡¼ö Ç¥½Ã¸¦ À§ÇÑ Å¬¶óÀÌ¾ğÆ® ¸ñ·Ï °»½Å
+				readyPlayer = 0; // ìƒˆë¡œìš´ ê²Œì„ì„ ì‹œì‘í•˜ê¸° ìœ„í•œ ë³€ìˆ˜ ì´ˆê¸°í™”
+				showSystemMsg("[ " + tempNick + "ë‹˜ ì •ë‹µ !! ]");
+				clientInfo.put(tempNick, clientInfo.get(tempNick) + 1); // ì •ë‹µì ì ìˆ˜ ì¶”ê°€
+				setClientInfo(); // ì ìˆ˜ í‘œì‹œë¥¼ ìœ„í•œ í´ë¼ì´ì–¸íŠ¸ ëª©ë¡ ê°±ì‹ 
 			}
 		}
 	}
 	
-	// ³»ºÎ Å¬·¡½º - ·£´ı ¹®Á¦ ÃâÁ¦
+	// ë‚´ë¶€ í´ë˜ìŠ¤ - ëœë¤ ë¬¸ì œ ì¶œì œ
 	class Exam extends Thread
 	{
 		int i = 0;
@@ -295,7 +295,7 @@ public class Mine_Server extends JFrame implements ActionListener
 		}
 	}
 	
-	// ³»ºÎ Å¬·¡½º - Å¸ÀÌ¸Ó
+	// ë‚´ë¶€ í´ë˜ìŠ¤ - íƒ€ì´ë¨¸
 	class StopWatch extends Thread
 	{
 		long preTime = System.currentTimeMillis();
@@ -307,7 +307,7 @@ public class Mine_Server extends JFrame implements ActionListener
 					long time = System.currentTimeMillis() - preTime;
 					showSystemMsg("//Timer" + (toTime(time)));
 					if(toTime(time).equals("00 : 00")){
-						showSystemMsg("//GmEnd"); // ½Ã°£ ÃÊ°ú½Ã, °ÔÀÓ Á¾·á
+						showSystemMsg("//GmEnd"); // ì‹œê°„ ì´ˆê³¼ì‹œ, ê²Œì„ ì¢…ë£Œ
 						readyPlayer = 0;
 						gameStart = false;
 						break;
