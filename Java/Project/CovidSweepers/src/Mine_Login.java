@@ -20,7 +20,7 @@ public class Mine_Login extends JFrame implements ActionListener {
 
 		label_nickName = new JLabel(new ImageIcon("image/nm.png"));
 		label_Ip = new JLabel(new ImageIcon("image/ip.png"));
-		label_Main = new JLabel(new ImageIcon("image/Main.png"));
+		label_Main = new JLabel(new ImageIcon("image/loginLogo.png"));
 		tf_nickName = new JTextField(15);
 		tf_Ip = new JTextField(15);
 		btn_Connect = new JButton("접속");
