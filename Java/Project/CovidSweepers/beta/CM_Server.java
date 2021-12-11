@@ -10,7 +10,7 @@ public class CM_Server extends JFrame implements ActionListener
 {
 	JPanel contentPane, panel_Main, panel_TextArea, panel_Btn;
 	JScrollPane scrollPane;
-	JTextArea textArea;
+	JTextArea textArea, announceArea;
 	JLabel label_ServerStatus;
 	JButton btn_ServerStart, btn_ServerClose;
 	
@@ -225,7 +225,7 @@ public class CM_Server extends JFrame implements ActionListener
 				showSystemMsg(msg.substring(7));
 			}else if(temp.equals("//Ready")){ // 명령어 : 클라이언트 준비 상태 체크
 				 readyPlayer++;
-				 if(readyPlayer >= 2 && readyPlayer == clientList.size()){ // 2명 이상 && 모든 클라이언트가 준비되었을 경우
+				 if(readyPlayer >= 1 && readyPlayer == clientList.size()){ // 2명 이상 && 모든 클라이언트가 준비되었을 경우
 					 for(int i=3; i>0; i--){
 						 try{
 						 	showSystemMsg("[ 모든 참여자들이 준비되었습니다. ]\n[ " + i + "초 후 게임을 시작합니다 .. ]");

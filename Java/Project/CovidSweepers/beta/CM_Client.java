@@ -289,78 +289,6 @@ public class CM_Client extends JFrame implements ActionListener
       canvas.addMouseMotionListener(ch);
       */
 
-      /*
-      btn_Color1 = new JButton(new ImageIcon("image\\red.png"));
-      btn_Color1.setPressedIcon(new ImageIcon("image\\red_clicked.png"));
-      btn_Color1.setFocusPainted(false);
-      btn_Color1.setContentAreaFilled(false);
-      btn_Color1.setBorder(null);
-      btn_Color1.setBounds(179, 10, 75, 37);
-      panel_Option.add(btn_Color1);
-      btn_Color1.addActionListener(ch);
-      
-      btn_Color2 = new JButton(new ImageIcon("image\\green.png"));
-      btn_Color2.setPressedIcon(new ImageIcon("image\\green_clicked.png"));
-      btn_Color2.setFocusPainted(false);
-      btn_Color2.setContentAreaFilled(false);
-      btn_Color2.setBorder(null);
-      btn_Color2.setBounds(266, 10, 75, 37);
-      panel_Option.add(btn_Color2);
-      btn_Color2.addActionListener(ch);
-      
-      btn_Color3 = new JButton(new ImageIcon("image\\blue.png"));
-      btn_Color3.setPressedIcon(new ImageIcon("image\\blue_clicked.png"));
-      btn_Color3.setFocusPainted(false);
-      btn_Color3.setContentAreaFilled(false);
-      btn_Color3.setBorder(null);
-      btn_Color3.setBounds(353, 10, 75, 37);
-      panel_Option.add(btn_Color3);
-      btn_Color3.addActionListener(ch);
-      
-      btn_Color4 = new JButton(new ImageIcon("image\\yellow.png"));
-      btn_Color4.setPressedIcon(new ImageIcon("image\\yellow_clicked.png"));
-      btn_Color4.setFocusPainted(false);
-      btn_Color4.setContentAreaFilled(false);
-      btn_Color4.setBorder(null);
-      btn_Color4.setBounds(440, 10, 75, 37);
-      panel_Option.add(btn_Color4);
-      btn_Color4.addActionListener(ch);
-      
-      btn_Color5 = new JButton(new ImageIcon("image\\black.png"));
-      btn_Color5.setPressedIcon(new ImageIcon("image\\black_clicked.png"));
-      btn_Color5.setFocusPainted(false);
-      btn_Color5.setContentAreaFilled(false);
-      btn_Color5.setBorder(null);
-      btn_Color5.setBounds(527, 10, 75, 37);
-      panel_Option.add(btn_Color5);
-      btn_Color5.addActionListener(ch);
-      
-      btn_Erase = new JButton(new ImageIcon("image\\erase.png"));
-      btn_Erase.setPressedIcon(new ImageIcon("image\\erase_clicked.png"));
-      btn_Erase.setFocusPainted(false);
-      btn_Erase.setContentAreaFilled(false);
-      btn_Erase.setBorder(null);
-      btn_Erase.setBounds(641, 10, 60, 37);
-      panel_Option.add(btn_Erase);
-      btn_Erase.addActionListener(ch);
-      
-      btn_EraseAll = new JButton(new ImageIcon("image\\eraseall.png"));
-      btn_EraseAll.setPressedIcon(new ImageIcon("image\\eraseall_clicked.png"));
-      btn_EraseAll.setFocusPainted(false);
-      btn_EraseAll.setContentAreaFilled(false);
-      btn_EraseAll.setBorder(null);
-      btn_EraseAll.setBounds(713, 10, 90, 37);
-      panel_Option.add(btn_EraseAll);
-      btn_EraseAll.addActionListener(ch);
-      
-      btn_GG = new JButton(new ImageIcon("image\\RC.png"));
-      btn_GG.setPressedIcon(new ImageIcon("image\\RS.jpg"));
-      btn_GG.setFocusPainted(false);
-      btn_GG.setContentAreaFilled(false);
-      btn_GG.setBorder(null);
-      btn_GG.setBounds(855, 10, 100, 37);
-      panel_Option.add(btn_GG);
-      */
 
 
       //하단영역
@@ -396,15 +324,16 @@ public class CM_Client extends JFrame implements ActionListener
       announceScroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
       announceScroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
       announceScroll.setBounds(325, 0, 638, 57);
+      announceScroll.getVerticalScrollBar().setValue(scrollPane.getVerticalScrollBar().getMaximum());
       panel_Option.add(announceScroll);
 
-      announceArea = new JTextArea("SystemMsg 출력창\n둘째줄확인중\n셋째줄확인중");
+      announceArea = new JTextArea("SystemMsg 출력창");
       announceArea.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
-      announceArea.setFont(new Font("나눔바른고딕", Font.BOLD, 20));
-      announceArea.setForeground(Color.WHITE);
+      announceArea.setFont(new Font("나눔바른고딕", Font.PLAIN, 15));
+      announceArea.setForeground(Color.BLACK);
       announceArea.setEditable(false);
       announceArea.setLineWrap(true);
-      announceArea.setBackground(new Color(255, 164, 38));
+      announceArea.setBackground(new Color(255, 215, 161));
       announceScroll.setViewportView(announceArea);
     
 
@@ -516,18 +445,20 @@ public class CM_Client extends JFrame implements ActionListener
    class Listener extends Thread // 
    {
       Socket s;
-      DataInputStream dis;
+      DataInputStream dis, disS;
 
       Listener(Socket s){
          this.s = s;
          try{
             dis = new DataInputStream(this.s.getInputStream());
+            //disS = new DataInputStream(this.s.getInputStream());
          }catch(IOException io){}
       }
       public void run(){
          while(dis !=null ){
             try{
                String msg = dis.readUTF();
+              //String msgS = disS.readUTF();
 
                if(msg.startsWith("//CList")){ // 명령어 : 클라이언트 목록 갱신
                   playerName = msg.substring(7, msg.indexOf(" "));
@@ -536,18 +467,13 @@ public class CM_Client extends JFrame implements ActionListener
                   updateClientList(); // 클라이언트 목록 갱신
                }else if(msg.startsWith("//Start")){ // 명령어 : 게임 시작 ( + 타이머)
                   gameStart = true;
-         /*         g = canvas.getGraphics(); // 캔버스 설정 초기화
-                  g.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-                  Brush canvas2 = (Brush)canvas;
-                  canvas2.color = Color.BLACK;
-                  color = Color.BLACK;
-                  bgm("//Play"); // BGM 재생
-         */      }else if(msg.equals("//GmGG ")){ // 명령어 : 출제자 게임 포기
+                  //bgm("//Play"); // BGM 재생
+                  }else if(msg.equals("//GmGG ")){ // 명령어 : 출제자 게임 포기
                   gameStart = false;
                   auth = false;
                   textField.setEnabled(true);
                   btn_Ready.setEnabled(true);
-         //         bgm("//Stop"); // BGM 정지
+                  //bgm("//Stop"); // BGM 정지
                }else if(msg.equals("//GmEnd")){ // 명령어 : 게임 종료
                   gameStart = false;
                   auth = false;
@@ -555,16 +481,10 @@ public class CM_Client extends JFrame implements ActionListener
                   btn_Ready.setEnabled(true);
                   label_Timer.setText("00 : 00");
          //         bgm("//Stop"); // BGM 정지
-               }else if(msg.startsWith("//RExam")){ // 명령어 : 문제 랜덤 출제
-         /*         if(auth == true){
-                     label_Exam_Sub.setText(msg.substring(7));
-                  }else{
-                     label_Exam_Sub.setText(" ??? ");
-                  }
-         */      }else if(msg.startsWith("//Auth ")){ // 명령어 : 출제자 권한 부여
+               }else if(msg.startsWith("//Auth ")){ // 명령어 : 출제자 권한 부여
                   if(CM_Login.nickName.equals(msg.substring(7))){
                      auth = true;
-                     textArea.append("\n[ 당신이 문제 출제자입니다 !! ]" + "\n\n");
+                     announceArea.append("\n[ 당신이 문제 출제자입니다 !! ]" + "\n\n");
                      textField.setEnabled(false);
                   }
                }else if(msg.startsWith("//Mouse")){ // 명령어 : 캔버스 공유 (마우스 좌표 수신)
