@@ -294,8 +294,8 @@ public class CM_Client extends JFrame implements ActionListener
       //하단영역
       panel_Option = new JPanel();
       panel_Option.setOpaque(true);
-      panel_Option.setBackground(Color.WHITE);
-      panel_Option.setBounds(7, 615, 967, 57);
+      panel_Option.setBackground(Color.BLACK);
+      panel_Option.setBounds(7, 615, 305  , 57);
       panel_Main.add(panel_Option);
       panel_Option.setLayout(null);
 
@@ -311,14 +311,15 @@ public class CM_Client extends JFrame implements ActionListener
       panel_Option.add(label_Timer_Back);
       label_Timer_Back.add(label_Timer);
 
-      btn_BGM = new JButton(new ImageIcon("image\\BGM.png"));
-      btn_BGM.setPressedIcon(new ImageIcon("image\\BGMClicked.png"));
+      btn_BGM = new JButton(new ImageIcon("image\\bgmOff.png"));
+      btn_BGM.setPressedIcon(new ImageIcon("image\\bgmOn.png"));
       btn_BGM.setFocusPainted(false);
       btn_BGM.setBorderPainted(false);
       btn_BGM.setContentAreaFilled(false);
       btn_BGM.setBounds(155, 0, 152, 57);
       panel_Option.add(btn_BGM);
-
+      
+/*
       announceScroll = new JScrollPane(announceArea);
       announceScroll.setFont(new Font("나눔바른고딕", Font.PLAIN, 13));
       announceScroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -335,7 +336,7 @@ public class CM_Client extends JFrame implements ActionListener
       announceArea.setLineWrap(true);
       announceArea.setBackground(new Color(255, 215, 161));
       announceScroll.setViewportView(announceArea);
-    
+    */
 
 /*
       textArea1 = new JTextArea();
