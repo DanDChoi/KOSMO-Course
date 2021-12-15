@@ -91,7 +91,6 @@ public class CM_Login extends JFrame implements ActionListener {
 		setVisible(true);
 		setTitle("Covid Sweepers Login");
 		setSize(450, 300);
-		// pack();
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -112,7 +111,7 @@ public class CM_Login extends JFrame implements ActionListener {
 				if (temp.matches(
 						"(^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$)")) {
 					ip = temp;
-					JOptionPane.showMessageDialog(null, "             로그인 성공!", "JAVA CatchMind LOGIN",
+					JOptionPane.showMessageDialog(null, "             로그인 성공!", "Covid Sweepers LOGIN",
 							JOptionPane.INFORMATION_MESSAGE);
 					btn_Connect.setEnabled(false);
 					tf_nickName.setEnabled(false);

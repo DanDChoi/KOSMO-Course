@@ -4,10 +4,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
-//import java.lang.Math.*;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
 import java.util.Random;
+import javax.sound.sampled.*;
 
 public class CM_Client extends JFrame implements ActionListener
 {
@@ -20,13 +18,23 @@ public class CM_Client extends JFrame implements ActionListener
    JTextField textField;
    JTextArea textArea;
    JScrollPane scrollPane;
+   
+   int vScore;//211214 추가
 
    //문제 탑로고
    int port = 7777;
    String playerName, playerScore, playerIdx; // 클라이언트 이름, 점수, 인덱스 관리
    boolean gameStart, auth; // 게임 시작 상태 체크 & 출제자 권한 변수
+   Socket s;
    
-   //MineSweeper ms;
+   //2021-12-14 추가 노래 재생 여부 변수
+   boolean playing=false; //노래가 재생여부 확인
+   File file = new File("bgm\\Search.wav");
+   AudioInputStream audioStream;
+   Clip clip;
+   ImageIcon iOn = new ImageIcon("image\\bgmOn.png"); //버튼에 넣을 이미지아이콘 생성
+   ImageIcon iStop = new ImageIcon("image\\bgmOff.png");
+   
    public CM_Client(){
    //   ms = new MineSweeper(this);
       // 기본 GUI 설정
@@ -89,28 +97,28 @@ public class CM_Client extends JFrame implements ActionListener
       panelCList.add(label_Flag4);
      
      //맞춘갯수 영역 (주사기 그림 아래 위치)
-     label_Flag1_syringe1 = new Label("[ 맞춘갯수 ]");
+     label_Flag1_syringe1 = new Label(" ");
       label_Flag1_syringe1.setFont(new Font("나눔바른고딕", Font.BOLD, 13));
       label_Flag1_syringe1.setAlignment(Label.CENTER);
       label_Flag1_syringe1.setBackground(Color.WHITE);
       label_Flag1_syringe1.setBounds(160, 95, 120, 30);
       panelCList.add(label_Flag1_syringe1);
      
-     label_Flag1_syringe2 = new Label("[ 맞춘갯수 ]");
+     label_Flag1_syringe2 = new Label(" ");
       label_Flag1_syringe2.setFont(new Font("나눔바른고딕", Font.BOLD, 13));
       label_Flag1_syringe2.setAlignment(Label.CENTER);
       label_Flag1_syringe2.setBackground(Color.WHITE);
       label_Flag1_syringe2.setBounds(160, 215, 120, 30);
       panelCList.add(label_Flag1_syringe2);
       
-     label_Flag1_syringe3 = new Label("[ 맞춘갯수 ]");
+     label_Flag1_syringe3 = new Label(" ");
       label_Flag1_syringe3.setFont(new Font("나눔바른고딕", Font.BOLD, 13));
       label_Flag1_syringe3.setAlignment(Label.CENTER);
       label_Flag1_syringe3.setBackground(Color.WHITE);
       label_Flag1_syringe3.setBounds(160, 335, 120, 30);
       panelCList.add(label_Flag1_syringe3);
       
-     label_Flag1_syringe4 = new Label("[ 맞춘갯수 ]");
+     label_Flag1_syringe4 = new Label(" ");
       label_Flag1_syringe4.setFont(new Font("나눔바른고딕", Font.BOLD, 13));
       label_Flag1_syringe4.setAlignment(Label.CENTER);
       label_Flag1_syringe4.setBackground(Color.WHITE);
@@ -201,9 +209,9 @@ public class CM_Client extends JFrame implements ActionListener
       btn_Exit.setContentAreaFilled(false);
       btn_Exit.setBounds(1118, 11, 115, 65);
       Top_Background.add(btn_Exit);
-      btn_Exit.addActionListener(this); // aaddActionListener(this) 있어야지 버튼 누르면 실행됨
+      btn_Exit.addActionListener(this);
       
-      // 로고 영역
+      //잔여 바이러스 수
       JLabel label_logo_left = new JLabel(new ImageIcon("image\\leftover.png"));
       label_logo_left.setOpaque(false);
       label_logo_left.setBorder(null);
@@ -217,6 +225,7 @@ public class CM_Client extends JFrame implements ActionListener
       Top_Background.add(label_leftover);
       Top_Background.add(label_logo_left);
 
+      //잔여 클릭 수
       JLabel label_logo_right = new JLabel(new ImageIcon("image\\leftover1.png"));
       label_logo_right.setOpaque(false);
       label_logo_right.setBorder(null);
@@ -261,7 +270,7 @@ public class CM_Client extends JFrame implements ActionListener
  /*---2021-12-13 지뢰판 15*15 수정, 지뢰판 위치와 크기 수정---*/
      panel_Mine = new JPanel(new GridLayout(15,15)); //지뢰판 15*15
      panel_Mine.setBounds(345,105,575,575);
-      panel_Main.add(panel_Mine);
+     panel_Main.add(panel_Mine);
      prepareField(); //지뢰찾기 게임필드를 초기화 하는 메소드 호출
 
      //좌측하단부분 (타이머, BGM버튼)
@@ -284,23 +293,36 @@ public class CM_Client extends JFrame implements ActionListener
       panel_Option.add(label_Timer_Back);
       label_Timer_Back.add(label_Timer);
 
-      btn_BGM = new JButton(new ImageIcon("image\\bgmOff.png"));
-      btn_BGM.setPressedIcon(new ImageIcon("image\\bgmOn.png"));
+      btn_BGM = new JButton(new ImageIcon("image\\bgmOn.png"));
+      //btn_BGM.setPressedIcon(new ImageIcon("image\\bgmOn.png"));
       btn_BGM.setFocusPainted(false);
       btn_BGM.setBorderPainted(false);
       btn_BGM.setContentAreaFilled(false);
       btn_BGM.setBounds(155, 0, 152, 57);
+      btn_BGM.addActionListener(this); //브금 버튼 액션리스너 추가
       panel_Option.add(btn_BGM);
-      btn_BGM.addActionListener(this);
-
 
       startChat();
+	 // ClickCount();
+	  
    }
-  
+/*----------211214-----------------*/
+   CM_Client(Socket s){ 
+		this.s = s;
+		DataOutputStream dos; //클라이언트에 데이터를 뿌리기 위해 사용
+		  try{
+			dos = new DataOutputStream(s.getOutputStream()); //다른 클라이언트가 출력한 값 출력하기
+			String score = Integer.toString(vScore);
+			String score1 = ("//score"+score);
+			dos.writeUTF(score1);
+		  }catch(IOException io){}
+	  }
+   
+   
    public void startChat(){
       String nickName = CM_Login.nickName;
       String ip = CM_Login.ip;
-
+	  
       try{
          Socket s = new Socket(ip, port);
          Sender sender = new Sender(s, nickName);
@@ -319,7 +341,37 @@ public class CM_Client extends JFrame implements ActionListener
          System.exit(0);
       }
    }
-
+   /*
+   public void ClickCount(){
+	  String ip = CM_Login.ip;
+	  try{
+	  Socket s = new Socket(ip, port);
+	  senderClick sc = new senderClick(s);
+	  new Thread(sc).start();
+	  }catch(UnknownHostException uh){
+	  }catch(IOException io){}
+   
+   }
+   class senderClick extends Thread
+   {	DataOutputStream dos;
+		Socket s;
+		String myClick1;
+		senderClick(Socket s){
+         this.s = s;
+         try{
+            dos = new DataOutputStream(this.s.getOutputStream());
+         }catch(IOException io){}
+      }
+		
+	public void run(){
+		try{
+		myClick1 = Integer.toString(vScore);
+		dos.writeUTF(myClick1);
+		}catch(IOException io){}
+	}
+   }*/
+   
+   
 
    // 내부 클래스 송신
    class Sender extends Thread implements KeyListener, ActionListener
@@ -327,12 +379,13 @@ public class CM_Client extends JFrame implements ActionListener
       DataOutputStream dos;
       Socket s;
       String nickName;
-
+	  String score;
       Sender(Socket s, String nickName){
          this.s = s;
          try{
             dos = new DataOutputStream(this.s.getOutputStream());
             this.nickName = nickName;
+
          }catch(IOException io){}
       }
 
@@ -341,17 +394,6 @@ public class CM_Client extends JFrame implements ActionListener
             dos.writeUTF(nickName);
          }catch(IOException io){}
       }
-
-      public void audio() { 
-         try { 
-            File file = new File("bgm/bgm.mp3"); 
-            Clip clip = AudioSystem.getClip(); 
-            clip.open(AudioSystem.getAudioInputStream(file)); 
-            clip.start();
-         }catch(Exception e){
-            //System.out.println("put wav file");
-         }
-      }
       //종료 
       public void actionPerformed(ActionEvent e){
          if(e.getSource() == btn_Ready){ // '준비' 버튼
@@ -359,11 +401,9 @@ public class CM_Client extends JFrame implements ActionListener
                dos.writeUTF("//Chat " + "[ " + nickName + " 님 준비 완료 ! ]");
                dos.flush();
                dos.writeUTF("//Ready");
-               dos.flush();
+               dos.flush();  
                btn_Ready.setEnabled(false);
             }catch(IOException io){}
-         }else if(e.getSource() == btn_BGM){
-               audio();
          }
       }
 
@@ -379,8 +419,16 @@ public class CM_Client extends JFrame implements ActionListener
       }
       public void keyTyped(KeyEvent e){}
       public void keyPressed(KeyEvent e){}
+	  
+	 /* public void click4(){
+		  try{
+			String score = Integer.toString(vScore);
+			dos.writeUTF(score);
+		  }catch(IOException io){}
+	  }*/
    }
-   
+
+
    // 내부 클래스 - 수신
    class Listener extends Thread 
    {
@@ -397,20 +445,21 @@ public class CM_Client extends JFrame implements ActionListener
          while(dis !=null ){
             try{
                String msg = dis.readUTF();
-
                if(msg.startsWith("//CList")){ // 명령어 : 클라이언트 목록 갱신
                   playerName = msg.substring(7, msg.indexOf(" "));
-                  playerScore = msg.substring(msg.indexOf(" ") + 1, msg.indexOf("#"));
+                  playerScore = msg.substring(msg.indexOf(" ") + vScore, msg.indexOf("#"));
                   playerIdx = msg.substring(msg.indexOf("#") + 1);
                   updateClientList(); // 클라이언트 목록 갱신
                }else if(msg.startsWith("//Start")){ // 명령어 : 게임 시작 ( + 타이머)
                  try {
                  UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-              }
-              catch (Exception e) {
-                 System.out.println(e);
-              }
-                 prepareField();
+                 }catch (Exception e) {
+                	 System.out.println(e);
+                 }
+                  prepareField();
+				  leftMines=mines;
+				  myClick=0;// 마인초기화
+				  findMines=0;
                   start1();
                   gameStart = true;
                }else if(msg.equals("//GmGG ")){ // 명령어 : 출제자 게임 포기
@@ -419,12 +468,19 @@ public class CM_Client extends JFrame implements ActionListener
                   textField.setEnabled(true);
                   btn_Ready.setEnabled(true);
                }else if(msg.equals("//GmEnd")){ // 명령어 : 게임 종료
-                 showFullField();
+                  vicc(); //vScore 값 호출
+				  if(myClick>0)   // 
+				  { myClick=0;
+					leftClick=0;
+				    findMines=0;}// 새로ㅓ운문제가나타낫다
+				  System.out.println(""+vScore);
+				  showFullField();
                   gameStart = false;
                   auth = false;
                   textField.setEnabled(true);
                   btn_Ready.setEnabled(true);
                   label_Timer.setText("00 : 00");
+				  
                }else if(msg.startsWith("//Mouse")){
                   if(auth == false){
                      int tempX = Integer.parseInt(msg.substring(7, msg.indexOf("."))); 
@@ -493,15 +549,36 @@ public class CM_Client extends JFrame implements ActionListener
          }
       }
       
+      /*-------------------------------------------20211214 브금 메소드 */
+      public void playBGM(File file) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+       	  
+       	  this.file= file;
+       	  audioStream=AudioSystem.getAudioInputStream(file);
+       	  clip =AudioSystem.getClip();
+       	  clip.open(audioStream);
+       	  clip.start();
+         }
+         
+
+   	  public void muteBGM(File file) {
+   		  clip.stop(); 
+   		  clip.close();
+   	 }
+      
       int rows=15; int cols=15; int mines=44; //지뢰 수 
       int score =0;//점수
       int tot=0; //주변의 지뢰개수 숫자 표시
       int leftMines=mines; //잔여 지뢰개수
-      
+     
       Cell userField[][] = new Cell[15][15]; //사용자에게 표시되는 필드
       Cell gameField[][] = new Cell[15][15]; // 사용자가 볼 수 없는 정답필드
      
       Cell selected ; //선택한 셀 참조용
+      
+      int clickChance=30;//클릭할 수 있는 기회는 30번
+      int leftClick;//잔여클릭횟수 30개
+      int myClick=0; //내가 클릭한 횟수
+	  int findMines=0;
 
       public void start1() {
         for(int i=0;i<rows;i++) {
@@ -529,9 +606,9 @@ public class CM_Client extends JFrame implements ActionListener
           } //end for j
           //게임 정보 초기화
           score=0;
-          leftMines=mines; //총 지뢰개수 초기화
-          //label_leftover = new JLabel(); //바이러스 수
+          //총 지뢰개수 초기화
           label_leftover.setText(Integer.toString(mines));
+          label_rightclicks.setText(Integer.toString(clickChance)); //첫 잔여 클릭횟수 는 30개
           panel_Mine.validate();
         }//end for i
       }//end of initFields()
@@ -577,6 +654,12 @@ public class CM_Client extends JFrame implements ActionListener
                }
             }
          }
+		/* if (leftClick==0)
+         { 
+             myClick=0;
+         }else{  myClick=0;
+
+         }*/
       }
       
       int isAMine(int row, int col) {
@@ -670,7 +753,8 @@ public class CM_Client extends JFrame implements ActionListener
         }//end of checkEmptyCell()
 
 
-      boolean victory(){
+ //211215 수정할 것 승리 메소드!!!
+    boolean victory(){
         int checked = 0; //클릭수 카운트
         for(int i=0;i<rows;i++){
           for(int j=0;j<cols;j++){
@@ -685,6 +769,7 @@ public class CM_Client extends JFrame implements ActionListener
         return false;
       } 
 
+      
       @Override
       public void actionPerformed(ActionEvent e) {
           Object obj= (Object) e.getSource();
@@ -695,72 +780,119 @@ public class CM_Client extends JFrame implements ActionListener
             if(obj == btn_Ready){   
                //start();            
             }
+            if(playing==true&&obj==btn_BGM) {
+        		btn_BGM.setIcon(iOn);
+        		muteBGM(file);
+        		playing=false;
+            }
+            else if(playing==false&&obj==btn_BGM){
+            	btn_BGM.setIcon(iStop); //off 이미지
+            	try {
+					playBGM(file);
+				} catch (UnsupportedAudioFileException e1) {
+				} catch (IOException e1) {
+				} catch (LineUnavailableException e1) {
+				}
+            	playing=true;
+            	System.out.println("노래 켰다");
+            	
+            }
 
             /*if(obj == 게임초기화 버튼){      
                prepareField();   
 
             }*/
+          
+        	for(int i=0;i<rows;i++){
+	           for(int j=0;j<cols;j++){
+	               if(obj==userField[i][j] && !userField[i][j].isClicked()){   
+	               selected = gameField[i][j];  
+	              
+	
+	                                 if(isAMine(i,j) == 1){ //지뢰라면--211208 수정    
+   /*---2021-12-13 폰트 크기 설정--*/
+                  selected.setClicked(true);                        
+                  userField[i][j].setClicked(true);
+                  userField[i][j].setValue(selected.getValue());     
+                  userField[i][j].setType('f');  
+                  ImageIcon icon = new ImageIcon("image\\RS.jpg");
+                  Image shot = icon.getImage();
+                  Image changeImg1 = shot.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+                  ImageIcon changeIcon = new ImageIcon(changeImg1);
+                  userField[i][j].setIcon(changeIcon);
+	                 
+	/*---2021-12-13 [플래그 배경색 : 더 진한 주황색, 플래그 경계선: 더더 진한 주황색]--*/
+	                 userField[i][j].setBackground(new Color(255,165,45));//플래그 배경색 조금 더 진하게
+	                 LineBorder bb= new LineBorder(new Color(246,141,0));//플래그는 경계선 회색주기
+	                 userField[i][j].setBorder(bb);
+	                 
+	                 //userField[i][j].setText(String.valueOf(selected.getValue())); 
+	                 userField[i][j].setEnabled(false);                  
+	
+	                 //20211208 새로 추가한것
+	                 //score++;
+	                 leftMines--; //  지뢰 수 감소
+	                 findMines++; //  찾은 지뢰 수 
+	/*---2021-12-13 추가 ---*/
+	                 myClick++;
+	               
+	                 label_rightclicks.setText(Integer.toString(myClick)); //남은 클릭횟수
+	                 //lScore.setText(Integer.toString(score));
+	                 //lScore.setValue(score);
+	                 revalidate();
+	                 repaint();
+	                 
+	                 //System.out.println("점수 : "+score);
+	               }
+	               
+	               else if(selected.getType() == 'n'){
+	 /*---2021-12-13 폰트 크기 설정--*/
+	                 userField[i][j].setFont(new Font("나눔바른고딕", Font.PLAIN, 10));
+	/*---2021-12-13 추가 ---*/
+	                 myClick++;
+	               
+	                 selected.setClicked(true);                        
+	                 userField[i][j].setClicked(true);
+	                 userField[i][j].setValue(selected.getValue());         
+	                 userField[i][j].setType('n');                  
+	                 userField[i][j].setText(String.valueOf(selected.getValue()));   
+	                 userField[i][j].setEnabled(false);
+	               }
+	               else if(selected.getType() == 'e'){ 
 
-            for(int i=0;i<rows;i++){
-               for(int j=0;j<cols;j++){
-                   if(obj==userField[i][j] && !userField[i][j].isClicked()){   
-                   selected = gameField[i][j];                           
+	 /*---2021-12-13 폰트 크기 설정--*/
+	                 userField[i][j].setFont(new Font("나눔바른고딕", Font.PLAIN, 10));
+	/*---2021-12-13 추가 ---*/
+	                 myClick++;
+	                
+	                 checkEmptyCell(i,j);   
+	               }
+	               if(victory()){                                 
+	                 JOptionPane.showMessageDialog(null,"승리!");   
+	                 showFullField();
 
-                   if(isAMine(i,j) == 1){ //지뢰라면--211208 수정    
-/*---2021-12-13 폰트 크기 설정--*/
-                     userField[i][j].setFont(new Font("나눔바른고딕", Font.PLAIN, 10));  
-                     
-                     selected.setClicked(true);                        
-                     userField[i][j].setClicked(true);
-                     userField[i][j].setValue(selected.getValue());         
-                     userField[i][j].setType('f');    
-                     userField[i][j].setText("F");  
-                     
-/*---2021-12-13 [플래그 배경색 : 더 진한 주황색, 플래그 경계선: 더더 진한 주황색]--*/
-                     userField[i][j].setBackground(new Color(255,165,45));//플래그 배경색 조금 더 진하게
-                     LineBorder bb= new LineBorder(new Color(246,141,0));//플래그는 경계선 회색주기
-                     userField[i][j].setBorder(bb);
-                     
-                     //userField[i][j].setText(String.valueOf(selected.getValue())); 
-                     userField[i][j].setEnabled(false);                  
+					 prepareField();
+	               }
+	             }//end of if
+	           }//end of for j
+	           if(myClick==30) {
+	        	  showFullField();
+				  prepareField();
 
-                     //20211208 새로 추가한것
-                     score++;
-                     leftMines--;
-                     label_leftover.setText(Integer.toString(leftMines));//잔여 바이러스 수
-                     //lScore.setText(Integer.toString(score));
-                     //lScore.setValue(score);
-                     revalidate();
-                     repaint();
-                     
-                     //System.out.println("점수 : "+score);
-                   }
-                   
-                   else if(selected.getType() == 'n'){
- /*---2021-12-13 폰트 크기 설정--*/
-                     userField[i][j].setFont(new Font("나눔바른고딕", Font.PLAIN, 10));
-                     
-                     selected.setClicked(true);                        
-                     userField[i][j].setClicked(true);
-                     userField[i][j].setValue(selected.getValue());         
-                     userField[i][j].setType('n');                  
-                     userField[i][j].setText(String.valueOf(selected.getValue()));   
-                     userField[i][j].setEnabled(false);               
-                   }
-                   else if(selected.getType() == 'e'){ 
- /*---2021-12-13 폰트 크기 설정--*/
-                     userField[i][j].setFont(new Font("나눔바른고딕", Font.PLAIN, 10));
-                     checkEmptyCell(i,j);                           
-                   }
-                   if(victory()){                                 
-                     JOptionPane.showMessageDialog(null,"승리!");   
-                     showFullField();                     
-                   }
-                 }//end of if
-               }//end of for j
-            }//end of for i
+	        	  break;
+	          }
+	        }//end of for i
+        	leftClick=clickChance-myClick; //30- 내가 클릭한 횟수
+	        label_leftover.setText(Integer.toString(leftMines));//잔여 바이러스 수 ---2021-12-13 추가
+	        label_rightclicks.setText(Integer.toString(this.leftClick));  
       }
-      
+    void vicc(){ //승리점수가 가장 작은 
+		//vScore = leftMines-myClick; //승리 점수 =남은 바이러스 수 - 내가 클릭한 횟수
+		vScore = findMines+leftClick;
+		  // 찾은 지뢰(findMines) + 남은 클릭 수( leftClick )
+		//  찾은 지뢰 = findMines
+		//	  총 지뢰(mines) - 남은지뢰(leftMines) 
+	}  
    public static void main(String[]args){   
       CM_Client c = new CM_Client();
    } //end of main()
