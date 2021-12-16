@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
+import java.util.stream.*;
+
 /*import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;*/
 
@@ -22,12 +24,17 @@ public class CM_Server extends JFrame implements ActionListener
    public static final int MAX_CLIENT = 4;
    int readyPlayer; // 게임 준비된 클라이언트 카운트
    int score;
+   int i;
+   Vector<String> vtScore = new Vector<String>();
+   ArrayList<Integer> clientScore = new ArrayList<Integer>();
    boolean gameStart; // 게임 시작 상태
    String line = "";
    LinkedHashMap<String, DataOutputStream> clientList = new LinkedHashMap<String, DataOutputStream>(); // 클라이언트 이름, 스트림 관리
    LinkedHashMap<String, Integer> clientInfo = new LinkedHashMap<String, Integer>(); // 클라이언트 이름, 점수 관리
-   LinkedHashMap<String, Integer> clientScore = new LinkedHashMap<String, Integer>();
+   //HashMap<String, Integer> clientScore = new HashMap<String, Integer>();
+  
    int iScore;
+   Iterator<Map.Entry<String, Integer>> itScore1;
    
    public void init(){
       setTitle("JAVA");
@@ -166,7 +173,7 @@ public class CM_Server extends JFrame implements ActionListener
       }
       
       public void run(){
-         String clientName = "";
+          String clientName = "";
 	//	 String score = "";
          try{
             clientName = dis.readUTF();
@@ -175,7 +182,7 @@ public class CM_Server extends JFrame implements ActionListener
             if(!clientList.containsKey(clientName)){ // 중복 닉네임 방지
                clientList.put(clientName, dos);
                clientInfo.put(clientName, score);
-               clientScore.put(clientName, iScore);
+           //    clientScore.put(clientName, iScore); 
             }else if(clientList.containsKey(clientName)){
                s.close(); // 닉네임 중복시, 소켓 연결 거부
            // }else if(msg.startsWith("//score")){
@@ -189,10 +196,12 @@ public class CM_Server extends JFrame implements ActionListener
             setClientInfo(); // 클라이언트 목록 갱신
             while(dis != null){
                String msg = dis.readUTF();
+			   
                filter(msg); // 명령어 필터링
+			   
             }
          }catch(IOException io){
-            clientList.remove(clientName); clientInfo.remove(clientName); clientScore.remove(clientName); // 클라이언트 퇴장시 제거
+            clientList.remove(clientName); clientInfo.remove(clientName);  // 클라이언트 퇴장시 제거
             closeAll();
             if(clientList.isEmpty() == true){ // 서버에 남은 클라이언트가 하나도 없다면, 서버 닫기
                try{
@@ -201,6 +210,7 @@ public class CM_Server extends JFrame implements ActionListener
             }
             showSystemMsg("[ " + clientName + "님이 퇴장하셨습니다. ]\n(현재 접속자수 : " + clientList.size() + "명 / 4명)");
             textArea.append("[ 현재 접속자 명단 (총 " + clientList.size() + "명 접속중) ]\n");
+			
             Iterator<String> it1 = clientList.keySet().iterator();
             while(it1.hasNext()) textArea.append(it1.next() + "\n");
             scrollPane.getVerticalScrollBar().setValue(scrollPane.getVerticalScrollBar().getMaximum());
@@ -208,6 +218,7 @@ public class CM_Server extends JFrame implements ActionListener
             readyPlayer = 0; // 새로운 클라이언트가 접속해도 게임 시작에 문제가 없도록 변수 초기화
             gameStart = false;
             showSystemMsg("//GmEnd"); // 클라이언트 퇴장시, 즉시 라운드 종료
+
          }
       }
       
@@ -236,11 +247,12 @@ public class CM_Server extends JFrame implements ActionListener
       
       public void filter(String msg) { // 명령어 필터링
          String temp = msg.substring(0, 7);
+		 
          if(temp.equals("//Chat ")){ // 명령어 : 일반 채팅
             showSystemMsg(msg.substring(7));
          }else if(temp.equals("//Ready")){ // 명령어 : 클라이언트 준비 상태 체크
              readyPlayer++;
-             if(readyPlayer >= 2 && readyPlayer == clientList.size()){ // 2명 이상 && 모든 클라이언트가 준비되었을 경우
+             if(readyPlayer >= 1 && readyPlayer == clientList.size()){ // 2명 이상 && 모든 클라이언트가 준비되었을 경우
                 for(int i=3; i>0; i--){
                    try{
                       showSystemMsg("[ 모든 참여자들이 준비되었습니다. ]\n[ " + i + "초 후 게임을 시작합니다 .. ]");
@@ -249,6 +261,7 @@ public class CM_Server extends JFrame implements ActionListener
                 }
                 //showSystemMsg("//ReadyAll");
                 showSystemMsg("//Start"); // 명령어 : 게임 시작
+				clientScore.clear(); vtScore.clear();
                 //broadcast();
                /*
                 * File Clap = new File("text.wav"); PlaySound(Clap);
@@ -273,8 +286,51 @@ public class CM_Server extends JFrame implements ActionListener
 		 }else if(temp.equals("//score")){
 			//String score = msg.substring(0, 7);
 			String score2 = msg.substring(7,msg.length());
-			iScore = Integer.parseInt(score2);
-			System.out.println("iScore: "+iScore);
+			vtScore.add(score2);
+			String scoreC = msg.substring(7,msg.indexOf(" "));
+			String scoreM = msg.substring(9,msg.length());
+			iScore = Integer.parseInt(scoreC);
+			clientScore.add(iScore);
+			Collections.sort(clientScore , Collections.reverseOrder());
+			
+			//System.out.println(clientName+": "+iScore);
+			System.out.println("iScore: "+ iScore + scoreM);
+			//clientScore.clear(); vtScore.clear();
+			/*
+			for(int i =0; i<clientInfo.size(); i++){
+				vtScore.add(Integer.parseInt(score2));
+				System.out.println("Score["+i+"]: "+Score[i]);
+			}
+			*/
+			for (int i =0; i<vtScore.size() ;i++){
+			System.out.println("vtScore: "+vtScore.get(i));
+			System.out.println("clientScroe : "+clientScore.get(i));
+			}
+			
+			for (int j = 0;j<vtScore.size() ;j++) // 4바퀴 
+			{ 
+				String k = vtScore.get(j).substring(0 , vtScore.get(j).indexOf(" "));
+				int k1 = Integer.parseInt(k);
+				for (int m = 0 ;m<clientScore.size() ;m++ ) // 1바퀴
+				{
+					int cs = clientScore.get(m);
+				//	if ()
+				//	{
+						showSystemMsg(scoreM+"님 "+iScore+"점");
+                  
+				//	}
+				
+
+				}
+			}
+
+			//showSystemMsg(iScore + scoreM);
+
+			
+
+			//setClientScore();
+		//	scoreCBoradcast(s);
+
          }else if(temp.equals("//GmGG ")){ // 명령어 : 게임 종료 (출제자가 게임을 포기했을 경우)
             showSystemMsg("[ 출제자가 게임을 포기했습니다 !! ]");
             showSystemMsg(msg);
@@ -285,8 +341,22 @@ public class CM_Server extends JFrame implements ActionListener
             showSystemMsg("[ 게임이 종료되었습니다 !! ]");
             showSystemMsg(msg);
             readyPlayer = 0;
-			broadcast();
+			//broadcast();
+			//setClientScore();
+			//scoreCBoradcast(s);
             gameStart = false;
+			
+		//	for (int i =0; i<vtScore.size() ;i++){
+		//	System.out.println("vtScore: "+vtScore.get(i));
+			
+			}
+			
+	//		for(int i=0;i<clientScore.size();i++){
+	//			clientScore.put(clientName, iScore);
+	//			System.out.println(":"+ clientName +" "+ iScore);
+			
+
+			
 
       /*   }else if(temp.equals("//score")){ // 스코어일때
             serverscore = Integer.parseInt(msg); // 스코어로 들어왔다.
@@ -294,17 +364,44 @@ public class CM_Server extends JFrame implements ActionListener
          }*/
 
       }
-      }
-	  
+      } /*
+	    String client1 [] = new String[4];
+		for(int i=0;i<4;i++){
+		client1.add(clientName);
+		}
+		int ss[] = new int[4];
+		for(int i=0;i<4;i++){
+		ss.add(iScore);
+		}
+		for (int i = 0 ;i<clientScore.length();i++ )
+		{  clientScore.put(client1[i],ss[i]);
+		} */
+		/*
+	  public void scoreCBoradcast(Socket s){
+		  this.s = s;
+		  DataOutputStream dos;
+		  try{
+		  dos = new DataOutputStream(this.s.getOutputStream());
+
+		  Iterator<Map.Entry<String, Integer>> itScore1 = clientScore.entrySet().iterator();
+			   while(itScore1.hasNext()){
+				  Map.Entry<String, Integer> entry = itScore1.next();
+				  System.out.println(entry.getKey() + ":" + entry.getValue());
+
+			   }
+		  }catch(IOException ie){}
+	  }
+	  */
+/*	  
 	void broadcast(){
          Iterator<String> it7 = clientScore.keySet().iterator();
 		 while(it7.hasNext()) textArea.append(it7.next() + "\n");
-		// scrollPane.getVerticalScrollBar().setValue(scrollPane.getVerticalScrollBar().getMaximum());
+		 scrollPane.getVerticalScrollBar().setValue(scrollPane.getVerticalScrollBar().getMaximum());
        //  setClientInfo(); // 클라이언트 목록 갱신
         try{
-         dos = new DataOutputStream(this.s.getOutputStream());
+         dos = new DataOutputStream(this.s.iScore);
           while(it7.hasNext()){
-            String msg = "@@gameStart";
+            String msg = "";
             showSystemMsg(msg.substring(7));
                 dos.writeUTF(msg);
                 dos.flush();   
@@ -312,6 +409,68 @@ public class CM_Server extends JFrame implements ActionListener
         }catch(IOException ie){
         }
    }
+   */
+
+  /* 
+   public void broadcast(){
+	   Iterator<String> it7 = clientScore.keySet().iterator();   
+        try{
+         dos = new DataOutputStream(this.s.getOutputStream());
+          while(it7.hasNext()){
+            String msg1 = clientScore.getValue();
+            showSystemMsg(msg1);
+            dos.writeUTF(msg1);
+		  }
+		}catch(IOException ie){}
+
+   }
+*/
+/*
+    public void setClientScore(){
+         String[] keys = new String[clientScore.size()];
+         int[] values = new int[clientScore.size()];
+         int index = 0;
+         for(Map.Entry<String, Integer> mapEntry : clientScore.entrySet()){
+             keys[index] = mapEntry.getKey(); // 클라이언트 이름
+             values[index] = mapEntry.getValue(); // 클라이언트 점수 
+             index++;
+         }
+		 for(int i=0; i<clientList.size(); i++){
+            showSystemMsg("//CList" + keys[i] + " " + values[i] + "#" + i); // 명령어 : 클라이언트 목록 갱신
+         }
+	}
+	*/
+/*
+		Set< String> keys = clientScore.keySet();
+		TreeSet< String>  ts = new TreeSet< String> (keys);
+		for(String key: ts){
+			Integer value = clientScore.get(key);
+			}
+			*/
+	
+/*
+	 // 내부 클래스 score2 다시 보내기
+	class Score2 //extends Thread
+   {    Socket s;
+        DataOutputStream dos; //클라이언트에 데이터를 뿌리기 위해 사용
+	    Iterator<String> it7 = clientScore.keySet().iterator();
+	    while(it7.hasNext()) textArea.append(it7.next() + "\n");
+		scrollPane.getVerticalScrollBar().setValue(scrollPane.getVerticalScrollBar().getMaximum());
+	    Score2(Socket s){ 
+			this.s = s;
+			  try{
+				dos = new DataOutputStream(this.s.iScore); //다른 클라이언트가 출력한 값 출력하기
+			//	String score = Integer.toString(vScore);
+			//	String score1 = ("//score"+ score);
+				dos.writeUTF(iScore);
+			  }catch(IOException io){}
+		}
+   }
+*/
+
+
+
+
       
    // 수정필요부!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -345,7 +504,7 @@ public class CM_Server extends JFrame implements ActionListener
          return String.format("%02d : %02d", m, s);
       }
    }
-   }
+   
    public static void main(String[] args){
       EventQueue.invokeLater(new Runnable(){
          public void run(){

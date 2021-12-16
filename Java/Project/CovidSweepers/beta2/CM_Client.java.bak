@@ -18,7 +18,7 @@ public class CM_Client extends JFrame implements ActionListener
    JTextField textField;
    JTextArea textArea;
    JScrollPane scrollPane;
-   
+  
    int vScore;//211214 추가
 
    //문제 탑로고
@@ -466,7 +466,7 @@ public class CM_Client extends JFrame implements ActionListener
                String msg = dis.readUTF();
                if(msg.startsWith("//CList")){ // 명령어 : 클라이언트 목록 갱신
                   playerName = msg.substring(7, msg.indexOf(" "));
-                  playerScore = msg.substring(msg.indexOf(" ") + vScore, msg.indexOf("#"));
+                  playerScore = msg.substring(msg.indexOf(" ") , msg.indexOf("#"));
                   playerIdx = msg.substring(msg.indexOf("#") + 1);
                   updateClientList(); // 클라이언트 목록 갱신
                }else if(msg.startsWith("//Start")){ // 명령어 : 게임 시작 ( + 타이머)
@@ -499,7 +499,7 @@ public class CM_Client extends JFrame implements ActionListener
                   textField.setEnabled(true);
                   btn_Ready.setEnabled(true);
                   label_Timer.setText("00 : 00");
-				  scorelast = new Score2(s);
+				  scorelast = new Score2(s, CM_Login.nickName);
 			   }else if(msg.equals("//Score")){
 				   //System.out.println("Score:" + Score);
 			   }else if(msg.startsWith("//Mouse")){
@@ -519,20 +519,41 @@ public class CM_Client extends JFrame implements ActionListener
          }
       }
    }
-	//내부 클래스
+	//내부 클래스 score2 송신 
    class Score2 //extends Thread
    {   Socket s;
-       DataOutputStream dos; //클라이언트에 데이터를 뿌리기 위해 사용
-	   Score2(Socket s){ 
+       DataOutputStream dos;
+	   String Nick = CM_Login.nickName;//클라이언트에 데이터를 뿌리기 위해 사용
+	   Score2(Socket s , String Nick){ 
 		this.s = s;
+		this.Nick = Nick;
 		  try{
 			dos = new DataOutputStream(this.s.getOutputStream()); //다른 클라이언트가 출력한 값 출력하기
 			String score = Integer.toString(vScore);
-			String score1 = ("//score"+ score);
+			String score1 = ("//score"+ score +" "+ Nick);
 			dos.writeUTF(score1);
 		  }catch(IOException io){}
 	  }
    }
+   //내부 클래스 score2 받기 
+   class Score2Listener //extends Thread 
+   {
+      Socket s;
+      DataInputStream dis;
+
+      Score2Listener(Socket s){
+         this.s = s;
+         try{
+            dis = new DataInputStream(this.s.getInputStream());
+			while(dis !=null ){
+               String msg = dis.readUTF();
+			   textArea.append(msg + "\n");
+
+			 }
+		  }catch(IOException io){}
+	   }
+   }
+
    
    public void updateClientList(){ // 클라이언트 목록 추가
          ImageIcon ii;
@@ -600,7 +621,7 @@ public class CM_Client extends JFrame implements ActionListener
    		  clip.close();
    	 }
       
-      int rows=15; int cols=15; int mines=44; //지뢰 수 
+      int rows=15; int cols=15; int mines=50; //지뢰 수 
       int score =0;//점수
       int tot=0; //주변의 지뢰개수 숫자 표시
       int leftMines=mines; //잔여 지뢰개수
@@ -892,7 +913,6 @@ public class CM_Client extends JFrame implements ActionListener
 	                 userField[i][j].setFont(new Font("나눔바른고딕", Font.PLAIN, 10));
 	/*---2021-12-13 추가 ---*/
 	                 myClick++;
-	                
 	                 checkEmptyCell(i,j);   
 	               }
 	               if(victory()){                                 
@@ -906,7 +926,7 @@ public class CM_Client extends JFrame implements ActionListener
 	           if(myClick==30) {
 	        	  showFullField();
 				  prepareField();
-
+				 
 	        	  break;
 	          }
 	        }//end of for i
@@ -914,8 +934,8 @@ public class CM_Client extends JFrame implements ActionListener
 	        label_leftover.setText(Integer.toString(leftMines));//잔여 바이러스 수 ---2021-12-13 추가
 	        label_rightclicks.setText(Integer.toString(this.leftClick));  
       }
-    void vicc(){ //승리점수가 가장 작은 
-		vScore = findMines+leftClick; //승리 점수 = 찾은 바이러스 수 + 남은 클릭 횟수
+    void vicc(){ //승리점수가 가장 높은
+		vScore = (findMines*2)+leftClick; //승리 점수 = 찾은 바이러스 수 + 남은 클릭 횟수
 	}  
    public static void main(String[]args){   
       CM_Client c = new CM_Client();
