@@ -276,5 +276,167 @@
       2) 비교연산자 ( =, !=, >, >=, < , <= )
 	 -- 급여가 3000 이상인 사원의 이름(ENAME)과 급여(SAL)를 출력
 	 SQL> select ENAME, SAL from emp where SAL>=3000;
-	 
-	      
+
+	 -- 30부서가 아닌 사원의 이름(ENAME)과 급여(SAL)와 부서번호(DEPTNO)를 출력
+	   -- ( 부서번호의 오름차순, 높은 급여순, 이름 오름차순 )
+	 SQL> select ENAME, SAL, DEPTNO from EMP where DEPTNO!=30 
+	      order by DEPTNO, SAL desc, ENAME;
+
+      3) 논리연산자 ( and(곱) , or(합), not )  
+	 -- 20번 부서이면서 급여 3000이상인 사원의 이름, 급여, 부서번호를 출력
+	 SQL> select ENAME, SAL, DEPTNO from EMP where SAL>=3000 and DEPTNO=20;
+
+	 -- 직업이 'SALESMAN'이고 부서번호가 30번인 이름, 직업, 부서번호를 출력
+         SQL> select ENAME, JOB, DEPTNO from EMP 
+	      where JOB='SALESMAN' and DEPTNO=30;
+
+	 -- 급여가 1000 미만이거나, 4000 이상인 사원의 사번, 급여를 출력
+	 SQL> select EMPNO, SAL from EMP where SAL<1000 or SAL>=4000;
+	 SQL> select EMPNO, SAL from EMP where not (SAL>=1000 and SAL<4000);
+
+
+      4) SQL연산자( in, any, all, between, like, is null, is not null, exists )
+	 -- 부서번호가 10 or 20 or 100 인 사원의 부서번호과 이름을 출력
+	 SQL> select DEPTNO, ENAME from EMP where DEPTNO=10 or DEPTNO=20 or DEPTNO=100;     
+	 SQL> select DEPTNO, ENAME from EMP where DEPTNO in(10, 20, 100);
+	 SQL> select DEPTNO, ENAME from EMP where DEPTNO=any(10, 20, 100);
+
+	 -- 30부서의 최대 급여보다 더 큰 급여를 받는 사원의 이름, 급여 출력
+	 SQL> select ENAME, SAL from EMP where DEPTNO=30;
+	 SQL> select ENAME, SAL from EMP where SAL>all(select SAL from EMP where DEPTNO=30);
+	    cf) all은 전체값을 모두 만족해야 true가 됨 
+
+         -- 급여가 1250 이상 3000 이하인 사원의 이름과 급여 출력
+	 SQL> select ENAME, SAL from EMP where SAL>=1250 and SAL<=3000;
+	 SQL> select ENAME, SAL from EMP where SAL between 1250 and 3000;
+
+	 -- 이름이 'FORD'와 'KING' 사이의 사원 이름을 출력!(단, 알파벳 순 정렬) 
+	 SQL> select ENAME from EMP where ENAME 
+	      between 'FORD' and 'KING' order by ENAME;
+
+	 -- 이름이 'J'로 시작되는 사원 이름을 출력(단, 오름차순 정렬)
+         SQL> select ENAME from EMP where ENAME like 'J%' order by ENAME;
+
+	 -- 이름에 'T'로 시작되는 사원 이름을 출력
+	 SQL> select ENAME from EMP where ENAME like '%T%';
+
+	 -- 이름에 세번째 문자가 'A'인 사원의 이름을 출력
+	 SQL> select ENAME from EMP where ENAME like '__A%';
+
+	 -- 급여의 십의 자리가 5인 사원의 급여를 출력
+	 SQL> select SAL from EMP where SAL like '%5_';
+
+	 -- 커미션이 NULL인 사원의 사번과 커미션을 출력
+	 SQL> select EMPNO, COMM from EMP where COMM is null;
+
+	 -- 커미션이 NULL이 아닌 사원의 사번과 커미션을 출력
+	 SQL> select EMPNO, COMM from EMP where COMM is not null;
+
+	 -- 이름이 'FORD'라는 사원이 존재하면 모든 사원의 이름을 출력
+	 SQL> select ENAME from EMP where ENAME='FORD';
+	 SQL> select ENAME from EMP where exists(select ENAME from EMP where ENAME='FORD');
+
+	 -- 이름이 'ford'라는 사원이 존재하면 모든 사원의 이름을 출력
+	 SQL> select ENAME from EMP where ENAME='ford';
+	 SQL> select ENAME from EMP where exists(select ENAME from EMP where ENAME='ford');
+
+
+      5) 결합연산자 ( || )
+	--SMITH의 급여는 800입니다
+	select ENAME||'의 급여는', SAL||'입니다' from EMP;
+
+      6) 집합연산자 ( union(합) , union all, intersect(교), minus(차) )
+        -- 사원의 사번과 이름 출력하고, 부서의 번호와 부서이름을 출력
+        SQL> select EMPNO, ENAME from EMP;
+	SQL> select DEPTNO, DNAME from DEPT;
+	SQL> select EMPNO, ENAME from EMP
+	      union
+	     select DEPTNO, DNAME from DEPT;
+	     
+        -- 사원의 사번과 이름 출력하고, 사원의 사번과 이름 출력
+	SQL> select EMPNO, ENAME from EMP;
+	SQL> select EMPNO, ENAME from EMP;
+	SQL> select EMPNO, ENAME from EMP
+	      union 
+	     select EMPNO, ENAME from EMP;
+	SQL> select EMPNO, ENAME from EMP
+	      union all
+	     select EMPNO, ENAME from EMP;
+
+	-- '사원의 사번과 이름'과 '부서의 번호와 부서이름'의 공통부분을 출력 
+	SQL> select EMPNO, ENAME from EMP
+	      intersect
+	     select DEPTNO, DNAME from DEPT; --0개 
+
+	SQL> select EMPNO, ENAME from EMP
+	      intersect
+	     select EMPNO, ENAME from EMP where ENAME='FORD'; --1개 
+
+	SQL> select EMPNO, ENAME from EMP 
+	      minus
+	     select EMPNO, ENAME from EMP where ENAME='FORD'; --11개 
+
+	cf) 연산자 우선 순위
+	  <1> 1순위: 비교, SQL, 산술  
+	  <2> 2순위: not
+	  <3> 3순위: and 
+	  <4> 4순위: or
+	  <5> 5순위: ||, 집합 
+
+	SQL> select ENAME, SAL from EMP
+	    where NOT SAL>1000 and SAL<3000;
+	SQL> select ENAME, SAL from EMP
+	    where NOT (SAL>1000 and SAL<3000); 
+	  
+///////////////////// 문제 1 ///////////////////////////////////////
+
+--최대 급여를 받는 사원의 이름을 출력
+SQL> select ENAME from EMP where SAL>=all(select SAL from EMP);
+SQL> select max(SAL) from EMP;
+Main> select ENAME from EMP where SAL=(select max(SAL) from EMP);
+
+    #2 Function
+    (1) 함수(Function)란?
+        어떤 일을 수행하는 기능으로써 주어진 인수(arguments)를 재료로 '처리'하여,
+        그 결과를 '반환'하는 일
+        
+    (2) 기능 기준 분류
+        1) Data 계산
+        2) Data 변환
+    
+    (3) 종류
+        1) 단일행 함수 (ex: nvl, ...)
+            -> 하나의 행(row)당, 하나의 결과값을 리턴하는 함수
+        2) 복수행 함수 (ex: max, min, avg ..)
+            -> 여러개의 행(row)당, 하나의 결과값을 리터하는 함수
+    
+    (4) 단일행 함수
+        1) 문자 함수
+            <1> chr
+                SQL> select chr(65) from DUAL;
+
+            <2> concat(컬럼명, '붙일문자열')
+                SQL> select ENAME||' is a ' || JOB from EMP;
+                SQL> select concat(ENAME, ' is a '), JOB from EMP;
+
+            <3> initcap('문자열')
+                SQL> select initcap('the lion') from DUAL;
+            
+            <4> lower('문자열')
+                SQL> select lower('MY NAME IS KHS') from DUAL;
+                SQL> select lower(ENAME) from EMP;
+
+            <5> lpad('문자열1', 자리수, '문자열2')
+                SQL> select lpad('khs', 13, '*#') from DUAL;
+                
+                설명) lpad('대상문자열', 총 문자길이, '채움문자')
+            
+            <6>
+
+        2) 숫자 함수
+        
+        3) 날짜 함수 ( *** )
+
+        4) 문자 변환 함수 ( ***** )
+    
+    (5) 복수행 함수 ( group function ***** )
