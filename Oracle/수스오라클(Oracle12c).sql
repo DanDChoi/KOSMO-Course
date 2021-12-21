@@ -551,7 +551,7 @@ Main> select ENAME from EMP where SAL=(select max(SAL) from EMP);
 
 	   <5> next_day(날짜컬럼or날짜데이터, 숫자)
 	      SQL> select SYSDATE, next_day(SYSDATE,4) from DUAL;
-              SQL> select SYSDATE, next_day(SYSDATE,1) from DUAL;
+         SQL> select SYSDATE, next_day(SYSDATE,1) from DUAL;
 	      SQL> select SYSDATE, next_day(SYSDATE,3) from DUAL;
 
               --일(1) 월(2) 화(3) 수(4) 목(5) 금(6) 토(7) 
@@ -698,7 +698,7 @@ Main> select ENAME from EMP where SAL=(select max(SAL) from EMP);
 	 --(단, 부서번호과 업무명으로 각각 내림차순 정렬!) 
        SQL> select DEPTNO, JOB, count(*) from EMP 
             group by DEPTNO, JOB 
-	    order by DEPTNO desc, JOB desc;
+	         order by DEPTNO desc, JOB desc;
        
        < 일반화 >
        [1] 순서( SF-WGHO ) 
