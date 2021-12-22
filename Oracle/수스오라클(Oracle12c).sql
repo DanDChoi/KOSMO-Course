@@ -551,7 +551,7 @@ Main> select ENAME from EMP where SAL=(select max(SAL) from EMP);
 
 	   <5> next_day(날짜컬럼or날짜데이터, 숫자)
 	      SQL> select SYSDATE, next_day(SYSDATE,4) from DUAL;
-         SQL> select SYSDATE, next_day(SYSDATE,1) from DUAL;
+              SQL> select SYSDATE, next_day(SYSDATE,1) from DUAL;
 	      SQL> select SYSDATE, next_day(SYSDATE,3) from DUAL;
 
               --일(1) 월(2) 화(3) 수(4) 목(5) 금(6) 토(7) 
@@ -698,7 +698,7 @@ Main> select ENAME from EMP where SAL=(select max(SAL) from EMP);
 	 --(단, 부서번호과 업무명으로 각각 내림차순 정렬!) 
        SQL> select DEPTNO, JOB, count(*) from EMP 
             group by DEPTNO, JOB 
-	         order by DEPTNO desc, JOB desc;
+	    order by DEPTNO desc, JOB desc;
        
        < 일반화 >
        [1] 순서( SF-WGHO ) 
@@ -707,3 +707,59 @@ Main> select ENAME from EMP where SAL=(select max(SAL) from EMP);
        [3] having절에서는 alias 사용불가!
 
 ///////////////////////// 문제 2 ///////////////////////////////////////
+
+-- 사원번호와 부서이름을 출력하라
+   #3 Join & SubQuery 
+    (1) 조인( Join )
+       1) 설명 
+          하나의 테이블로는 원하는 컬럼정보를 가져올 수 없는 경우, 
+	  관련된 테이블을 '논리적으로 결합'하여 원하는 컬럼정보를 가져오는 방법 
+
+       2) 조건 
+          논리적으로 결합되는 2개 이상의 테이블에는 반드시 '공통컬럼'이 존재해야하며 
+	  이 공통컬럼은 동일한 데이터 타입과 공통 데이터를 의미해야 함 
+
+       3) 예 -- 사원번호와 부서이름을 출력 
+          SQL> select EMP.EMPNO, DEPT.DNAME from EMP, DEPT where EMP.DEPTNO=DEPT.DEPTNO; --형태1
+	  SQL> select e.EMPNO, d.DNAME from EMP e, DEPT d where e.DEPTNO=d.DEPTNO; --형태2
+	  SQL> select e.EMPNO, d.DNAME from EMP e join DEPT d on e.DEPTNO=d.DEPTNO; --형태3
+	  SQL> select e.EMPNO, d.DNAME from EMP e join DEPT d using(DEPTNO); --형태4
+	  SQL> select EMPNO, DNAME from EMP join DEPT using(DEPTNO); --형태5
+	  SQL> select EMPNO, DNAME from EMP natural join DEPT; --형태6
+
+       4) 종류
+          <1> Cross 조인 
+	      2개 이상의 테이블이 조인될 때 'where절'에 의해 공통되는 컬럼에 의한 결합이 
+	     '발생하지 않는 경우' 즉, 테이블 전체행의 전체컬럼이 조인에 사용되는
+	      조인을 말한다 따라서, 모든 데이터가 검색결과가 됨 
+              SQL> select e.EMPNO, e.ENAME, d.DNAME from EMP e, DEPT d;	--where조건이 없는 경우
+	      SQL> select e.EMPNO, e.ENAME, s.GRADE from EMP e, SALGRADE s;--공통컬럼이 없는 경우
+	      SQL> select EMPNO, ENAME, GRADE from EMP, SALGRADE;--공통컬럼이 없는 경우
+
+	  <2> Natural 조인 ( Equi 조인 ) : 가장 일반적
+	      where 절이 사용된 '공통컬럼'들이 동등 연산자(=)에 의해 비교되는 조인 
+
+	      -- 사원번호와 부서이름을 출력 ( 단, 30번 부서만 )
+	      SQL> select EMP.EMPNO, DEPT.DNAME from EMP, DEPT 
+	           where EMP.DEPTNO=DEPT.DEPTNO and DEPT.DEPTNO=30;  --형태1
+	      SQL> select e.EMPNO, d.DNAME from EMP e, DEPT d 
+	           where e.DEPTNO=d.DEPTNO and e.DEPTNO=30; --형태2
+	      SQL> select e.EMPNO, d.DNAME from EMP e join DEPT d 
+	           on e.DEPTNO=d.DEPTNO
+		   where e.DEPTNO=30; --형태3
+	      SQL> select e.EMPNO, d.DNAME from EMP e join DEPT d 
+		   using(DEPTNO)
+		   where DEPTNO=30; --형태4
+	      SQL> select EMPNO, DNAME from EMP join DEPT 
+	           using(DEPTNO)
+		   where DEPTNO=30; --형태5
+	      SQL> select EMPNO, DNAME from EMP natural join DEPT
+	           where DEPTNO=30; --형태6
+	          
+	  <3> Self 조인
+	  <4> Outer 조인
+	  <5> Inner 조인
+
+
+
+          
