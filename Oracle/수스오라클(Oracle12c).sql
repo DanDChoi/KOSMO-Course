@@ -957,3 +957,250 @@ Main> select ENAME from EMP where SAL=(select max(SAL) from EMP);
 
 ///////////////////////// 미션 //////////////////////////////////////////////////  
  -- 복사된 emp2, dept2, emp3, dept3를 맘껏 DML 연습을 해오시오
+
+3. TCL ( Transaction Control Language )
+
+    cf) 트랜잭션(Transaction): ?
+
+    (1) 설명 
+        DML(insert, update, delete)문이 실행되어 DBMS에 '저장'되거나, 
+        '되돌리기'위해서 실행하는 SQL
+
+    (2) 트랜잭션(Transaction) 
+        1) 정의 
+	   분리되어서는 안될 (논리적인) '작업 단위'
+
+	2) 시작 
+          <1> DBMS에 처음 접속했을 때 
+	  <2> 하나 or 여러개의 DML문을 실행한 후 commit 또는 rollback 한 직후 
+	  <3> DDL 이나 DCL 실행된 직후 
+
+	3) 끝 
+          <1> commit 또는 rollback 실행 직후 
+	  <2> DDL 이나 DCL 문이 실행 직후  
+	  <3> 세션이 종료 직후
+	      1> 정상
+	         - exit; 또는 quit;
+		 - commit 되고 종료
+
+	      2> 비정상
+	         - 오른쪽 상단이 X버튼 종료 
+		 - rollback 되고 종료 
+
+          <4> 해당 세션에서 계정 변경 직후 
+	      conn system/java1234; ( commit; 된 후 계정이 변경됨 )
+	   
+	  <5> DB를 닫은 후 
+	      세션1>
+	         - sqlplus scott/tiger 
+		 - insert into dept values(50, 'a', 'b');
+             
+	      세션2> 
+	         - sqlplus system/java1234 as sysdba
+		 - shutdown immediate
+		 - startup
+	
+	      세션3>
+	        - sqlplus scott/tiger
+		SQL> select * from DEPT2 order by DEPTNO;
+	
+              결과) 세션1>에서의 작업은 rollback 됨 
+
+   (3) TCL의 종류	 
+	1) commit; 
+	   DML문을 영구적으로 DBMS에 '반영'하는 SQL
+
+	2) rollback; 
+	   DML문을 (이전 Transaction 끝분분) DBMS에 '취소'하는 SQL
+
+	3) savepoint 
+	   세션1> 
+	      SQL> insert into dept values(50, 'a1', 'b1');
+              SQL> insert into dept values(60, 'a2', 'b2');
+	      SQL> savepoint a;
+	      SQL> insert into dept values(70, 'a3', 'b3');
+	      SQL> savepoint b;
+	      SQL> insert into dept values(80, 'a4', 'b4');
+	      SQL> rollback to a;
+	      SQL> commit;
+
+	      참고> rollback to b; --안됨(이미늦음)
+
+
+	   세션2> 
+	      SQL> select * from DEPT2; --세션1> rollback to a; 후 
+	      SQL> select * from DEPT2; --세션1> commit; 후 
+
+  (4) TCL 관련 특성
+        1) Read Consistency ( 읽기 일관성 ) : '해당 row' 
+	    어떤 사용자(세션)가 변경중(트랜잰션진행중)인 '행'을 다른 사용자(세션)가 변경할 수 없게하는 현상 
+
+            예) 
+	    세션1> update dept set dname='가' where deptno=50; --특정 행에 lock
+	    세션2> update dept set dname='나' where deptno=50;
+	    세션1> commit; 또는 rollback;
+	    세션2> 1 행이 업데이트되었습니다
+	    
+	2) Lock ( 잠금 ) : '해당 table'
+	    어떤 사용자(세션)가 변경중(트랜잰션진행중)인 '전체행'을 다른 사용자(세션)가 변경할 수 없게하는 현상
+
+	    예) 
+	    세션1> delete from dept2; --모든 행에 lock 
+	    세션2> update dept2 set loc='나' where deptno=50;
+
+
+       <결론> Read Consistency 나 Lock 해제 방법: 진행중인 Transaction을 종료해야 함 
+
+
+4. DDL ( Data Definition Language )
+   (1) 설명   
+       DBMS 내의 객체(Object)를 '생성', '변경', '삭제'를 위한 SQL
+
+   (2) 객체(Object)
+       1) table 
+       2) index
+       3) view 
+       4) sequence 
+       5) synonym 
+       6) session 
+       7) user 
+          ... 
+
+   (3) 종류 
+       1) create : 객체를 생성할 때 
+           생성> create table DDLTEST(
+	           NO number(4) constraint DDLTEST_PK primary key, -- (-9999~9999) 
+		   ID varchar2(12), 
+		   PWD varchar2(12)
+	       );
+	   제약조건확인> select CONSTRAINT_NAME, CONSTRAINT_TYPE from user_constraints 
+	        where TABLE_NAME='DDLTEST';
+		
+           복사방법1>
+	        create table DDLTEST2(
+		   NO number(4) constraint DDLTEST2_PK primary key,
+		   ID varchar2(12), 
+		   PWD varchar2(12)
+		);
+		insert into DDLTEST2 values(-9999, 'a', 'b');
+		insert into DDLTEST2 values(9999, 'a', 'b');
+		commit;
+
+	   복사방법2> 
+	       create table DDLTEST3 as select * from DDLTEST;
+	       alter table DDLTEST3 add constraint DDLTEST3_PK primary key(NO);
+	
+
+       2) alter : 객체를 변경할 때
+          ( 옵션: add, modify, rename column, drop column, 
+	          add constraint, drop constraint, disable constraint, enable constraint )
+
+           <1> add 
+	       SQL> alter table DDLTEST add(ADDR varchar2(20));
+	       SQL> insert into DDLTEST values(1000, 'scott', 'tiger', 'seoul');
+	       SQL> select * from DDLTEST;
+
+	   <2> modify
+	       SQL> alter table DDLTEST modify(ID varchar2(15), PWD varchar2(15));
+	       SQL> desc DDLTEST
+
+           <3> rename column
+	       SQL> alter table DDLTEST rename column PWD to PASS;
+               SQL> desc DDLTEST
+
+	   <4> drop column
+	       SQL> alter table DDLTEST drop column ADDR;
+	       SQL> select * from DDLTEST;
+
+	   <5> drop constraint
+	       SQL> alter table DDLTEST drop constraint DDLTEST_PK;
+               SQL> desc DDLTEST
+	       SQL> select CONSTRAINT_NAME, CONSTRAINT_TYPE from user_constraints 
+	            where TABLE_NAME='DDLTEST';
+	      
+       3) drop : 객체를 삭제할 때 
+           SQL> drop table EMP3;
+	   SQL> select tname from tab;
+	   --SQL> purge recyclebin; -- 휴지통비우기 
+	   --SQL> flashback table EMP3 to before drop; -- 휴지통에서 복구 
+
+       4) rename : 객체 이름 변경시 
+           SQL> rename DDLTEST2 to DDLTEST22;
+	   SQL> select tname from tab;
+
+       5) comment : 객체에 대한 주석 저장시
+           <1> 테이블 주석 
+               SQL> comment on table DDLTEST is 'DDL테스트용 테이블';
+               SQL> select TABLE_NAME, COMMENTS from user_tab_comments 
+	            where TABLE_NAME='DDLTEST';
+
+	   <2> 컬럼 주석
+	       SQL> comment on column DDLTEST.ID is '회원 아이디';
+	       SQL> select TABLE_NAME, COLUMN_NAME, COMMENTS from user_col_comments 
+	            where TABLE_NAME='DDLTEST';
+
+       6) truncate : '모든' 행(row)을 삭제시 
+           SQL> truncate table DDLTEST3;
+	   SQL> select * from DDLTEST3; 
+
+	   질문) delete 문과의 차이점
+	     - 되돌릴 수 없음 ( rollback 불가!! )
+	     - where절 사용 X 
+	     - when? 속도가 무쟈게 빠름 
+
+5. DCL ( Data Control Language ) 
+    (1) 설명 
+       계정에 권한을 '부여'하거나 '빼앗'을 때 사용하는 SQL 
+      
+    (2) 계정생성 
+        1) 실행창(Win+R)
+	   <방법1> sqlplus / as sysdba
+	   <방법2> sqlplus sys/java1234 as sysdba
+
+	2) 또 다른 개발 계정(ex: scott) 생성 
+	   SQL> alter session set "_oracle_script"=true;   
+           SQL> create user TEST1 identified by JAVA1;
+	    
+    (3) 권한 부여 
+        SQL> grant CONNECT, RESOURCE, CREATE VIEW, unlimited tablespace to TEST1; 
+	SQL> conn TEST1/JAVA1
+	SQL> show user
+
+    (4) 권한 제거 
+        SQL> revoke CONNECT from TEST1;
+	SQL> conn TEST1/JAVA1; --불가! 
+
+    (5) 계정 수정 
+        1) 접속 
+	   실행창(Win+R)에서 
+           sqlplus sys/java1234 as sysdba
+
+	2) 비번수정 
+	   SQL> alter user TEST1 identified by JAVAC1;
+	   
+	3) 수정확인 
+	   SQL> grant CONNECT to TEST1;
+	   SQL> conn TEST1/JAVAC1;
+
+    (6) 계정 삭제 
+        SQL> drop user TEST1;
+	 
+	 1) 해당 user에 테이블이 없는 경우
+	     SQL> alter session set "_oracle_script"=true;
+	     SQL> drop user TEST1; --삭제됨 
+
+	 2) 해당 user에 테이블이 있는 경우
+	     SQL> alter session set "_oracle_script"=true;
+	     SQL> drop user TEST1 cascade; --삭제
+
+---------------------------- SQL 끝 --------------------------------
+       -- < 미션 게시판 테이블 설계 > --
+       -- 인터넷에서 맘에 드는 게시판을 골라서..
+       -- 테이블들(제약조건 포함)을 만들고, 데이터 넣어서(insert/update/delete) 테스팅 결과를 제출
+
+
+[ Part4 : SQL외.. ] 
+
+
+
+	   
