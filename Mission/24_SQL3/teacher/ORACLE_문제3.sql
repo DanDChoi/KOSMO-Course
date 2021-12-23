@@ -4,12 +4,15 @@
     select d.DEPTNO, d.DNAME, e.ENAME, e.SAL from EMP e 
     join DEPT d 
     on e.DEPTNO=d.DEPTNO;
+    
 (2) 이름이 'ALLEN'인 사원의 부서명을 출력하라.
     select e.ENAME, d.DNAME from EMP e, DEPT d 
     where e.ENAME='ALLEN';
+
 (3) EMP Table에 있는 DATA와 JOIN하여 모든 사원의 이름, 부서번호, 부서명, 급여를 출력하라.
     select e.ENAME "이름", D.DEPTNO "부서번호", D.DNAME "부서명", e.SAL "급여" from EMP e, DEPT d
     where e.DEPTNO=d.DEPTNO;  
+
 (4) EMP Table에 있는 EMPNO와 MGR을 이용하여 서로의 관계를 다음과 같이 출력하라.
     --> SMITH의 매니져는 FORD이다.
     select e.ENAME||'의 매니저는 ', m.ENAME||'이다' from EMP e, EMP m 
