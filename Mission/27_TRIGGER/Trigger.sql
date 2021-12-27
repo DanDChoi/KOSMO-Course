@@ -1,0 +1,39 @@
+--Q1
+CREATE OR REPLACE TRIGGER JOIN
+AFTER DELETE OR INSERT OR UPDATE ON TR_MEMBER 
+FOR EACH ROW
+BEGIN
+IF INSERTING THEN
+    insert into TR_LOGIN values (:NEW.ID, :NEW.PWD);
+    insert into TR_MYHOME values (TR_MYHOME_SEQ.nextval, :NEW.ID, :NEW.NAME||'의 홈페이지', 123841, :NEW.NAME||'입니다.', SYSDATE);  
+END IF;
+END;
+/
+
+--Q2
+CREATE OR REPLACE TRIGGER CHANGEPWD
+AFTER DELETE OR INSERT OR UPDATE ON TR_MEMBER
+FOR EACH ROW
+BEGIN
+IF UPDATING THEN
+    update TR_LOGIN set PWD=:NEW.PWD;
+END IF;
+END;
+/
+
+
+
+insert into TR_MEMBER values('DAN', '123456', '최대현', 'dan@gmail.com', SYSDATE);
+
+
+select * from TR_LOGIN;
+select * from TR_MEMBER;
+select * from TR_MYHOME;
+
+
+update TR_MEMBER set PWD='654321';
+
+select * from TR_LOGIN;
+select * from TR_MEMBER;
+
+
