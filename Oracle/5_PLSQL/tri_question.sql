@@ -23,9 +23,9 @@ create table TR_LOGIN(
 create table TR_MYHOME(
     SEQ number constraint TR_MYHOME_PK primary key, 
     ID varchar2(10) constraint TR_MYHOME_ID_NN not null, 
-    HNAME varchar2(20) constraint TR_MYHOME_HNAME_NN not null, 
+    HNAME varchar2(100) constraint TR_MYHOME_HNAME_NN not null, 
     TOTCOUNT number default 0, 
-    HMSG varchar2(15), 
+    HMSG varchar2(100), 
     CDATE date, 
     constraint TR_MYHOME_FK foreign key(ID) references TR_MEMBER(ID) on delete cascade
 );
