@@ -1,28 +1,11 @@
+import java.util.*;
 
 class Main{
-    public static void main(String[] args){
-        System.out.print("\\   /\\\n)  ( ')\n(  /  )\n\\(__)|");
-    }
+   public static void main(String[] args){
+       Scanner sc = new Scanner(System.in);
+       double a, b;
+       a = sc.nextInt();
+       b = sc.nextInt();
+       System.out.println(a / b);
+   }
 }
-
-
-/*
-
-
-class Main{
-    System.out.print("\\    /\\/n)  ( ')/n(  /  )/n\\(__)|");
-    public static void main(String[] args){
-     new Main();
-    }
-}
-
-        System.out.println("\\   /\\");
-        System.out.println(")  ( ')");
-        System.out.println("(  /  )");
-        System.out.println("\\(__)|");
-
-\    /\
-)  ( ')
-(  /  )
-\(__)|
-*/
