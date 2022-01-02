@@ -29,8 +29,21 @@
    5
 
 트리거는 주문이 들어왔을때 발생 
+
+
+create or replace trigger avgstar
+after insert on ORDERS
+for each row 
+begin
+if inserting then
+   update FRANCHISE set :new.star = ((:old.star+:new.star)/2) where ORDERS;
+end if;
+end;
+/
+
  
-insert into ORDERS values(48523, 3243, 23000, '오리엔탈파닭순살, 콜라추가', 5, 1, 1, 0, 34, '배달', SYSDATE, '카드');
+insert into ORDERS values (orderNumber_SEQ.nextval, 'GODJY', 3842, 43000, 'chicken', 4, 3, '배달', SYSDATE, '현금', 1, 0, 2);
+ 
 
 creat or replace trigger getorder
 after insert on ORDERS
@@ -51,23 +64,22 @@ for each row
 begin
 if :new.ordersSort = '방문' 
 then
-    insert into SALES (FranchiseNumber, orderNumber, ordersale, f_totsal) 
-    values (:new.FranchiseNumber, :new.orderNumber, :new.customercost,);
-    update on SALES 
-    insert into VISIT (orderNumber, customerNumber, drinkCount, alcholeCount, chickenCount, customercost, FranchiseNumber, payment) 
+    insert into VISIT -- 방문고객 정보 입력 절차
+    (orderNumber, customerNumber, drinkCount, alcholeCount, chickenCount, customercost, FranchiseNumber, payment) 
     values 
     (:new.orderNumber, :new.customerNumber, :new.drinkCount, :new.alcholeCount, 
     :new.chickenCount, :new.customercost, :new.FranchiseNumber, :new.payment);
+
+    insert into SALES (FranchiseNumber, orderNumber, ordersale, f_totsal) --매출정보 저장
+    values (:new.FranchiseNumber, :new.orderNumber, :new.customercost, :new.customercost);
+    update SALES set f_totsal = (select sum(f_totsal) from SALES where franchisenumber=:new.franchisenumber) where franchisenumber =:new.franchisenumber;
 elsif :new.ordersSort = '배달'
 then
-    insert into ORDERSBACKUP (orderNumber, ID, orderdate) values (:new.orderNumber, :new.ID, :new.orderdate);
-    insert into SALES (FranchiseNumber, orderNumber, f_totsal, f_daysal) 
-    values 
-    (:new.FranchiseNumber, 
-    :new.orderNumber, 
-    :new.customercost,
-    (select orderdate from ORDERSBACKUP where ordernumber = (:new.orderNumber)));
-    insert into DELIVERY (orderNumber, ID, FranchiseNumber, customerName, drinkCount, alcholeCount, chickenCount, customercost, Loc, customerPhonenumber, payment)
+    insert into ORDERSBACKUP (orderNumber, ID)  --ID,고객번호,주소,고객전화번호를 가져오기위해 backup 테이블에 넣고 가져옴 (cause ORDERS에서 직접 가져오면 오류발생)
+    values (:new.orderNumber, :new.ID);
+
+    insert into DELIVERY -- 배달고객 정보 입력 절차
+    (orderNumber, ID, FranchiseNumber, customerName, drinkCount, alcholeCount, chickenCount, customercost, Loc, customerPhonenumber, payment)
     values 
     (:new.orderNumber, 
     (select ID from DELICUSTOMER where ID =(select ID from ORDERSBACKUP where orderNumber=(select max(orderNumber) from ORDERSBACKUP))), 
@@ -80,6 +92,10 @@ then
     (select Loc from DELICUSTOMER where ID =(select ID from ORDERSBACKUP where orderNumber=(select max(orderNumber) from ORDERSBACKUP))), 
     (select customerPhonenumber from DELICUSTOMER where ID =(select ID from ORDERSBACKUP where orderNumber=(select max(orderNumber) from ORDERSBACKUP))), 
     :new.payment);
+
+    insert into SALES (FranchiseNumber, orderNumber, ordersale, f_totsal) --매출정보 저장
+    values (:new.FranchiseNumber, :new.orderNumber, :new.customercost, :new.customercost);
+    update SALES set f_totsal = (select sum(f_totsal) from SALES where franchisenumber=:new.franchisenumber) where franchisenumber =:new.franchisenumber;
 end if;
 end;
 /
@@ -87,7 +103,8 @@ end;
 create or replace trigger supply_trigger  -- 남품받으면 인벤토리의 카운트가 증가되는 트리거 
 after insert on SUPPLY for each row
 begin
-    insert into INVENTORYCONTROL values( :new.daynumber , SYSDATE , SYSDATE ,:new.drinkCount , :new.alcholeCount , :new.chickenCount );
+    insert into INVENTORYCONTROL values
+    ( :new.daynumber , SYSDATE , SYSDATE ,:new.drinkCount , :new.alcholeCount , :new.chickenCount );
 end;
 /
 
