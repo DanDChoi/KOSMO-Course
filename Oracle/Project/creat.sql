@@ -2,7 +2,6 @@ drop table EMPLOYEE;
 drop table FRANCHISE;
 drop table MENU;
 drop table INVENTORYCONTROL;
-drop table CUSTOMER;
 drop table ORDERSSET;
 drop table VISIT;
 drop table ORDERS;
@@ -15,6 +14,7 @@ drop SEQUENCE supplyNumber_SEQ;
 drop SEQUENCE dayNumber_SEQ;
 drop SEQUENCE orderNumber_SEQ;
 drop TRIGGER sorting;
+drop TRIGGER avgstar;
 purge recyclebin;
 
 
