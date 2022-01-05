@@ -1,0 +1,24 @@
+drop table SUPPLY;
+drop table MENU;
+drop table ORDERS;
+drop table FRANCHISE;
+drop table EMPLOYEE;
+drop table INVENTORYCONTROL;
+drop table DELICUSTOMER;
+drop table VISIT;
+drop table DELIVERY;
+drop table SALES;
+drop SEQUENCE orderCount_SEQ;
+drop PROCEDURE buy_inven_procedure;
+drop PROCEDURE SALESCAL;
+drop TRIGGER inven_trigger;
+drop TRIGGER supply_trigger;
+drop TRIGGER buy_inven_trigger;
+drop TRIGGER avgstar;
+drop TRIGGER sorting;
+drop TRIGGER total_SALES;
+drop TRIGGER Deli_SALES;
+drop TRIGGER visit_SALES;
+purge recyclebin;
+
+select TNAME from TAB;
