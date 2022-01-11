@@ -29,13 +29,13 @@ a.pop("age")
 print(a)
 print()
 
-# 2-3-3 삭제3 ( pop ) : 마지막으로 추가된 아이템 삭제
+# 2-3-3 삭제3 ( popitem ) : 마지막으로 추가된 아이템 삭제
 a = {"name":"홍길동", "age":24}
 a.popitem()
 print(a)
 print()
 
-# 2-3-4 삭제4 ( pop ) : 모든 elements
+# 2-3-4 삭제4 ( clear ) : 모든 elements
 a = {"name":"홍길동", "age":24}
 a.clear();
 print(a)
