@@ -1,6 +1,6 @@
 import os
 
-target = input("¸®½ºÆÃÇÒ µğ·ºÅä¸®:")
+target = input("ë¦¬ìŠ¤íŒ…í•  ë””ë ‰í† ë¦¬:")
 
 dir = target
 kids = os.listdir(dir)
