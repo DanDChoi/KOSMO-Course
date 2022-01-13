@@ -4,9 +4,10 @@ import random
 score = 0
 playing = False
 
-t.title("거북이 잡기")  # 주인공
 t.setup(500, 500)
 t.bgcolor("orange")
+
+t.title("거북이 잡기")  # 주인공
 t.shape("turtle")
 t.speed(9)
 t.up()
