@@ -13,7 +13,7 @@ class CWidget(QWidget):
     
     def initUI(self):
         self.setGeometry(100, 100, 500, 500)
-        self.setWindowTitle('스네이크 게임')
+        self.setWindowTitle('Snake Game')
         self.setFixedSize(self.rect().size())
         
         self.map = CMap(self)

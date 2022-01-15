@@ -26,7 +26,7 @@ class CMap:
         
         #맵 한칸 크기
         self.wsize = self.inrect.width()/self.lines
-        self.hsiee = self.inrect.height()/self.lines
+        self.hsize = self.inrect.height()/self.lines
         
         #맵 사각형 좌표 저장
         self.left = self.inrect.left()
@@ -60,7 +60,7 @@ class CMap:
         
         del(self.snake)
         self.snake = CSnake(self.lines)
-        del(self.good)
+        del(self.food)
         self.food = CNode(-1, -1)
         
     def draw(self, qp): #맵그리기
@@ -95,7 +95,7 @@ class CMap:
         #게임 도움말
         if not self.bGame:
             qp.setFont(QFont('맑은고딕', 20))
-            qp.drawText(self.outrect, Qt.alignCenter, '키보드 방향키를 누르면 시작')
+            qp.drawText(self.outrect, Qt.AlignCenter, '키보드 방향키를 누르면 시작')
             
     def keydown(self, key):
         #게임시작
@@ -157,7 +157,7 @@ class CMap:
                 self.parent.update()
                 self.bRun = False
                 self.bGame = False
-                self.lock.realease()
+                self.lock.release()
                 break
             #먹이 생성
             self.makeFood()
