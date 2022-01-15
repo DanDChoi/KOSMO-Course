@@ -428,7 +428,7 @@ def main():
     p.init()
     p.display.set_caption('WE GO MARS')
     screen = p.display.set_mode(WINSIZE)
-    font = p.font.Font((os.path.abspath('font')+'\Starjedi.ttf'),45)
+    font = p.font.Font((os.path.abspath('font')+'/Starjedi.ttf'),45)
     font.set_italic(True)
     font.set_bold(True)
     fontcolor = 255,222,6
