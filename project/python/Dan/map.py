@@ -4,6 +4,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from threading import Thread, Lock
 import time
+import pygame
 from random import randint
 
 class CMap:
@@ -23,6 +24,10 @@ class CMap:
         self.outrect = parent.rect() #부모 윈도우 크기 저장
         gap = 20 # 내부 맵 여백 조정
         self.inrect = self.outrect.adjusted(gap, gap, -gap, -gap)
+        
+        
+        pygame.init()
+        self.bgm = pygame.mixer.Sound("/Users/Dan/Desktop/Develop/Develop_Class/project/python/Dan/bgm/bgm.mp3")
         
         #맵 한칸 크기
         self.wsize = self.inrect.width()/self.lines
@@ -47,7 +52,7 @@ class CMap:
                                         , self.top+(i*self.hsize)
                                         , self.wsize
                                         , self.hsize)
-                self.rect[i][j].adjust(2, 2, -2, -2) #사각형 크기 줄이기
+                self.rect[i][j].adjust(1, 1, -1, -1) #사각형 크기 줄이기
                 
     def reStart(self):
         
@@ -103,6 +108,7 @@ class CMap:
             self.bGame = True
             self.snake.changeDir(key)
             self.thread.start()
+            self.bgm.play(-1)
         #게임진행중 키 변경
         if (key == Qt.Key_Left or key == Qt.Key_Right or key == Qt.Key_Up or key == Qt.Key_Down) and self.bGame == True:
             if self.bMove:
@@ -158,6 +164,7 @@ class CMap:
                 self.bRun = False
                 self.bGame = False
                 self.lock.release()
+                self.bgm.stop()
                 break
             #먹이 생성
             self.makeFood()

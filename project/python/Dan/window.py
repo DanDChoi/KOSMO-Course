@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QWidget, QApplication, QMessageBox
 class CWidget(QWidget):
     endSignal = pyqtSignal()
     #시그널 생성
-    def __init__(self):
+    def __init__(self): 
         super().__init__()
         self.initUI()
     
