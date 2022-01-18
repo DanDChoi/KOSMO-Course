@@ -1,32 +1,36 @@
-from PyQt5.QtCore import Qt
+# 뱀의 마디 클래스(CNode)와 이를 조합한 뱀 클래스(CSnake)로 구성
 
-class CNode:
+from PyQt5.QtCore import Qt #뱀이동 키보드 이벤트 처리를 위해 PyQt5 모듈을 불러옴
+
+class CNode: 
     def __init__(self, x=0, y=0):
         self.x = x
         self.y = y
+#CNode 클래스는 뱀의 한 마디를 의미하는 클래스, 맵의 2차원 배열에서 마디의 위치를 저장하는 정수형 변수 x, y (배열의 인덱스)를 가짐.
         
     def __eq__(self, other):
         if self.x == other.x and self.y == other.y:
             return True
         else:
             return False
+#CNode 클래스의 같음을 비교하는 __eq__ 연산자 정의, 차후 뱀의 머리 마디가 먹이와 겹쳤는지 (먹이를 먹었는지) 비교하는 용도로 사용할 계획.
         
         
-class CSnake:
-    def __init__(self, lines):
+class CSnake: #뱀에 대한 클래스
+    def __init__(self, lines): 
         self.node = [] #뱀 마디길이 저장할 리스트
         self.dir = Qt.Key_Right #뱀의 방향
         self.bAdd = False #뱀 마디 추가
         self.init(lines)
     
-    def init(self, lines):
+    def init(self, lines): # 파라미터로 맵의 크기를 받아와서 /2를 통해 맵의 중간에 뱀을 생성
         cx = lines//2
         cy = lines//2
         for i in range(3): #기본 뱀 3마디 생성
             self.node.append(CNode(cx, cy))
             cx -= 1
             
-    def changeDir(self, key):
+    def changeDir(self, key): #뱀의 이동방향을 변경
         if self.isChangeDir(key) == False:
             return None
         
@@ -44,15 +48,15 @@ class CSnake:
         else:
             return True
         
-    def isCrash(self):
-        if self.nodeCount() < 5:
+    def isCrash(self): 
+        if self.nodeCount() < 5: #구조상 뱀의 마디가 5개 이상시에만 충돌이 가능하므로, 뱀의 마디가 5보다 작다면 검사를 하지 않음
             return False
         
         head = CNode(self.node[0].x, self.node[0].y) #뱀 머리
-        bodylist = self.node[4:] #몸통은 4마디부터 충돌가능하므로
+        bodylist = self.node[4:] 
         
         for body in bodylist:
-            if head == body:
+            if head == body: #머리가 몸통에 닿았다면, True를 리턴
                 return True
             
         return False
@@ -63,7 +67,11 @@ class CSnake:
         
         head = CNode(self.node[0].x, self.node[0].y) #뱀 머리
         
-        if self.dir == Qt.Key_Left:
+        #뱀을 이동시킬때는 모든 마디를 움직인는것이 아니라 '머리와 꼬리 2개의 마디만 변경'하여 이동한다
+        #뱀의 현재 머리 좌표(x, y)를 구한후, 왼쪽으로 이동할 경우, x좌표만 1감소시켜 뱀의 머리를 기존의 뱀 리스트에 머리로 추가하고,
+        #먹이를 먹은상태라면 꼬리는 그대로, 먹지 않은 상태라면 꼬리를 pop() 함수를 이용, 삭제시켜서 이동한다
+        
+        if self.dir == Qt.Key_Left: 
             head.x -= 1
         elif self.dir == Qt.Key_Right:
             head.x += 1
