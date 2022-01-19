@@ -3,39 +3,42 @@ import java.sql.*;
 class A 
 {
 	void init(){
-		//(1) µå¶óÀÌ¹ö(driver) ·Îµù 
+		//(1) ë“œë¼ì´ë²„(driver) ë¡œë”© 
 		try{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			pln("(1) µå¶óÀÌ¹ö·Îµù ¼º°ø");
+			//Class.forName("oracle.jdbc.pool.OracleDataSource");
+			pln("(1) ë“œë¼ì´ë²„ë¡œë”© ì„±ê³µ");
 		}catch(ClassNotFoundException cnfe){
-			pln("(1) µå¶óÀÌ¹ö·Îµù ½ÇÆĞ(Å¬·¡½º¸¦ ¸ø Ã£À½): " + cnfe);
+			pln("(1) ë“œë¼ì´ë²„ë¡œë”© ì‹¤íŒ¨(í´ë˜ìŠ¤ë¥¼ ëª» ì°¾ìŒ): " + cnfe);
 		}
-		//(2) Connection »ı¼º 
-		String url = "jdbc:oracle:thin:@localhost:1521:JAVA";
+		//(2) Connection ìƒì„± 
+		//String url = "jdbc:oracle:thin:@localhost:1521:JAVA";
+		String url = "jdbc:oracle:thin:@db01_high?TNS_ADMIN=/Users/Dan/Desktop/Develop/Develop_Class/Oracle/Wallet_DB01";
 		Connection con = null;
 		try{
-			con = DriverManager.getConnection(url, "scott", "tiger");
-			pln("(2) Oracle°ú ¿¬°á ¼º°ø");
+			//con = DriverManager.getConnection(url, "scott", "tiger");
+			con = DriverManager.getConnection(url, "admin", "Dandatabase01");
+			pln("(2) Oracleê³¼ ì—°ê²° ì„±ê³µ");
 		}catch(SQLException se){
-            pln("(2) Oracle°ú ¿¬°á ½ÇÆĞ: " + se);
+            pln("(2) Oracleê³¼ ì—°ê²° ì‹¤íŒ¨: " + se);
 		}
-		//(3) Statement »ı¼º 
+		//(3) Statement ìƒì„± 
 		Statement stmt = null;
 		try{
 			stmt = con.createStatement();
-			pln("(3) stmt »ı¼º ¼º°ø");
+			pln("(3) stmt ìƒì„± ì„±ê³µ");
 		}catch(SQLException se){
-			pln("(3) stmt »ı¼º ½ÇÆĞ");
+			pln("(3) stmt ìƒì„± ì‹¤íŒ¨");
 		}
 
-		//(4) SQL ÀÛ¼º/Àü¼Û/½ÇÇà
-		pln("(4) SQLÀÛ¼º/Àü¼Û/½ÇÇà");
+		//(4) SQL ì‘ì„±/ì „ì†¡/ì‹¤í–‰
+		pln("(4) SQLì‘ì„±/ì „ì†¡/ì‹¤í–‰");
 
-		//(5) ¿¬°á°´Ã¼µé ´İ±â
+		//(5) ì—°ê²°ê°ì²´ë“¤ ë‹«ê¸°
 		try{
 		    stmt.close();
 			con.close();
-			pln("(5) ¿¬°á°´Ã¼µé ´İ±â ¼º°ø");
+			pln("(5) ì—°ê²°ê°ì²´ë“¤ ë‹«ê¸° ì„±ê³µ");
 		}catch(SQLException se){
 		}
 	}
