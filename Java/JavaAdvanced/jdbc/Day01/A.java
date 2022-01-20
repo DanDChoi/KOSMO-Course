@@ -12,12 +12,12 @@ class A
 			pln("(1) 드라이버로딩 실패(클래스를 못 찾음): " + cnfe);
 		}
 		//(2) Connection 생성 
-		//String url = "jdbc:oracle:thin:@localhost:1521:JAVA";
-		String url = "jdbc:oracle:thin:@db01_high?TNS_ADMIN=/Users/Dan/Desktop/Develop/Develop_Class/Oracle/Wallet_DB01";
+		String url = "jdbc:oracle:thin:@localhost:1521:JAVA";
+		//String url = "jdbc:oracle:thin:@db01_high?TNS_ADMIN=/Users/Dan/Desktop/Develop/Develop_Class/Oracle/Wallet_DB01";
 		Connection con = null;
 		try{
-			//con = DriverManager.getConnection(url, "scott", "tiger");
-			con = DriverManager.getConnection(url, "admin", "Dandatabase01");
+			con = DriverManager.getConnection(url, "scott", "tiger");
+			//con = DriverManager.getConnection(url, "admin", "Dandatabase01");
 			pln("(2) Oracle과 연결 성공");
 		}catch(SQLException se){
             pln("(2) Oracle과 연결 실패: " + se);
