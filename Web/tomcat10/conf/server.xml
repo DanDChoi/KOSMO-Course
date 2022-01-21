@@ -133,8 +133,8 @@
       <Host name="localhost"  appBase="webapps"
             unpackWARs="true" autoDeploy="true">
 
-        <!--<Context path="/nc" docBase="C:\Users\CHOI\Desktop\Dan\Develop\Develop_Class\Web\NewContext"/>-->
-		<Context path="/dh" docBase="C:\Users\CHOI\Desktop\Dan\Develop\Develop_Class\Web\Day03"/>
+        <Context path="/nc" docBase="C:\Users\CHOI\Desktop\Dan\Develop\Develop_Class\Web\NewContext"/>
+		<Context path="/dh" docBase="C:\Users\CHOI\Desktop\Dan\Develop\Develop_Class\Web\NewContext2"/>
         <!-- SingleSignOn valve, share authentication between web applications
              Documentation at: /docs/config/valve.html -->
         <!--

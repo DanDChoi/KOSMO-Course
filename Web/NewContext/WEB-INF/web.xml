@@ -46,7 +46,6 @@
       <servlet-name>AddrServletInName</servlet-name>
       <url-pattern>/addr/insert.do</url-pattern>
   </servlet-mapping>
-
   <servlet>
       <servlet-name>AddrServletDelName</servlet-name>
       <servlet-class>soo.sv.addr.AddrServletDel</servlet-class>
@@ -56,5 +55,28 @@
       <url-pattern>/addr/del.do</url-pattern>
   </servlet-mapping>
   
-
+  <servlet>
+      <servlet-name>AddrServletListPoolName</servlet-name>
+      <servlet-class>soo.sv.addr.pool.AddrServletListPool</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>AddrServletListPoolName</servlet-name>
+      <url-pattern>/addr_pool/list.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+      <servlet-name>AddrServletInPoolName</servlet-name>
+      <servlet-class>soo.sv.addr.pool.AddrServletInPool</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>AddrServletInPoolName</servlet-name>
+      <url-pattern>/addr_pool/insert.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+      <servlet-name>AddrServletDelPoolName</servlet-name>
+      <servlet-class>soo.sv.addr.pool.AddrServletDelPool</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>AddrServletDelPoolName</servlet-name>
+      <url-pattern>/addr_pool/del.do</url-pattern>
+  </servlet-mapping>
 </web-app>

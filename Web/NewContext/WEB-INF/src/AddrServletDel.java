@@ -27,15 +27,28 @@ public class AddrServletDel extends HttpServlet {
 		throws ServletException, IOException { 
 		int seq = -1;
         String seqStr = req.getParameter("seq");
-		if(seqStr != null) {
-			seqStr = seqStr.trim();
-			seq = Integer.parseInt(seqStr);
+		if(seqStr == null){
+			res.sendRedirect("list.do");
+			return;
 		}
 
-        res.setContentType("text/html;charset=utf-8"); 
+		seqStr = seqStr.trim();
+		if(seqStr.length() == 0){
+			res.sendRedirect("list.do");
+			return;
+		}else{
+			try{
+				seq = Integer.parseInt(seqStr); 
+			}catch(NumberFormatException ne){
+				res.sendRedirect("list.do"); 
+				return;
+			}
+		}
+		
+		res.setContentType("text/html;charset=utf-8"); 
 		PrintWriter pw = res.getWriter();
 		pw.println("<script>");
-        try{
+		try{
 			pstmt.setInt(1, seq);
 			int i = pstmt.executeUpdate();
 			if(i>0){
@@ -56,4 +69,5 @@ public class AddrServletDel extends HttpServlet {
 		}catch(SQLException se){}
 	}
 }
+
 

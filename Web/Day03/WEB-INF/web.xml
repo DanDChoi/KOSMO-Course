@@ -12,48 +12,28 @@
   </description>
 
   <servlet>
-      <servlet-name>HelloServletName</servlet-name>
-      <servlet-class>soo.sv.HelloServlet</servlet-class>
+      <servlet-name>AddrServletListPoolName</servlet-name>
+      <servlet-class>soo.sv.addr.pool.AddrServletListPool</servlet-class>
   </servlet>
   <servlet-mapping>
-      <servlet-name>HelloServletName</servlet-name>
-      <url-pattern>/hello</url-pattern>
-  </servlet-mapping>
-
-  <servlet>
-      <servlet-name>LifeServletName</servlet-name>
-      <servlet-class>soo.sv.LifeServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-      <servlet-name>LifeServletName</servlet-name>
-      <url-pattern>/life</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-      <servlet-name>AddrServletListName</servlet-name>
-      <servlet-class>soo.sv.addr.AddrServletList</servlet-class>
-  </servlet>
-  <servlet-mapping>
-      <servlet-name>AddrServletListName</servlet-name>
-      <url-pattern>/addr/list.do</url-pattern>
+      <servlet-name>AddrServletListPoolName</servlet-name>
+      <url-pattern>/addr_pool/list.do</url-pattern>
   </servlet-mapping>
   <servlet>
-      <servlet-name>AddrServletInName</servlet-name>
-      <servlet-class>soo.sv.addr.AddrServletIn</servlet-class>
+      <servlet-name>AddrServletInPoolName</servlet-name>
+      <servlet-class>soo.sv.addr.pool.AddrServletInPool</servlet-class>
   </servlet>
   <servlet-mapping>
-      <servlet-name>AddrServletInName</servlet-name>
-      <url-pattern>/addr/insert.do</url-pattern>
+      <servlet-name>AddrServletInPoolName</servlet-name>
+      <url-pattern>/addr_pool/insert.do</url-pattern>
   </servlet-mapping>
   <servlet>
-      <servlet-name>AddrServletDelName</servlet-name>
-      <servlet-class>soo.sv.addr.AddrServletDel</servlet-class>
+      <servlet-name>AddrServletDelPoolName</servlet-name>
+      <servlet-class>soo.sv.addr.pool.AddrServletDelPool</servlet-class>
   </servlet>
   <servlet-mapping>
-      <servlet-name>AddrServletDelName</servlet-name>
-      <url-pattern>/addr/del.do</url-pattern>
+      <servlet-name>AddrServletDelPoolName</servlet-name>
+      <url-pattern>/addr_pool/del.do</url-pattern>
   </servlet-mapping>
-  
-  
 
 </web-app>
