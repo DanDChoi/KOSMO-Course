@@ -30,7 +30,7 @@ public class BoardServletIn extends HttpServlet {
 		String email = req.getParameter("email");
 		String subject = req.getParameter("subject");
 		String content = req.getParameter("content");
-
+/*
 		if(writer == null || email == null || subject == null || content == null){
 			res.sendRedirect("list.do");
 			return;
@@ -43,7 +43,7 @@ public class BoardServletIn extends HttpServlet {
 			res.sendRedirect("list.do");
 			return;
 		}
-
+*/
         res.setContentType("text/html;charset=utf-8"); 
 		PrintWriter pw = res.getWriter();
 		pw.println("<script>");

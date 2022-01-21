@@ -60,7 +60,7 @@ public class BoardServletList extends HttpServlet {
 		pw.println("</tr>");
 
 		ResultSet rs = null;
-		String sql = "select * from BOARD order by seq desc";
+		String sql = "select * from board order by seq desc";
 		try {
 			rs = stmt.executeQuery(sql);
 			while (rs.next()) {
@@ -68,15 +68,13 @@ public class BoardServletList extends HttpServlet {
 				String writer = rs.getString(2);
 				String email = rs.getString(3);
 				String subject = rs.getString(4);
-				Date rdate = rs.getDate(5);
+				Date rdate = rs.getDate(6);
 				pw.println("<tr>");
-				pw.println("<td align='center'>" + seq + "</td>");
-				pw.println("<td>" + writer + "</td>");
-				pw.println("<td>" + email + "</td>");
-				pw.println("<td align='center'>");
-				pw.println("<a href='content.do?seq="+seq+"'>"+subject+"</a>");
-				pw.println("</td>");
-				pw.println("<td>" + rdate + "</td>");
+					pw.println("<td align='center'>" + seq + "</td>");
+					pw.println("<td align='center'>" + writer + "</td>");
+					pw.println("<td align='center'>" + email + "</td>");
+					pw.println("<td align='center'><a href='content.do?seq="+seq+"'>"+subject+"</a></td>");
+					pw.println("<td>" + rdate + "</td>");
 				pw.println("</tr>");
 			}
 		} catch (SQLException se) {
@@ -91,7 +89,6 @@ public class BoardServletList extends HttpServlet {
 
 		pw.println("</table>");
 		pw.println("<hr width='600' size='2' noshade>");
-		pw.println("</center>");
 	}
 
 	public void destroy() { 
