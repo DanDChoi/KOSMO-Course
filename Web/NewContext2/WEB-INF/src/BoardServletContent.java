@@ -72,7 +72,7 @@ public class BoardServletContent extends HttpServlet{
 			pstmt.setInt(1, seq);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
-				String writer = rs.getString(2);
+				String name = rs.getString(2);
 				String email = rs.getString(3);
 				String subject = rs.getString(4);
 				String con = rs.getString(5);
@@ -83,7 +83,7 @@ public class BoardServletContent extends HttpServlet{
 				pw.println("</tr>");
 				pw.println("<tr>");
 				pw.println("<th width='100' align='center'>글쓴이</th>");
-				pw.println("<td>"+writer+"</td>");
+				pw.println("<td>"+name+"</td>");
 				pw.println("</tr>");
 				pw.println("<tr>");
 				pw.println("<th width='100' align='center'>이메일</th>");

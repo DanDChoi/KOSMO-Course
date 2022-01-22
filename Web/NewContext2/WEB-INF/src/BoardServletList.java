@@ -65,13 +65,13 @@ public class BoardServletList extends HttpServlet {
 			rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				int seq = rs.getInt(1);
-				String writer = rs.getString(2);
+				String name = rs.getString(2);
 				String email = rs.getString(3);
 				String subject = rs.getString(4);
 				Date rdate = rs.getDate(6);
 				pw.println("<tr>");
 					pw.println("<td align='center'>" + seq + "</td>");
-					pw.println("<td align='center'>" + writer + "</td>");
+					pw.println("<td align='center'>" + name + "</td>");
 					pw.println("<td align='center'>" + email + "</td>");
 					pw.println("<td align='center'><a href='content.do?seq="+seq+"'>"+subject+"</a></td>");
 					pw.println("<td>" + rdate + "</td>");

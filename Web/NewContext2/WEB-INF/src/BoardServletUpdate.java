@@ -11,7 +11,7 @@ public class BoardServletUpdate extends HttpServlet{
 	Connection con;
 	PreparedStatement pstmt1, pstmt2;
 	public void init(){   
-		String sql1 = "update BOARD set EMAIL=?, TITLE=?, CONTENT=? where SEQ=?";
+		String sql1 = "update BOARD set EMAIL=?, =?, CONTENT=? where SEQ=?";
 		String sql2 = "select * from BOARD where SEQ=?";
 		String url = "jdbc:oracle:thin:@127.0.0.1:1521:JAVA";
 		String usr = "servlet";
@@ -86,7 +86,7 @@ public class BoardServletUpdate extends HttpServlet{
 				pw.println("<input type='hidden' name='writer' value="+name+">");
 				pw.println("<table border='1' width='600' align='center' cellpadding='3' cellspacing='1'><tr>");
 				pw.println("<td width='30%' align='center'>글쓴이</td>");
-				pw.println("<td align='center'><input type='text' name='aa' size='60' value='"+name+"' disabled></td>");
+				pw.println("<td align='center'><input type='text' name='name' size='60' value='"+name+"' disabled></td>");
 				pw.println("</tr>");
 				pw.println("<tr>");
 				pw.println("<td width='30%' align='center'>이메일</td>");
@@ -94,7 +94,7 @@ public class BoardServletUpdate extends HttpServlet{
 				pw.println("</tr>");
 				pw.println("<tr>");
 				pw.println("<td width='30%' align='center'>글제목</td>");
-				pw.println("<td align='center'><input type='text' name='title' size='60' value='"+sbj+"'></td>");
+				pw.println("<td align='center'><input type='text' name='subject' size='60' value='"+sbj+"'></td>");
 				pw.println("</tr>");
 				pw.println("<tr>");
 				pw.println("<td width='30%' align='center'>글내용</td>");
@@ -129,6 +129,7 @@ public class BoardServletUpdate extends HttpServlet{
 		String subject = req.getParameter("subject");
 		String content = req.getParameter("content");
 		int seq = -1;
+
 		if(seqStr == null){
 			res.sendRedirect("list.do");
 			return;

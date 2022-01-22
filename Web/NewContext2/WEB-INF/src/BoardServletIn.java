@@ -26,20 +26,20 @@ public class BoardServletIn extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse res)
 		throws ServletException, IOException { 
 		req.setCharacterEncoding("utf-8");
-        String writer = req.getParameter("writer");
+        String name = req.getParameter("name");
 		String email = req.getParameter("email");
 		String subject = req.getParameter("subject");
 		String content = req.getParameter("content");
 /*
-		if(writer == null || email == null || subject == null || content == null){
+		if(name == null || email == null || subject == null || content == null){
 			res.sendRedirect("list.do");
 			return;
 		}
-		writer = writer.trim();
+		name = name.trim();
 		email = email.trim();
 		subject = subject.trim();
 		content = content.trim();
-		if(writer.length() == 0 || email.length() == 0 || subject.length() == 0 || content.length() == 0){
+		if(name.length() == 0 || email.length() == 0 || subject.length() == 0 || content.length() == 0){
 			res.sendRedirect("list.do");
 			return;
 		}
@@ -48,7 +48,7 @@ public class BoardServletIn extends HttpServlet {
 		PrintWriter pw = res.getWriter();
 		pw.println("<script>");
         try{
-			pstmt.setString(1, writer);
+			pstmt.setString(1, name);
 			pstmt.setString(2, email);
 			pstmt.setString(3, subject);
 			pstmt.setString(4, content);
