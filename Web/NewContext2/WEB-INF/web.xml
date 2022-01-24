@@ -99,4 +99,14 @@
       <url-pattern>/board/update.do</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+      <servlet-name>BoardServletGetUpdateName</servlet-name>
+      <servlet-class>soo.sv.board.BoardServletGetUpdate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>BoardServletGetUpdateName</servlet-name>
+      <url-pattern>/board/getupdate.do</url-pattern>
+  </servlet-mapping>
+
+
 </web-app>
