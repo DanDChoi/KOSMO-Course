@@ -11,7 +11,7 @@ public class BoardServletUpdate extends HttpServlet{
 	Connection con;
 	PreparedStatement pstmt1, pstmt2;
 	public void init(){   
-		String sql1 = "update BOARD set EMAIL=?, =?, CONTENT=? where SEQ=?";
+		String sql1 = "update BOARD set EMAIL='?', SUBJECT='?', CONTENT='?' where SEQ=?";
 		String sql2 = "select * from BOARD where SEQ=?";
 		String url = "jdbc:oracle:thin:@127.0.0.1:1521:JAVA";
 		String usr = "servlet";
@@ -67,7 +67,7 @@ public class BoardServletUpdate extends HttpServlet{
 		pw.println("</style>");
 		pw.println("<center>");
 		pw.println("<hr width='600' size='2' noshade>");
-		pw.println("<h2>Simple Board with Servlet</h2>");
+		pw.println("<h2>Update</h2>");
 		pw.println("&nbsp;&nbsp;&nbsp;");
 		pw.println("<a href='list.do'>글목록</a>");
 		pw.println("<hr width='600' size='2' noshade>");
