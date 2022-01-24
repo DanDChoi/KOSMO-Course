@@ -20,7 +20,7 @@ public class ADBQuickStart {
     // to pass TNS_ADMIN as part of a connection URL.
     // TNS_ADMIN - Should be the path where the client credentials zip (wallet_dbname.zip) file is downloaded. 
     // dbname_medium - It is the TNS alias present in tnsnames.ora.
-    final String DB_URL="jdbc:oracle:thin:@01_medium?TNS_ADMIN=/Users/Dan/Desktop/Develop/Develop_Class/Oracle/";
+    final String DB_URL="jdbc:oracle:thin:@db01_high?TNS_ADMIN=/Users/Dan/Desktop/Develop/Develop_Class/Oracle/Wallet_DB01";
     // Update the Database Username and Password to point to your Autonomous Database
     final String DB_USER = "ADMIN";
     String DB_PASSWORD = "Dandatabase01" ;
