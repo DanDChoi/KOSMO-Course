@@ -133,8 +133,20 @@
       <Host name="localhost"  appBase="webapps"
             unpackWARs="true" autoDeploy="true">
 
-        <Context path="/nc" docBase="C:\Users\CHOI\Desktop\Dan\Develop\Develop_Class\Web\NewContext" reloadable="true"/>
-		<Context path="/dh" docBase="C:\Users\CHOI\Desktop\Dan\Develop\Develop_Class\Web\NewContext2" reloadable="true"/>
+      <Context path="/nc" docBase="C:\Users\CHOI\Desktop\Dan\Develop\Develop_Class\Web\NewContext" reloadable="true">
+          <Resource name="jdbc/myoracle" auth="Container"
+              type="javax.sql.DataSource" driverClassName="oracle.jdbc.driver.OracleDriver"
+              url="jdbc:oracle:thin:@127.0.0.1:1521:JAVA"
+              username="servlet" password="java" maxTotal="20" maxIdle="10"
+              maxWaitMillis="-1"/>
+      </Context>
+	 <Context path="/dh" docBase="C:\Users\CHOI\Desktop\Dan\Develop\Develop_Class\Web\NewContext2" reloadable="true">
+               <Resource name="jdbc/myoracle" auth="Container"
+                    type="javax.sql.DataSource" driverClassName="oracle.jdbc.driver.OracleDriver"
+                    url="jdbc:oracle:thin:@127.0.0.1:1521:JAVA"
+                    username="servlet" password="java" maxTotal="20" maxIdle="10"
+                    maxWaitMillis="-1"/>
+      </Context>
         <!-- SingleSignOn valve, share authentication between web applications
              Documentation at: /docs/config/valve.html -->
         <!--

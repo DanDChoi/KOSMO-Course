@@ -208,7 +208,8 @@ set "CLASSPATH=%CLASSPATH%;%CATALINA_HOME%\bin\tomcat-juli.jar"
 if not "%JSSE_OPTS%" == "" goto gotJsseOpts
 set "JSSE_OPTS=-Djdk.tls.ephemeralDHKeySize=2048"
 :gotJsseOpts
-set "JAVA_OPTS=%JAVA_OPTS% %JSSE_OPTS%"
+rem set "JAVA_OPTS=%JAVA_OPTS% %JSSE_OPTS%"
+set JAVA_OPTS=%JAVA_OPTS% %LOGGING_MANAGER% "-Dfile.encoding=utf-8"
 
 rem Register custom URL handlers
 rem Do this here so custom URL handles (specifically 'war:...') can be used in the security policy
