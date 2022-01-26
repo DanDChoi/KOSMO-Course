@@ -1,5 +1,5 @@
-<%@ page contentType="text/html;charset=utf-8" import="java.sql.*"%>
-<jsp:useBean id="pool" class="soo.db.connectionPoolBean" scope="application"/>
+<%@ page contentType="text/html;charset=utf-8" import="javax.sql.DataSource, java.sql.*"%>
+<jsp:useBean id="dbcp" class="soo.dbcp.DbcpBean" scope="application"/>
 
 <meta charset='utf-8'>
 <style>
@@ -14,7 +14,7 @@
 </style>
 <center>
 <hr width='600' size='2' noshade>
-<h2>Simple Board with jsp</h2>
+<h2>Simple Board with dbcp</h2>
 &nbsp;&nbsp;&nbsp;
 <a href='input.jsp'>글쓰기</a>
 &nbsp;&nbsp;&nbsp;
@@ -31,11 +31,15 @@
 </tr>
 
 <%
+		DataSource ds = null;
 		Connection con = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 		String sql = "select * from board order by seq desc";
 		try {
+			ds = dbcp.getDs();
+			con = ds.getConnection();
+			stmt = con.createStatement();
 			rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				int seq = rs.getInt(1);
