@@ -13,6 +13,9 @@
 		<a href="board_dbcp/list.jsp">게시판</a>(DBCP)<br/><br/>
 		
 		<a href="addr_mv/list.jsp">주소록</a>(MV Model)<br/><br/>
-		<a href="board_mv/list.jsp">게시판</a>(MV Model)<br/><br/>	
+		<a href="board_mv/list.jsp">게시판</a>(MV Model)<br/><br/>
+		
+		<a href="addr/addr.do">주소록</a>(MVC Model)<br/>
+		<a href="board/board.do">게시판</a>(MVC Model)<br/>	
 	</body>
 </html>
