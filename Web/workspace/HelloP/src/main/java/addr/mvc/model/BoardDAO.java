@@ -42,7 +42,9 @@ class BoardDAO {
 				String subject = rs.getString(4);
 				String content = rs.getString(5);
 				Date rdate = rs.getDate(6);
-				list.add(new Board(seq, name, email, subject, content, rdate));
+				
+				Board board = new Board(seq, name, email, subject, content, rdate);
+				list.add(board);
 			}
 			return list;
 		} catch (SQLException se) {
@@ -56,7 +58,7 @@ class BoardDAO {
 			} catch (SQLException se){}
 			}
 		}
-	boolean insert(Board dto) {
+	void insert(Board board) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = BoardSQL.INSERT;
@@ -64,10 +66,10 @@ class BoardDAO {
 		try{
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, dto.getName());
-			pstmt.setString(2, dto.getEmail());
-			pstmt.setString(3, dto.getSubject());
-			pstmt.setString(4, dto.getContent());
+			pstmt.setString(1, board.getName());
+			pstmt.setString(2, board.getEmail());
+			pstmt.setString(3, board.getSubject());
+			pstmt.setString(4, board.getContent());
 			int i = pstmt.executeUpdate();
 			if(i>0){
 				return true;
@@ -103,17 +105,15 @@ class BoardDAO {
 			}catch(SQLException se){}
 		}
 	}
-	ArrayList<Board> contents (int seq) {
-		ArrayList<Board> lists = new ArrayList<Board>();
+	Board content (long seq) {
 		ResultSet rs = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		Statement stmt = null;
 		String sql = BoardSQL.CONTENT;
 		try{
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(sql);
-		    pstmt.setInt(1, seq);
+		    pstmt.setLong(1, seq);
 		    rs = pstmt.executeQuery();
 		    while(rs.next()){
 		        String name = rs.getString(2);
@@ -121,17 +121,26 @@ class BoardDAO {
 		        String subject = rs.getString(4);
 		        String content = rs.getString(5);
 		        Date rdate = rs.getDate(6); 
-		        lists.add(new Board(seq, name, email, subject, content, rdate));
+		        
+		        Board board = new Board(seq, name, email, subject, content, rdate);
+		        return board;
+		    }else{
+		    	return null;
 		    }
-		    return lists;
 		}catch(SQLException se){
+			return null;
 		}finally{
 		    try{
 		        if(rs != null) rs.close();
 		        if(con != null) con.close();
-		        if(con != null) stmt.close();
-		        if(con != null) pstmt.close();
+		        if(pstmt != null) pstmt.close();
 		    }catch(SQLException se){}
-		}return null;
+		}
+	}
+	void update(Board board) {
+		
+	}
+	void delete(long seq) {
+		
 	}
 }

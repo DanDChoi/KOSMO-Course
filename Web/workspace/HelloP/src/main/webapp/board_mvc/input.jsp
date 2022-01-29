@@ -1,8 +1,9 @@
-<%@ page contentType="text/html;charset=utf-8" %>
+<%@ page language ="java" contentType="text/html;charset=utf-8" 
+	pageEncoding="UTF-8"%>
 
 <html>
   <head>
-    <title>간단한 게시판 with MV</title>
+    <title>간단한 게시판 with MVC</title>
 	<meta charset='utf-8'>
 	<script language="javascript">
 	   function check()
@@ -32,8 +33,8 @@
   <body onload="input.name.focus()">
     <center>
 	   <hr width="600" size="2" noshade>
-	      <h2>Simple Board with MV</h2>
-		  <a href='list.jsp'>글목록</a>
+	      <h2>Simple MVC BOARD</h2>
+		  <a href='board.do'>글목록</a>
 	   <hr width="600" size="2" noshade>
 	</center>
 	<form name="input" method="post" action="insert.jsp">

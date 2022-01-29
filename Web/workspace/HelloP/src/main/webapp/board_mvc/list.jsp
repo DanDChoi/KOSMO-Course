@@ -33,6 +33,12 @@
 <%
 	ArrayList<Board> list = (ArrayList<Board>)request.getAttribute("list");
 	if(list != null){
+%>
+            <tr>
+				<td colspan="5" style="text-align:center">서버에 문제발생</td>
+			 </tr>
+<%
+	}else{
 		int size = list.size();
 		if (size == 0){
 %>
@@ -41,15 +47,16 @@
 			 </tr>
 <%    	
 		}else{
-			for(Board dto : list){
+			for(Board board : list){
 %>
 
 			<tr>
-				<td align='center'><%=dto.getSeq()%></td>
-				<td align='center'><%=dto.getName()%></td>
-				<td align='center'><%=dto.getEmail()%></td>
-				<td align='center'><a href='content.jsp?seq=<%=dto.getSeq()%>'><%=dto.getSubject()%></a></td>
-				<td><%=dto.getRdate()%></td>
+				<td align='center'><%=board.getSeq()%></td>
+				<td align='center'><%=board.getName()%></td>
+				<td align='center'><%=board.getEmail()%></td>
+				<td align='center'>
+				<a href='board.do?m=content&seq=<%=board.getSeq()%>'><%=board.getSubject()%></a></td>
+				<td><%=board.getRdate()%></td>
 			</tr>
 <%    		
 			}

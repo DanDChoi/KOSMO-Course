@@ -18,17 +18,17 @@ public class BoardService {
 	public ArrayList<Board> listS(){
 		return dao.list();
 	}
-	public boolean insertS(Board dto) {
-		return dao.insert(dto);
+	public void insertS(Board board) {
+		dao.insert(board);
 	}
-	public void deleteS(int seq) {
+	public void deleteS(long seq) {
 		dao.delete(seq);
 	}
-	public ArrayList<Board> contentS(int seq) {
-		return dao.contents(seq);
+	public Board contentS(long seq) {
+		return dao.content(seq);
 	}
-	public ArrayList<Board> updateS(int seq){
-		return dao.update(seq);
+	public void updateS(Board board){
+		dao.update(board);
 	}
 	
 }
