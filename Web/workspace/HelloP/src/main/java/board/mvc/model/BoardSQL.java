@@ -1,4 +1,4 @@
-package addr.mvc.model;
+package board.mvc.model;
 
 class BoardSQL {
 	static final String LIST = "select * from board order by seq desc";

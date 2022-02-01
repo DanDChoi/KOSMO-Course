@@ -12,7 +12,7 @@ import mvc.domain.Board;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import addr.mvc.model.BoardService;
+import board.mvc.model.BoardService;
 
 @WebServlet("/board/board.do")
 public class BoardController extends HttpServlet {
@@ -25,8 +25,8 @@ public class BoardController extends HttpServlet {
 		if (m != null) {
 			switch(m) {
 				case "list": list(request, response); break;
-				case "input" : input(request, response); break;
-				case "content" : content(request, response); break;
+				//case "input" : input(request, response); break;
+				//case "content" : content(request, response); break;
 				//case "insert" : insert(request, response); break;
 				//case "delete" : delete(request, response); break;
 			}
@@ -42,10 +42,11 @@ public class BoardController extends HttpServlet {
 		request.setAttribute("list", list);
 		
 		//(2)Designate view (JSP)
-		String view = "list.jsp";
+		String view = "../board_mvc/list.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(view);
 		rd.forward(request, response);
 	}
+	/*
 	private void input(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		response.sendRedirect("input.jsp");
@@ -80,4 +81,5 @@ public class BoardController extends HttpServlet {
 		}
 		return seq;
 	}
+	*/
 }

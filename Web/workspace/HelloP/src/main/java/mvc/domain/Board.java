@@ -3,34 +3,33 @@ package mvc.domain;
 import java.sql.Date;
 
 public class Board {
-	private int seq;
-	private String name;
+	private long seq;
+	private String writer;
 	private String email;
 	private String subject;
 	private String content;
 	private Date rdate;
 	
 	public Board() {}
-	public Board(int seq, String name, String email, String subject, String content, Date rdate) {
-		super();
+	public Board(long seq, String writer, String email, String subject, String content, Date rdate) {
 		this.seq = seq;
-		this.name = name;
+		this.writer = writer;
 		this.email = email;
 		this.subject = subject;
 		this.content = content;
 		this.rdate = rdate;
 	}
-	public int getSeq() {
+	public long getSeq() {
 		return seq;
 	}
-	public void setSeq(int seq) {
+	public void setSeq(long seq) {
 		this.seq = seq;
 	}
 	public String getName() {
-		return name;
+		return writer;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String writer) {
+		this.writer = writer;
 	}
 	public String getEmail() {
 		return email;

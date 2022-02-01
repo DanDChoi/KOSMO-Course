@@ -1,4 +1,4 @@
-package addr.mvc.model;
+package board.mvc.model;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -8,9 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
+import javax.naming.*;
 import javax.sql.DataSource;
 
 import mvc.domain.Board;
@@ -58,6 +56,7 @@ class BoardDAO {
 			} catch (SQLException se){}
 			}
 		}
+	/*
 	void insert(Board board) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -88,7 +87,7 @@ class BoardDAO {
 	}
 
 		
-	void delete(int seq) {
+	void delete(long seq) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = BoardSQL.DELETE;	
@@ -105,6 +104,7 @@ class BoardDAO {
 			}catch(SQLException se){}
 		}
 	}
+	
 	Board content (long seq) {
 		ResultSet rs = null;
 		Connection con = null;
@@ -140,7 +140,6 @@ class BoardDAO {
 	void update(Board board) {
 		
 	}
-	void delete(long seq) {
-		
-	}
+	*/
+
 }

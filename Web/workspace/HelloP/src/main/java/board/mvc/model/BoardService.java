@@ -1,4 +1,4 @@
-package addr.mvc.model;
+package board.mvc.model;
 
 import java.util.ArrayList;
 
@@ -18,6 +18,7 @@ public class BoardService {
 	public ArrayList<Board> listS(){
 		return dao.list();
 	}
+	/*
 	public void insertS(Board board) {
 		dao.insert(board);
 	}
@@ -30,5 +31,5 @@ public class BoardService {
 	public void updateS(Board board){
 		dao.update(board);
 	}
-	
+	*/
 }
