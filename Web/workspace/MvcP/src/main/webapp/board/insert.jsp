@@ -1,17 +1,12 @@
 <%@ page contentType="text/html;charset=utf-8"%>
-<jsp:useBean id="boardDAO" class="soo.mv.model.BoardDAO" scope="application"/>
-<jsp:useBean id="dto" class="soo.mv.model.BoardDTO"/>
-<jsp:setProperty name="dto" property="*"/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<%
-	boolean flag = boardDAO.insert(dto);
-%>
     <script>
-        if(<%=flag%>){
-            alert("입력 성공(mv)");
+        if(${flag}){
+            alert("입력 성공(JSTL+EL)");
         }else {
-        	alert("입력 실패(mv)");
+        	alert("입력 실패(JSTL+EL)");
         }
-        location.href='list.jsp';
+        location.href='board.do';
 	</script>

@@ -2,24 +2,23 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <meta charset='utf-8'>
-
 <style>
-	table, th, td {
-	   border: 1px solid black;
-	   border-collapse: collapse;
-	}
-	th, td {
-	   padding: 5px;
-	}
-	a { text-decoration:none }
+table, th, td {
+border: 1px solid black;
+border-collapse: collapse;
+}
+th, td {
+padding: 5px;
+}
+a { text-decoration:none }
 </style>
 <center>
 <hr width='600' size='2' noshade>
 <h2>Simple Board with JSTL+EL</h2>
 &nbsp;&nbsp;&nbsp;
-<a href="board.do?m=input">글쓰기</a>
+<a href='board.do?m=input'>글쓰기</a>
 &nbsp;&nbsp;&nbsp;
-<a href="../">인덱스</a>
+<a href='../'>인덱스</a>
 <hr width='600' size='2' noshade>
 </center>
 <table border='1' width='600' align='center' cellpadding='2'>
@@ -31,20 +30,20 @@
 <th align='center' width='15%'>날짜</th>
 </tr>
 <c:if test="${empty list}">
-            <tr>
-				<td colspan="5" style="text-align:center">데이터가 하나도 없네요</td>
-			 </tr>
+	<tr>
+		<td colspan="5" style="text-align:center">데이터가 없습니당</td>
+	</tr>
 </c:if>
 <c:forEach items="${list}" var="board">
-			<tr>
-				<td align='center'>${board.seq}</td>
-				<td align='center'>${board.name}</td>
-				<td align='center'>${board.email}</td>
-				<td align='center'>
-				<a href='board.do?m=content&seq=${board.seq}'>${board.subject}</a></td>
-				<td>${board.rdate}</td>
-			</tr>
-</c:forEach>   
-
-    </table>
+	<tr>
+		<td align='center'>${board.seq}</td>
+		<td>${board.writer}</td>
+		<td>${board.email}</td>
+		<td align='center'><a href='board.do?m=list_con&seq=${board.seq}'>${board.subject}</a>
+		</td>
+		<td align='center'>${board.rdate}</td>
+	</tr>
+</c:forEach>
+		  	
+	</table>
 <hr width='600' size='2' noshade>

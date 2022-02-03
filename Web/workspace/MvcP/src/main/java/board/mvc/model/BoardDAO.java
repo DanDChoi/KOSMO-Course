@@ -56,19 +56,18 @@ class BoardDAO {
 			} catch (SQLException se){}
 			}
 		}
-	/*
-	void insert(Board board) {
+	
+	boolean insert(Board dto) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = BoardSQL.INSERT;
-		
 		try{
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, board.getName());
-			pstmt.setString(2, board.getEmail());
-			pstmt.setString(3, board.getSubject());
-			pstmt.setString(4, board.getContent());
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getEmail());
+			pstmt.setString(3, dto.getSubject());
+			pstmt.setString(4, dto.getContent());
 			int i = pstmt.executeUpdate();
 			if(i>0){
 				return true;
@@ -86,7 +85,7 @@ class BoardDAO {
 		}
 	}
 
-		
+		/*
 	void delete(long seq) {
 		Connection con = null;
 		PreparedStatement pstmt = null;

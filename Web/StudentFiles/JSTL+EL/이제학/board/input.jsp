@@ -1,8 +1,9 @@
-<%@ page contentType="text/html;charset=utf-8" import="java.sql.*"%>
+<%@ page contentType="text/html;charset=utf-8"%>
+
 
 <html>
   <head>
-    <title>간단한 게시판 with JSTL+EL</title>
+    <title>간단한 게시판</title>
 	<meta charset='utf-8'>
 	<script language="javascript">
 	   function check()
@@ -32,7 +33,7 @@
   <body onload="input.name.focus()">
     <center>
 	   <hr width="600" size="2" noshade>
-	      <h2>Simple JSTL+EL BOARD</h2>
+	      <h2>Simple Board with JSTL+EL</h2>
 		  <a href='board.do'>글목록</a>
 	   <hr width="600" size="2" noshade>
 	</center>
@@ -40,7 +41,7 @@
 	   <table border="1" width="600" align="center"  cellpadding="3" cellspacing="1">
 	      <tr>
 		     <td width="30%" align="center">글쓴이</td>
-			 <td align="center"><input type="text" name="name" size="60"></td>
+			 <td align="center"><input type="text" name="writer" size="60"></td>
 		  </tr>
 		  <tr>
 		     <td align="center">이메일</td>
