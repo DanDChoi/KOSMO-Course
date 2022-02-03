@@ -24,9 +24,11 @@ class AddrDAO {
 			Context envContext  = (Context)initContext.lookup("java:/comp/env");
 			ds = (DataSource)envContext.lookup("jdbc/myoracle");
 		}catch(NamingException ne){
+			System.out.println("#AddrDAO() ne:  " + ne);
 		}
 	}
 	ArrayList<Address> list(){
+		System.out.println("0 ds: " + ds);
 		ArrayList<Address> list = new ArrayList<Address>();
         Connection con = null;
 		Statement stmt = null;
@@ -34,8 +36,10 @@ class AddrDAO {
 		//String sql = LIST;
 		try{
 			con = ds.getConnection();
+			System.out.println("1 con:" + con);
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(LIST);
+			System.out.println("2 stmt:" + stmt);
 			while(rs.next()){
 				int seq = rs.getInt(1);
 				String name = rs.getString(2);
