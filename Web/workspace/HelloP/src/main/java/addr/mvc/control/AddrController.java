@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 import addr.mvc.model.AddrService;
 
-@WebServlet("/addr/addr.do")
+@WebServlet("/addr_mvc/addr.do")
 public class AddrController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -42,13 +42,13 @@ public class AddrController extends HttpServlet {
 		request.setAttribute("list", list);
 		
 		//(2) View 지정 (JSP)
-		String view = "../addr_mvc/list.jsp";
+		String view = "list.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(view);
 		rd.forward(request, response);
 	}
 	private void input(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		response.sendRedirect("../addr_mvc/input.jsp");
+		response.sendRedirect("input.jsp");
 	}
 	private void insert(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
@@ -61,7 +61,7 @@ public class AddrController extends HttpServlet {
 		request.setAttribute("flag", flag);
 		
 		//(2) View 지정 (JSP)
-		String view = "../addr_mvc/list.jsp";
+		String view = "list.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(view);
 		rd.forward(request, response);
 	}
