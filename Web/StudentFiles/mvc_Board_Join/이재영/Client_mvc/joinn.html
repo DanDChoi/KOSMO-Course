@@ -1,0 +1,70 @@
+
+<meta charset="utf-8">
+<head>
+<style>
+	table, th, td {
+	   border: 1px solid black;
+	   border-collapse: collapse;
+	}
+	th, td {
+	   padding: 5px;
+	}
+	a { text-decoration:none }
+</style>
+<script>
+	function rs(){
+		var cid = $('#cid').val();
+		$.ajax({
+				type : 'POST',
+				url : '../boardk/clientLogin?message=logincheck',
+				data : {cid: cid},
+				success : function(re){
+					if(rs==1){
+						alret("아이디 어밧따");
+					}else{
+						alret("아이디있따");
+					}
+				}
+			
+		});
+	}
+</script>
+</head> 
+<body onload="document.f.name.focus()">
+
+<center>
+   <h1>
+		HTML 너무 어려워서 회원가입툴도 같아요 죄송요
+   </h1>
+   <form name="insert" action="../boardk/clientLogin?mesagge=joins" method="post">
+       <table border="1" width="300" height="200">
+	      <tr>
+		     <td width="30%" colspan="2" align="center"><h2>회원가입</h2></td> 
+		  </tr>
+		  <tr>
+		     <th width="30%">아이디</th> 
+			 <td><input name="cid" align="center" size="20" align="center" placeholder="id"><input type="submit" name = "check" value="중복체크"/></td>
+		  </tr>
+		  <tr>
+		     <th width="30%">비밀번호</th> 
+			 <td><input type="password" name="cpassword" size="20" align="center" placeholder="password"></td>
+		  </tr>
+		    <tr>
+		     <th width="30%">비밀번호확인</th> 
+			 <td><input type="password" name="cpasswordcheck" size="20" align="center" placeholder="passwordcheck"></td>
+		  </tr>
+		    <tr>
+		     <th width="30%">이름</th> 
+			 <td><input name="name" align="center" size="20" align="center" placeholder="name"></td>
+		  </tr>
+		  <tr> 
+		     <td colspan="2" align="center">
+			     <input type="submit" name = "check" value="회원가입"/>
+			     
+				 <input type="reset" value="취소"/>
+			 </td> 
+		  </tr>
+	   </table>
+   </form>
+</center>
+</body>

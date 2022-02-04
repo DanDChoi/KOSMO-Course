@@ -1,0 +1,14 @@
+C
+join.jstl.control.JoinController
+
+M
+1)DAO
+join.mvc.model.JoinDAO
+join.mvc.model.JoinSQL
+mvc.domain.Join
+
+2)service
+join.mvc.model.JoinService
+
+V
+

@@ -24,14 +24,16 @@
 			</div>
 				<br/>
 				
-				<a id="join" href="">회원가입</a><br/><br/>
+				<a id="join" href="join/join.do?m=joinForm">회원가입</a><br/><br/>
 		<c:choose>
 			<c:when test="${empty loginOkUser}">
 				<a id="login" href="login/login.do?m=form">로그인</a>
 			</c:when>
 			<c:otherwise>
-				<font style="color:green">${loginOkUser.name}</font>님 환영합니다.<br/>
-				<a href="login/login.do?m=logout">로그아웃</a>
+				<a id="welcome">
+				<font style="color:green">${loginOkUser.name}</font> 님 환영합니다 :)<br/>
+				</a>
+				<a id="logout" href="login/login.do?m=logout">로그아웃</a>
 			</c:otherwise>					
 		</c:choose>
 		

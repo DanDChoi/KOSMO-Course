@@ -61,6 +61,10 @@ input {
 	color: cornsilk;
 }
 
+#welcome{
+	font-size: 25px;
+}
+
 #join{
     position: fixed;
     left: 1530px;
@@ -73,6 +77,12 @@ input {
     left: 1650px;
     text-align: right;
     font-size: 20px;
+}
+#logout{
+	position: fixed;
+	left: 1650px;
+	text-align: right;
+	font-size: 20px;
 }
 
 .bgImage {
