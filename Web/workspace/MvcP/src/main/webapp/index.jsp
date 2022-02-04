@@ -6,20 +6,28 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>MvcP</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    	<link rel="stylesheet" href="css/style.css">
+		<title>Mvc Project</title>
 	</head>
 	<body style="text-align: center">
-		<h1>Mvc Project Index</h1>
-		
-		<a href="addr/addr.do">주소록</a>(JSTL+EL)<br/>
-		<a href="board/board.do">게시판</a>(JSTL+EL)<br/>	
-		
-		<br/>
-		<a href="">회원가입</a><br/><br/>
-		
+		<section class="center">
+		<div id="clock">
+		<h1>00:00:00</h1>
+		</div>
+			<h2 id="title">Mvc Project Index</h2>
+			<div id ="list">
+				<a href="addr/addr.do">주소록</a>(JSTL+EL)<br/>
+				<br/>
+				<a href="board/board.do">게시판</a>(JSTL+EL)<br/>	
+			</div>
+				<br/>
+				
+				<a id="join" href="">회원가입</a><br/><br/>
 		<c:choose>
 			<c:when test="${empty loginOkUser}">
-				<a href="login/login.do?m=form">로그인</a>
+				<a id="login" href="login/login.do?m=form">로그인</a>
 			</c:when>
 			<c:otherwise>
 				<font style="color:green">${loginOkUser.name}</font>님 환영합니다.<br/>
@@ -27,11 +35,16 @@
 			</c:otherwise>					
 		</c:choose>
 		
+		</section>
+		    <script src="js/clock.js"></script>
+		    <script src="js/background.js"></script>
+		   
+	</body>
+</html>
+
 		<!-- 세션접근법 
 		   (1) jsp
 		        session
 		   (2) servlet 
 		        HttpSession session = request.getSession(); 
 		-->
-	</body>
-</html>

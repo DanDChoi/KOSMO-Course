@@ -58,9 +58,9 @@
 	</table>
 	<hr width='600' size='2' noshade>
 	<b>
-	<a  href='board.do?b=updateList&seq=${board.seq}'>수정</a>
+	<a  href='board.do?m=getupdate&seq=${board.seq}'>수정</a>
 	 | 
-	<a href='board.do?b=delete&seq=${board.seq}'>삭제</a>
+	<a href='board.do?m=delete&seq=${board.seq}'>삭제</a>
 	 | 
 	<a href='board.do'>목록</a>
 	</b>

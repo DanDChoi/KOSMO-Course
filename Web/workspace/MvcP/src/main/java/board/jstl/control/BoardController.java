@@ -30,6 +30,8 @@ public class BoardController extends HttpServlet {
 				case "content" : content(request, response); break;
 				case "insert" : insert(request, response); break;
 				case "delete" : delete(request, response); break;
+				case "update" : update(request, response); break;
+				case "getupdate" : getupdate(request, response); break;
 			}
 		}else {
 			list(request, response);
@@ -83,11 +85,35 @@ public class BoardController extends HttpServlet {
 		rd.forward(request, response);
 	}
 	
-	private void del(HttpServletRequest request, HttpServletResponse response)
+	private void delete(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		BoardService service = BoardService.getInstance();
 		int seq = getSeq(request);
 		service.deleteS(seq);
+		
+		response.sendRedirect("board.do");
+	}
+	
+	private void getupdate(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		BoardService service = BoardService.getInstance();
+		int seq = getSeq(request);
+		ArrayList<Board> getupdate = service.getupdateS(seq);
+		request.setAttribute("getupdate", getupdate);
+		
+		String view = "getupdate.jsp";
+		RequestDispatcher rd = request.getRequestDispatcher(view);
+		rd.forward(request, response);	
+	}
+	private void update(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		int seq = getSeq(request);
+		BoardService service = BoardService.getInstance();
+		String email = request.getParameter("email");
+		String subject = request.getParameter("subject");
+		String content = request.getParameter("content");
+		Board dto = new Board(seq, null, email, subject, content, null);
+		service.updateS(dto);
 		
 		response.sendRedirect("board.do");
 	}

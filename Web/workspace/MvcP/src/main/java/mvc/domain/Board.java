@@ -3,7 +3,7 @@ package mvc.domain;
 import java.sql.Date;
 
 public class Board {
-	private long seq;
+	private int seq;
 	private String writer;
 	private String email;
 	private String subject;
@@ -11,7 +11,7 @@ public class Board {
 	private Date rdate;
 	
 	public Board() {}
-	public Board(long seq, String writer, String email, String subject, String content, Date rdate) {
+	public Board(int seq, String writer, String email, String subject, String content, Date rdate) {
 		this.seq = seq;
 		this.writer = writer;
 		this.email = email;
@@ -19,10 +19,10 @@ public class Board {
 		this.content = content;
 		this.rdate = rdate;
 	}
-	public long getSeq() {
+	public int getSeq() {
 		return seq;
 	}
-	public void setSeq(long seq) {
+	public void setSeq(int seq) {
 		this.seq = seq;
 	}
 	public String getWriter() {

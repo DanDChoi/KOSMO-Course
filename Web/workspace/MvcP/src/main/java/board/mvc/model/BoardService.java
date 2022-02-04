@@ -29,9 +29,12 @@ public class BoardService {
 	public void deleteS(int seq) {
 		dao.delete(seq);
 	}
-	/*
-	public void updateS(Board board){
+	
+	public ArrayList<Board> getupdateS(int seq){
+		return dao.getupdate(seq);
+	}
+	public void updateS(Board dto) {
 		dao.update(dto);
 	}
-	*/
+	
 }

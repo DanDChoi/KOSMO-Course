@@ -136,7 +136,7 @@ public class BoardController extends HttpServlet {
 	private void del(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		//1Moderl �ڵ鸵(java)
 		BoardService service =BoardService.getInstance();
-		int seq =getSeq(request);
+		int seq = getSeq(request);
 		service.deleteS(seq);
 		response.sendRedirect("board.do");
 	}
