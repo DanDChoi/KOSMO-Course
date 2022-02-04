@@ -25,10 +25,10 @@ public class Board {
 	public void setSeq(long seq) {
 		this.seq = seq;
 	}
-	public String getName() {
+	public String getWriter() {
 		return writer;
 	}
-	public void setName(String writer) {
+	public void setWriter(String writer) {
 		this.writer = writer;
 	}
 	public String getEmail() {

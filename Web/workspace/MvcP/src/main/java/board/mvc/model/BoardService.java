@@ -22,15 +22,16 @@ public class BoardService {
 	public boolean insertS(Board dto) {
 		return dao.insert(dto);
 	}
-	/*
-	public void deleteS(long seq) {
+
+	public ArrayList<Board> contentS(int seq) {
+		return dao.contentlist(seq);
+	}
+	public void deleteS(int seq) {
 		dao.delete(seq);
 	}
-	public Board contentS(long seq) {
-		return dao.content(seq);
-	}
+	/*
 	public void updateS(Board board){
-		dao.update(board);
+		dao.update(dto);
 	}
 	*/
 }

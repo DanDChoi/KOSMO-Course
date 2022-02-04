@@ -1,7 +1,15 @@
 <%@ page contentType="text/html;charset=utf-8" import="java.util.ArrayList, mvc.domain.Address"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<!--<jsp:include page="../login/login_check_module.jsp"/>-->
 <meta charset='utf-8'>
+<!--  
+<c:if test="${empty loginOkUser}">
+<script>
+	alert("회원서비스입니다. 로그인을 먼저 해주세요");
+	location.href="../login/login.do?m=form"
+</script>
+</c:if>
+-->
 <style>
 	table, th, td {
 	   border: 1px solid black;

@@ -40,7 +40,7 @@
 	   <table border="1" width="600" align="center"  cellpadding="3" cellspacing="1">
 	      <tr>
 		     <td width="30%" align="center">글쓴이</td>
-			 <td align="center"><input type="text" name="name" size="60"></td>
+			 <td align="center"><input type="text" name="writer" size="60"></td>
 		  </tr>
 		  <tr>
 		     <td align="center">이메일</td>

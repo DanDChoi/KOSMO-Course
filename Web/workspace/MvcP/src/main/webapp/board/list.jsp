@@ -27,8 +27,8 @@
 <th align='center' width='10%'>글번호</th>
 <th align='center' width='15%'>작성자</th>
 <th align='center' width='30%'>이메일</th>
-<th align='center' width='30%'>글제목</th>
-<th align='center' width='15%'>날짜</th>
+<th align='center' width='25%'>글제목</th>
+<th align='center' width='20%'>날짜</th>
 </tr>
 <c:if test="${empty list}">
             <tr>
@@ -38,7 +38,7 @@
 <c:forEach items="${list}" var="board">
 			<tr>
 				<td align='center'>${board.seq}</td>
-				<td align='center'>${board.name}</td>
+				<td align='center'>${board.writer}</td>
 				<td align='center'>${board.email}</td>
 				<td align='center'>
 				<a href='board.do?m=content&seq=${board.seq}'>${board.subject}</a></td>

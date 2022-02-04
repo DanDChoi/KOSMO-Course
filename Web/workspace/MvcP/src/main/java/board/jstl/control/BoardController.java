@@ -27,9 +27,9 @@ public class BoardController extends HttpServlet {
 			switch(m) {
 				case "list": list(request, response); break;
 				case "input" : input(request, response); break;
-				//case "content" : content(request, response); break;
+				case "content" : content(request, response); break;
 				case "insert" : insert(request, response); break;
-				//case "delete" : delete(request, response); break;
+				case "delete" : delete(request, response); break;
 			}
 		}else {
 			list(request, response);
@@ -56,43 +56,51 @@ public class BoardController extends HttpServlet {
 			throws ServletException, IOException {
 		//(1) Model 핸들링 (java)
 		BoardService service = BoardService.getInstance();
-		String name = request.getParameter("name");
+		String writer = request.getParameter("writer");
 		String email = request.getParameter("email");
 		String subject = request.getParameter("subject");
 		String content = request.getParameter("content");
-		Board dto = new Board(-1, name, email, subject, content, null); 
+		Board dto = new Board(-1, writer, email, subject, content, null); 
 		boolean flag = service.insertS(dto);
 		request.setAttribute("flag", flag);
 		
 		//(2) View 지정 (JSP)
-		String view = "list.jsp";
+		String view = "insert.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(view);
 		rd.forward(request, response);
 	}
-	/*
+	
 	private void content(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		long seq = getSeq(request);
-		if(seq != -1) {
-			BoardService service = BoardService.getInstance();
-			Board board = service.contentS(seq);
-			request.setAttribute("board", board);
-			
-			String view = "content.jsp";
-			RequestDispatcher rd = request.getRequestDispatcher(view);
-			rd.forward(request, response);
-		}else {
-			response.sendRedirect("board.do");
-		}
+		BoardService service = BoardService.getInstance();
+		int seq = getSeq(request);
+		ArrayList<Board> content = service.contentS(seq);
+		request.setAttribute("content", content);
+		//request.setAttribute("seq", seq);
+		
+		String view = "content.jsp";
+		RequestDispatcher rd = request.getRequestDispatcher(view);
+		rd.forward(request, response);
 	}
-	private long getSeq(HttpServletRequest request) {
-		long seq = -1;
-		String seqStr = request.getParameter("Seq");
+	
+	private void del(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		BoardService service = BoardService.getInstance();
+		int seq = getSeq(request);
+		service.deleteS(seq);
+		
+		response.sendRedirect("board.do");
+	}
+
+	
+	private int getSeq(HttpServletRequest request) {
+		int seq = -1;
+		String seqStr = request.getParameter("seq");
 		if(seqStr != null) {
 			seqStr = seqStr.trim();
 			if(seqStr.length() != 0) {
 				try {
-					seq = Long.parseLong(seqStr);
+					seq = Integer.parseInt(seqStr);
 					return seq;
 				}catch(NumberFormatException ne) {
 				}
@@ -100,5 +108,5 @@ public class BoardController extends HttpServlet {
 		}
 		return seq;
 	}
-	*/
+
 }

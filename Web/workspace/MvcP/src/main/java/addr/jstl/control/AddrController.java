@@ -59,7 +59,7 @@ public class AddrController extends HttpServlet {
 		request.setAttribute("flag", flag);
 		
 		//(2) View ÁöÁ¤ (JSP)
-		String view = "list.jsp";
+		String view ="insert.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(view);
 		rd.forward(request, response);
 	}
