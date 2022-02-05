@@ -45,11 +45,11 @@ public class LoginController extends HttpServlet {
 		String email = request.getParameter("id");
 		String pwd = request.getParameter("pwd");
 		//유효성 검사 (클라이언트측 View(JS), 서버측 Controller(java))
-		System.out.println("email: "+email+"pwd: "+pwd);
+		//System.out.println("email: "+email+"pwd: "+pwd);
 		
 		LoginService service =  LoginService.getInstance();
 		int result = service.check(email, pwd);
-		System.out.println("result: "+ result);
+		//System.out.println("result: "+ result);
 		
 		if(result == YES_ID_PWD) {
 			Member m = service.getMemberS(email);
