@@ -1,14 +1,16 @@
-C
+
+<1>M
+
+join.mvc.model.JoinDAO(class, public)
+join.mvc.model.JoinSQL(class, public)
+mvc.domain.Join (class, public)
+
+join.mvc.model.JoinService(class,public)
+
+<2>V
+join/join.jsp
+join/msg.jsp
+
+<3>C
 join.jstl.control.JoinController
-
-M
-1)DAO
-join.mvc.model.JoinDAO
-join.mvc.model.JoinSQL
-mvc.domain.Join
-
-2)service
-join.mvc.model.JoinService
-
-V
 

@@ -13,27 +13,27 @@
 	</head>
 	<body style="text-align: center">
 		<section class="center">
-		<div id="clock">
-		<h1>00:00:00</h1>
+		<div>
+			<h1 id="clock">00:00:00</h1>
 		</div>
 			<h2 id="title">Mvc Project Index</h2>
-			<div id ="list">
-				<a href="addr/addr.do">주소록</a>(JSTL+EL)<br/>
-				<br/>
-				<a href="board/board.do">게시판</a>(JSTL+EL)<br/>	
-			</div>
-				<br/>
+		<div id ="list">
+			<a href="addr/addr.do" style="text-decoration:none;">주소록</a>(JSTL+EL)<br/>
+			<br/>
+			<a href="board/board.do" style="text-decoration:none;">게시판</a>(JSTL+EL)<br/>	
+		</div>
+			<br/>
 				
-				<a id="join" href="join/join.do?m=joinForm">회원가입</a><br/><br/>
+			<a id="join" href="join/join.do?m=joinForm" style="text-decoration:none;,">회원가입</a><br/><br/>
 		<c:choose>
 			<c:when test="${empty loginOkUser}">
-				<a id="login" href="login/login.do?m=form">로그인</a>
+				<a id="login" href="login/login.do?m=form"style="text-decoration:none;">로그인</a>
 			</c:when>
 			<c:otherwise>
 				<a id="welcome">
-				<font style="color:green">${loginOkUser.name}</font> 님 환영합니다 :)<br/>
+				<font style="color:cornsilk"><b>${loginOkUser.name}</b></font> 님 환영합니다 :)<br/>
 				</a>
-				<a id="logout" href="login/login.do?m=logout">로그아웃</a>
+				<a id="logout" href="login/login.do?m=logout" style="text-decoration:none;">로그아웃</a>
 			</c:otherwise>					
 		</c:choose>
 		
