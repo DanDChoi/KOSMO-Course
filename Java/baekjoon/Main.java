@@ -6,10 +6,12 @@ class Main {
         int i;
         i = sc.nextInt();
         
-
         for(int j=0; j<=i; j++){
-            System.out.println(i);
-            i--;
-        }
+            for(int k=0; k<=j; k++){
+                System.out.print("*");
+            }
+            System.out.println();
     }
+    sc.close();
+}
 }
