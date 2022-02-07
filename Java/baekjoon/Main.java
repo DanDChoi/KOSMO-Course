@@ -7,11 +7,11 @@ class Main {
     i = sc.nextInt();
     sc.close();
 
-    for(int j=i; j>=i; j++){
-        for(int k=1; k<=j; k--){
+    for(int j=1; j<=i; j++){
+        for(int k=i; k>=j; k--){
             System.out.print(" ");
         }
-        for(int l=1; l>=i; l++){
+        for(int l=1; l<=j; l++){
             System.out.print("*");
         }
         System.out.println();
