@@ -40,8 +40,10 @@ class BoardDAO {
 				String subject = rs.getString(4);
 				String content = rs.getString(5);
 				Date rdate = rs.getDate(6);
+				String fname = rs.getString(7);
+				String ofname = rs.getString(8);
 				
-				Board board = new Board(seq, writer, email, subject, content, rdate);
+				Board board = new Board(seq, writer, email, subject, content, rdate, fname, ofname);
 				list.add(board);
 			}
 			return list;
@@ -64,10 +66,13 @@ class BoardDAO {
 		try{
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(sql);
+			System.out.println("writer:"+ dto.getWriter());
 			pstmt.setString(1, dto.getWriter());
 			pstmt.setString(2, dto.getEmail());
 			pstmt.setString(3, dto.getSubject());
 			pstmt.setString(4, dto.getContent());
+			pstmt.setString(5, dto.getFname());
+			pstmt.setString(6, dto.getOfname());
 			int i = pstmt.executeUpdate();
 			if(i>0){
 				return true;
@@ -104,7 +109,9 @@ class BoardDAO {
 			        String subject = rs.getString(4);
 			        String content = rs.getString(5);
 			        Date rdate = rs.getDate(6);
-			        list.add(new Board(seq, writer, email, subject, content, rdate));
+			        String fname = rs.getString(7);
+			        String ofname = rs.getString(8);
+			        list.add(new Board(seq, writer, email, subject, content, rdate, fname, ofname));
 			    }
 		    	return list;
 		}catch(SQLException se){
@@ -151,7 +158,9 @@ class BoardDAO {
 				String subject = rs.getString(4);
 				String content = rs.getString(5);
 				Date rdate = rs.getDate(6);
-				list.add(new Board(seq, writer, email, subject, content, rdate));
+				String fname = rs.getString(7);
+				String ofname = rs.getString(8);
+				list.add(new Board(seq, writer, email, subject, content, rdate, fname, ofname));
 			}
 			return list;
 		}catch(SQLException se){
@@ -172,10 +181,12 @@ class BoardDAO {
 		try{
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(4, dto.getSeq());
+			pstmt.setInt(6, dto.getSeq());
 			pstmt.setString(1, dto.getEmail());
 			pstmt.setString(2, dto.getSubject());
 			pstmt.setString(3, dto.getContent());
+			pstmt.setString(4, dto.getFname());
+			pstmt.setString(5, dto.getOfname());
 			pstmt.executeUpdate();
 		}catch(SQLException se){
 		}finally{

@@ -6,14 +6,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import addr.mvc.model.AddrService;
-import mvc.domain.Address;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.oreilly.servlet.multipart.FileRenamePolicy;
+
+
 import mvc.domain.Board;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import board.mvc.model.BoardService;
+import file.mvc.model.FileSet;
 
 @WebServlet("/board/board.do")
 public class BoardController extends HttpServlet {
@@ -32,6 +41,7 @@ public class BoardController extends HttpServlet {
 				case "delete" : delete(request, response); break;
 				case "update" : update(request, response); break;
 				case "getupdate" : getupdate(request, response); break;
+				case "download": download(request, response); break;
 			}
 		}else {
 			list(request, response);
@@ -58,11 +68,27 @@ public class BoardController extends HttpServlet {
 			throws ServletException, IOException {
 		//(1) Model 핸들링 (java)
 		BoardService service = BoardService.getInstance();
-		String writer = request.getParameter("writer");
-		String email = request.getParameter("email");
-		String subject = request.getParameter("subject");
-		String content = request.getParameter("content");
-		Board dto = new Board(-1, writer, email, subject, content, null); 
+		
+		String saveDir = FileSet.FILE_DIR;
+		File fSaveDir = new File(saveDir);
+		if(!fSaveDir.exists()) fSaveDir.mkdirs();
+		
+		int maxPostSize = 1*1024*1024;
+		FileRenamePolicy policy = new DefaultFileRenamePolicy();
+		MultipartRequest mr =null;
+		try {
+			mr = new MultipartRequest (request, saveDir, maxPostSize, "utf-8", policy);
+		}catch(IOException ie) {
+			System.out.println("업로드 실패: " + ie);
+		}
+		String writer = mr.getParameter("writer");
+		String email = mr.getParameter("email");
+		String subject = mr.getParameter("subject");
+		String content = mr.getParameter("content");
+		String fname = mr.getFilesystemName("fname");
+		String ofname = mr.getOriginalFileName("fname");
+		
+		Board dto = new Board(-1, writer, email, subject, content, null, fname, ofname); 
 		boolean flag = service.insertS(dto);
 		request.setAttribute("flag", flag);
 		
@@ -89,6 +115,14 @@ public class BoardController extends HttpServlet {
 			throws ServletException, IOException {
 		BoardService service = BoardService.getInstance();
 		int seq = getSeq(request);
+			System.out.println("seq: "+seq);
+		String saveDir = FileSet.FILE_DIR;
+		
+		String fname = request.getParameter("fname");
+			System.out.println("fname: "+fname);
+		File f = new File(saveDir, fname);
+		if(f.exists()) f.delete();
+		
 		service.deleteS(seq);
 		
 		response.sendRedirect("board.do");
@@ -107,15 +141,85 @@ public class BoardController extends HttpServlet {
 	}
 	private void update(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int seq = getSeq(request);
+		
 		BoardService service = BoardService.getInstance();
-		String email = request.getParameter("email");
-		String subject = request.getParameter("subject");
-		String content = request.getParameter("content");
-		Board dto = new Board(seq, null, email, subject, content, null);
+		
+		String saveDir = FileSet.FILE_DIR;
+		File fSaveDir = new File(saveDir);
+		if(!fSaveDir.exists()) fSaveDir.mkdirs();
+		
+		int maxPostSize = 1*1024*1024;
+		FileRenamePolicy policy = new DefaultFileRenamePolicy();
+		MultipartRequest mr =null;
+		try {
+			mr = new MultipartRequest (request, saveDir, maxPostSize, "utf-8", policy);
+		}catch(IOException ie) {
+			System.out.println("업로드 실패: " + ie);
+		}
+		
+		int seq = Integer.parseInt(mr.getParameter("seq"));
+		//int seq = getSeq(request);
+		System.out.println("seq: " + seq);
+		
+		String email = mr.getParameter("email");
+		String subject = mr.getParameter("subject");
+		String content = mr.getParameter("content");
+		String fname = mr.getFilesystemName("fname");
+		String ofname = mr.getOriginalFileName("fname");
+		
+		Board dto = new Board(seq, null, email, subject, content, null, fname, ofname);
 		service.updateS(dto);
 		
 		response.sendRedirect("board.do");
+	}
+	
+	private void download(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String saveDir = FileSet.FILE_DIR;
+		String fname = request.getParameter("fname");
+		File f = new File(saveDir, fname);
+		
+		response.setContentType("application/octet-stream"); //브라우저에게 다운로드 준비요청
+		String Agent=request.getHeader("USER-AGENT");
+		if( Agent.indexOf("MSIE") >= 0 ){
+			int i = Agent.indexOf( 'M', 2 );
+			String IEV = Agent.substring( i + 5, i + 8 );
+			if( IEV.equalsIgnoreCase("5.5") ){
+				response.setHeader("Content-Disposition", "filename=" + new String( fname.getBytes("utf-8"), "8859_1") );
+			}else{
+				response.setHeader("Content-Disposition", "attachment;filename="+new String(fname.getBytes("utf-8"),"8859_1"));
+			}
+		}else{
+			response.setHeader("Content-Disposition", "attachment;filename=" + new String( fname.getBytes("utf-8"), "8859_1") );
+		}
+
+		if(f.exists() && f.isFile()) {
+			FileInputStream fis = null;
+			BufferedInputStream bis = null;
+			BufferedOutputStream bos = null;
+			OutputStream os = null;
+			try {
+				fis = new FileInputStream(f); //data source (서버측파일)
+				bis = new BufferedInputStream(fis, 2048);
+				os = response.getOutputStream();//data destination (클라이언트)
+				bos = new BufferedOutputStream(os, 2048);
+
+				int count = 0;
+				byte b[] = new byte[1024];
+				while((count = bis.read(b)) != -1) {
+					bos.write(b, 0, count);
+				}
+				bos.flush();
+			}catch(IOException ie) {
+			}finally {
+				try {
+					if(bos != null) bos.close();
+					if(bis != null) bis.close();
+					if(fis != null) fis.close();
+					if(os != null) os.close();
+				}catch(IOException ie) {}
+			}
+		}
 	}
 
 	

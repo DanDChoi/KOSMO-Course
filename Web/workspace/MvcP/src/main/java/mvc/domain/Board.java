@@ -9,15 +9,19 @@ public class Board {
 	private String subject;
 	private String content;
 	private Date rdate;
+	private String fname;
+	private String ofname;
 	
 	public Board() {}
-	public Board(int seq, String writer, String email, String subject, String content, Date rdate) {
+	public Board(int seq, String writer, String email, String subject, String content, Date rdate, String fname, String ofname) {
 		this.seq = seq;
 		this.writer = writer;
 		this.email = email;
 		this.subject = subject;
 		this.content = content;
 		this.rdate = rdate;
+		this.fname = fname;
+		this.ofname = ofname;
 	}
 	public int getSeq() {
 		return seq;
@@ -54,6 +58,18 @@ public class Board {
 	}
 	public void setRdate(Date rdate) {
 		this.rdate = rdate;
+	}
+	public String getFname() {
+		return fname;
+	}
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+	public String getOfname() {
+		return ofname;
+	}
+	public void setOfname(String ofname) {
+		this.ofname = ofname;
 	}
 	
 }

@@ -9,10 +9,13 @@
 	   {
 	       for(var i=0; i<document.input.elements.length; i++)
 		   {
-		      if(document.input.elements[i].value == "")
+		      if(document.input.writer.value == "" || 
+	    		  document.input.email.value == "" || 
+	    		  document.input.subject.value == "" ||
+	    		  document.input.content.value == "")
 			  {
-			     alert("모든 값을 입력 하셔야 합니다. ");
-				 return false;
+			     alert("필수입력란이 비었습니다.");
+			     return false;
 			  }
 		   }
 		   document.input.submit();
@@ -36,24 +39,29 @@
 		  <a href='board.do'>글목록</a>
 	   <hr width="600" size="2" noshade>
 	</center>
-	<form name="input" method="post" action="board.do?m=insert">
+	<form name="input" method="post" action="board.do?m=insert" enctype="multipart/form-data">
 	   <table border="1" width="600" align="center"  cellpadding="3" cellspacing="1">
 	      <tr>
-		     <td width="30%" align="center">글쓴이</td>
+		     <td width="30%" align="center">글쓴이(필수)</td>
 			 <td align="center"><input type="text" name="writer" size="60"></td>
 		  </tr>
 		  <tr>
-		     <td align="center">이메일</td>
+		     <td align="center">이메일(필수)</td>
 			 <td align="center"><input type="text" name="email" size="60"></td>
 		  </tr>
           <tr>
-		     <td align="center">글제목</td>
+		     <td align="center">글제목(필수)</td>
 			 <td align="center"><input type="text" name="subject" size="60"></td>
 		  </tr>
 		  <tr>
-		     <td align="center">글내용</td>
+		     <td align="center">글내용(필수)</td>
 			 <td align="center"><textarea name="content" rows="5" cols="53"></textarea></td>
 		  </tr>
+		  <tr>
+		     <td align="center">파일업로드</td>
+			 <td align="center"><input type="file" name="fname" size="60"></td>
+		  </tr>
+
 		  <tr>
 		     <td colspan="2" align="center">
 			    <input type="button" value="전송" onclick="check()">

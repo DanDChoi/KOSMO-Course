@@ -24,7 +24,7 @@ a { text-decoration:none }
 	</tr>
 </c:if>
 <c:forEach items="${getupdate}" var="board">
-	<form name='f' method='post' action='board.do?m=update'>
+	<form name='f' method='post' action='board.do?m=update' enctype="multipart/form-data">
 	<input type='hidden' name='seq' value='${board.seq}'>
 	<input type='hidden' name='writer' value='${board.writer}'>
 	<table border='1' width='600' align='center' cellpadding='3' cellspacing='1'><tr>
@@ -42,6 +42,10 @@ a { text-decoration:none }
 	<tr>
 	<td width='30%' align='center'>글내용</td>
 	<td align='center'><textarea name='content' rows='5' cols='53'>${board.content}</textarea></td>
+	</tr>
+	<tr>
+	<td width='30%' align='center'>파일</td>
+	<td align='center'>${board.fname}<input type='button' value='삭제' onclick='board.do?m=delfile'><br/><input type="file" name='fname' value='${board.fname}'></td>
 	</tr>
 	<tr>
 	<td colspan='2' align='center'>

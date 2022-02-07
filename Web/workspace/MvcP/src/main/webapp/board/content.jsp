@@ -51,8 +51,11 @@
 		<td>${board.content}</td>
 		</tr>
 		<tr>
-		<th width='100' align='center'>날짜</th>
+		<th align='center'>날짜</th>
 		<td>${board.rdate}</td>
+		<tr>
+		<th align='center'>파일</th>
+		<td><a href="board.do?m=download&fname=${board.fname}">${board.fname}</a></td>
 	</tr>
 
 	</table>
@@ -60,7 +63,7 @@
 	<b>
 	<a  href='board.do?m=getupdate&seq=${board.seq}'>수정</a>
 	 | 
-	<a href='board.do?m=delete&seq=${board.seq}'>삭제</a>
+	<a href='board.do?m=delete&seq=${board.seq}&fname=${board.fname}'>삭제</a>
 	 | 
 	<a href='board.do'>목록</a>
 	</b>
