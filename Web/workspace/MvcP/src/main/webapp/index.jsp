@@ -20,7 +20,9 @@
 		<div id ="list">
 			<a href="addr/addr.do" style="text-decoration:none;">주소록</a>(JSTL+EL)<br/>
 			<br/>
-			<a href="board/board.do" style="text-decoration:none;">게시판</a>(JSTL+EL)<br/>	
+			<a href="board/board.do" style="text-decoration:none;">게시판</a>(JSTL+EL)<br/>
+			<br/>
+			<a href="file/file.do" style="text-decoration:none;">파일리스트</a><br/>	
 		</div>
 			<br/>
 				
