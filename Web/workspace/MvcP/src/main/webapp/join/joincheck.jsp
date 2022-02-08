@@ -7,6 +7,9 @@
 	}else if(${result} == <%=JoinConst.EXIST_PHONE%>){
 		alert("이미 존재하는 전화번호입니다");
 		location.href="join.do?m=form";
+	}else if(${result} == <%=JoinConst.PWD_CHECK%>){
+		alert("비밀번호 확인이 같지 않습니다");
+		location.href="join.do?m=form";
 	}else{
 		alert("회원가입 성공");
 		location.href="../";

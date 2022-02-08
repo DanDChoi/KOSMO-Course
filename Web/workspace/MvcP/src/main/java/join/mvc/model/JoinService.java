@@ -16,15 +16,12 @@ public class JoinService {
 	public static JoinService getInstance() {
 		return instance;
 	}
-	public Member getMemberS(String email) {
-		Member m = dao.getMember(email);
-		m.setPwd("");
-		
-		return m;
+	public boolean insertS(Join dto) {
+		return dao.insert(dto);
 	}
 	
-	public int check(String email, String phone) {
-		Member m = dao.getMember(email);
+	public int check(String email, String phone, String pwd, String pwdcheck) {
+		Member m = dao.insert(email);
 		if(m == null) {
 			return NO_ID; //그런 email을 가진 회원이 없음
 		}else {
