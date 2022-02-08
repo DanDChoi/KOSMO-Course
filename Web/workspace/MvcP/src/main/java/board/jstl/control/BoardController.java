@@ -42,6 +42,7 @@ public class BoardController extends HttpServlet {
 				case "update" : update(request, response); break;
 				case "getupdate" : getupdate(request, response); break;
 				case "download": download(request, response); break;
+				case "delfile": delfile(request, response); break;
 			}
 		}else {
 			list(request, response);
@@ -75,7 +76,8 @@ public class BoardController extends HttpServlet {
 		
 		int maxPostSize = 1*1024*1024;
 		FileRenamePolicy policy = new DefaultFileRenamePolicy();
-		MultipartRequest mr =null;
+		MultipartRequest mr =null; 
+		//MultipartRequest를 사용하면 모두 mr로 받아와야함. html from에 enctype="multipart/form-data" 반드시 추가할것
 		try {
 			mr = new MultipartRequest (request, saveDir, maxPostSize, "utf-8", policy);
 		}catch(IOException ie) {
@@ -118,7 +120,7 @@ public class BoardController extends HttpServlet {
 			System.out.println("seq: "+seq);
 		String saveDir = FileSet.FILE_DIR;
 		
-		String fname = request.getParameter("fname");
+		String fname = request.getParameter("fname"); //fname을 content.jsp에서 seq와 같이 받아옴
 			System.out.println("fname: "+fname);
 		File f = new File(saveDir, fname);
 		if(f.exists()) f.delete();
@@ -220,6 +222,26 @@ public class BoardController extends HttpServlet {
 				}catch(IOException ie) {}
 			}
 		}
+	}
+	private void delfile(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		BoardService service = BoardService.getInstance();
+		
+		String saveDir = FileSet.FILE_DIR;
+		String fname = request.getParameter("fname");
+			System.out.println("fname: "+fname);
+		File f = new File(saveDir, fname);
+		if(f.exists()) f.delete();
+		
+		int seq = getSeq(request);
+			System.out.println("seq: "+seq);
+		ArrayList<Board> delfile = service.delfileS(seq);
+		request.setAttribute("delfile", delfile);
+		
+		String view = "getupdate.jsp";
+		RequestDispatcher rd = request.getRequestDispatcher(view);
+		rd.forward(request, response);	
+		
 	}
 
 	

@@ -196,4 +196,37 @@ class BoardDAO {
 			}catch(SQLException se){}
 		}	
 	}
+	ArrayList<Board> delfile(int seq) {
+		ArrayList<Board> list = new ArrayList<Board>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = BoardSQL.GETUPDATE;
+		ResultSet rs = null;
+		try{
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, seq);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				String writer = rs.getString(2);
+				String email = rs.getString(3);
+				String subject = rs.getString(4);
+				String content = rs.getString(5);
+				Date rdate = rs.getDate(6);
+				//String fname = rs.getString(7);
+				//String ofname = rs.getString(8);
+				list.add(new Board(seq, writer, email, subject, content, rdate, null, null));
+			}
+			return list;
+		}catch(SQLException se){
+			System.out.println("#BoardDAO list() se: " + se);
+	        return null;
+		}finally{
+			try{
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			}catch(SQLException se){}
+		}
+	}		
 }

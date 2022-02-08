@@ -36,5 +36,8 @@ public class BoardService {
 	public void updateS(Board dto) {
 		dao.update(dto);
 	}
+	public ArrayList<Board> delfileS(int seq){
+		return dao.delfile(seq);
+	}
 	
 }
