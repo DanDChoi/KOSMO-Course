@@ -1,6 +1,6 @@
 package join.mvc.model;
 
-import static login.mvc.model.LoginSQL.SELECT;
+import static join.mvc.model.JoinSQL.INSERT;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -15,7 +15,7 @@ import javax.sql.DataSource;
 
 import mvc.domain.Member;
 
-public class JoinDAO {
+class JoinDAO {
 	private DataSource ds;
 	JoinDAO(){
 		try{
@@ -24,38 +24,28 @@ public class JoinDAO {
 			ds = (DataSource)envContext.lookup("jdbc/myoracle");
 		}catch(NamingException ne){}
 	}
-	Member getMember(String email) {
+	boolean insert(Join dto) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(SELECT);
-			pstmt.setString(1, email);
-			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				int seq = rs.getInt(1);
-				String name = rs.getString(2);
-				//String email = rs.getString(3);
-				String pwd = rs.getString(4);
-				String phone = rs.getString(5);
-				Date rdate = rs.getDate(6);
-				Date udate = rs.getDate(7);
-				
-				return new Member(seq, name, email, pwd, phone, rdate, udate);
+			pstmt = con.prepareStatement(INSERT);
+			pstmt.setString(1, getName);
+			pstmt.setString(2, getEmail);
+			pstmt.setString(3, getPwd);
+			pstmt.setString(4, getPhone);
+			int i = pstmt.executeUpdate();
+			if(1>0) {
+				return true;
 			}else {
-				return null;
+				return false;
 			}
 		}catch(SQLException se) {
-			return null;
+			System.out.println("#Join insert() se"+se);
+			return false;
 		}finally {
-			try {
-				if(rs != null) rs.close();
-				if(pstmt != null) pstmt.close();
-				if(con != null) con.close();
-			}catch(SQLException se) {
-				
-			}
-		}
+			if(pstmt !=null) pstmt.close();
+			if(con != null) con.close();
+		}catch(SQLException se) {}
 	}
 }

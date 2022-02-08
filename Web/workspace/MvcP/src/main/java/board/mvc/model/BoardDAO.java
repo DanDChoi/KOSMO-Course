@@ -160,6 +160,7 @@ class BoardDAO {
 				Date rdate = rs.getDate(6);
 				String fname = rs.getString(7);
 				String ofname = rs.getString(8);
+					System.out.println("fname(DAO.getupdate): "+fname);
 				list.add(new Board(seq, writer, email, subject, content, rdate, fname, ofname));
 			}
 			return list;
@@ -185,7 +186,9 @@ class BoardDAO {
 			pstmt.setString(1, dto.getEmail());
 			pstmt.setString(2, dto.getSubject());
 			pstmt.setString(3, dto.getContent());
+				System.out.println("content(DAO.update): "+ dto.getContent());
 			pstmt.setString(4, dto.getFname());
+				System.out.println("fname(DAO.update): "+ dto.getFname());
 			pstmt.setString(5, dto.getOfname());
 			pstmt.executeUpdate();
 		}catch(SQLException se){
@@ -206,11 +209,13 @@ class BoardDAO {
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, seq);
+				System.out.println("seq: " + seq);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
 				String writer = rs.getString(2);
 				String email = rs.getString(3);
 				String subject = rs.getString(4);
+					System.out.println("writer: "+ writer);
 				String content = rs.getString(5);
 				Date rdate = rs.getDate(6);
 				//String fname = rs.getString(7);

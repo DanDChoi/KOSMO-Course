@@ -110,29 +110,33 @@
 		회원가입
    </h1>
    <form name="f" action="join.do?m=check" method="post">
-       <table border="1" width="300" height="200">
+       <table border="1" width="400" height="500">
 	      <tr>
-		     <td width="20%" colspan="2" align="center"><h2>입력폼</h2></td> 
+		     <td width="20%" height="20%" colspan="2" align="center"><h2>입력폼</h2></td> 
 		  </tr>
 		  <tr>
-		     <th width="20%">아이디(Email)</th> 
-			 <td><input name="id" align="center" size="20" align="center" onkeydown="enterCheck(this)"></td>
+		     <th width="20%">아이디<br/>(Email)</th> 
+			 <td><input name="id" align="center" size="30" align="center" onkeydown="enterCheck(this)"></td>
 		  </tr>
 		  <tr>
-		     <th width="20%">비번</th> 
-			 <td><input name="pwd" size="20" align="center" type="password" onkeydown="enterCheck(this)"></td>
+		     <th width="30%">비밀번호</th> 
+			 <td><input name="pwd" size="30" align="center" type="password" onkeydown="enterCheck(this)"></td>
+		  </tr>
+		  <tr>
+		     <th width="30%">비밀번호확인</th> 
+			 <td><input name="pwdcheck" size="30" align="center" type="password" onkeydown="enterCheck(this)"></td>
 		  </tr>
 		  <tr>
 		     <th width="20%">이름</th> 
-			 <td><input name="name" align="center" size="20" align="center" onkeydown="enterCheck(this)"></td>
+			 <td><input name="name" align="center" size="30" align="center" onkeydown="enterCheck(this)"></td>
 		  </tr>		  
 		  <tr>
 		     <th width="25%">전화번호</th> 
-			 <td><input name="phone" align="center" size="20" align="center" onkeydown="enterCheck(this)"></td>
+			 <td><input name="phone" align="center" size="30" align="center" onkeydown="enterCheck(this)"></td>
 		  </tr>
 		  <tr>
 		     <td colspan="2" align="center">
-			     <input type="button" value="전송" onclick="check()"/>
+			     <input type="button" value="가입하기" onclick="check()"/>
 				 <input type="reset" value="취소"/>
 			 </td> 
 		  </tr>

@@ -88,7 +88,7 @@ public class BoardController extends HttpServlet {
 		String subject = mr.getParameter("subject");
 		String content = mr.getParameter("content");
 		String fname = mr.getFilesystemName("fname");
-		String ofname = mr.getOriginalFileName("fname");
+		String ofname = mr.getOriginalFileName("ofname");
 		
 		Board dto = new Board(-1, writer, email, subject, content, null, fname, ofname); 
 		boolean flag = service.insertS(dto);
@@ -161,13 +161,14 @@ public class BoardController extends HttpServlet {
 		
 		int seq = Integer.parseInt(mr.getParameter("seq"));
 		//int seq = getSeq(request);
-		System.out.println("seq: " + seq);
+		System.out.println("seq(controller.update): " + seq);
 		
 		String email = mr.getParameter("email");
 		String subject = mr.getParameter("subject");
 		String content = mr.getParameter("content");
-		String fname = mr.getFilesystemName("fname");
-		String ofname = mr.getOriginalFileName("fname");
+		String fname = request.getParameter("fname");
+		String ofname = mr.getOriginalFileName("ofname");
+			System.out.println("fname(controller.update): "+ fname);
 		
 		Board dto = new Board(seq, null, email, subject, content, null, fname, ofname);
 		service.updateS(dto);
@@ -238,7 +239,7 @@ public class BoardController extends HttpServlet {
 		ArrayList<Board> delfile = service.delfileS(seq);
 		request.setAttribute("delfile", delfile);
 		
-		String view = "getupdate.jsp";
+		String view = "delfile.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(view);
 		rd.forward(request, response);	
 		
