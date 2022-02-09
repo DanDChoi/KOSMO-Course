@@ -46,7 +46,7 @@ a { text-decoration:none }
 			</tr>
 			<tr>
 				<td width='30%' align='center'>파일</td>
-				<td align='center'>${board.fname}<input type='button' value='파일삭제' onclick="location.href='board.do?m=update&seq=${board.seq }&fname=${board.fname}';">
+				<td align='center'>${board.fname}<input type='button' value='파일삭제' onclick="location.href='board.do?m=delfile&seq=${board.seq }&fname=${board.fname}';">
 				<br/>
 				<input type="file" name='fname' value='${board.fname}'></td>
 			</tr>

@@ -137,7 +137,7 @@
 		  <tr>
 		     <td colspan="2" align="center">
 			     <input type="button" value="가입하기" onclick="check()"/>
-				 <input type="reset" value="취소"/>
+				 <input type="reset" value="취소" onclick="location.href='../'">
 			 </td> 
 		  </tr>
 	   </table>

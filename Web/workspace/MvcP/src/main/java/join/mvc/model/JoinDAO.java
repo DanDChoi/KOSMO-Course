@@ -24,7 +24,7 @@ class JoinDAO {
 			ds = (DataSource)envContext.lookup("jdbc/myoracle");
 		}catch(NamingException ne){}
 	}
-	boolean insert(Join dto) {
+	boolean insert(Member dto) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
