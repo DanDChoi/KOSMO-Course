@@ -8,13 +8,21 @@ public class GroupTabService {
 	private GroupTabDAO dao;
 	
 	private static final GroupTabService instance = new GroupTabService();
+	
 	private GroupTabService() {
 		dao = new GroupTabDAO();
 	}
 	public static GroupTabService getInstance() {
 		return instance;
 	}
-	public ArrayList<GroupTab> grouplistS(){
+	
+	public ArrayList<GroupTab> groupListS(){
 		return dao.groupList();
+	}
+	public ArrayList<GroupTab> groupInfoS(long gSeq){
+		return dao.groupInfo(gSeq);
+	}
+	public boolean groupCreateS(GroupTab dto) {
+		return dao.groupCreate(dto);
 	}
 }
