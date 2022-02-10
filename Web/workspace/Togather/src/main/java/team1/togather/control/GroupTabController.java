@@ -123,4 +123,24 @@ public class GroupTabController extends HttpServlet {
 		}
 		return price;
 	}
+	
+	private void gatheringUpdate(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		GatheringService service = GatheringService.getInstance();
+		String gName = request.getParameter("gName");
+		String gIntro = request.getParameter("gIntro");
+		String gAddr = request.getParameter("gAddr");
+		String time = request.getParameter("time");
+		String interest = request.getParameter("interest");
+		int limit = getLimit(request);
+		int price = getPrice(request);
+		System.out.println("price: " + price);
+		GroupTab dto = new GroupTab(-1, gName, gIntro, 1, gAddr, time, interest, limit, price, null);
+		boolean gCreate = service.groupCreateS(dto);
+		request.setAttribute("gCreate", gCreate);
+		
+		String view = "groupInsert.jsp";
+		RequestDispatcher rd = request.getRequestDispatcher(view);
+		rd.forward(request, response);
+	}
 }

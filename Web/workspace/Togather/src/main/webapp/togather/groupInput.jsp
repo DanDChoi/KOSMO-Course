@@ -54,7 +54,7 @@
 			<p align="center">&#128205;<input type="text" name="gAddr" placeholder="모임 장소(*)"size="60"></p>
 		  </tr>
 		  <tr>
-			 <p align="center">&#128338;<input type="time" name="time" size="60"></p>
+			 <p align="center">&#128338;<input type="date" name="time" size="60"></p>
 		  </tr>
 		  <tr>
 			 <p align="center"><input type="text" name="interest" placeholder="모임의 관심사(*)" size="60"></p>

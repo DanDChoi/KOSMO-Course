@@ -1,7 +1,7 @@
 
 <1>M
 
-join.mvc.model.JoinDAO(class, public)
+join.mvc.model.JoinDAO(class, package)
 join.mvc.model.JoinSQL(class, public)
 mvc.domain.Join (class, public)
 
@@ -27,3 +27,16 @@ mvc.domain..
 
 <3>C
 file.mvc.control.FileController(servlet)
+
+=================================
+
+<1>M
+team1.togather.model.GroupTabService
+team1.togather.model.GroupTabSQL
+		    GroupTabDAO
+team1.togatehr.domain.GroupTab
+
+<2>V
+grouplist.jsp
+<3>C
+team1.togather.control.GroupTabController(servlet)
