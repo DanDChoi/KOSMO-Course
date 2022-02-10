@@ -3,19 +3,17 @@ package team1.togather.domain;
 import java.sql.Date;
 
 public class GroupTab {
-	 private long gSeq;
-	 private String gName;
-	 private String gIntro;
-	 private long mNum;
-	 private String gAddr;
-	 private String time;
-	 private String interest;
-	 private int limit;
-	 private int price;
-	 private Date rdate;
-	 
-	 public GroupTab() {}
-
+	private long gSeq;
+	private String gName;
+	private String gIntro;
+	private long mNum;
+	private String gAddr;
+	private String time;
+	private String interest;
+	private int limit;
+	private int price;
+	private Date rdate;
+	
 	public GroupTab(long gSeq, String gName, String gIntro, long mNum, String gAddr, String time, String interest,
 			int limit, int price, Date rdate) {
 		super();
@@ -110,6 +108,5 @@ public class GroupTab {
 	public void setRdate(Date rdate) {
 		this.rdate = rdate;
 	}
-	 
-
+	
 }
