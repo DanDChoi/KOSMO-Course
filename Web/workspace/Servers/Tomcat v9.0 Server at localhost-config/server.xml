@@ -155,11 +155,10 @@
 
 	
       <Context docBase="MvcP" path="/MvcP" reloadable="true" source="org.eclipse.jst.jee.server:MvcP">
-      <Resource name="jdbc/myoracle" auth="Container"
-                 type="javax.sql.DataSource" driverClassName="oracle.jdbc.driver.OracleDriver"
-                 url="jdbc:oracle:thin:@127.0.0.1:1521:JAVA"
-                 username="servlet" password="java" maxTotal="20" maxIdle="10"
-                 maxWaitMillis="-1"/>
+      <Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle" password="java" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521:JAVA" username="servlet"/>
+      </Context>
+      <Context docBase="Togather" path="/Togather" reloadable="true" source="org.eclipse.jst.jee.server:Togather">
+      <Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle" password="java" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521:JAVA" username="togather"/>
       </Context>
       </Host>
     </Engine>

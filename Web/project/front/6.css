@@ -42,6 +42,9 @@
     -webkit-align-items: center;
     align-items: center;
 }
+#gnb ul.hd-cate li a{
+	color : #000;
+}
 .swiper-slide img {
     display: block;
     width: 100%;

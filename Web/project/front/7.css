@@ -30,6 +30,9 @@ img, fieldset,button {
 img {
 
 }
+.hd-search a:after{
+	color : #333;
+}
 li {
     list-style: none;
 }
@@ -39,6 +42,9 @@ hr, caption, legend {
 a { 
 
     text-decoration: none;
+}
+#gnb ul.hd-cate li a{
+	color : #000;
 }
 
 
