@@ -63,7 +63,7 @@
           <div class="container">
             <div class="hd-top">
               <h1 class="logo">
-                <a href="/index.html"
+                <a href="index.html"
                   ><img
                     src="./imgs/topLogo.png"
                     alt="ToGather"

@@ -39,7 +39,7 @@
 			<a href='groupTab.do?m=groupInfo&gSeq=${groupTab.gSeq}'>${groupTab.gName}</a>
 			</td>
 			<td align='center'>${groupTab.gIntro}</td>
-			<td align='center'>${groupTab.gAddr}</td>
+			<td align='center'>${groupTab.gLoc}</td>
 			<td align='center'>${groupTab.limit}</td>
 		</tr>
 	</c:forEach>

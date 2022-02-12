@@ -4,6 +4,7 @@
   <head>
     <title>ToGather 모임 만들기</title>
 	<meta charset='utf-8'>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<script language="javascript">
 	   function check()
 	   {
@@ -34,6 +35,7 @@
 	</style>
   </head>
   <body onload="input.name.focus()">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <center>
 	   <hr width="600" size="2" noshade>
 	      <h2>ToGather 모임 만들기</h2>
@@ -41,9 +43,12 @@
 	   <hr width="600" size="2" noshade>
 	</center>
 	
-	<form name="input" method="post" action="groupTab.do?m=groupCreate">
+	<form name="input" method="post" action="groupTab.do?m=groupInsert">
 	   <table border="1" width="600" align="center"  cellpadding="3" cellspacing="1">
 	   
+	   	  <tr>
+			 <p align="center"><input type="text" name="interest" placeholder="모임의 관심사(*)" size="60"></p>
+		  </tr>
 	      <tr>
 		    <p align="center"><input type="text" name="gName" placeholder="모임 이름(*)" size="60"></p>
 		  </tr>
@@ -51,24 +56,14 @@
 			 <p align="center"><textarea name="gIntro" placeholder="모임 소개(*)" rows="5" cols="53"></textarea></p>
 		  </tr>
           <tr>
-			<p align="center">&#128205;<input type="text" name="gAddr" placeholder="모임 장소(*)"size="60"></p>
-		  </tr>
-		  <tr>
-			 <p align="center">&#128338;<input type="date" name="time" size="60"></p>
-		  </tr>
-		  <tr>
-			 <p align="center"><input type="text" name="interest" placeholder="모임의 관심사(*)" size="60"></p>
+			<p align="center">&#128205;<input type="text" name="gLoc" placeholder="모임 지역(*)"size="60"></p>
 		  </tr>
 		  <tr>
 			 <p align="center">정원<input type="number" id="quantity" name="limit" min="2" max="100" placeholder="(2~100)"></p>		
 		  </tr>
 		  <tr>
-			 <p align="center">&#8361;<input type="text" name="price" placeholder="회비" size="60"></p>
-		  </tr>
-		
-		  <tr>
 		     <p colspan="2" align="center">
-			    <input type="button" value="전송" onclick="check()">
+			    <input type="submit" value="전송">
 				<input type="reset" value="다시입력">
 			 </p>
 		  </tr>

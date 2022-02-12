@@ -32,16 +32,25 @@
 			<td colspan="5" style="text-align: left" height="200">${groupTab.gIntro}</td>
 		</tr>
 		<tr>
-			<td align='center'>모임 장소</td>
-			<td>${groupTab.gAddr}</td>
+			<td colspan="5" style="text-align: center" height="50"><a href="">정모 목록</a></td>
 		</tr>
 		<tr>
-			<td align='center'>모임 시간</td>
-			<td>${groupTab.time}</td>
+			<td rowspan="4" style="text-align: center">정모날짜</td>
 		</tr>
 		<tr>
-			<td align='center'>모임정원</td>
-			<td>${groupTab.limit}</td>
+			<td></td>
+			<td colspan="4">정모날짜 + 시간</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>정모장소</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>정모가격</td>
+		</tr>
+		<tr>
+			<td colspan="5" style="text-align:center">(특정날짜)정모참석자(n명)</td>
 		</tr>
 		<tr>
 			<td colspan="5" style="text-align: left" height="50">모임 멤버(n명)</td>
@@ -58,9 +67,9 @@
 	</table>
 		<hr width='600' size='2' noshade>
 		<b>
-			<a  href='board.do?m=upList&seq=${board.seq}'>수정</a>
+			<a  href='groupTab.do?m=groupGetUpdate&gSeq=${groupTab.gSeq}'>수정</a>
 			 | 
-			<a href='board.do?m=del&seq=${board.seq}'>삭제</a>
+			<a href='groupTab.do?m=del&gSeq=${groupTab.gSeq}'>삭제</a>
 			 | 
 			<a href='groupTab.do?m=groupList'>목록</a>
 		</b>

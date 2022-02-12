@@ -1,12 +1,18 @@
 create table GROUPTAB(
    GSEQ number constraint GROUPTAB_PK primary key,
-   GLOC nvarchar2(30),
-   GNAME nvarchar2(40),
-   GINTRO nvarchar2(2000),
-   INTEREST nvarchar2(40),
-   LIMIT number,
-   RDATE date,
-   MNUM number
+   GR_LOC nvarchar2(30),
+   GR_NAME nvarchar2(40),
+   GR_INTRO nvarchar2(2000),
+   GR_INTEREST nvarchar2(40),
+   GR_LIMIT number,
+   GR_RDATE date,
+   MNUM number,
+   GT_NAME
+   GT_DATE
+   GT_TIME
+   GT_PLACE
+   GT_PRICE
+   GT_LIMIT
 );
 create sequence GROUPTAB_SEQ increment by 1 start with 1 nocache;
 

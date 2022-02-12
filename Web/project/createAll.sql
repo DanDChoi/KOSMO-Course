@@ -9,8 +9,10 @@ drop table BLOCK;
 drop sequence MEMBER_SEQ;
 drop sequence BLOCK_SEQ;
 drop table MEM_IN_GROUP;
+drop table GATHERING;
+drop sequence GATHERING_SEQ;
 drop table GROUPTAB;
-drop sequence GROUP_SEQ;
+drop sequence GROUPTAB_SEQ;
 drop table REPLY;
 drop sequence B_NUM_SEQ;
 drop sequence RSEQ_SEQ;
@@ -49,22 +51,33 @@ insert into BLOCK values(BLOCK_SEQ.nextval, 1, 3);
 insert into BLOCK values(BLOCK_SEQ.nextval, 2, 4);
 
 create table GROUPTAB(
-    GSEQ number constraint GROUP_PK primary key,
-    GNAME nvarchar2(40),
-    GINTRO nvarchar2(2000),
-    MNUM number,
-    GADDR nvarchar2(40),
-    TIME nvarchar2(40),
-    INTEREST nvarchar2(40),
-    LIMIT number,
-    PRICE number,
-    RDATE date
+   GSEQ number constraint GROUPTAB_PK primary key,
+   GLOC nvarchar2(30),
+   GNAME nvarchar2(40),
+   GINTRO nvarchar2(2000),
+   INTEREST nvarchar2(40),
+   LIMIT number,
+   RDATE date,
+   MNUM number REFERENCES MEMBER (MNUM)
 );
-create sequence GROUP_SEQ increment by 1 start with 1 nocache;
+create sequence GROUPTAB_SEQ increment by 1 start with 1 nocache;
 
-insert into GROUPTAB values(GROUP_SEQ.nextval, '그룹이름1', '그룹소개1', 1, '그룹이름1이 만날장소주소', '15시30분 - 16시 30분', '이 그룹이 포함된 관심사태그', 5, 10000, SYSDATE);
-insert into GROUPTAB values(GROUP_SEQ.nextval, '그룹이름2', '그룹소개2', 2, '그룹이름2이 만날장소주소', '17시00분 - 18시 00분', '이 그룹이 포함된 관심사태그', 3, 0, SYSDATE);
-insert into GROUPTAB values(GROUP_SEQ.nextval, '그룹이름3', '그룹소개3', 3, '그룹이름3이 만날장소주소', '15시40분 - 19시 00분', '이 그룹이 포함된 관심사태그', 2, 10000, SYSDATE);
+insert into GROUPTAB values(GROUPTAB_SEQ.nextval, '서울시 금천구', '코딩해요~', '같이 코딩하면서 즐겨요!', 'IT', 50, SYSDATE, 1);
+insert into GROUPTAB values(GROUPTAB_SEQ.nextval, '서울시 관악구', '행축 (행복축구 하실 분)', '축구하면서 친목쌓고 노실 분들 오세요~', '스포츠', 30, SYSDATE, 2);
+insert into GROUPTAB values(GROUPTAB_SEQ.nextval, '경기도 광명시', '맛집탐방', '동네 숨은 맛집 같이 찾으실 분들 ㄱㄱ', '사교', 50, SYSDATE, 3);
+
+create table GATHERING(
+   GT_SEQ number constraint GATHERING_PK primary key,
+   GT_NAME nvarchar2(40),
+   GT_DATE nvarchar2(20),
+   TIME nvarchar2(40),
+   GT_PLACE nvarchar2(40),
+   PRICE nvarchar2(20),
+   GT_LIMIT number,
+   GSEQ number REFERENCES GROUPTAB (GSEQ)
+     );
+
+create sequence GATHERING_SEQ increment by 1 start with 1 nocache;
 
 create table MEM_IN_GROUP(
     GSEQ number REFERENCES GROUPTAB(GSEQ),
@@ -108,6 +121,8 @@ insert into REPLY values(3, RSEQ_SEQ.nextval, 'reply3', 7, 0, 0);
 
 
 select sequence_name from user_sequences;
+
+commit;
 
 select * from MEMBER order by MNUM desc;
 select * from BLOCK order by BSEQ desc;

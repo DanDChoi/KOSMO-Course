@@ -26,7 +26,9 @@ public class GroupTabController extends HttpServlet {
 				case "groupList": groupList(request, response); break;
 				case "groupInfo": groupInfo(request, response); break;
 				case "groupInput": groupInput(request, response); break;
-				case "groupCreate": groupCreate(request, response); break;
+				case "groupInsert": groupInsert(request, response); break;
+				case "groupGetUpdate": groupGetUpdate(request, response); break;
+				case "groupUpdate": groupUpdate(request, response); break;
 			}
 		}else {
 			response.sendRedirect("../");
@@ -45,7 +47,7 @@ public class GroupTabController extends HttpServlet {
 	private void groupInfo(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		GroupTabService service = GroupTabService.getInstance();
-		long gSeq = getSeq(request);
+		long gSeq = getgSeq(request);
 		ArrayList<GroupTab> groupInfo = service.groupInfoS(gSeq);
 		request.setAttribute("groupInfo", groupInfo);
 		
@@ -58,27 +60,54 @@ public class GroupTabController extends HttpServlet {
 		String view = "groupInput.jsp";
 		response.sendRedirect(view);
 	}
-	private void groupCreate(HttpServletRequest request, HttpServletResponse response) 
+	private void groupInsert(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		GroupTabService service = GroupTabService.getInstance();
+		String gLoc = request.getParameter("gLoc");
 		String gName = request.getParameter("gName");
 		String gIntro = request.getParameter("gIntro");
-		String gAddr = request.getParameter("gAddr");
-		String time = request.getParameter("time");
 		String interest = request.getParameter("interest");
 		int limit = getLimit(request);
-		int price = getPrice(request);
-		System.out.println("price: " + price);
-		GroupTab dto = new GroupTab(-1, gName, gIntro, 1, gAddr, time, interest, limit, price, null);
-		boolean gCreate = service.groupCreateS(dto);
-		request.setAttribute("gCreate", gCreate);
+		GroupTab dto = new GroupTab(-1, gLoc, gName, gIntro, interest, limit, null, 1);
+		boolean groupInsert = service.groupInsertS(dto);
+		request.setAttribute("groupInsert", groupInsert);
 		
 		String view = "groupInsert.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(view);
 		rd.forward(request, response);
 	}
+	private void groupGetUpdate(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		GroupTabService service = GroupTabService.getInstance();
+		long gSeq = getgSeq(request);
+		ArrayList<GroupTab> groupGetUpdate = service.groupGetUpdateS(gSeq);
+		request.setAttribute("groupGetUpdate", groupGetUpdate);
+		
+		String view = "groupgetupdate.jsp";
+		RequestDispatcher rd = request.getRequestDispatcher(view);
+		rd.forward(request, response);	
+	}
 	
-	private long getSeq(HttpServletRequest request){
+	private void groupUpdate(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		GroupTabService service = GroupTabService.getInstance();
+		long gSeq = getgSeq(request);
+		//long gSeq = Long.parseLong(request.getParameter("gSeq"));
+		
+		String gLoc = request.getParameter("gLoc");
+		String gName = request.getParameter("gName");
+		String gIntro = request.getParameter("gIntro");
+		int limit = getLimit(request);
+			System.out.println("gSeq(Controller) groupUpdate: " + gSeq);
+			System.out.println("gName(Controller) groupUpdate: " + gName);
+		
+		GroupTab dto = new GroupTab(gSeq, gLoc, gName, gIntro, limit);
+		service.groupUpdateS(dto);
+		
+		response.sendRedirect("groupTab.do?m=groupList");
+	}
+	
+	private long getgSeq(HttpServletRequest request){
 		long seq = -1;
 		String seqStr = request.getParameter("gSeq");
 		if(seqStr != null){
@@ -122,25 +151,5 @@ public class GroupTabController extends HttpServlet {
 			}
 		}
 		return price;
-	}
-	
-	private void gatheringUpdate(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException {
-		GatheringService service = GatheringService.getInstance();
-		String gName = request.getParameter("gName");
-		String gIntro = request.getParameter("gIntro");
-		String gAddr = request.getParameter("gAddr");
-		String time = request.getParameter("time");
-		String interest = request.getParameter("interest");
-		int limit = getLimit(request);
-		int price = getPrice(request);
-		System.out.println("price: " + price);
-		GroupTab dto = new GroupTab(-1, gName, gIntro, 1, gAddr, time, interest, limit, price, null);
-		boolean gCreate = service.groupCreateS(dto);
-		request.setAttribute("gCreate", gCreate);
-		
-		String view = "groupInsert.jsp";
-		RequestDispatcher rd = request.getRequestDispatcher(view);
-		rd.forward(request, response);
 	}
 }

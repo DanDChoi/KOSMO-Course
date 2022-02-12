@@ -4,29 +4,34 @@ import java.sql.Date;
 
 public class GroupTab {
 	private long gSeq;
+	private String gLoc;
 	private String gName;
 	private String gIntro;
-	private long mNum;
-	private String gAddr;
-	private String time;
 	private String interest;
 	private int limit;
-	private int price;
 	private Date rdate;
+	private long mNum;
 	
-	public GroupTab(long gSeq, String gName, String gIntro, long mNum, String gAddr, String time, String interest,
-			int limit, int price, Date rdate) {
+	public GroupTab(long gSeq, String gLoc, String gName, String gIntro, String interest, int limit, Date rdate,
+			long mNum) {
 		super();
 		this.gSeq = gSeq;
+		this.gLoc = gLoc;
 		this.gName = gName;
 		this.gIntro = gIntro;
-		this.mNum = mNum;
-		this.gAddr = gAddr;
-		this.time = time;
 		this.interest = interest;
 		this.limit = limit;
-		this.price = price;
 		this.rdate = rdate;
+		this.mNum = mNum;
+	}
+	public GroupTab(long gSeq, String gLoc, String gName, String gIntro, int limit) {
+		super();
+		this.gSeq = gSeq;
+		this.gLoc = gLoc;
+		this.gName = gName;
+		this.gIntro = gIntro;
+		this.limit = limit;
+
 	}
 
 	public long getgSeq() {
@@ -35,6 +40,14 @@ public class GroupTab {
 
 	public void setgSeq(long gSeq) {
 		this.gSeq = gSeq;
+	}
+
+	public String getgLoc() {
+		return gLoc;
+	}
+
+	public void setgLoc(String gLoc) {
+		this.gLoc = gLoc;
 	}
 
 	public String getgName() {
@@ -53,30 +66,6 @@ public class GroupTab {
 		this.gIntro = gIntro;
 	}
 
-	public long getmNum() {
-		return mNum;
-	}
-
-	public void setmNum(long mNum) {
-		this.mNum = mNum;
-	}
-
-	public String getgAddr() {
-		return gAddr;
-	}
-
-	public void setgAddr(String gAddr) {
-		this.gAddr = gAddr;
-	}
-
-	public String getTime() {
-		return time;
-	}
-
-	public void setTime(String time) {
-		this.time = time;
-	}
-
 	public String getInterest() {
 		return interest;
 	}
@@ -93,14 +82,6 @@ public class GroupTab {
 		this.limit = limit;
 	}
 
-	public int getPrice() {
-		return price;
-	}
-
-	public void setPrice(int price) {
-		this.price = price;
-	}
-
 	public Date getRdate() {
 		return rdate;
 	}
@@ -108,5 +89,12 @@ public class GroupTab {
 	public void setRdate(Date rdate) {
 		this.rdate = rdate;
 	}
-	
+
+	public long getmNum() {
+		return mNum;
+	}
+
+	public void setmNum(long mNum) {
+		this.mNum = mNum;
+	}
 }

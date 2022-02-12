@@ -22,7 +22,13 @@ public class GroupTabService {
 	public ArrayList<GroupTab> groupInfoS(long gSeq){
 		return dao.groupInfo(gSeq);
 	}
-	public boolean groupCreateS(GroupTab dto) {
-		return dao.groupCreate(dto);
+	public boolean groupInsertS(GroupTab dto) {
+		return dao.groupInsert(dto);
+	}
+	public ArrayList<GroupTab> groupGetUpdateS(long gSeq){
+		return dao.groupGetUpdate(gSeq);
+	}
+	public void groupUpdateS(GroupTab dto) {
+		dao.groupUpdate(dto);
 	}
 }
