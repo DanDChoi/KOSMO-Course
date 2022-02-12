@@ -191,6 +191,8 @@ class BoardDAO {
 				System.out.println("fname(DAO.update): "+ dto.getFname());
 			pstmt.setString(5, dto.getOfname());
 			pstmt.executeUpdate();
+			int i = pstmt.executeUpdate();
+				System.out.println(i);
 		}catch(SQLException se){
 		}finally{
 			try{
