@@ -72,7 +72,7 @@ class BoardDAO {
 			pstmt.setString(3, dto.getSubject());
 			pstmt.setString(4, dto.getContent());
 			pstmt.setString(5, dto.getFname());
-			pstmt.setString(6, dto.getOfname());
+			pstmt.setString(6, dto.getOfname());ㅏ
 			int i = pstmt.executeUpdate();
 			if(i>0){
 				return true;
