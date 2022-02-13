@@ -146,6 +146,7 @@
                           >
                           <input
                             type="text"
+                            name="gName"
                             id="form3Example1c"
                             class="form-control"
                           />
@@ -157,7 +158,7 @@
                           <label class="form-label mb-0" for="form3Example4cd"
                             >지역</label
                           >
-                          <select class="form-control">
+                          <select class="form-control" name="gLoc">
                             <option>선택</option>
                             <option>서울</option>
                             <option>경기</option>
@@ -172,17 +173,17 @@
                           <label class="form-label mb-0" for="form3Example4cd"
                             >관심사</label
                           >
-                          <select class="form-control">
+                          <select class="form-control" name="interest">
                             <option>선택</option>
-                            <option>아웃도어/여행</option>
-                            <option>운동/스포츠</option>
-                            <option>인문학/책/글</option>
-                            <option>업종/직무</option>
-                            <option>외국/언어</option>
-                            <option>문학/공연/축제</option>
-                            <option>음악/악기</option>
-                            <option>공예/만들기</option>
-                            <option>댄스/무용</option>
+                            <option>아웃도어</option>
+                            <option>운동</option>
+                            <option>인문학</option>
+                            <option>업종</option>
+                            <option>언어</option>
+                            <option>문학</option>
+                            <option>음악</option>
+                            <option>공예</option>
+                            <option>댄스</option>
                             <option>봉사활동</option>
                             <option>자유주제</option>
                           </select>
@@ -197,6 +198,7 @@
                           >
                           <input
                             type="number"
+                            name="limit"
                             min="2"
                             max="100"
                             placeholder="2~100"
@@ -225,14 +227,14 @@
                       <br />
                       <div class="d-flex justify-content-center mx-1 mb-lg-4">
                         <button
-                          type="button"
+                          type="submit"
                           class="btn btn-primary"
                           style="margin: 3px"
                         >
                           등록하기
                         </button>
                         <button
-                          type="button"
+                          type="reset"
                           class="btn btn-warning"
                           style="margin: 3px"
                         >
@@ -242,6 +244,7 @@
                           type="button"
                           class="btn btn-danger"
                           style="margin: 3px"
+                          onclick="location.href='group/groupTab.do?m=groupList.jsp'"
                         >
                           취소
                         </button>
