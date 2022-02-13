@@ -8,7 +8,7 @@
     />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>ToGather 모임만들기</title>
+    <title>모임 만들기</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/ToGather.ico" />
     <!-- Bootstrap icons-->
@@ -19,6 +19,7 @@
 
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
     <link href="css/groupList.css" rel="stylesheet" />
     <script src="js/main.js" defer></script>
     <script src="js/splitting.js"></script>
@@ -122,21 +123,134 @@
         </div>
       </div>
     </nav>
-
     <section class="vh-100" style="background-color: #eee">
       <div class="container h-75">
         <div class="row d-flex justify-content-center align-items-center h-100">
-          <div class="col-lg-12 col-xl-11">
-            <h1 class="contents_logo text-center">
-              <img
-                src="imgs/topLogoBig.png"
-                alt="ToGather"
-                style="width: 50%; height: auto"
-              />
-            </h1>
-            <p class="text-center h1 fw-bold mb-1 mx-1 mx-md-4 mt-3">
-              모임만들기
-            </p>
+          <div class="col-lg-10 col-xl-10">
+            <div class="card text-black" style="border-radius: 25px">
+              <div class="card-body p-md-5">
+                <div class="row justify-content-center">
+                  <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                    <p
+                      class="text-center h1 fw-bold mb-3 mx-1 mx-md-4 mt-2"
+                    ></p>
+                    <p class="text-center h2 fw-bold mb-1 mx-1 mx-md-4 mt-3">
+                      모임 만들기
+                    </p>
+                    <form class="mx-1 mx-md-4">
+                      <div class="d-flex flex-row align-items-center mb-0">
+                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-2">
+                          <label class="form-label mb-0" for="form3Example1c"
+                            >모임 이름</label
+                          >
+                          <input
+                            type="text"
+                            id="form3Example1c"
+                            class="form-control"
+                          />
+                        </div>
+                      </div>
+                      <div class="d-flex flex-row align-items-center mb-0">
+                        <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-2">
+                          <label class="form-label mb-0" for="form3Example4cd"
+                            >지역</label
+                          >
+                          <select class="form-control">
+                            <option>선택</option>
+                            <option>서울</option>
+                            <option>경기</option>
+                            <option>인천</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="d-flex flex-row align-items-center mb-0">
+                        <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-2">
+                          <label class="form-label mb-0" for="form3Example4cd"
+                            >관심사</label
+                          >
+                          <select class="form-control">
+                            <option>선택</option>
+                            <option>아웃도어/여행</option>
+                            <option>운동/스포츠</option>
+                            <option>인문학/책/글</option>
+                            <option>업종/직무</option>
+                            <option>외국/언어</option>
+                            <option>문학/공연/축제</option>
+                            <option>음악/악기</option>
+                            <option>공예/만들기</option>
+                            <option>댄스/무용</option>
+                            <option>봉사활동</option>
+                            <option>자유주제</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="d-flex flex-row align-items-center mb-0">
+                        <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-2">
+                          <label class="form-label mb-0" for="form3Example4c"
+                            >모임 정원</label
+                          >
+                          <input
+                            type="number"
+                            min="2"
+                            max="100"
+                            placeholder="2~100"
+                            id="form3Example4c"
+                            class="form-control"
+                          />
+                        </div>
+                      </div>
+                      <div class="d-flex flex-row align-items-center mb-0">
+                        <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-2">
+                          <label class="form-label mb-0" for="form3Example4c"
+                            >모임소개</label
+                          >
+                          <textarea
+                            name="gIntro"
+                            placeholder="소개글을 작성해주세요"
+                            row="10"
+                            cols="53"
+                            id="form3Example4c"
+                            class="form-control"
+                          ></textarea>
+                        </div>
+                      </div>
+                      <br />
+                      <br />
+                      <div class="d-flex justify-content-center mx-1 mb-lg-4">
+                        <button
+                          type="button"
+                          class="btn btn-primary"
+                          style="margin: 3px"
+                        >
+                          등록하기
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-warning"
+                          style="margin: 3px"
+                        >
+                          다시작성
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-danger"
+                          style="margin: 3px"
+                        >
+                          취소
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
