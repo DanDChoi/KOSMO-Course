@@ -4,7 +4,6 @@
   <head>
     <title>ToGather 모임 만들기</title>
 	<meta charset='utf-8'>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<script language="javascript">
 	   function check()
 	   {
@@ -35,7 +34,6 @@
 	</style>
   </head>
   <body onload="input.name.focus()">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <center>
 	   <hr width="600" size="2" noshade>
 	      <h2>ToGather 모임 만들기</h2>
@@ -45,7 +43,6 @@
 	
 	<form name="input" method="post" action="groupTab.do?m=groupInsert">
 	   <table border="1" width="600" align="center"  cellpadding="3" cellspacing="1">
-	   
 	   	  <tr>
 			 <p align="center"><input type="text" name="interest" placeholder="모임의 관심사(*)" size="60"></p>
 		  </tr>

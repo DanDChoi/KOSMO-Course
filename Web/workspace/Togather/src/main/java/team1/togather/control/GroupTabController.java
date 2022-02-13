@@ -10,10 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import team1.togather.domain.Gathering;
 import team1.togather.domain.GroupTab;
 import team1.togather.model.GroupTabService;
 
-@WebServlet("/togather/groupTab.do")
+@WebServlet("/group/groupTab.do")
 public class GroupTabController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -29,6 +30,9 @@ public class GroupTabController extends HttpServlet {
 				case "groupInsert": groupInsert(request, response); break;
 				case "groupGetUpdate": groupGetUpdate(request, response); break;
 				case "groupUpdate": groupUpdate(request, response); break;
+				case "gatheringList": gatheringList(request, response); break;
+				case "gatheringInput": gatheringInput(request, response); break;
+				case "gatheringInsert": gatheringInsert(request, response); break;
 			}
 		}else {
 			response.sendRedirect("../");
@@ -47,10 +51,12 @@ public class GroupTabController extends HttpServlet {
 	private void groupInfo(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		GroupTabService service = GroupTabService.getInstance();
-		long gSeq = getgSeq(request);
+		//long gSeq = getgSeq(request);
+		long gSeq = Long.parseLong(request.getParameter("gSeq"));
+		request.setAttribute("groupInfo_gSeq", gSeq);
 		ArrayList<GroupTab> groupInfo = service.groupInfoS(gSeq);
 		request.setAttribute("groupInfo", groupInfo);
-		
+
 		String view = "groupInfo.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(view);
 		rd.forward(request, response);
@@ -87,12 +93,12 @@ public class GroupTabController extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher(view);
 		rd.forward(request, response);	
 	}
-	
 	private void groupUpdate(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		GroupTabService service = GroupTabService.getInstance();
-		long gSeq = getgSeq(request);
-		//long gSeq = Long.parseLong(request.getParameter("gSeq"));
+		//long gSeq = getgSeq(request);
+		long gSeq = Long.parseLong(request.getParameter("gSeq"));
+		//request.setAttribute("groupUpdate_gSeq", gSeq);
 		
 		String gLoc = request.getParameter("gLoc");
 		String gName = request.getParameter("gName");
@@ -106,10 +112,57 @@ public class GroupTabController extends HttpServlet {
 		
 		response.sendRedirect("groupTab.do?m=groupList");
 	}
+	private void gatheringInput(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		long gSeq =Long.parseLong(request.getParameter("gSeq"));
+		request.setAttribute("gatheringInput_gSeq", gSeq);
+		String view = "gatheringInput.jsp";
+		//response.sendRedirect(view);
+		RequestDispatcher rd = request.getRequestDispatcher(view);
+		rd.forward(request, response);
+	}
+	private void gatheringInsert(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		long gSeq =Long.parseLong(request.getParameter("gSeq"));
+		request.setAttribute("gatheringInsert_gSeq", gSeq);
+		
+		System.out.println("gatherinsert ¾È gseq:"+ gSeq);
+		GroupTabService service = GroupTabService.getInstance();
+		String gt_name = request.getParameter("gt_name");
+		String gt_date = request.getParameter("gt_date");
+		String time = request.getParameter("time");
+		String gt_place = request.getParameter("gt_place");
+		String price = request.getParameter("price");
+		int gt_limit = getGt_Limit(request);
+		Gathering dto = new Gathering(-1, gt_name, gt_date, time, gt_place, price, gt_limit, gSeq);
+		System.out.println(gt_name + gt_date + time + gt_place+ price+ gt_limit+", gSeq: " + gSeq);
+		request.setAttribute("gatheringInsert", dto);
+		service.gatheringInsertS(dto);
+		
+		response.sendRedirect("groupTab.do?m=gatheringList&gSeq=" + gSeq);
+		//String view = "gatheringList.jsp";
+		//RequestDispatcher rd = request.getRequestDispatcher(view);
+		//rd.forward(request, response);
+	}
+	private void gatheringList(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		long gSeq =Long.parseLong(request.getParameter("gSeq"));
+		System.out.println("gatheringList-gSeq: " + gSeq);
+		request.setAttribute("gatheringList_gSeq", gSeq);
+		
+		GroupTabService service = GroupTabService.getInstance();
+		ArrayList<Gathering> gatheringList = service.gatheringListS(gSeq);
+		request.setAttribute("gatheringList", gatheringList);
+		
+		String view = "gatheringList.jsp";
+		RequestDispatcher rd = request.getRequestDispatcher(view);
+		rd.forward(request, response);
+	}
 	
 	private long getgSeq(HttpServletRequest request){
 		long seq = -1;
 		String seqStr = request.getParameter("gSeq");
+		System.out.println("gSeq: " + seqStr);
 		if(seqStr != null){
 			seqStr = seqStr.trim();
 			if(seqStr.length() != 0){
@@ -137,19 +190,20 @@ public class GroupTabController extends HttpServlet {
 		}
 		return limit;
 	}
-	private int getPrice(HttpServletRequest request){
-		int price = -1;
-		String priceStr = request.getParameter("price");
-		if(priceStr != null){
-			priceStr = priceStr.trim();
-			if(priceStr.length() != 0){
+	
+	private int getGt_Limit(HttpServletRequest request){
+		int gt_limit = -1;
+		String gt_limitStr = request.getParameter("gt_limit");
+		if(gt_limitStr != null){
+			gt_limitStr = gt_limitStr.trim();
+			if(gt_limitStr.length() != 0){
 				try{
-					price = Integer.parseInt(priceStr);
-					return price;
+					gt_limit = Integer.parseInt(gt_limitStr);
+					return gt_limit;
 				}catch(NumberFormatException nfe){
 				}
 			}
 		}
-		return price;
+		return gt_limit;
 	}
 }

@@ -2,6 +2,7 @@ package team1.togather.model;
 
 import java.util.ArrayList;
 
+import team1.togather.domain.Gathering;
 import team1.togather.domain.GroupTab;
 
 public class GroupTabService {
@@ -30,5 +31,11 @@ public class GroupTabService {
 	}
 	public void groupUpdateS(GroupTab dto) {
 		dao.groupUpdate(dto);
+	}
+	public boolean gatheringInsertS(Gathering dto) {
+		return dao.gatheringInsert(dto);
+	}
+	public ArrayList<Gathering> gatheringListS(long gSeq){
+		return dao.gatheringList(gSeq);
 	}
 }

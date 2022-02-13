@@ -52,7 +52,7 @@
 		    <p align="center"><input type="text" name="gName" value='${groupTab.gName}' placeholder="모임 이름(*)" size="60"></p>
 		  </tr>
 		  <tr>
-			 <p align="center">&#128172;<textarea name="gIntro"  placeholder="${groupTab.gIntro}" rows="5" cols="53"></textarea></p>
+			 <p align="center">&#128172;<textarea name="gIntro" rows="5" cols="53">${groupTab.gIntro}</textarea></p>
 		  </tr>
           <tr>
 			<p align="center">&#128205;<input type="text" name="gLoc" value='${groupTab.gLoc}' placeholder="모임 지역(*)"size="60"></p>

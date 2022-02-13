@@ -31,7 +31,6 @@ public class GroupTab {
 		this.gName = gName;
 		this.gIntro = gIntro;
 		this.limit = limit;
-
 	}
 
 	public long getgSeq() {
