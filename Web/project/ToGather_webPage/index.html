@@ -10,8 +10,8 @@
     <meta name="author" content="" />
     <title>No.1 취미모임 웹페이지, ToGather!</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Bootstrap icons-->
+    <link rel="icon" type="image/x-icon" href="assets/ToGather.ico" />
+        <!-- Bootstrap icons-->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
       rel="stylesheet"
@@ -54,7 +54,7 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#!">공지사항</a>
+              <a class="nav-link" href="notice.html">공지사항</a>
             </li>
             <li class="nav-item dropdown">
               <a
@@ -64,21 +64,21 @@
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
-                >자주하는 질문(게시판필요)</a
+                >자주하는 질문(Q&A 게시판필요)</a
               >
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <a class="dropdown-item" href="#!"
-                    >FAQ(질문과답이 입력되있는 게시판필요)</a
-                  >
+                  <a class="dropdown-item" href="FAQ.html">FAQ</a>
                 </li>
-                <li><a class="dropdown-item" href="#!">Q&A(게시판필요)</a></li>
+                <li>
+                  <a class="dropdown-item" href="QA.html">Q&A(게시판필요)</a>
+                </li>
               </ul>
             </li>
           </ul>
           <form class="d-flex">
             <!-- 로그인시 보이게하기
-            <button class="btn btn-outline-success" type="submit">
+            <button class="btn btn-outline-success" type="button" onclick="location.href='logout.html'">
               <i class="bi bi-person-check-fill"></i>
               로그아웃
             </button>
@@ -99,13 +99,21 @@
               <i class="bi bi-person-plus-fill"></i>
               회원가입
             </button>
-            <button class="btn btn-outline-dark" type="submit">
+            <button
+              class="btn btn-outline-dark"
+              type="button"
+              onclick="location.href='wish.html'"
+            >
               <i class="bi-cart-fill me-1"></i>
               찜
               <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
             </button>
             <!--회원전용 메뉴. 비로그인시 로그인먼저 하도록 alert 띄우기-->
-            <button class="btn btn-outline-danger" type="submit">
+            <button
+              class="btn btn-outline-danger"
+              type="button"
+              onclick="location.href='groupCreate.html'"
+            >
               <i class="bi bi-people-fill"></i>
               모임 만들기
             </button>
@@ -159,9 +167,10 @@
               <div class="card-body p-4">
                 <div class="text-center">
                   <!-- Product name-->
-                  <h5 class="fw-bolder">[서울 강서]자전거타실분</h5>
+                  <h6 class="fw-bolder">[지역명]</h6>
+                  <h4 class="fw-bolder">모임이름</h4>
                   <!-- Product price-->
-                  즐겁게 자전거를 즐기실분들
+                  관심사 or 모임소개
                 </div>
               </div>
               <!-- Product actions-->
@@ -178,7 +187,7 @@
             <div class="card h-100">
               <!-- Sale badge-->
               <div
-                class="badge bg-dark text-white position-absolute"
+                class="badge bg-danger text-white position-absolute"
                 style="top: 0.5rem; right: 0.5rem"
               >
                 HOT
@@ -189,21 +198,15 @@
               <div class="card-body p-4">
                 <div class="text-center">
                   <!-- Product name-->
-                  <h5 class="fw-bolder">[인천] 사진동호회</h5>
+                  <h6 class="fw-bolder">[인천]</h6>
+                  <h4 class="fw-bolder">사진동호회</h4>
                   <!-- Product reviews-->
                   <div
                     class="d-flex justify-content-center small text-warning mb-2"
                   >
-                    <div class="bi-star-fill"></div>
-                    <div class="bi-star-fill"></div>
-                    <div class="bi-star-fill"></div>
-                    <div class="bi-star-fill"></div>
-                    <div class="bi-star-fill"></div>
                   </div>
                   <!-- Product price-->
-                  <span class="text-muted text-decoration-line-through"
-                    >사사모</span
-                  >
+                  사진을 사랑하는 사람들
                 </div>
               </div>
               <!-- Product actions-->
@@ -218,7 +221,7 @@
             <div class="card h-100">
               <!-- Sale badge-->
               <div
-                class="badge bg-dark text-white position-absolute"
+                class="badge bg-danger text-white position-absolute"
                 style="top: 0.5rem; right: 0.5rem"
               >
                 HOT
@@ -229,11 +232,10 @@
               <div class="card-body p-4">
                 <div class="text-center">
                   <!-- Product name-->
-                  <h5 class="fw-bolder">[서울동부] 골프</h5>
+                  <h6 class="fw-bolder">[서울동부]</h6>
+                  <h4 class="fw-bolder">골프</h4>
                   <!-- Product price-->
-                  <span class="text-muted text-decoration-line-through"
-                    >골린이들 대모집!</span
-                  >
+                  골린이 대모집
                 </div>
               </div>
               <!-- Product actions-->
@@ -252,18 +254,73 @@
               <div class="card-body p-4">
                 <div class="text-center">
                   <!-- Product name-->
-                  <h5 class="fw-bolder">[경기서부]스노보드 입문자들!</h5>
+                  <h6 class="fw-bolder">[경기서부]</h6>
+                  <h4 class="fw-bolder">스노보드 입문자모임</h5>
                   <!-- Product reviews-->
                   <div
                     class="d-flex justify-content-center small text-warning mb-2"
                   >
-                    <div class="bi-star-fill"></div>
-                    <div class="bi-star-fill"></div>
-                    <div class="bi-star-fill"></div>
-                    <div class="bi-star-fill"></div>
-                    <div class="bi-star-fill"></div>
                   </div>
                   <!-- Product price-->
+                  1,2년차 스노보더 모여라
+                </div>
+              </div>
+              <!-- Product actions-->
+              <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                <div class="text-center">
+                  <a class="btn btn-outline-dark mt-auto" href="#">둘러보기</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-5">
+            <div class="card h-100">
+              <!-- Product image-->
+              <img class="card-img-top" src="imgs/hobby1.jpg" alt="..." />
+              <!-- Product details-->
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <!-- Product name-->
+                  <h6 class="fw-bolder">[지역명]</h6>
+                  <h4 class="fw-bolder">모임이름</h4>
+                  <!-- Product price-->
+                  관심사 or 모임소개
+                </div>
+              </div>
+              <!-- Product actions-->
+              <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                <div class="text-center">
+                  <a class="btn btn-outline-dark mt-auto" href="groupTab.html"
+                    >둘러보기</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-5">
+            <div class="card h-100">
+              <!-- Sale badge-->
+              <div
+                class="badge bg-danger text-white position-absolute"
+                style="top: 0.5rem; right: 0.5rem"
+              >
+                HOT
+              </div>
+              <!-- Product image-->
+              <img class="card-img-top" src="imgs/hobby2.jpg" alt="..." />
+              <!-- Product details-->
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <!-- Product name-->
+                  <h6 class="fw-bolder">[인천]</h6>
+                  <h4 class="fw-bolder">사진동호회</h4>
+                  <!-- Product reviews-->
+                  <div
+                    class="d-flex justify-content-center small text-warning mb-2"
+                  >
+                  </div>
+                  <!-- Product price-->
+                  사진을 사랑하는 사람들
                 </div>
               </div>
               <!-- Product actions-->
@@ -278,35 +335,27 @@
             <div class="card h-100">
               <!-- Sale badge-->
               <div
-                class="badge bg-dark text-white position-absolute"
+                class="badge bg-danger text-white position-absolute"
                 style="top: 0.5rem; right: 0.5rem"
               >
-                Sale
+                HOT
               </div>
               <!-- Product image-->
-              <img
-                class="card-img-top"
-                src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                alt="..."
-              />
+              <img class="card-img-top" src="imgs/hobby3.jpg" alt="..." />
               <!-- Product details-->
               <div class="card-body p-4">
                 <div class="text-center">
                   <!-- Product name-->
-                  <h5 class="fw-bolder">Sale Item</h5>
+                  <h6 class="fw-bolder">[서울동부]</h6>
+                  <h4 class="fw-bolder">골프</h4>
                   <!-- Product price-->
-                  <span class="text-muted text-decoration-line-through"
-                    >$50.00</span
-                  >
-                  $25.00
+                  골린이 대모집
                 </div>
               </div>
               <!-- Product actions-->
               <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                 <div class="text-center">
-                  <a class="btn btn-outline-dark mt-auto" href="#"
-                    >Add to cart</a
-                  >
+                  <a class="btn btn-outline-dark mt-auto" href="#">둘러보기</a>
                 </div>
               </div>
             </div>
@@ -314,25 +363,49 @@
           <div class="col mb-5">
             <div class="card h-100">
               <!-- Product image-->
-              <img
-                class="card-img-top"
-                src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                alt="..."
-              />
+              <img class="card-img-top" src="imgs/hobby4.jpg" alt="..." />
               <!-- Product details-->
               <div class="card-body p-4">
                 <div class="text-center">
                   <!-- Product name-->
-                  <h5 class="fw-bolder">Fancy Product</h5>
+                  <h6 class="fw-bolder">[경기서부]</h6>
+                  <h4 class="fw-bolder">스노보드 입문자모임</h5>
+                  <!-- Product reviews-->
+                  <div
+                    class="d-flex justify-content-center small text-warning mb-2"
+                  >
+                  </div>
                   <!-- Product price-->
-                  $120.00 - $280.00
+                  1,2년차 스노보더 모여라
                 </div>
               </div>
               <!-- Product actions-->
               <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                 <div class="text-center">
-                  <a class="btn btn-outline-dark mt-auto" href="#"
-                    >View options</a
+                  <a class="btn btn-outline-dark mt-auto" href="#">둘러보기</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-5">
+            <div class="card h-100">
+              <!-- Product image-->
+              <img class="card-img-top" src="imgs/hobby1.jpg" alt="..." />
+              <!-- Product details-->
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <!-- Product name-->
+                  <h6 class="fw-bolder">[지역명]</h6>
+                  <h4 class="fw-bolder">모임이름</h4>
+                  <!-- Product price-->
+                  관심사 or 모임소개
+                </div>
+              </div>
+              <!-- Product actions-->
+              <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                <div class="text-center">
+                  <a class="btn btn-outline-dark mt-auto" href="groupTab.html"
+                    >둘러보기</a
                   >
                 </div>
               </div>
@@ -342,45 +415,61 @@
             <div class="card h-100">
               <!-- Sale badge-->
               <div
-                class="badge bg-dark text-white position-absolute"
+                class="badge bg-danger text-white position-absolute"
                 style="top: 0.5rem; right: 0.5rem"
               >
-                Sale
+                HOT
               </div>
               <!-- Product image-->
-              <img
-                class="card-img-top"
-                src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                alt="..."
-              />
+              <img class="card-img-top" src="imgs/hobby2.jpg" alt="..." />
               <!-- Product details-->
               <div class="card-body p-4">
                 <div class="text-center">
                   <!-- Product name-->
-                  <h5 class="fw-bolder">Special Item</h5>
+                  <h6 class="fw-bolder">[인천]</h6>
+                  <h4 class="fw-bolder">사진동호회</h4>
                   <!-- Product reviews-->
                   <div
                     class="d-flex justify-content-center small text-warning mb-2"
                   >
-                    <div class="bi-star-fill"></div>
-                    <div class="bi-star-fill"></div>
-                    <div class="bi-star-fill"></div>
-                    <div class="bi-star-fill"></div>
-                    <div class="bi-star-fill"></div>
                   </div>
                   <!-- Product price-->
-                  <span class="text-muted text-decoration-line-through"
-                    >$20.00</span
-                  >
-                  $18.00
+                  사진을 사랑하는 사람들
                 </div>
               </div>
               <!-- Product actions-->
               <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                 <div class="text-center">
-                  <a class="btn btn-outline-dark mt-auto" href="#"
-                    >Add to cart</a
-                  >
+                  <a class="btn btn-outline-dark mt-auto" href="#">둘러보기</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-5">
+            <div class="card h-100">
+              <!-- Sale badge-->
+              <div
+                class="badge bg-danger text-white position-absolute"
+                style="top: 0.5rem; right: 0.5rem"
+              >
+                HOT
+              </div>
+              <!-- Product image-->
+              <img class="card-img-top" src="imgs/hobby3.jpg" alt="..." />
+              <!-- Product details-->
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <!-- Product name-->
+                  <h6 class="fw-bolder">[서울동부]</h6>
+                  <h4 class="fw-bolder">골프</h4>
+                  <!-- Product price-->
+                  골린이 대모집
+                </div>
+              </div>
+              <!-- Product actions-->
+              <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                <div class="text-center">
+                  <a class="btn btn-outline-dark mt-auto" href="#">둘러보기</a>
                 </div>
               </div>
             </div>
@@ -388,36 +477,26 @@
           <div class="col mb-5">
             <div class="card h-100">
               <!-- Product image-->
-              <img
-                class="card-img-top"
-                src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                alt="..."
-              />
+              <img class="card-img-top" src="imgs/hobby4.jpg" alt="..." />
               <!-- Product details-->
               <div class="card-body p-4">
                 <div class="text-center">
                   <!-- Product name-->
-                  <h5 class="fw-bolder">Popular Item</h5>
+                  <h6 class="fw-bolder">[경기서부]</h6>
+                  <h4 class="fw-bolder">스노보드 입문자모임</h5>
                   <!-- Product reviews-->
                   <div
                     class="d-flex justify-content-center small text-warning mb-2"
                   >
-                    <div class="bi-star-fill"></div>
-                    <div class="bi-star-fill"></div>
-                    <div class="bi-star-fill"></div>
-                    <div class="bi-star-fill"></div>
-                    <div class="bi-star-fill"></div>
                   </div>
                   <!-- Product price-->
-                  $40.00
+                  1,2년차 스노보더 모여라
                 </div>
               </div>
               <!-- Product actions-->
               <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                 <div class="text-center">
-                  <a class="btn btn-outline-dark mt-auto" href="#"
-                    >Add to cart</a
-                  >
+                  <a class="btn btn-outline-dark mt-auto" href="#">둘러보기</a>
                 </div>
               </div>
             </div>
@@ -425,6 +504,7 @@
         </div>
       </div>
     </section>
+  </body>
     <!-- Footer-->
     <footer class="py-5 bg-dark">
       <div class="container">
@@ -437,5 +517,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
-  </body>
 </html>
