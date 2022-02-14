@@ -126,51 +126,55 @@
     <section class="vh-100" style="background-color: #eee">
       <div class="container h-75 contents-center">
         <div class="row justify-content-center align-items-center h-75">
-            <div class="col-lg-3"></div>
-            <div class="col-lg-6 h-50">
-              <table class="table table-bordered">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8 h-50">
+              <table class="table table-bordered" style="background-color: white;">
                 <thead class="table-info text-center">
                   <tr>
-                    <th scope="col" colspan="7">공지사항</th>
+                    <th scope="col" colspan="11">공지사항</th>
                   </tr>
                 <tbody>
                   <tr class="text-center">
-                    <th scope="col" name="ntName" class="table-secondary">글제목</th>
-                    <td colspan="6">2월 14일 발렌타인데이 이벤트</td>   
+                    <th scope="col" name="ntName" class="table-light">글제목</th>
+                    <td colspan="10">2월 14일 발렌타인데이 이벤트</td>   
                   </tr>
                   <tr class="text-center">
-                    <th scope="row" class="table-secondary" >작성자</th>
-                    <td colspan="6">운영자</td>
+                    <th scope="row" class="table-light" >작성자</th>
+                    <td colspan="10">운영자</td>
                   </tr>
                   <tr>
-                    <th scope="row" colspan="7" style="text-align: center;" class="table-secondary">글내용</th>
+                    <th scope="row" colspan="11" style="text-align: center;" class="table-light">글내용</th>
                   </tr>
                   <tr>
-                    <td colspan="7" style="line-height: 70px; min-height: 70px; height: 200px;" >가나다라마바사가나다라마바사가나다라마바사
+                    <td colspan="11" style="line-height: 70px; min-height: 70px; height: 200px;" >가나다라마바사가나다라마바사가나다라마바사
                     </td>
                   </tr>
                 </tbody>
                   <tfoot>
                   <tr>
-                    <th scope="row" colspan="7" style="text-align: center;" class="table-secondary">댓글</th>
+                    <th scope="row" colspan="11" style="text-align: center;" class="table-light">댓글</th>
                   </tr>
                   <tr class="text-center">
                     <td>작성자</td>
-                    <td colspan="4" >내용</td>
+                    <td colspan="6">내용</td>
                     <td colspan="2">좋아요</td>
                   </tr>
                   <tr>
                     <th scope="row"  style="text-align: center;">최대현</th>
-                    <td colspan="4">댓글테스트 가나다라</td>
+                    <td colspan="6">댓글테스트 가나다라 댓글테스트 가나다라 댓글테스트 가나다라</td>
                     <td style="text-align: center;">2</td>
                     <td style="text-align: center;"><i class="bi bi-hand-thumbs-up"type="button" onclick="location.href='좋아요 링크'" ></i></td>
+                    <td style="text-align: center;"><i class="bi bi-eraser-fill"></i></td>
+                    <td style="text-align: center;"><i class="bi bi-trash"></i></td>
                   </tr>
                   <!--댓글 작성시 생성되며 추가될 부분-->
                   <tr>
-                    <th scope="row"  style="text-align: center;" >${댓글작성자}</th>
-                    <td colspan="4">${댓글내용}</td>
+                    <th scope="row"  style="text-align: center;" >박범수</th>
+                    <td colspan="6">테스트</td>
                     <td style="text-align: center;">5</td>
                     <td style="text-align: center;"><i class="bi bi-hand-thumbs-up"type="button" onclick="location.href='좋아요 링크'" ></i></td>
+                    <td style="text-align: center;"><i class="bi bi-eraser-fill"></i></td>
+                    <td style="text-align: center;"><i class="bi bi-trash"></i></td>
                   </tr>
                   <!--댓글 작성시 생성되며 추가될 부분-->
                 </tfoot>
@@ -198,9 +202,17 @@
               >
                 수정하기
               </button>
+              <button
+              type="button"
+              class="btn btn-outline-danger"
+              style="margin: 3px;"
+              onclick="location.href='notice.html'"
+            >
+              삭제하기
+            </button>
               </div>
             </div>  
-            <div class="col-lg-3"></div>
+            <div class="col-lg-2"></div>
         </div>
     </section>
 
