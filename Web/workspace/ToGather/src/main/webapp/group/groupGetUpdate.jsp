@@ -30,7 +30,7 @@
     <meta name="author" content="" />
     <title>모임 수정</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/ToGather.ico" />
+    <link rel="icon" type="image/x-icon" href="../assets/ToGather.ico" />
     <!-- Bootstrap icons-->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
@@ -77,9 +77,6 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="notice.html">공지사항</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="group/groupTab.do?m=groupList">모임 목록</a>
             </li>
             <li class="nav-item dropdown">
               <a
@@ -161,7 +158,7 @@
 	                    <p class="text-center h2 fw-bold mb-1 mx-1 mx-md-4 mt-3">
 	                      모임 수정
 	                    </p>
-	                    <form class="mx-1 mx-md-4" method="post" action="groupTab.do?m=groupUpdate&gSeq=${groupTab.gSeq}">
+	                    <form class="mx-1 mx-md-4" method="post" action="groupTab.do?m=groupUpdate&gSeq=${groupTab.gSeq}" enctype="multipart/form-data">
 	                      <div class="d-flex flex-row align-items-center mb-0">
 	                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
 	                        <div class="form-outline flex-fill mb-2">
@@ -185,10 +182,18 @@
 	                            >지역</label
 	                          >
 	                          <select class="form-control" name="gLoc">
-	                            <option>선택</option>
+	                            <option disabled>선택</option>
 	                            <option>서울</option>
-	                            <option>경기</option>
-	                            <option>인천</option>
+								<option>경기</option>
+								<option>인천</option>
+								<option>강원</option>
+								<option>전북</option>
+								<option>전남</option>
+								<option>충북</option>
+								<option>충남</option>
+								<option>경북</option>
+								<option>경남</option>
+								<option>제주</option>
 	                          </select>
 	                        </div>
 	                      </div>
@@ -258,9 +263,10 @@
 	                          >
 	                          <input
 	                            type="file"
-	                            name="gFile"
+	                            name="fname"
 	                            id="form3Example4c"
 	                            class="form-control"
+	                            required
 	                          />
 	                        </div>
 	                      </div>

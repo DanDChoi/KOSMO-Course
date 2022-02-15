@@ -68,9 +68,9 @@ create table GROUPTAB(
 
 create sequence GROUPTAB_SEQ increment by 1 start with 1 nocache;
 
-insert into GROUPTAB values(GROUPTAB_SEQ.nextval, '서울시 금천구', '코딩해요~', '같이 코딩하면서 즐겨요!', 'IT', 50, SYSDATE, 1);
-insert into GROUPTAB values(GROUPTAB_SEQ.nextval, '서울시 관악구', '행축 (행복축구 하실 분)', '축구하면서 친목쌓고 노실 분들 오세요~', '스포츠', 30, SYSDATE, 2);
-insert into GROUPTAB values(GROUPTAB_SEQ.nextval, '경기도 광명시', '맛집탐방', '동네 숨은 맛집 같이 찾으실 분들 ㄱㄱ', '사교', 50, SYSDATE, 3);
+insert into GROUPTAB values(GROUPTAB_SEQ.nextval, '서울시 금천구', '코딩해요~', '같이 코딩하면서 즐겨요!', 'IT', 50, SYSDATE, 1 ,null);
+insert into GROUPTAB values(GROUPTAB_SEQ.nextval, '서울시 관악구', '행축 (행복축구 하실 분)', '축구하면서 친목쌓고 노실 분들 오세요~', '스포츠', 30, SYSDATE, 2, null);
+insert into GROUPTAB values(GROUPTAB_SEQ.nextval, '경기도 광명시', '맛집탐방', '동네 숨은 맛집 같이 찾으실 분들 ㄱㄱ', '사교', 50, SYSDATE, 3, null);
 
 alter table grouptab add (fname nvarchar2(50));
 create table MEM_IN_GROUP(

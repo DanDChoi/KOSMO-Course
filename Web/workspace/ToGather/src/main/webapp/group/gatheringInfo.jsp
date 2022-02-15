@@ -244,15 +244,14 @@
 	                      onclick="location.href='groupTab.do?m=gatheringGetUpdate&gSeq=${gathering.gSeq}&ga_seq=${gathering.ga_seq}'">
 	                        수정하기
 	                      </button>
-	                      <button type="button" class="btn btn-outline-danger btn-sm">
+	                      <button type="button" class="btn btn-outline-danger btn-sm" onclick="location.href='groupTab.do?m=groupInfo&gSeq=${gathering.gSeq}'">
 	                        돌아가기
 	                      </button>
+	                      <button type="button" class="btn btn-outline-danger btn-sm" onclick="location.href='groupTab.do?m=gatheringDelete&gSeq=${gathering.gSeq}&ga_seq=${gathering.ga_seq}'">
+	                        삭제하기(바로 삭제)
+	                      </button>
 	                    </div>
-	
-	
 	                        </div>
-	
-	                      
 	                    </form>
 	                  </div>
 	                </div>

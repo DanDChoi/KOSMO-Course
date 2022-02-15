@@ -13,7 +13,8 @@
 	    		  document.input.gIntro.value == "" || 
 	    		  document.input.gAddr.value == "" ||
 	    		  document.input.time.value == "" ||
-	    		  document.input.limit.value == "")
+	    		  document.input.limit.value == "" ||
+	    		  document.input.fname.value == "")
 			  {
 			     alert("필수입력란이 비었습니다.");
 			     return false;
@@ -77,9 +78,6 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="notice.html">공지사항</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="group/groupTab.do?m=groupList">모임 목록</a>
             </li>
             <li class="nav-item dropdown">
               <a
@@ -183,10 +181,18 @@
                             >지역</label
                           >
                           <select class="form-control" name="gLoc">
-                            <option>선택</option>
+                            <option disabled>선택</option>
                             <option>서울</option>
-                            <option>경기</option>
-                            <option>인천</option>
+							<option>경기</option>
+							<option>인천</option>
+							<option>강원</option>
+							<option>전북</option>
+							<option>전남</option>
+							<option>충북</option>
+							<option>충남</option>
+							<option>경북</option>
+							<option>경남</option>
+							<option>제주</option>
                           </select>
                         </div>
                       </div>

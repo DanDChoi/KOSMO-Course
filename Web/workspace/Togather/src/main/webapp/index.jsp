@@ -27,56 +27,57 @@
     <script src="js/splitting.js"></script>
     <script src="js/typed.js"></script>
   </head>
-  <%!    
-        Connection conn=null; 
-        Statement stmt = null;
-        ResultSet rs = null;
-        
-        String url="jdbc:oracle:thin:@localhost:1521:JAVA";
-        String user="togather";
-        String pwd="team1";
-        String sql = "select * from GROUPTAB order by GSEQ desc";
+  <%! 	
+  		Connection conn=null; 
+  		Statement stmt = null;
+  		ResultSet rs = null;
+  		
+  		String url="jdbc:oracle:thin:@localhost:1521:JAVA";
+  		String user="togather";
+  		String pwd="java";
+  		String sql = "select * from GROUPTAB order by GSEQ desc";
   %>
   <% 
   try{
-      Class.forName("oracle.jdbc.driver.OracleDriver");
-      conn = DriverManager.getConnection(url, user, pwd);
-      stmt = conn.prepareStatement(sql);
-   }catch(ClassNotFoundException cnfe){
-      System.out.println("#Oracle driver loading failed");
-   }catch(SQLException se){
-      System.out.println("#init() se: " + se);
-   }
-      ArrayList<GroupTab> groupList = new ArrayList<GroupTab>();
-      
-      try {  
-         stmt = conn.createStatement();
-         rs = stmt.executeQuery(sql);
-         while(rs.next()) {
-            System.out.println("들어옴");
-            long gSeq = rs.getLong(1);
-            String gLoc = rs.getString(2);
-            String gName = rs.getString(3);
-            System.out.println(gName);
-            String gIntro = rs.getString(4);
-            String interest = rs.getString(5);
-            int limit = rs.getInt(6);
-            Date rdate = rs.getDate(7);
-            long mNum = rs.getLong(8);   
-            String fName = rs.getString(9);
-            groupList.add(new GroupTab(gSeq, gLoc, gName, gIntro, interest, limit, rdate, mNum, fName));
-         }
-         
-      }catch(SQLException se) {
-         
-      }finally {
-         try {
-            if(rs != null) rs.close();
-            if(stmt != null) stmt.close();
-            if(conn != null) conn.close();
-         }catch(SQLException se) {}
-      }
-   
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		conn = DriverManager.getConnection(url, user, pwd);
+		stmt = conn.prepareStatement(sql);
+	}catch(ClassNotFoundException cnfe){
+		System.out.println("#Oracle driver loading failed");
+	}catch(SQLException se){
+		System.out.println("#init() se: " + se);
+	}
+		ArrayList<GroupTab> groupList = new ArrayList<GroupTab>();
+		
+		try {
+			
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			while(rs.next()) {
+				System.out.println("들어옴");
+				long gSeq = rs.getLong(1);
+				String gLoc = rs.getString(2);
+				String gName = rs.getString(3);
+				System.out.println(gName);
+				String gIntro = rs.getString(4);
+				String interest = rs.getString(5);
+				int limit = rs.getInt(6);
+				Date rdate = rs.getDate(7);
+				long mNum = rs.getLong(8);	
+				String fname = rs.getString(9);
+				groupList.add(new GroupTab(gSeq, gLoc, gName, gIntro, interest, limit, rdate, mNum, fname));
+			}
+			
+		}catch(SQLException se) {
+			
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(stmt != null) stmt.close();
+				if(conn != null) conn.close();
+			}catch(SQLException se) {}
+		}
+	
   %>
   
   <body>
@@ -111,9 +112,6 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="notice.html">공지사항</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="group/groupTab.do?m=groupList">모임 목록</a>
             </li>
             <li class="nav-item dropdown">
               <a
@@ -222,12 +220,18 @@
           class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
         >
         <% 
-           for(GroupTab dto :groupList){
-       %>
+       	 for(GroupTab dto :groupList){
+    	%>
           <div class="col mb-5">
-            <div class="card h-100">
+            <div class="card h-100" style="overflow:hidden">
+              <div
+                class="badge bg-danger text-white position-absolute"
+                style="top: 0.5rem; right: 0.5rem"
+              >
+                HOT
+              </div>
               <!-- Product image-->
-              <img class="card-img-top" src="upload_imgs/<%=dto.getfName()%>" alt="..." />
+              <img class="card-img-top" style="width: 100%; height: 200px" src="upload_imgs/<%=dto.getFname()%>" alt="..." />
               <!-- Product details-->
               <div class="card-body p-4">
                 <div class="text-center">
@@ -251,326 +255,6 @@
         <%
         }
         %>
-          <div class="col mb-5">
-            <div class="card h-100">
-              <!-- Sale badge-->
-              <div
-                class="badge bg-danger text-white position-absolute"
-                style="top: 0.5rem; right: 0.5rem"
-              >
-                HOT
-              </div>
-              <!-- Product image-->
-              <img class="card-img-top" src="imgs/hobby2.jpg" alt="..." />
-              <!-- Product details-->
-              <div class="card-body p-4">
-                <div class="text-center">
-                  <!-- Product name-->
-                  <h6 class="fw-bolder">[인천]</h6>
-                  <h4 class="fw-bolder">사진동호회</h4>
-                  <!-- Product reviews-->
-                  <div
-                    class="d-flex justify-content-center small text-warning mb-2"
-                  >
-                  </div>
-                  <!-- Product price-->
-                  사진을 사랑하는 사람들
-                </div>
-              </div>
-              <!-- Product actions-->
-              <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                <div class="text-center">
-                  <a class="btn btn-outline-dark mt-auto" href="#">둘러보기</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col mb-5">
-            <div class="card h-100">
-              <!-- Sale badge-->
-              <div
-                class="badge bg-danger text-white position-absolute"
-                style="top: 0.5rem; right: 0.5rem"
-              >
-                HOT
-              </div>
-              <!-- Product image-->
-              <img class="card-img-top" src="imgs/hobby3.jpg" alt="..." />
-              <!-- Product details-->
-              <div class="card-body p-4">
-                <div class="text-center">
-                  <!-- Product name-->
-                  <h6 class="fw-bolder">[서울동부]</h6>
-                  <h4 class="fw-bolder">골프</h4>
-                  <!-- Product price-->
-                  골린이 대모집
-                </div>
-              </div>
-              <!-- Product actions-->
-              <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                <div class="text-center">
-                  <a class="btn btn-outline-dark mt-auto" href="#">둘러보기</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col mb-5">
-            <div class="card h-100">
-              <!-- Product image-->
-              <img class="card-img-top" src="imgs/hobby4.jpg" alt="..." />
-              <!-- Product details-->
-              <div class="card-body p-4">
-                <div class="text-center">
-                  <!-- Product name-->
-                  <h6 class="fw-bolder">[경기서부]</h6>
-                  <h4 class="fw-bolder">스노보드 입문자모임</h5>
-                  <!-- Product reviews-->
-                  <div
-                    class="d-flex justify-content-center small text-warning mb-2"
-                  >
-                  </div>
-                  <!-- Product price-->
-                  1,2년차 스노보더 모여라
-                </div>
-              </div>
-              <!-- Product actions-->
-              <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                <div class="text-center">
-                  <a class="btn btn-outline-dark mt-auto" href="#">둘러보기</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col mb-5">
-            <div class="card h-100">
-              <!-- Product image-->
-              <img class="card-img-top" src="imgs/hobby1.jpg" alt="..." />
-              <!-- Product details-->
-              <div class="card-body p-4">
-                <div class="text-center">
-                  <!-- Product name-->
-                  <h6 class="fw-bolder">[지역명]</h6>
-                  <h4 class="fw-bolder">모임이름</h4>
-                  <!-- Product price-->
-                  관심사 or 모임소개
-                </div>
-              </div>
-              <!-- Product actions-->
-              <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                <div class="text-center">
-                  <a class="btn btn-outline-dark mt-auto" href="groupTab.html"
-                    >둘러보기</a
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col mb-5">
-            <div class="card h-100">
-              <!-- Sale badge-->
-              <div
-                class="badge bg-danger text-white position-absolute"
-                style="top: 0.5rem; right: 0.5rem"
-              >
-                HOT
-              </div>
-              <!-- Product image-->
-              <img class="card-img-top" src="imgs/hobby2.jpg" alt="..." />
-              <!-- Product details-->
-              <div class="card-body p-4">
-                <div class="text-center">
-                  <!-- Product name-->
-                  <h6 class="fw-bolder">[인천]</h6>
-                  <h4 class="fw-bolder">사진동호회</h4>
-                  <!-- Product reviews-->
-                  <div
-                    class="d-flex justify-content-center small text-warning mb-2"
-                  >
-                  </div>
-                  <!-- Product price-->
-                  사진을 사랑하는 사람들
-                </div>
-              </div>
-              <!-- Product actions-->
-              <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                <div class="text-center">
-                  <a class="btn btn-outline-dark mt-auto" href="#">둘러보기</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col mb-5">
-            <div class="card h-100">
-              <!-- Sale badge-->
-              <div
-                class="badge bg-danger text-white position-absolute"
-                style="top: 0.5rem; right: 0.5rem"
-              >
-                HOT
-              </div>
-              <!-- Product image-->
-              <img class="card-img-top" src="imgs/hobby3.jpg" alt="..." />
-              <!-- Product details-->
-              <div class="card-body p-4">
-                <div class="text-center">
-                  <!-- Product name-->
-                  <h6 class="fw-bolder">[서울동부]</h6>
-                  <h4 class="fw-bolder">골프</h4>
-                  <!-- Product price-->
-                  골린이 대모집
-                </div>
-              </div>
-              <!-- Product actions-->
-              <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                <div class="text-center">
-                  <a class="btn btn-outline-dark mt-auto" href="#">둘러보기</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col mb-5">
-            <div class="card h-100">
-              <!-- Product image-->
-              <img class="card-img-top" src="imgs/hobby4.jpg" alt="..." />
-              <!-- Product details-->
-              <div class="card-body p-4">
-                <div class="text-center">
-                  <!-- Product name-->
-                  <h6 class="fw-bolder">[경기서부]</h6>
-                  <h4 class="fw-bolder">스노보드 입문자모임</h5>
-                  <!-- Product reviews-->
-                  <div
-                    class="d-flex justify-content-center small text-warning mb-2"
-                  >
-                  </div>
-                  <!-- Product price-->
-                  1,2년차 스노보더 모여라
-                </div>
-              </div>
-              <!-- Product actions-->
-              <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                <div class="text-center">
-                  <a class="btn btn-outline-dark mt-auto" href="#">둘러보기</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col mb-5">
-            <div class="card h-100">
-              <!-- Product image-->
-              <img class="card-img-top" src="imgs/hobby1.jpg" alt="..." />
-              <!-- Product details-->
-              <div class="card-body p-4">
-                <div class="text-center">
-                  <!-- Product name-->
-                  <h6 class="fw-bolder">[지역명]</h6>
-                  <h4 class="fw-bolder">모임이름</h4>
-                  <!-- Product price-->
-                  관심사 or 모임소개
-                </div>
-              </div>
-              <!-- Product actions-->
-              <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                <div class="text-center">
-                  <a class="btn btn-outline-dark mt-auto" href="groupTab.html"
-                    >둘러보기</a
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col mb-5">
-            <div class="card h-100">
-              <!-- Sale badge-->
-              <div
-                class="badge bg-danger text-white position-absolute"
-                style="top: 0.5rem; right: 0.5rem"
-              >
-                HOT
-              </div>
-              <!-- Product image-->
-              <img class="card-img-top" src="imgs/hobby2.jpg" alt="..." />
-              <!-- Product details-->
-              <div class="card-body p-4">
-                <div class="text-center">
-                  <!-- Product name-->
-                  <h6 class="fw-bolder">[인천]</h6>
-                  <h4 class="fw-bolder">사진동호회</h4>
-                  <!-- Product reviews-->
-                  <div
-                    class="d-flex justify-content-center small text-warning mb-2"
-                  >
-                  </div>
-                  <!-- Product price-->
-                  사진을 사랑하는 사람들
-                </div>
-              </div>
-              <!-- Product actions-->
-              <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                <div class="text-center">
-                  <a class="btn btn-outline-dark mt-auto" href="#">둘러보기</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col mb-5">
-            <div class="card h-100">
-              <!-- Sale badge-->
-              <div
-                class="badge bg-danger text-white position-absolute"
-                style="top: 0.5rem; right: 0.5rem"
-              >
-                HOT
-              </div>
-              <!-- Product image-->
-              <img class="card-img-top" src="imgs/hobby3.jpg" alt="..." />
-              <!-- Product details-->
-              <div class="card-body p-4">
-                <div class="text-center">
-                  <!-- Product name-->
-                  <h6 class="fw-bolder">[서울동부]</h6>
-                  <h4 class="fw-bolder">골프</h4>
-                  <!-- Product price-->
-                  골린이 대모집
-                </div>
-              </div>
-              <!-- Product actions-->
-              <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                <div class="text-center">
-                  <a class="btn btn-outline-dark mt-auto" href="#">둘러보기</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col mb-5">
-            <div class="card h-100">
-              <!-- Product image-->
-              <img class="card-img-top" src="imgs/hobby4.jpg" alt="..." />
-              <!-- Product details-->
-              <div class="card-body p-4">
-                <div class="text-center">
-                  <!-- Product name-->
-                  <h6 class="fw-bolder">[경기서부]</h6>
-                  <h4 class="fw-bolder">스노보드 입문자모임</h5>
-                  <!-- Product reviews-->
-                  <div
-                    class="d-flex justify-content-center small text-warning mb-2"
-                  >
-                  </div>
-                  <!-- Product price-->
-                  1,2년차 스노보더 모여라
-                </div>
-              </div>
-              <!-- Product actions-->
-              <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                <div class="text-center">
-                  <a class="btn btn-outline-dark mt-auto" href="#">둘러보기</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
   </body>
     <!-- Footer-->

@@ -52,7 +52,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-gray">
       <div class="container px-4 px-lg-5">
         <h1 class="logo">
-          <a href="index.html"
+          <a href="../"
             ><img src="../imgs/topLogo.png" alt="ToGather" title="홈으로 이동"
           /></a>
         </h1>
@@ -79,9 +79,6 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="notice.html">공지사항</a>
-            </li>
-			<li class="nav-item">
-              <a class="nav-link" href="groupTab.do?m=groupList">모임 목록</a>
             </li>
             <li class="nav-item dropdown">
               <a

@@ -63,9 +63,6 @@
             <li class="nav-item">
               <a class="nav-link" href="notice.html">공지사항</a>
             </li>
-         <li class="nav-item">
-              <a class="nav-link" href="groupTab.do?m=groupList">모임 목록</a>
-            </li>
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -151,13 +148,12 @@
         <div class="col-lg-8">
           <!-- Featured blog post-->
           <div class="card mb-4">
-            <a href="#!"
-              ><img class="card-img-top" src="../imgs/hobby1.jpg" alt="..."
-            /></a>
+              <img class="card-img-top" style="width: 100%; height: 500px" src="../upload_imgs/${groupTab.fname}" alt="..."
+            />
             <div class="card-body">
-              <div class="small text-muted">${groupTab.rdate}</div>
+              <div class="small text-muted">${groupTab.rdate}, 모임 정원: ${groupTab.limit}</div>
               <h5 class="card-title">#모임소개</h5>
-              <h3 class="card-text">${groupTab.gIntro}</h3>
+              <h3 class="card-text">: ${groupTab.gIntro}</h3>
             </div>
           </div>
           <!-- Nested row for non-featured blog posts-->
@@ -172,9 +168,12 @@
           <!-- Search widget-->
           <div class="car mb-4">
             <div class="list-group">
-              <li class="list-group-item list-group-item-secondary" style="background-color: lavender">
+              <li class="list-group-item list-group-item-secondary" style="background-color: lavender; text-align: center">
                 <b>정모</b>
               </li>
+           <c:if test="${empty gatheringList}">
+           		<div class="list-group-item list-group-item-light">현재 정모가 없습니다.</div>
+           </c:if>
            <c:forEach items="${gatheringList}" var="gathering">
               <a
                 href="groupTab.do?m=gatheringInfo&gSeq=${gathering.gSeq}&ga_seq=${gathering.ga_seq}"
@@ -213,7 +212,7 @@
 
           <br />
           <div class="card mb-4">
-            <div class="card-header" style="background-color: lavender"><b>모임 멤버(수정 불필요)</b></div>
+            <div class="card-header" style="background-color: lavender; text-align: center"><b>모임 멤버(수정 불필요)</b></div>
             <div class="card-body">
                 <ul>
                     멤버이름(받아올 값)(목록형식으로 수정해야함)

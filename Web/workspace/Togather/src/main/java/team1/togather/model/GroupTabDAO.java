@@ -45,8 +45,9 @@ class GroupTabDAO {
 				String interest = rs.getString(5);
 				int limit = rs.getInt(6);
 				Date rdate = rs.getDate(7);
-				long mNum = rs.getLong(8);				
-				groupList.add(new GroupTab(gSeq, gLoc, gName, gIntro, interest, limit, rdate, mNum));
+				long mNum = rs.getLong(8);
+				String fname = rs.getString(9);
+				groupList.add(new GroupTab(gSeq, gLoc, gName, gIntro, interest, limit, rdate, mNum, fname));
 			}
 			return groupList;
 		}catch(SQLException se) {
@@ -76,8 +77,9 @@ class GroupTabDAO {
 				String interest = rs.getString(5);
 				int limit = rs.getInt(6);
 				Date rdate = rs.getDate(7);
-				long mNum = rs.getLong(8);				
-				groupInfo.add(new GroupTab(gSeq, gLoc, gName, gIntro, interest, limit, rdate, mNum));
+				long mNum = rs.getLong(8);
+				String fname = rs.getString(9);
+				groupInfo.add(new GroupTab(gSeq, gLoc, gName, gIntro, interest, limit, rdate, mNum, fname));
 			}
 			return groupInfo;
 		}catch(SQLException se) {
@@ -96,13 +98,14 @@ class GroupTabDAO {
 		try {
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(GROUP_INSERT);
-			//"insert into GROUPTAB values(GROUP_SEQ.nextval, ?, ?, ?, ?, ?, SYSDATE, ?)"
+			//"insert into GROUPTAB values(GROUP_SEQ.nextval, ?, ?, ?, ?, ?, SYSDATE, ?, ?)"
 			pstmt.setString(1, dto.getgLoc());
 			pstmt.setString(2, dto.getgName());
 			pstmt.setString(3, dto.getgIntro());
 			pstmt.setString(4, dto.getInterest());
 			pstmt.setInt(5, dto.getLimit());
 			pstmt.setLong(6, 1); //mNum session
+			pstmt.setString(7, dto.getFname());
 			int i = pstmt.executeUpdate();
 			if(i>0) {
 				return true;
@@ -137,8 +140,9 @@ class GroupTabDAO {
 				int limit = rs.getInt(6);
 				Date rdate = rs.getDate(7);
 				int mNum = rs.getInt(8);
-				 System.out.println("gLoc(DAO) groupGetUpdate: " + gLoc);
-				list.add(new GroupTab(gSeq, gLoc, gName, gIntro, interest, limit, rdate, mNum));
+				String fname = rs.getString(9);
+				 System.out.println("gLoc(DAO) groupGetUpdate: " + fname);
+				list.add(new GroupTab(gSeq, gLoc, gName, gIntro, interest, limit, rdate, mNum, fname));
 			}
 			return list;
 		}catch(SQLException se) {
@@ -158,13 +162,14 @@ class GroupTabDAO {
 		try {
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(GROUP_UPDATE);
-			//update GROUPTAB set GLOC=?, GNAME=?, GINTRO=?, LIMIT=? WHERE GSEQ=?
-			pstmt.setLong(5, dto.getgSeq());
+			//"update GROUPTAB set GLOC=?, GNAME=?, GINTRO=?, LIMIT=?, FNAME=? WHERE GSEQ=?"
+			pstmt.setLong(6, dto.getgSeq());
 			pstmt.setString(1, dto.getgLoc());
 			pstmt.setString(2, dto.getgName());
 			pstmt.setString(3, dto.getgIntro());
 			pstmt.setInt(4, dto.getLimit());
-				System.out.println("gLoc(DAO) : "+ dto.getgLoc() + dto.getgSeq() + dto.getgName() + dto.getgIntro() + dto.getLimit());
+			pstmt.setString(5, dto.getFname());
+				System.out.println("gLoc(DAO) : "+ dto.getgLoc() + dto.getgSeq() + dto.getgName() + dto.getgIntro() + dto.getLimit() + dto.getFname());
 			pstmt.executeUpdate();
 
 		}catch(SQLException se) {
@@ -242,7 +247,7 @@ class GroupTabDAO {
 				String price = rs.getString(6);
 				int ga_limit = rs.getInt(7);
 				gatheringList.add(new Gathering(ga_seq, ga_name, ga_date, time, ga_place, price, ga_limit, gSeq));
-				System.out.println("C_gatheringList¿« gSeq: " + gSeq);
+				System.out.println("DAO_gatheringList¿« gSeq: " + gSeq);
 			}
 			return gatheringList;
 		}catch(SQLException se) {

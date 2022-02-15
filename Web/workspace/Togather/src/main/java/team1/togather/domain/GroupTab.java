@@ -11,10 +11,10 @@ public class GroupTab {
 	private int limit;
 	private Date rdate;
 	private long mNum;
-	private String fName;
+	private String fname;
 	
 	public GroupTab(long gSeq, String gLoc, String gName, String gIntro, String interest, int limit, Date rdate,
-			long mNum) {
+			long mNum, String fname) {
 		super();
 		this.gSeq = gSeq;
 		this.gLoc = gLoc;
@@ -24,29 +24,18 @@ public class GroupTab {
 		this.limit = limit;
 		this.rdate = rdate;
 		this.mNum = mNum;
+		this.fname = fname;
 	}
-	public GroupTab(long gSeq, String gLoc, String gName, String gIntro, int limit) {
+	public GroupTab(long gSeq, String gLoc, String gName, String gIntro, int limit, String fname) {
 		super();
 		this.gSeq = gSeq;
 		this.gLoc = gLoc;
 		this.gName = gName;
 		this.gIntro = gIntro;
 		this.limit = limit;
+		this.fname = fname;
 	}
 
-	public GroupTab(long gSeq, String gLoc, String gName, String gIntro, String interest, int limit, Date rdate,
-			long mNum, String fName) {
-		super();
-		this.gSeq = gSeq;
-		this.gLoc = gLoc;
-		this.gName = gName;
-		this.gIntro = gIntro;
-		this.interest = interest;
-		this.limit = limit;
-		this.rdate = rdate;
-		this.mNum = mNum;
-		this.fName = fName;
-	}
 	public long getgSeq() {
 		return gSeq;
 	}
@@ -110,10 +99,11 @@ public class GroupTab {
 	public void setmNum(long mNum) {
 		this.mNum = mNum;
 	}
-	public String getfName() {
-		return fName;
+	public String getFname() {
+		return fname;
 	}
-	public void setfName(String fName) {
-		this.fName = fName;
+	public void setFname(String fname) {
+		this.fname = fname;
 	}
+	
 }

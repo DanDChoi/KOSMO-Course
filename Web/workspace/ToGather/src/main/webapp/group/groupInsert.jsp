@@ -7,5 +7,5 @@
         }else {
         	alert("모임 만들기 실패");
         }
-        location.href='groupTab.do?m=groupList';
+        location.href='../';
 	</script>

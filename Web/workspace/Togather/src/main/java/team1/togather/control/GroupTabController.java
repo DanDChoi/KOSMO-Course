@@ -56,9 +56,9 @@ public class GroupTabController extends HttpServlet {
 		ArrayList<GroupTab> groupList = service.groupListS();
 		request.setAttribute("groupList", groupList);
 		
-		String view = "groupList.jsp";
-		RequestDispatcher rd = request.getRequestDispatcher(view);
-		rd.forward(request, response);
+		//String view = "groupList.jsp";
+		//RequestDispatcher rd = request.getRequestDispatcher(view);
+		//rd.forward(request, response);
 	}
 	private void groupInfo(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
@@ -83,13 +83,13 @@ public class GroupTabController extends HttpServlet {
 	}
 	private void groupInsert(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		GroupTabService service = GroupTabService.getInstance();
-		
+		GroupTabService service = GroupTabService.getInstance();		
+		//파일 업로드
 		String saveDir = FileSet.FILE_DIR;
 		File fSaveDir = new File(saveDir);
 		if(!fSaveDir.exists()) fSaveDir.mkdirs(); //폴더 없으면 새로 생성
 		
-		int maxPostSize = 1*1024*1024;
+		int maxPostSize = 10*1024*1024;
 		FileRenamePolicy policy = new DefaultFileRenamePolicy();
 		MultipartRequest mr = null;
 		try {
@@ -98,12 +98,18 @@ public class GroupTabController extends HttpServlet {
 			System.out.println("파일 업로드 실패" + ie);
 		}
 		
+		String fname = mr.getFilesystemName("fname");
+		String ofname = mr.getOriginalFileName("fname");
+		System.out.println("업로드 파일 정보: fname: " + fname + ", ofname: " + ofname);
+		request.setAttribute("fname", fname);
+		
+		//insert정보
 		String gLoc = mr.getParameter("gLoc");
 		String gName = mr.getParameter("gName");
 		String gIntro = mr.getParameter("gIntro");
 		String interest = mr.getParameter("interest");
-		int limit = getLimit(request);
-		GroupTab dto = new GroupTab(-1, gLoc, gName, gIntro, interest, limit, null, 1);
+		int limit = Integer.parseInt(mr.getParameter("limit"));
+		GroupTab dto = new GroupTab(-1, gLoc, gName, gIntro, interest, limit, null, 1, fname);
 		boolean groupInsert = service.groupInsertS(dto);
 		request.setAttribute("groupInsert", groupInsert);
 		
@@ -129,14 +135,29 @@ public class GroupTabController extends HttpServlet {
 		long gSeq = Long.parseLong(request.getParameter("gSeq"));
 		//request.setAttribute("groupUpdate_gSeq", gSeq);
 		
-		String gLoc = request.getParameter("gLoc");
-		String gName = request.getParameter("gName");
-		String gIntro = request.getParameter("gIntro");
-		int limit = getLimit(request);
+		String saveDir = FileSet.FILE_DIR;
+		
+		int maxPostSize = 10*1024*1024;
+		FileRenamePolicy policy = new DefaultFileRenamePolicy();
+		MultipartRequest mr = null;
+		try {
+			mr = new MultipartRequest(request, saveDir, maxPostSize, "utf-8", policy);
+		}catch(IOException ie) {
+			System.out.println("파일 업로드 실패" + ie);
+		}
+		
+		String gLoc = mr.getParameter("gLoc");
+		String gName = mr.getParameter("gName");
+		String gIntro = mr.getParameter("gIntro");
+		int limit = Integer.parseInt(mr.getParameter("limit"));
+		String fname = mr.getFilesystemName("fname");
 			System.out.println("gSeq(Controller) groupUpdate: " + gSeq);
 			System.out.println("gName(Controller) groupUpdate: " + gName);
+			System.out.println("gIntro(Controller) groupUpdate: " + gIntro);
+			System.out.println("gLoc(Controller) groupUpdate: " + gLoc);
+			System.out.println("fname(Controller) groupUpdate: " + fname);
 		
-		GroupTab dto = new GroupTab(gSeq, gLoc, gName, gIntro, limit);
+		GroupTab dto = new GroupTab(gSeq, gLoc, gName, gIntro, limit, fname);
 		service.groupUpdateS(dto);
 		
 		response.sendRedirect("groupTab.do?m=groupInfo&gSeq=" + gSeq);
@@ -147,7 +168,7 @@ public class GroupTabController extends HttpServlet {
 		long gSeq = Long.parseLong(request.getParameter("gSeq"));
 		service.groupDeleteS(gSeq);
 		
-		response.sendRedirect("groupTab.do?m=groupList");
+		response.sendRedirect("../");
 	}
 	private void gatheringInput(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
@@ -217,11 +238,14 @@ public class GroupTabController extends HttpServlet {
 	private void gatheringDelete(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		GroupTabService service = GroupTabService.getInstance();
+		long gSeq = Long.parseLong(request.getParameter("gSeq"));
+		//System.out.println("C_gatheringDelete의 gSeq: " + gSeq);
 		long ga_seq = getGa_seq(request);
+		//System.out.println("C_gatheringDelete의 ga_seq: " + ga_seq);
 		service.gatheringDeleteS(ga_seq);
 		
-		response.sendRedirect("groupTab.do?m=groupList"); //정모목록으로 가게끔 수정
-		//String view = "groupList.jsp";
+		response.sendRedirect("groupTab.do?m=groupInfo&gSeq=" + gSeq); 
+		//String view = "groupInfo.jsp";
 		//RequestDispatcher rd = request.getRequestDispatcher(view);
 		//rd.forward(request, response);
 	}
@@ -276,21 +300,6 @@ public class GroupTabController extends HttpServlet {
 			}
 		}
 		return seq;
-	}
-	private int getLimit(HttpServletRequest request){
-		int limit = -1;
-		String limitStr = request.getParameter("limit");
-		if(limitStr != null){
-			limitStr = limitStr.trim();
-			if(limitStr.length() != 0){
-				try{
-					limit = Integer.parseInt(limitStr);
-					return limit;
-				}catch(NumberFormatException nfe){
-				}
-			}
-		}
-		return limit;
 	}
 	private int getGa_Limit(HttpServletRequest request){
 		int ga_limit = -1;
