@@ -17,6 +17,7 @@ public class GroupTabService {
 		return instance;
 	}
 	
+	
 	public ArrayList<GroupTab> groupListS(){
 		return dao.groupList();
 	}
@@ -32,10 +33,27 @@ public class GroupTabService {
 	public void groupUpdateS(GroupTab dto) {
 		dao.groupUpdate(dto);
 	}
+	public void groupDeleteS(long gSeq) {
+		dao.groupDelete(gSeq);
+	}
+	
+	
 	public boolean gatheringInsertS(Gathering dto) {
 		return dao.gatheringInsert(dto);
 	}
 	public ArrayList<Gathering> gatheringListS(long gSeq){
 		return dao.gatheringList(gSeq);
+	}
+	public ArrayList<Gathering> gatheringInfoS(long gSeq, long ga_seq){
+		return dao.gatheringInfo(gSeq, ga_seq);
+	}
+	public void gatheringDeleteS(long ga_seq) {
+		dao.gatheringDelete(ga_seq);
+	}
+	public ArrayList<Gathering> gatheringGetUpdateS(long ga_seq) {
+		return dao.gatheringGetUpdate(ga_seq);
+	}
+	public void gatheringUpdateS(Gathering dto) {
+		dao.gatheringUpdate(dto);
 	}
 }

@@ -1,5 +1,6 @@
 package team1.togather.control;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -10,8 +11,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.oreilly.servlet.multipart.FileRenamePolicy;
+
 import team1.togather.domain.Gathering;
 import team1.togather.domain.GroupTab;
+import team1.togather.model.FileSet;
 import team1.togather.model.GroupTabService;
 
 @WebServlet("/group/groupTab.do")
@@ -30,9 +36,15 @@ public class GroupTabController extends HttpServlet {
 				case "groupInsert": groupInsert(request, response); break;
 				case "groupGetUpdate": groupGetUpdate(request, response); break;
 				case "groupUpdate": groupUpdate(request, response); break;
+				case "groupDelete": groupDelete(request, response); break;
+				
 				case "gatheringList": gatheringList(request, response); break;
 				case "gatheringInput": gatheringInput(request, response); break;
 				case "gatheringInsert": gatheringInsert(request, response); break;
+				case "gatheringInfo": gatheringInfo(request, response); break;
+				case "gatheringDelete": gatheringDelete(request, response); break;
+				case "gatheringGetUpdate": gatheringGetUpdate(request, response); break;
+				case "gatheringUpdate": gatheringUpdate(request, response); break;				
 			}
 		}else {
 			response.sendRedirect("../");
@@ -56,6 +68,9 @@ public class GroupTabController extends HttpServlet {
 		request.setAttribute("groupInfo_gSeq", gSeq);
 		ArrayList<GroupTab> groupInfo = service.groupInfoS(gSeq);
 		request.setAttribute("groupInfo", groupInfo);
+		
+		ArrayList<Gathering> gatheringList = service.gatheringListS(gSeq);
+		request.setAttribute("gatheringList", gatheringList);
 
 		String view = "groupInfo.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(view);
@@ -69,10 +84,24 @@ public class GroupTabController extends HttpServlet {
 	private void groupInsert(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		GroupTabService service = GroupTabService.getInstance();
-		String gLoc = request.getParameter("gLoc");
-		String gName = request.getParameter("gName");
-		String gIntro = request.getParameter("gIntro");
-		String interest = request.getParameter("interest");
+		
+		String saveDir = FileSet.FILE_DIR;
+		File fSaveDir = new File(saveDir);
+		if(!fSaveDir.exists()) fSaveDir.mkdirs(); //폴더 없으면 새로 생성
+		
+		int maxPostSize = 1*1024*1024;
+		FileRenamePolicy policy = new DefaultFileRenamePolicy();
+		MultipartRequest mr = null;
+		try {
+			mr = new MultipartRequest(request, saveDir, maxPostSize, "utf-8", policy);
+		}catch(IOException ie) {
+			System.out.println("파일 업로드 실패" + ie);
+		}
+		
+		String gLoc = mr.getParameter("gLoc");
+		String gName = mr.getParameter("gName");
+		String gIntro = mr.getParameter("gIntro");
+		String interest = mr.getParameter("interest");
 		int limit = getLimit(request);
 		GroupTab dto = new GroupTab(-1, gLoc, gName, gIntro, interest, limit, null, 1);
 		boolean groupInsert = service.groupInsertS(dto);
@@ -89,7 +118,7 @@ public class GroupTabController extends HttpServlet {
 		ArrayList<GroupTab> groupGetUpdate = service.groupGetUpdateS(gSeq);
 		request.setAttribute("groupGetUpdate", groupGetUpdate);
 		
-		String view = "groupgetupdate.jsp";
+		String view = "groupGetUpdate.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(view);
 		rd.forward(request, response);	
 	}
@@ -110,6 +139,14 @@ public class GroupTabController extends HttpServlet {
 		GroupTab dto = new GroupTab(gSeq, gLoc, gName, gIntro, limit);
 		service.groupUpdateS(dto);
 		
+		response.sendRedirect("groupTab.do?m=groupInfo&gSeq=" + gSeq);
+	}
+	private void groupDelete(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		GroupTabService service = GroupTabService.getInstance();
+		long gSeq = Long.parseLong(request.getParameter("gSeq"));
+		service.groupDeleteS(gSeq);
+		
 		response.sendRedirect("groupTab.do?m=groupList");
 	}
 	private void gatheringInput(HttpServletRequest request, HttpServletResponse response) 
@@ -123,30 +160,31 @@ public class GroupTabController extends HttpServlet {
 	}
 	private void gatheringInsert(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
+		GroupTabService service = GroupTabService.getInstance();
+		
 		long gSeq =Long.parseLong(request.getParameter("gSeq"));
 		request.setAttribute("gatheringInsert_gSeq", gSeq);
 		
 		System.out.println("gatherinsert 안 gseq:"+ gSeq);
-		GroupTabService service = GroupTabService.getInstance();
-		String gt_name = request.getParameter("gt_name");
-		String gt_date = request.getParameter("gt_date");
+		String ga_name = request.getParameter("ga_name");
+		String ga_date = request.getParameter("ga_date");
 		String time = request.getParameter("time");
-		String gt_place = request.getParameter("gt_place");
+		String ga_place = request.getParameter("ga_place");
 		String price = request.getParameter("price");
-		int gt_limit = getGt_Limit(request);
-		Gathering dto = new Gathering(-1, gt_name, gt_date, time, gt_place, price, gt_limit, gSeq);
-		System.out.println(gt_name + gt_date + time + gt_place+ price+ gt_limit+", gSeq: " + gSeq);
+		int ga_limit = getGa_Limit(request);
+		Gathering dto = new Gathering(-1, ga_name, ga_date, time, ga_place, price, ga_limit, gSeq);
+		System.out.println(ga_name + ga_date + time + ga_place+ price+ ga_limit+", gSeq: " + gSeq);
 		request.setAttribute("gatheringInsert", dto);
 		service.gatheringInsertS(dto);
 		
-		response.sendRedirect("groupTab.do?m=gatheringList&gSeq=" + gSeq);
+		response.sendRedirect("groupTab.do?m=groupInfo&gSeq=" + gSeq);
 		//String view = "gatheringList.jsp";
 		//RequestDispatcher rd = request.getRequestDispatcher(view);
 		//rd.forward(request, response);
 	}
 	private void gatheringList(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		long gSeq =Long.parseLong(request.getParameter("gSeq"));
+		long gSeq = Long.parseLong(request.getParameter("gSeq"));
 		System.out.println("gatheringList-gSeq: " + gSeq);
 		request.setAttribute("gatheringList_gSeq", gSeq);
 		
@@ -157,6 +195,70 @@ public class GroupTabController extends HttpServlet {
 		String view = "gatheringList.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(view);
 		rd.forward(request, response);
+	}
+	private void gatheringInfo(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		GroupTabService service = GroupTabService.getInstance();
+		
+		long gSeq = Long.parseLong(request.getParameter("gSeq"));
+		System.out.println("C_gatheringInfo_gSeq: " + gSeq);
+		request.setAttribute("gatheringInfo_gSeq", gSeq);
+		
+		long ga_seq = getGa_seq(request);
+		System.out.println("C_gatheringInfo의 ga_seq: " + ga_seq);
+		//long ga_seq = Long.parseLong(request.getParameter("ga_seq"));
+		ArrayList<Gathering> gatheringInfo = service.gatheringInfoS(gSeq, ga_seq);
+		request.setAttribute("gatheringInfo", gatheringInfo);
+		
+		String view = "gatheringInfo.jsp";
+		RequestDispatcher rd = request.getRequestDispatcher(view);
+		rd.forward(request, response);
+	}
+	private void gatheringDelete(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		GroupTabService service = GroupTabService.getInstance();
+		long ga_seq = getGa_seq(request);
+		service.gatheringDeleteS(ga_seq);
+		
+		response.sendRedirect("groupTab.do?m=groupList"); //정모목록으로 가게끔 수정
+		//String view = "groupList.jsp";
+		//RequestDispatcher rd = request.getRequestDispatcher(view);
+		//rd.forward(request, response);
+	}
+	private void gatheringGetUpdate(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		GroupTabService service = GroupTabService.getInstance();
+		//long gSeq = getgSeq(request); -1
+		//long gSeq = Long.parseLong(request.getParameter("gSeq"));
+		//System.out.println("C_gatheringGetUpdate_gSeq: " + gSeq);
+		//request.setAttribute("gatheringGetUpdate_gSeq", gSeq);
+		
+		long ga_seq = getGa_seq(request);
+		System.out.println("C_gatheringGetUpdate_ga_seq: " + ga_seq);
+		
+		ArrayList<Gathering> gatheringGetUpdate = service.gatheringGetUpdateS(ga_seq);
+		request.setAttribute("gatheringGetUpdate", gatheringGetUpdate);
+		
+		String view = "gatheringGetUpdate.jsp";
+		RequestDispatcher rd = request.getRequestDispatcher(view);
+		rd.forward(request, response);
+	}
+	private void gatheringUpdate(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		GroupTabService service = GroupTabService.getInstance();
+		long gSeq = Long.parseLong(request.getParameter("gSeq"));
+		System.out.println("C_gatheringUpdate_gSeq: " + gSeq);
+		long ga_seq = Long.parseLong(request.getParameter("ga_seq"));
+		System.out.println("C_gatheringUpdate_ga_seq: " + ga_seq);
+		String ga_name = request.getParameter("ga_name");
+		String ga_place = request.getParameter("ga_place");
+		String price = request.getParameter("price");
+		int ga_limit = Integer.parseInt(request.getParameter("ga_limit"));
+		
+		Gathering dto = new Gathering(ga_seq, ga_name, ga_place, price, ga_limit);
+		service.gatheringUpdateS(dto);
+		
+		response.sendRedirect("groupTab.do?m=groupInfo&gSeq=" + gSeq + "&ga_seq=" + ga_seq);
 	}
 	
 	private long getgSeq(HttpServletRequest request){
@@ -190,20 +292,35 @@ public class GroupTabController extends HttpServlet {
 		}
 		return limit;
 	}
-	
-	private int getGt_Limit(HttpServletRequest request){
-		int gt_limit = -1;
-		String gt_limitStr = request.getParameter("gt_limit");
-		if(gt_limitStr != null){
-			gt_limitStr = gt_limitStr.trim();
-			if(gt_limitStr.length() != 0){
+	private int getGa_Limit(HttpServletRequest request){
+		int ga_limit = -1;
+		String ga_limitStr = request.getParameter("ga_limit");
+		if(ga_limitStr != null){
+			ga_limitStr = ga_limitStr.trim();
+			if(ga_limitStr.length() != 0){
 				try{
-					gt_limit = Integer.parseInt(gt_limitStr);
-					return gt_limit;
+					ga_limit = Integer.parseInt(ga_limitStr);
+					return ga_limit;
 				}catch(NumberFormatException nfe){
 				}
 			}
 		}
-		return gt_limit;
+		return ga_limit;
+	}
+	private long getGa_seq(HttpServletRequest request){
+		long ga_seq = -1;
+		String ga_seqStr = request.getParameter("ga_seq");
+		System.out.println("getGa_seq의 ga_seq: " + ga_seqStr);
+		if(ga_seqStr != null){
+			ga_seqStr = ga_seqStr.trim();
+			if(ga_seqStr.length() != 0){
+				try{
+					ga_seq = Long.parseLong(ga_seqStr);
+					return ga_seq;
+				}catch(NumberFormatException nfe){
+				}
+			}
+		}
+		return ga_seq;
 	}
 }

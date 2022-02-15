@@ -175,6 +175,24 @@ class GroupTabDAO {
 			}catch(SQLException se) {}
 		}
 	}
+	void groupDelete(long gSeq) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(GROUP_DELETE);
+			pstmt.setLong(1, gSeq);
+			System.out.println("groupDelete_gSeq: " + gSeq);
+			pstmt.executeUpdate();
+		}catch(SQLException se) {
+		}finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			}catch(SQLException se) {}
+		}
+	}
+	
 	boolean gatheringInsert(Gathering dto) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -182,12 +200,12 @@ class GroupTabDAO {
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(GATHERING_INSERT);
 			//insert into GATHERING values(GATHERING_SEQ.nextval, ?, ?, ?, ?, ?, ?, ?)
-			pstmt.setString(1, dto.getGt_name());
-			pstmt.setString(2, dto.getGt_date());
+			pstmt.setString(1, dto.getGa_name());
+			pstmt.setString(2, dto.getGa_date());
 			pstmt.setString(3, dto.getTime());
-			pstmt.setString(4, dto.getGt_place());
+			pstmt.setString(4, dto.getGa_place());
 			pstmt.setString(5, dto.getPrice());
-			pstmt.setInt(6, dto.getGt_limit());
+			pstmt.setInt(6, dto.getGa_limit());
 			pstmt.setLong(7, dto.getgSeq()); //모임의 GSEQ를 가져와야함
 			int i = pstmt.executeUpdate();
 			if(i>0) {
@@ -216,15 +234,15 @@ class GroupTabDAO {
 			pstmt.setLong(1, gSeq);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				long gt_seq = rs.getLong(1);
-				String gt_name = rs.getString(2);
-				String gt_date = rs.getString(3);
+				long ga_seq = rs.getLong(1);
+				String ga_name = rs.getString(2);
+				String ga_date = rs.getString(3);
 				String time = rs.getString(4);
-				String gt_place = rs.getString(5);
+				String ga_place = rs.getString(5);
 				String price = rs.getString(6);
-				int gt_limit = rs.getInt(7);
-				gatheringList.add(new Gathering(gt_seq, gt_name, gt_date, time, gt_place, price, gt_limit, gSeq));
-				System.out.println("gatheringList의 gSeq: " + gSeq);
+				int ga_limit = rs.getInt(7);
+				gatheringList.add(new Gathering(ga_seq, ga_name, ga_date, time, ga_place, price, ga_limit, gSeq));
+				System.out.println("C_gatheringList의 gSeq: " + gSeq);
 			}
 			return gatheringList;
 		}catch(SQLException se) {
@@ -232,6 +250,108 @@ class GroupTabDAO {
 		}finally {
 			try {
 				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			}catch(SQLException se) {}
+		}
+	}
+	ArrayList<Gathering> gatheringInfo(long gSeq, long ga_seq){
+		ArrayList<Gathering> gatheringInfo = new ArrayList<Gathering>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(GATHERING_INFO);
+			//select * from GATHERING where GSEQ=? and GA_SEQ=?
+			pstmt.setLong(1, gSeq);
+			pstmt.setLong(2, ga_seq);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				String ga_name = rs.getString(2);
+				String ga_date = rs.getString(3);
+				String time = rs.getString(4);
+				String ga_place = rs.getString(5);
+				String price = rs.getString(6);
+				int ga_limit = rs.getInt(7);
+				gatheringInfo.add(new Gathering(ga_seq, ga_name, ga_date, time, ga_place, price, ga_limit, gSeq));
+				System.out.println("gatheringInfo_gSeq: " + gSeq + ", gatheringInfo_ga_seq: " + ga_seq);
+			}
+			return gatheringInfo;
+		}catch(SQLException se) {
+			return null;
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();				
+			}catch(SQLException se) {}
+		}
+	}
+	void gatheringDelete(long ga_seq) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(GATHERING_DELETE);
+			pstmt.setLong(1, ga_seq);
+			System.out.println("gatheringDelete_ga_Seq: " + ga_seq);
+			pstmt.executeUpdate();
+		}catch(SQLException se) {
+		}finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			}catch(SQLException se) {}
+		}
+	}
+	ArrayList<Gathering>gatheringGetUpdate(long ga_seq) {
+		ArrayList<Gathering> gatheringGetUpdate = new ArrayList<Gathering>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(GATHERING_GET_UPDATE);
+			//static final String GATHERING_GET_UPDATE = "select * from GATHERING where GA_SEQ=?"
+			pstmt.setLong(1, ga_seq);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				String ga_name = rs.getString(2);
+				String ga_date = rs.getString(3);
+				String time = rs.getString(4);
+				String ga_place = rs.getString(5);
+				String price = rs.getString(6);
+				int ga_limit = rs.getInt(7);
+				long gSeq = rs.getLong(8);
+				gatheringGetUpdate.add(new Gathering(ga_seq, ga_name, ga_date, time, ga_place, price, ga_limit, gSeq));
+			}
+			return gatheringGetUpdate;
+		}catch(SQLException se) {
+			return null;
+		}finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			}catch(SQLException se) {}
+		}
+	}
+	void gatheringUpdate(Gathering dto) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(GATHERING_UPDATE);
+			//update GATHERING set GA_NAME=?, GA_PLACE=?, PRICE=?, GA_LIMIT=? where GA_SEQ=?
+			pstmt.setLong(5, dto.getGa_seq());
+			pstmt.setString(1, dto.getGa_name());
+			pstmt.setString(2, dto.getGa_place());
+			pstmt.setString(3, dto.getPrice());
+			pstmt.setInt(4, dto.getGa_limit());
+			pstmt.executeUpdate();
+		}catch(SQLException se) {
+		}finally {
+			try {
 				if(pstmt != null) pstmt.close();
 				if(con != null) con.close();
 			}catch(SQLException se) {}

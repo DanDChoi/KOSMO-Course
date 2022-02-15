@@ -11,6 +11,7 @@ public class GroupTab {
 	private int limit;
 	private Date rdate;
 	private long mNum;
+	private String fName;
 	
 	public GroupTab(long gSeq, String gLoc, String gName, String gIntro, String interest, int limit, Date rdate,
 			long mNum) {
@@ -33,6 +34,19 @@ public class GroupTab {
 		this.limit = limit;
 	}
 
+	public GroupTab(long gSeq, String gLoc, String gName, String gIntro, String interest, int limit, Date rdate,
+			long mNum, String fName) {
+		super();
+		this.gSeq = gSeq;
+		this.gLoc = gLoc;
+		this.gName = gName;
+		this.gIntro = gIntro;
+		this.interest = interest;
+		this.limit = limit;
+		this.rdate = rdate;
+		this.mNum = mNum;
+		this.fName = fName;
+	}
 	public long getgSeq() {
 		return gSeq;
 	}
@@ -95,5 +109,11 @@ public class GroupTab {
 
 	public void setmNum(long mNum) {
 		this.mNum = mNum;
+	}
+	public String getfName() {
+		return fName;
+	}
+	public void setfName(String fName) {
+		this.fName = fName;
 	}
 }

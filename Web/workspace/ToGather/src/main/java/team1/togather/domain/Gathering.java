@@ -1,45 +1,54 @@
 package team1.togather.domain;
 
 public class Gathering {
-	private long gt_seq;
-	private String gt_name;
-	private String gt_date;
+	private long ga_seq;
+	private String ga_name;
+	private String ga_date;
 	private String time;
-	private String gt_place;
+	private String ga_place;
 	private String price;
-	private int gt_limit;
+	private int ga_limit;
 	private long gSeq;
 	
-	public Gathering(long gt_seq, String gt_name, String gt_date, String time, String gt_place, String price,
-			int gt_limit, long gSeq) {
+	public Gathering(long ga_seq, String ga_name, String ga_date, String time, String ga_place, String price,
+			int ga_limit, long gSeq) {
 		super();
-		this.gt_seq = gt_seq;
-		this.gt_name = gt_name;
-		this.gt_date = gt_date;
+		this.ga_seq = ga_seq;
+		this.ga_name = ga_name;
+		this.ga_date = ga_date;
 		this.time = time;
-		this.gt_place = gt_place;
+		this.ga_place = ga_place;
 		this.price = price;
-		this.gt_limit = gt_limit;
+		this.ga_limit = ga_limit;
 		this.gSeq = gSeq;
 	}
 	
-	public long getGt_seq() {
-		return gt_seq;
+	public Gathering(long ga_seq, String ga_name, String ga_place, String price, int ga_limit) {
+		super();
+		this.ga_seq = ga_seq;
+		this.ga_name = ga_name;
+		this.ga_place = ga_place;
+		this.price = price;
+		this.ga_limit = ga_limit;
 	}
-	public void setGt_seq(long gt_seq) {
-		this.gt_seq = gt_seq;
+
+	public long getGa_seq() {
+		return ga_seq;
 	}
-	public String getGt_name() {
-		return gt_name;
+	public void setGa_seq(long ga_seq) {
+		this.ga_seq = ga_seq;
 	}
-	public void setGt_name(String gt_name) {
-		this.gt_name = gt_name;
+	public String getGa_name() {
+		return ga_name;
 	}
-	public String getGt_date() {
-		return gt_date;
+	public void setGa_name(String ga_name) {
+		this.ga_name = ga_name;
 	}
-	public void setGt_date(String gt_date) {
-		this.gt_date = gt_date;
+	public String getGa_date() {
+		return ga_date;
+	}
+	public void setGa_date(String ga_date) {
+		this.ga_date = ga_date;
 	}
 	public String getTime() {
 		return time;
@@ -47,11 +56,11 @@ public class Gathering {
 	public void setTime(String time) {
 		this.time = time;
 	}
-	public String getGt_place() {
-		return gt_place;
+	public String getGa_place() {
+		return ga_place;
 	}
-	public void setGt_place(String gt_place) {
-		this.gt_place = gt_place;
+	public void setGa_place(String ga_place) {
+		this.ga_place = ga_place;
 	}
 	public String getPrice() {
 		return price;
@@ -59,11 +68,11 @@ public class Gathering {
 	public void setPrice(String price) {
 		this.price = price;
 	}
-	public int getGt_limit() {
-		return gt_limit;
+	public int getGa_limit() {
+		return ga_limit;
 	}
-	public void setGt_limit(int gt_limit) {
-		this.gt_limit = gt_limit;
+	public void setGa_limit(int ga_limit) {
+		this.ga_limit = ga_limit;
 	}
 	public long getgSeq() {
 		return gSeq;
