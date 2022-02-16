@@ -154,13 +154,20 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
 	
+      
       <Context docBase="MvcP" path="/MvcP" reloadable="true" source="org.eclipse.jst.jee.server:MvcP">
-      <Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle" password="java" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521:JAVA" username="servlet"/>
+	      <Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle" password="java" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521:JAVA" username="servlet"/>
       </Context>
-      <Context docBase="Togather" path="/Togather" reloadable="true" source="org.eclipse.jst.jee.server:Togather">
-      <Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle" password="java" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521:JAVA" username="togather"/>
+      <Context docBase="togather" path="/togather" reloadable="true" source="org.eclipse.jst.jee.server:togather">
+	      <Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle" password="team1" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521:JAVA" username="togather"/>
       </Context>
+      <Context docBase="Practice" path="/Practice" reloadable="true" source="org.eclipse.jst.jee.server:Practice">
+      		<Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle" password="java" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521:JAVA" username="practice"/>
+      
+      </Context>
+      
       </Host>
+    
     </Engine>
   </Service>
 </Server>
