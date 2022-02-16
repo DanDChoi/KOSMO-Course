@@ -1,121 +1,148 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <link type="text/css" rel="stylesheet" href="./css/7.css" />
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="css/style.css" rel="stylesheet" />
     <link
       rel="stylesheet"
-      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-      crossorigin="anonymous"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     />
-    <div>
-      <input id="sf_draw_type" type="hidden" value="pc" /><input
-        id="sf_store_name"
-        type="hidden"
-        value="superstari"
-      />
-    </div>
-
-    <!-- snap common end -->
-    <link type="text/css" rel="stylesheet" href="./css/6.css" />
-    <!-- #wrap -->
-    <div id="wrap">
-      <link type="text/css" rel="stylesheet" href="./css/5.css" />
-      <span id="sfsnapfit_store_id" style="display: none">ToGather</span>
-      <div>
-        <input id="sf_draw_type" type="hidden" value="pc" /><input
-          id="sf_store_name"
-          type="hidden"
-          value="superstari"
-        />
-      </div>
-
-      <!-- #hd -->
-      <div id="hd">
-        <div class="hd-navi">
-          <div class="container">
-            <div class="hd-top">
-              <h1 class="logo">
-                <a href="/index.html"
-                  ><img
-                    src="./imgs/topLogo.png"
-                    alt="ToGather"
-                    title="홈으로 이동"
-                /></a>
-              </h1>
-              <ul class="top-menu">
-                <!-- snap common end -->
-
-                <li><a href="로그인 링크">LOGIN</a></li>
-
-                <li>
-                  <a href="회원가입 링크">JOIN</a>
-                  <!-- 회원가입 포인트 -->
-                  <div id="joinpoint" style="top: 25.7163px">
-                    <span class="point">회원가입 하기</span>
-                  </div>
-                </li>
-                <li><a href="찜목록 링크">CART</a></li>
-
-                <li>
-                  <a href="마이페이지 링크">MYPAGE</a>
-                </li>
-              </ul>
-            </div>
-            <div class="hd-menu">
-              <div id="gnb">
-                <ul class="hd-cate">
-                  <li><a href="">김진운</a></li>
-                  <li><a href="">김지수</a></li>
-                  <li><a href="">조현기</a></li>
-                  <li><a href="">박범수</a></li>
-                  <li><a href="">송보석</a></li>
-                  <li><a href="">최대현</a></li>
-                  <li><a href="">1팀</a></li>
-                  <li><a href="">프로젝트</a></li>
-                  <li><a href="">모임</a></li>
-                  <li><a href="">모임</a></li>
-                  <li><a href="">모임</a></li>
-                  <li><a href="">모임</a></li>
-                  <li><a href="">모임</a></li>
-
-                  <!--<li><a href="/shop/shopbrand.html?xcode=010">수트</a></li>-->
-                </ul>
-              </div>
-              <div class="hd-icon-box">
-                <div class="hd-search">
-                  <form
-                    action="/shop/shopbrand.html"
-                    method="post"
-                    name="search"
-                  >
-                    <fieldset>
-                      <legend>상품 검색 폼</legend>
-                      <input
-                        name="search"
-                        onkeydown="CheckKey_search();"
-                        value=""
-                        class="MS_search_word input-keyword"
-                      />
-                      <a href="javascript:search_submit();"
-                        ><img
-                          src="/images/d3/hot_issue/btn/search_keyword.gif"
-                          alt="검색"
-                          title="검색"
-                      /></a>
-                    </fieldset>
-                  </form>
-                </div>
-                <div class="icon-menu-box">
-                  <ul class="icon">
-                    <li class="btn_menu"><a href="">전체메뉴</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
-  <body></body>
+  <body>
+    <div class="container row">
+      <div class="page-hearder col-md-offset-3" style="padding-bottom: 20px">
+        <h1>메인화면</h1>
+      </div>
+      <div class="col-sm-offset-9">
+        <form action="" method="get">
+          <select name="search" id="">
+            <option value="writer">작성자</option>
+            <option value="content">내용</option>
+          </select>
+          <input type="text" name="searchkeyword" id="search" />
+          <input class="btn btn-sm btn-default" type="submit" value="검색" />
+        </form>
+      </div>
+      <div class="col-md-10 col-md-offset-3">
+        <table class="table table-striped">
+          <tr class="text-center">
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>등록일</th>
+            <th>조회</th>
+          </tr>
+          <tr>
+            <td class="col-sm-1">1</td>
+            <td><a href="#">안녕하세요. 질문있어요.</a></td>
+            <td>아노미7</td>
+            <td>2017.09.01</td>
+            <td class="col-sm-1">10</td>
+          </tr>
+          <tr>
+            <td class="col-sm-1">1</td>
+            <td><a href="#">안녕하세요. 질문있어요.</a></td>
+            <td>아노미7</td>
+            <td>2017.09.01</td>
+            <td class="col-sm-1">10</td>
+          </tr>
+          <tr>
+            <td class="col-sm-1">1</td>
+            <td><a href="#">안녕하세요. 질문있어요.</a></td>
+            <td>아노미7</td>
+            <td>2017.09.01</td>
+            <td class="col-sm-1">10</td>
+          </tr>
+
+          <tr>
+            <td class="col-sm-1">1</td>
+            <td><a href="#">안녕하세요. 질문있어요.</a></td>
+            <td>아노미7</td>
+            <td>2017.09.01</td>
+            <td class="col-sm-1">10</td>
+          </tr>
+          <tr>
+            <td class="col-sm-1">1</td>
+            <td><a href="#">안녕하세요. 질문있어요.</a></td>
+            <td>아노미7</td>
+            <td>2017.09.01</td>
+            <td class="col-sm-1">10</td>
+          </tr>
+          <tr>
+            <td class="col-sm-1">1</td>
+            <td><a href="#">안녕하세요. 질문있어요.</a></td>
+            <td>아노미7</td>
+            <td>2017.09.01</td>
+            <td class="col-sm-1">10</td>
+          </tr>
+          <tr>
+            <td class="col-sm-1">1</td>
+            <td><a href="#">안녕하세요. 질문있어요.</a></td>
+            <td>아노미7</td>
+            <td>2017.09.01</td>
+            <td class="col-sm-1">10</td>
+          </tr>
+          <tr>
+            <td class="col-sm-1">1</td>
+            <td><a href="#">안녕하세요. 질문있어요.</a></td>
+            <td>아노미7</td>
+            <td>2017.09.01</td>
+            <td class="col-sm-1">10</td>
+          </tr>
+          <tr>
+            <td class="col-sm-1">1</td>
+            <td><a href="#">안녕하세요. 질문있어요.</a></td>
+            <td>아노미7</td>
+            <td>2017.09.01</td>
+            <td class="col-sm-1">10</td>
+          </tr>
+
+          <tr>
+            <td class="col-sm-1">1</td>
+            <td><a href="#">안녕하세요. 질문있어요.</a></td>
+            <td>아노미7</td>
+            <td>2017.09.01</td>
+            <td class="col-sm-1">10</td>
+          </tr>
+          <tr>
+            <td class="col-sm-1">1</td>
+            <td><a href="#">안녕하세요. 질문있어요.</a></td>
+            <td>아노미7</td>
+            <td>2017.09.01</td>
+            <td class="col-sm-1">10</td>
+          </tr>
+          <tr>
+            <td class="col-sm-1">1</td>
+            <td><a href="#">안녕하세요. 질문있어요.</a></td>
+            <td>아노미7</td>
+            <td>2017.09.01</td>
+            <td class="col-sm-1">10</td>
+          </tr>
+          <tr>
+            <td class="col-sm-1">1</td>
+            <td><a href="#">안녕하세요. 질문있어요.</a></td>
+            <td>아노미7</td>
+            <td>2017.09.01</td>
+            <td class="col-sm-1">10</td>
+          </tr>
+        </table>
+      </div>
+      <div class="btn-group col-md-offset-12">
+        <a href="#" class="btn btn-md btn-default">글쓰기</a>
+      </div>
+      <div class="col-md-offset-6">
+        <ul class="pagination">
+          <li><a href="getList.do?nowpage=0">처음</a></li>
+          <li><a href="#">이전</a></li>
+          <li><a href="#">1</a></li>
+          <li><a href="#">다음</a></li>
+          <li><a href="#">마지막</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
 </html>
