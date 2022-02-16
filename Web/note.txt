@@ -1,4 +1,14 @@
+M
+board.mvc.model.BoardDAO(class, package)
+board.mvc.model.BoardSQL(class, public)
+mvc.domain.Board(class, public)
+Board.mvc.model.BoardService
 
+V
+board/list.jsp
+
+C
+board.jstl.control.BoardController(servlet)
 <1>M
 
 join.mvc.model.JoinDAO(class, package)
