@@ -1,0 +1,5 @@
+package addr.controller;
+
+public class AddrController {
+
+}

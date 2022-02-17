@@ -1,0 +1,5 @@
+package dan.ct.domain;
+
+public class Human {
+
+}
