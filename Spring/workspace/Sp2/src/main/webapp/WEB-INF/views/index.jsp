@@ -3,7 +3,7 @@
 
 <html>
 	<head>
-		<title>Sp01 Index</title>
+		<title>Sp02 Index</title>
 	</head>
 	<body style="text-align: center">
 		<h1>
