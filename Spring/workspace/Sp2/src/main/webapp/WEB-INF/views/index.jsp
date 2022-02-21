@@ -11,6 +11,7 @@
 		</h1>
 		<p>
 			<a href="address/list.do">주소록</a>
+			<a href="board/list.do">게시판</a>
 		</p>
 	</body>
 </html>
