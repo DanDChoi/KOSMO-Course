@@ -57,7 +57,7 @@
 </c:forEach>      
   
 </TABLE>
- <!--  
+ 
 <hr width='600' size='2' color='gray' noshade>
 <font color='gray' size='3' face='휴먼편지체'>
     (총페이지수 : ${listResult.totalPageCount})
@@ -109,7 +109,7 @@
     
 </font>
 <hr width='600' size='2' color='gray' noshade>
- -->
+ -
 <!--      
     <form action="">
       <select name="catgo">

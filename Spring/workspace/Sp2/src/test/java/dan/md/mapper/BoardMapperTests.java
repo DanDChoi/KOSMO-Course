@@ -15,12 +15,12 @@ public class BoardMapperTests {
 
 	@Autowired
 	private BoardMapper boardMapper;
-	
+	/*
 	@Test
 	public void testList() {
 		log.info("#BoardMapperTests testList: " + boardMapper.list());
 	}
-	/*
+	
 	@Test
 	public void testInsert() {
 		Board board = new Board(-1L, "작성자", "이메일", "제목", "내용", null);
