@@ -47,36 +47,40 @@
 	</tr>
 </c:if>
 <c:forEach items = "${getUpdate}" var="board">
-<form name='input' method='post' action='update.do'>
+<form name='input' method='post' action='update.do' enctype="multipart/form-data">
 <input type="hidden" name="seq" value="${board.seq}">
 <table border='0' width='600' align='center' cellpadding='3' cellspacing='1' bordercolor='gray'>	
-<tr>
-   <td width='20%' align='center' >WRITER</td>
-   <td>
-      <input name='writer' readonly value='${board.writer}'/>
-   </td>
-</tr>
-
-<tr>
-	<td align='center'>EMAIL</td>
-	<td><input name='email' value='${board.email}'/></td>
-</tr>
-
-<tr>
-	<td align='center'>SUBJECT</td>
-	<td><input name='subject' value='${board.subject}'/></td>
-</tr>
-			
-<tr>
-	<td align='center'>CONTENT</td>
-	<td><textarea id='ta' name='content' rows='15' cols='70'>${board.content}</textarea></td>
-</tr>
-<tr>
-	 <td colspan='2' align='center'>
-		<input type='submit' value='수정'>
-		<input type="button" value="다시입력" onclick="f()">
-	 </td>
-</tr>
+		<tr>
+		   <td width='20%' align='center' >WRITER</td>
+		   <td>
+		      <input name='writer' readonly value='${board.writer}'/>
+		   </td>
+		</tr>
+		
+		<tr>
+			<td align='center'>EMAIL</td>
+			<td><input name='email' value='${board.email}'/></td>
+		</tr>
+		
+		<tr>
+			<td align='center'>SUBJECT</td>
+			<td><input name='subject' value='${board.subject}'/></td>
+		</tr>
+					
+		<tr>
+			<td align='center'>CONTENT</td>
+			<td><textarea id='ta' name='content' rows='15' cols='70'>${board.content}</textarea></td>
+		</tr>
+		  <tr>
+		     <td align="center">File</td>
+			 <td><input type="file"  name="file" value='${board.fname}'>${board.fname}</td>
+		  </tr>
+		<tr>
+			 <td colspan='2' align='center'>
+				<input type='submit' value='수정'>
+				<input type="button" value="다시입력" onclick="f()">
+			 </td>
+		</tr>
 </c:forEach>
 </table>
 <hr width="600" size="2" color="gray" noshade>

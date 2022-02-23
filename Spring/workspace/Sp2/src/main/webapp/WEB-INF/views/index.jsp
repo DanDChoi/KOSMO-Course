@@ -4,6 +4,9 @@
 <html>
 	<head>
 		<title>Sp02 Index</title>
+		<style>
+			a{text-decoration:none}
+		</style>
 	</head>
 	<body style="text-align: center">
 		<h1>
@@ -12,6 +15,7 @@
 		<p>
 			<a href="address/list.do">주소록</a>
 			<a href="board/list.do">게시판</a>
+			<a href="file/list.do">파일리스트</a>
 		</p>
 	</body>
 </html>
