@@ -30,26 +30,31 @@
 		</tr>
 	</c:if>
 	<c:forEach items="${content}" var="board">
-	<tr>
-	<td width='20%' align='center'>No</td>
-	<td>${board.seq}</td>
-	</tr>
-	<tr>
-	<td width='20%' align='center'>Writer</td>
-	<td>${board.writer}</td>
-	</tr>
-	<tr>
-	<td align='center'>E-mail</td>
-	<td>${board.email}</td>
-	</tr>
-	<tr>
-	<td align='center'>Subject</td>
-	<td>${board.subject}</td>
-	</tr>
-	<tr>
-	<td align='center'>Contents</td>
-	<td>${board.content}</td>
-	</tr>
+		<tr>
+			<td width='20%' align='center'>No</td>
+			<td colspan='2'>${board.seq}</td>
+		</tr>
+		<tr>
+			<td width='20%' align='center'>Writer</td>
+			<td colspan='2'>${board.writer}</td>
+		</tr>
+		<tr>
+			<td align='center'>E-mail</td>
+			<td colspan='2'>${board.email}</td>
+		</tr>
+		<tr>
+			<td align='center'>Subject</td>
+			<td colspan='2'>${board.subject}</td>
+		</tr>
+		<tr>
+			<td align='center'>Contents</td>
+			<td colspan='2'>${board.content}</td>
+		</tr>
+		<tr>
+			<td align='center'>File</td>
+			<td>${board.fname}, ${board.fsize}</td>
+			<td style='width: 100px' align='center'><a href='del.do?fname=${board.fname}'>파일삭제</a></td>
+		</tr>
 	</table>
 	
 	<hr width='600' size='2' color='gray' noshade>

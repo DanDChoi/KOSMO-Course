@@ -6,6 +6,7 @@
    <typeAliases>
       <typeAlias alias="Address" type="dan.md.domain.Address"/>
       <typeAlias alias="Board" type="dan.md.domain.Board"/>
+      <typeAlias alias="BoardVo" type="dan.md.domain.BoardVo"/>
    </typeAliases>
    
    <mappers>
