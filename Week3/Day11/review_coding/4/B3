@@ -1,0 +1,16 @@
+class B3{
+    int i;
+    B3() throws Exception{
+        throw new Exception();
+    }
+    void m() throws Exception{
+        throw new Exception();
+    }
+
+    public static void main(String[] args){
+        try{
+            B3 b = new B3();
+            b.m();
+        }catch(Exception e){}
+    }
+}

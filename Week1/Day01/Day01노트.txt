@@ -1,0 +1,24 @@
+JDK파일 -> 설치(install) -> JVM
+
+JDK = jdk + jre
+
+
+<윈도우즈>
+
+[자바 개발 환경]
+1.환경변수설정
+(1) JAVA_HOME => C:\Program Files\Java\jdk-11.0.13
+(2) Path => %JAVA_HOME%\bin
+(3) classpath => .
+
+2. API (Application Programming Interface) (Documentation)링크
+
+
+3.편집기 
+- editplus
+- eclipse
+- vscode
+- sts
+- android studio
+- intelliJ
+
