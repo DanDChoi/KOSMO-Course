@@ -2,4 +2,6 @@
 <aop-reference-model>
 <aop-project name="Sp2"/>
 <aop-project name="Sp01"/>
+<aop-project name="practice"/>
+<aop-project name="Food"/>
 </aop-reference-model>

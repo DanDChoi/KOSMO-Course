@@ -5,7 +5,8 @@
 <mapper namespace="dan.md.mapper.BoardMapper">
 	<select id="selectPerPage" resultType="Board" parameterType="BoardVo">
 	     <![CDATA[
-	     select * from (select ROWNUM rnum, aa.* from (select * from BOARD order by SEQ desc) aa)
+	     select * from (select ROWNUM rnum, aa.* 
+	     from (select * from BOARD order by SEQ desc) aa)
 	     where rnum>#{startRow} and rnum<=#{endRow}
 	     ]]>
 	</select>
@@ -17,10 +18,10 @@
 	</select>
 	
 	<insert id="insert" parameterType="Board">
-	    insert into BOARD values(BOARD_SEQ.nextval, #{writer}, #{email}, #{subject}, #{content}, SYSDATE)
+	    insert into BOARD values(BOARD_SEQ.nextval, #{writer}, #{email}, #{subject}, #{content}, SYSDATE, #{fname}, #{ofname}, #{fsize})
 	</insert>
 	<update id="update" parameterType="Board">
-        update BOARD set EMAIL=#{email}, SUBJECT=#{subject}, CONTENT=#{content} where SEQ=#{seq}
+        update BOARD set EMAIL=#{email}, SUBJECT=#{subject}, CONTENT=#{content}, FNAME=#{fname}, OFNAME=#{ofname}, FSIZE{fsize} where SEQ=#{seq}
 	</update>
 	<delete id="delete" parameterType="long">
 	    delete from BOARD where SEQ=#{seq}

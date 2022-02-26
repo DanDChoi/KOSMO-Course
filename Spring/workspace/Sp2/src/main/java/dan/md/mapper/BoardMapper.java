@@ -2,6 +2,7 @@ package dan.md.mapper;
 
 import java.util.List;
 
+
 import dan.md.domain.Board;
 import dan.md.domain.BoardVo;
 

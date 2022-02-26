@@ -8,10 +8,11 @@
       <typeAlias alias="Board" type="dan.md.domain.Board"/>
       <typeAlias alias="BoardVo" type="dan.md.domain.BoardVo"/>
    </typeAliases>
-   
+   <!-- 
    <mappers>
         <mapper resource="dan/md/mapper/AddressMapper.xml"/>
         <mapper resource="dan/md/mapper/BoardMapper.xml"/>
+        <mapper resource="dan/md/mapper/AddressAjaxMapper.xml"/>
    </mappers>
-
+	생략가능 (저절로 읽어들임)-->
 </configuration>

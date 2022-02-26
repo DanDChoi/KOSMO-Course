@@ -1,15 +1,16 @@
 package dan.md.service;
 
-import java.util.List;
+import org.springframework.web.multipart.MultipartFile;
 
 import dan.md.domain.Board;
 import dan.md.domain.BoardListResult;
 
 public interface BoardService {
 	BoardListResult getBoardListResult(int cp, int ps);
-	Board getBoard(long seq);
 	
-	void write(Board board);
+	
+	Board getBoard(long seq);
+	void write(Board board, MultipartFile file);
 	void edit(Board board);
 	void remove(long seq);
 	

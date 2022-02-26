@@ -24,36 +24,30 @@
 	</font>
 	
 	<table border='2' width='600' align='center' noshade>
-	<c:if test="${empty content}">
-		<tr>
-			<td colspan="5" style="text=align:center">데이터가 하나도 없어요</td>
-		</tr>
-	</c:if>
-	<c:forEach items="${content}" var="board">
+
 		<tr>
 			<td width='20%' align='center'>No</td>
 			<td colspan='2'>${board.seq}</td>
 		</tr>
 		<tr>
 			<td width='20%' align='center'>Writer</td>
-			<td colspan='2'>${board.writer}</td>
+			<td>${board.writer}</td>
 		</tr>
 		<tr>
 			<td align='center'>E-mail</td>
-			<td colspan='2'>${board.email}</td>
+			<td>${board.email}</td>
 		</tr>
 		<tr>
 			<td align='center'>Subject</td>
-			<td colspan='2'>${board.subject}</td>
+			<td>${board.subject}</td>
 		</tr>
 		<tr>
 			<td align='center'>Contents</td>
-			<td colspan='2'>${board.content}</td>
+			<td>${board.content}</td>
 		</tr>
 		<tr>
 			<td align='center'>File</td>
-			<td>${board.fname}, ${board.fsize}</td>
-			<td style='width: 100px' align='center'><a href='del.do?fname=${board.fname}'>파일삭제</a></td>
+			<td><a href="download.do?fname=${board.fname}">${board.fname}</a>,  파일크기: ${board.fsize}</td>
 		</tr>
 	</table>
 	
@@ -66,5 +60,4 @@
 	<a href='list.do'>목록</a>
 	</font>
 	<hr width='600' size='2' color='gray' noshade>
-	</c:forEach>
 </center>

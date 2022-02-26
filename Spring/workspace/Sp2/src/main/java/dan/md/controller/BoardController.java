@@ -1,5 +1,7 @@
 package dan.md.controller;
 
+import java.io.File;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -8,10 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import dan.md.domain.Board;
 import dan.md.domain.BoardListResult;
+import dan.md.fileset.Path;
 import dan.md.service.BoardService;
 
 @Controller
@@ -86,13 +91,18 @@ public class BoardController {
 	}
 	
 	@PostMapping("write.do")
-	public String write(Board board) {
-		boardService.write(board);
+	public String write(Board board, @RequestParam MultipartFile file) {
+		String ofname = file.getOriginalFilename();
+		if(ofname != null) ofname = ofname.trim();
+		if(ofname.length() != 0) {
+			boardService.write(board, file);;
+		}
 		return "redirect:list.do";
 	}
 	@GetMapping("content.do")
 	public ModelAndView content(long seq) {
 		Board board = boardService.getBoard(seq);
+		System.out.println("###BoardController content: "+ board.getSubject());
 		ModelAndView mv = new ModelAndView("board/content", "board", board);
 		return mv;
 	}
@@ -111,6 +121,15 @@ public class BoardController {
 	public String delete(long seq) {
 		boardService.remove(seq);
 		return "redirect:list.do";
+	}
+	@GetMapping("download.do")
+	public ModelAndView download(String fname) {
+		File file = new File(Path.FILE_STORE, fname);
+		if(file.exists()) {
+			return new ModelAndView("fileDownloadView", "downloadFile", file);
+		}else {
+			return new ModelAndView("redirect:list.do");
+		}
 	}
 	
 	/*
