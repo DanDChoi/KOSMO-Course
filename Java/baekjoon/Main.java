@@ -1,23 +1,43 @@
+/*
 import java.util.*;
 
 class Main {
     public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
-    int H = sc.nextInt(); //시
-    int M = sc.nextInt(); //분
-    int CT = sc.nextInt(); //요리에 필요한 시간
+    int i = sc.nextInt(); 
+    int j = sc.nextInt(); 
+    int k = sc.nextInt(); 
     sc.close();
- 
-    if(M+CT >59){
-        H++;
-        if(M+CT > 119){ H++;}
-        int MM = (CT+M)-60;
-        if(H<0){ H = 23;}
-        if(H==24){ H = 0;}
-        if(MM==60){MM = 0;}
-        System.out.println(H+" "+MM);
-    }else{
-        System.out.println(H+" "+(CT+M));
-    }
+	
+	int r1, r2, r3;
+	if(i == j && j == k){
+		r1 = i*1000+10000;
+		System.out.println(r1);
+	}else if (i == j || i == k || j == k){
+		r2 = i*100 + 1000;
+		System.out.println(r2);
+	}else if(i != j || i != k || j != k){
+		int[] list = {i, j, k};
+		Arrays.sort(list);
+		int max = list[list.length -1];
+		r3 = max*100;
+		System.out.println(r3);
+	}
+	}
+}
+*/
+import java.util.Scanner;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt(); //줄수
+        int b = sc.nextInt(); //별갯수
+        
+        for(int i=0; i>=b; i++){
+            for(int j=0; j>=a; j++){
+                System.out.print("*");
+            }
+        }
     }
 }
