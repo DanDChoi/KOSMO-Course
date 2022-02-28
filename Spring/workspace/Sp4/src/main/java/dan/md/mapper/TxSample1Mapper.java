@@ -1,5 +1,8 @@
 package dan.md.mapper;
 
-public interface TxSample1Mapper {
+import org.apache.ibatis.annotations.Insert;
 
+public interface TxSample1Mapper {
+	@Insert("insert into tbl_sample1 values(#{data})")
+	int insertCol1(String data);
 }
