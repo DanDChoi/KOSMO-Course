@@ -1,0 +1,8 @@
+1_1. JDK 버젼 변경 
+File -> Proejct Structure.. -> SDK Location메뉴 -> Gradle Settings 링크 클릭 -> Gradle JDK -> Embeded JDK version 11.0.10 ~ 선택
+
+1_2. Android SDK 라이센스 해결 
+File -> Settings -> Appearance & Behavior -> System Settings -> Android SDK 
+-> SDK Tools 탭 -> Google Play Licensing Library 체크 -> Apply 
+
+
