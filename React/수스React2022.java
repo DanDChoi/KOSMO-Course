@@ -45,11 +45,981 @@
               C:\SOO\React>cd t-app3
 			  C:\SOO\React\t-app3>yarn start
 
-	    5) 리액트 서버 종료 
+	    5) React 서버 종료 
             Ctrl + C
 
     (2) VSCode 환경에서 서버 실행
-	    1) 
+	    1) VSCode로 t-app3 폴더 열기 
 
-[3] 환경설정
-			   
+		2) React 서버 실행 
+		    - VSCode 새 터미널 ( Command ~ 선택 )
+
+		    <1> 방법1
+				C:\SOO\React\t-app3>npm start
+				
+		    <2> 방법2
+			    C:\SOO\React\t-app3>yarn start //안되면.. VSCode 껐다가 켜요
+
+		3) React 서버 종료 
+            Ctrl + C
+
+[3] Hello, React 를 출력!! 
+    (1) App.js 
+	    1) //import logo from './logo.svg';
+		2) function App() {
+			  return (
+				<div className="App">
+				  <h1>안녕, 리액트</h1>
+				</div>
+			  );
+		    }
+	     
+	(2) CSS 수정 
+	    1) src/index.css
+		   body {
+			  background-color: yellowgreen;
+		   }
+		2) App.css
+		   .App {
+			  text-align: left;
+		   }
+
+[4] Publishing 
+    (1) 크롬 F12 -> 새로고침 아이콘 -> 오른쪽 마우스 -> 캐시비우기 및 강력새로고침
+	(2) Network탭 -> 'X.X MB' 확인 
+	(3) bulid 생성 
+	    C:\SOO\React\t-app3>npm run build  //bulid디렉토리 생성확인
+    (4) 서버설치 
+	    #>npm install -g serve
+    (5) 서버실행 
+	    #>npx serve -s build
+    (6) 크롬에서 확인 
+	    - http://localhost:3000/
+		- Network탭 -> 'XXX KB' 확인 
+
+[5] Component 제작 
+    (1) VSCode에서 앱을 생성 
+	    1) 생성 
+	        C:\SOO\React>yarn create react-app react-app
+
+		2) 파일 -> 폴더열기 
+            C:\SOO\React\react-app
+
+	    3) 서버 실행 
+		    C:\SOO\React\react-app>yarn start
+
+	(2) origin.html 
+        <html>
+			<head>
+				<meta charset="utf-8">
+				<title>react-app</title>
+			</head>
+			<body>
+				<header>
+					<h1>홈</h1>
+					리액트 인덱스^^
+				<header>
+
+				<nav>
+					<ul>
+					   <li><a href="1.html">자바</a></li> 
+					   <li><a href="2.html">파이썬</a></li>
+					   <li><a href="3.html">오라클</a></li>
+					</ul>
+				</nav>
+
+				<article>
+					<h3>자바</h3>
+					자바는 엔터프라이즈 솔루션 구축에 최적화 된 언어! 
+				</article>
+			</body>
+		</html>
+
+    (3) 요청 
+	    http://127.0.0.1:3000/origin.html
+
+    (4) App.js
+	    function App() {
+		  return (
+			<div className="App">
+			  <header>
+				<h1>홈</h1>
+				리액트 인덱스^^
+			  </header>
+
+			  <nav>
+				<ul>
+				  <li><a href="1.html">자바</a></li> 
+				  <li><a href="2.html">파이썬</a></li>
+				  <li><a href="3.html">오라클</a></li>
+				</ul>
+			  </nav>
+
+			  <article>
+				<h3>자바</h3>
+				자바는 엔터프라이즈 솔루션 구축에 최적화 된 언어! 
+			  </article>
+			  
+			</div>
+		  );
+		}
+	    
+	    cf) 요청 http://127.0.0.1:3000/
+
+    (5) 컴포넌트로 분리1 ( App.js : class )
+	    class Subject extends Component {
+		  render(){
+			return(
+			  <header>
+				<h1>홈</h1>
+				리액트 인덱스*^^*
+			  </header>
+			); 
+		  }
+		}
+		class NavC extends Component {
+		  render(){
+			return(
+			  <nav>
+				<ul>
+				  <li><a href="1.html">자바</a></li> 
+				  <li><a href="2.html">파이썬</a></li>
+				  <li><a href="3.html">오라클</a></li>
+				</ul>
+			  </nav>
+			);
+		  }
+		}
+		class Content extends Component{
+		  render(){
+			return(
+			  <article>
+				<h3>자바</h3>
+				자바는 엔터프라이즈 솔루션 구축에 최적화 된 언어! 
+			  </article>
+			);
+		  }
+		}
+		function App() {
+		  return (
+			<div className="App">
+			  <Subject/>
+			  <NavC/>
+			  <Content/>
+			</div>
+		  );
+		}
+		export default App;
+
+    (6) 컴포넌트로 분리2 ( App.js : props )
+	   class Subject extends Component {
+		  render(){
+			return(
+			  <header>
+				<h1>{this.props.title}</h1>
+				{this.props.sub}
+			  </header>
+			); 
+		  }
+		}
+		class NavC extends Component {
+		  render(){
+			return(
+			  <nav>
+				<ul>
+				  <li><a href="1.html">자바</a></li> 
+				  <li><a href="2.html">파이썬</a></li>
+				  <li><a href="3.html">오라클</a></li>
+				</ul>
+			  </nav>
+			);
+		  }
+		}
+		class Content extends Component{
+		  render(){
+			return(
+			  <article>
+				<h3>{this.props.title}</h3>
+				{this.props.desc}
+			  </article>
+			);
+		  }
+		}
+		function App() {
+		  return (
+			<div className="App">
+			  <Subject title="수스 홈" sub="수스 리액트 홈페이지"/>
+			  <NavC/>
+			  <Content title="자바!" desc="자바는 엔터프라이즈 솔루션 구축에 최적화 된 언어!!"/>
+			</div>
+		  );
+		}
+		export default App;
+
+    (7) 컴포넌트로 분리3 ( 각 파일로 분리 )
+	    1) src/components/ 폴더 생성 후 그 하위에.. 
+		   <1> Subject.js 
+		      import { Component } from "react";
+			  class Subject extends Component {
+				render(){
+				  return(
+					<header>
+					  <h1>{this.props.title}</h1>
+					  {this.props.sub}
+					</header>
+				  ); 
+				}
+			  }
+			  export default Subject;
+
+		   <2> NavC.js
+		      import { Component } from "react";
+			  class NavC extends Component {
+				render(){
+				  return(
+					<nav>
+					  <ul>
+						<li><a href="1.html">자바</a></li> 
+						<li><a href="2.html">파이썬</a></li>
+						<li><a href="3.html">오라클</a></li>
+					  </ul>
+						</nav>
+				  );
+				}
+			  }
+			  export default NavC;
+			 
+		<3> Content.js
+		      import { Component } from "react";
+			  class Content extends Component{
+				render(){
+				  return(
+					<article>
+					  <h3>{this.props.title}</h3>
+					  {this.props.desc}
+					</article>
+				  );
+				}
+			  }
+			  export default Content;
+
+		<4> src/App.js 
+		      import './App.css';
+			  import Subject from "./components/Subject"
+			  import NavC from "./components/NavC"
+			  import Content from "./components/Content"
+
+			  function App() {
+			    return (
+				  <div className="App">
+				    <Subject title="수스 홈" sub="수스 리액트 홈페이지"/>
+				    <NavC/>
+				    <Content title="자바!" desc="자바는 엔터프라이즈 솔루션 구축에 최적화 된 언어!!"/>
+				  </div>
+			    );
+			  }
+			  export default App;
+
+[6] 크롬 디버깅 확장프로그램 설치
+	(1) 앱스토어 검색 
+		'React Developer Tools'
+	(2) 크롬 재시작
+	(3) Components 탭 
+	
+[7] props 속성값에 'state' 적용 
+    (1) App.js 함수 형태의 Component 를 클래스 형태로 변경 
+	    import ...
+		/*
+		function App() {
+		  return (
+			<div className="App">
+			  <Subject title="수스 홈" sub="수스 리액트 홈페이지"/>
+			  <NavC/>
+			  <Content title="자바!" desc="자바는 엔터프라이즈 솔루션 구축에 최적화 된 언어!!"/>
+			</div>
+		  );
+		}*/
+		class App extends Component{
+		  render(){
+			return (
+			  <div className="App">
+				<Subject title="수스 홈" sub="수스 리액트 홈페이지"/>
+				<NavC/>
+				<Content title="자바" desc="자바는 엔터프라이즈 솔루션 구축에 최적화 된 언어"/>
+			  </div>
+			);
+		  }
+		}
+		export default App;
+
+    (2) state 적용 
+	    1) 상위컴포넌트(App.js)에 정의 
+		   class App extends Component{
+			  constructor(props){
+				super(props);
+				this.state = {
+				  subject: {title:"수스 홈" , sub:"수스 리액트 홈페이지"},
+				  navc: [
+					{id:1, title:"자바", desc:"자바는 엔터프라이즈 솔루션 구축에 최적화 된 언어"}, 
+					{id:2, title:"파이썬", desc:"데이터 과학에 최적화 된 언어"}, 
+					{id:3, title:"오라클", desc:"가장 안정적인 대용량 시스템구축을 위한 DBMS"}
+				  ],
+				  content: {title:"자바", desc:"자바는 엔터프라이즈 솔루션 구축에 최적화 된 언어"}
+				};
+			  }
+			  render(){
+				return (
+				  <div className="App">
+					<Subject title={this.state.subject.title} sub={this.state.subject.sub}/>
+					<NavC data={this.state.navc}/>
+					<Content title={this.state.content.title} desc={this.state.content.desc}/>
+				  </div>
+				);
+			  }
+			}
+
+		2) 하위컴포넌트(ex:NavC.js)에 적용 
+		    import { Component } from "react";
+			class NavC extends Component {
+				render(){
+					var lists = [];
+					var data = this.props.data;
+					for(var i=0; i<data.length; i++){
+						lists.push(<li key={data[i].id}><a href={"/content/"+data[i].id}>{data[i].title}</a></li>);
+					}
+					return(
+						<nav>
+						<ul>
+							{lists}
+						</ul>
+						</nav>
+					);
+				}
+			  }
+			  export default NavC
+
+[8] Event
+    (1) 상위컴포넌트(App.js)에서 직접 이벤트 처리 
+         ...
+		 render(){
+			return (
+			  <div className="App">
+				{/* <Subject title={this.state.subject.title} sub={this.state.subject.sub}/> */}
+				<header>
+				  <h1><a href="/" onClick={function(e){
+					console.log("e", e); //이벤트 객체를 확인!
+					e.preventDefault(); //<a>태그가 가진 고유한기능(페이지갱신)을 막음!
+					//debugger;
+				  }}>{this.state.subject.title}</a></h1>
+				  {this.state.subject.sub}
+				</header>
+				<NavC data={this.state.navc}/>
+				<Content title={this.state.content.title} desc={this.state.content.desc}/>
+			  </div>
+			);
+		  }
+		 ...
+
+	(2) "수스 홈"링크를 click할때 <Content>내용이 갱신 
+	     class App extends Component{
+		  constructor(props){
+			super(props);
+			this.state = {
+			  mode: "read", 
+			  welcome: {title:"환영", desc:"어솨~ 리액트!"}, 
+			  subject: {title:"수스 홈" , sub:"수스 리액트 홈페이지"},
+			  navc: [
+				{id:1, title:"자바", desc:"자바는 엔터프라이즈 솔루션 구축에 최적화 된 언어"}, 
+				{id:2, title:"파이썬", desc:"데이터 과학에 최적화 된 언어"}, 
+				{id:3, title:"오라클", desc:"가장 안정적인 대용량 시스템구축을 위한 DBMS"}
+			  ],
+			  content: {title:"자바", desc:"자바는 엔터프라이즈 솔루션 구축에 최적화 된 언어"}
+			};
+		  }
+		  render(){
+			console.log("#App render()");
+			var _title, _desc = null;
+			if(this.state.mode === "welcome"){
+			  _title = this.state.welcome.title;
+			  _desc = this.state.welcome.desc;
+			}else if(this.state.mode === "read"){
+			  _title = this.state.navc[0].title;
+			  _desc = this.state.navc[0].desc;
+			}
+
+			return (
+			  <div className="App">
+				{/* <Subject title={this.state.subject.title} sub={this.state.subject.sub}/> */}
+				<header>
+				  <h1><a href="/" onClick={function(e){
+					console.log("e", e); //이벤트 객체를 확인!
+					e.preventDefault(); //<a>태그가 가진 고유한기능(페이지갱신)을 막음!
+					//debugger;
+
+					//this.state.mode = 'welcome'; //안됨!
+					this.setState(
+					  {mode: "welcome"}
+					);
+				  }.bind(this)}>{this.state.subject.title}</a></h1>
+				  {this.state.subject.sub}
+				</header>
+				<NavC data={this.state.navc}/>
+				<Content title={_title} desc={_desc}/>
+			  </div>
+			);
+		  }
+		}
+
+        
+	  #참고1) bind()에 대한 고찰 ( 크롬의 Console탭에서.. )
+	    var obj = {name:'SoosApps'}
+	    function bindTest(){
+			console.log(this.name);
+		}
+        'undefined'
+
+		var bindTest2 = bindTest.bind(obj);
+        bindTest2();
+        'SoosApps'
+
+   
+      #참고2) 크롬 Console탭 js작성시 줄바꿈 
+	     Shift + Enter! 
+
+	
+	(3) 하위 컴포넌트(Subject.js)에서 이벤트 처리
+	   1) App.js에 이벤트 정의 
+	      <Subject 
+			  title={this.state.subject.title} 
+			  sub={this.state.subject.sub}
+			  onChangePage={function(){
+				this.setState(
+				  {mode: "welcome"}
+				);
+			  }.bind(this)}
+			/>
+			{/* <header>
+			  <h1><a href="/" onClick={function(e){
+				console.log("e", e); //이벤트 객체를 확인!
+				e.preventDefault(); //<a>태그가 가진 고유한기능(페이지갱신)을 막음!
+				//debugger;
+
+				//this.state.mode = 'welcome';
+				this.setState(
+				  {mode: "welcome"}
+				);
+			  }.bind(this)}>{this.state.subject.title}</a></h1>
+			  {this.state.subject.sub}
+			</header> */}
+
+	   2) Subject.js에서 이벤트 호출 
+            import { Component } from "react";
+			class Subject extends Component {
+				render(){
+				  console.log("#Subject render()");
+				  return(
+					<header>
+					  <h1>
+						<a href="/" onClick={function(e){
+							e.preventDefault();
+							this.props.onChangePage();
+						}.bind(this)}>
+						  {this.props.title}
+						</a>
+					  </h1>
+					  {this.props.sub}
+					</header>
+				  ); 
+				}
+			  }
+			  export default Subject; 
+			  
+	(4) 하위 컴포넌트(NavC.js)에서 이벤트 처리	
+	   1) App.js에 이벤트 정의 
+          <NavC 
+			  data={this.state.navc}
+			  onChangePage={function(){
+				this.setState(
+				  {mode: "read"}
+				);
+			  }.bind(this)}
+			/>
+	   2) NavC.js에서 이벤트 호출
+	       <li key={data[i].id}>
+                <a 
+                    href={"/content/"+data[i].id}
+                    onClick={function(e){
+                        e.preventDefault();
+                        this.props.onChangePage();
+                    }.bind(this)}>
+                    {data[i].title}
+                </a>
+            </li>
+
+	(5) 상위컴포넌트(App.js)에서 selected_navc_id 속성 추가 
+	    class App extends Component{
+		  constructor(props){
+			super(props);
+			this.state = {
+			  ...
+			  selected_navc_id: 2, 
+			  ...
+			};
+		  }
+		  render(){
+			...
+			}else if(this.state.mode === "read"){
+			  //_title = this.state.navc[0].title;
+			  //_desc = this.state.navc[0].desc;
+
+			  for(var i=0; i<this.state.navc.length; i++){
+				var data = this.state.navc[i];
+				if(data.id === this.state.selected_navc_id){
+				  _title = data.title;
+				  _desc = data.desc;
+				  break;
+				}
+			  }
+			}
+			...
+		  }
+		}
+
+	(6) 하위컴포넌트(NavC.js)에서 파라미터(id)를 넘김
+	   1) id값을 로그 출력
+	      <li key={data[i].id}>
+                <a 
+                    href={"/content/"+data[i].id}
+                    data-id={data[i].id} //먼저 추가해야 함
+                    onClick={function(e){
+                        console.log("#NavC e", e);
+                        console.log("#NavC e.target.dataset.id", e.target.dataset.id);
+                        e.preventDefault();
+                        debugger;
+                        //this.props.onChangePage();
+                    }.bind(this)}>
+                    {data[i].title}
+                </a>
+            </li>
+
+	    2) 파라미터로 넘기기 
+		    <1> 방법1 ( 'data-XXX' 속성 이용 ) 
+				<li key={data[i].id}>
+					<a 
+						href={"/content/"+data[i].id}
+						data-id={data[i].id} //먼저 추가해야 함
+						onClick={function(e){
+							//console.log("#NavC e", e);
+							//console.log("#NavC e.target.dataset.id", e.target.dataset.id);
+							e.preventDefault();
+							this.props.onChangePage(e.target.dataset.id);
+						}.bind(this)}>
+						{data[i].title}
+					</a>
+				</li>
+
+			<2> 방법2 ( 'bind(파라미터)' 이용 )
+			    <li key={data[i].id}>
+					<a 
+						href={"/content/"+data[i].id}
+						onClick={function(id, e){
+							console.log("#NavC id", id);
+							e.preventDefault();
+							this.props.onChangePage(id);
+						}.bind(this, data[i].id)}>
+						{data[i].title}
+					</a>
+				</li>
+
+	(7) 상위컴포넌트(App.js)에서 파라미터를 받기 
+	     <NavC 
+          data={this.state.navc}
+          onChangePage={function(id){
+            this.setState(
+              {
+                mode: "read", 
+                selected_navc_id: Number(id)
+              }
+            );
+          }.bind(this)}
+         />
+
+
+/////////////////////// react-app -> 복사 -> react-crud ////////////////////// 
+#Part2: CRUD
+
+[9] Create 구현1 : mode변경  
+    (1) App.js에서 다음 html을 추가 후 크롬에서 확인
+	    <ul>
+          <li><a href="/create">입력</a></li>
+          <li><a href="/update">수정</a></li>
+          <li><a href="/delete">삭제</a></li>
+        </ul>
+
+    (2) components/Control.js 생성 ( Subject.js를 복사해서 .. )
+	    import { Component } from "react";
+		class Control extends Component {
+			render(){
+			  console.log("#Control render()");
+			  return(
+				<ul>
+				  <li><a href="/create">입력</a></li>
+				  <li><a href="/update">수정</a></li>
+				  <li><a href="/delete">삭제</a></li>
+				</ul>
+			  ); 
+			}
+		  }
+		  export default Control;
+
+	(3) App.js 
+	      <Control onChangeMode={function(_mode){
+            this.setState({
+              mode: _mode
+            });
+           }.bind(this)}/>
+
+	(4) Control.js 에서 onChangeMode()호출 및 parameter 넘기기
+	    <ul>
+          <li><a href="/create"
+                onClick={function(e){
+                    e.preventDefault();
+                    this.props.onChangeMode("create");
+                }.bind(this)}>입력</a>
+          </li>
+          <li><a href="/update"
+                onClick={function(e){
+                    e.preventDefault();
+                    this.props.onChangeMode("update");
+                }.bind(this)}>수정</a></li>
+          <li><a href="/delete"
+                onClick={function(e){
+                    e.preventDefault();
+                    this.props.onChangeMode("delete");
+                }.bind(this)}>삭제</a></li>
+        </ul> 
+
+	(5) Parameter 확인 
+	   크롬F12 -> Components탭 -> App -> mode값 변화 확인
+
+[10] Create 구현2 : CreateContent.js 생성 
+	(1) components/Content.js -> components/'ReadContent'.js 로 파일이름 변경 
+
+    (2) components/'CreateContent'.js 생성 ( ReadContent.js 를 복사해서.. )
+	    import { Component } from "react";
+		class CreateContent extends Component{
+			render(){
+			  console.log("#CreateContent render()");
+			  return(
+				<article>
+				  <h3>Create</h3>
+				  <form>
+				  </form>
+				</article>
+			  );
+			}
+		  }
+		  export default CreateContent;
+
+	(3) App.js 
+	    render(){
+			...
+			var _article = null; //추가1
+			...
+			}else if(this.state.mode === "read"){
+			  for(var i=0; i<this.state.navc.length; i++){
+				...
+				}
+			  }
+			  _article = <ReadContent title={_title} desc={_desc}/> //추가2
+			}else if(this.state.mode === "create"){
+			  _article =<CreateContent/> //추가3 
+			}
+
+			return (
+			  <div className="App">
+				<Subject 
+				  ...
+				/>
+				<NavC 
+				  ...
+				/>
+				<Control onChangeMode={function(_mode){
+					this.setState({
+					  mode: _mode
+					});
+				}.bind(this)}/>
+
+				{_article}  //추가4
+
+			  </div>
+			);
+		  }
+	   
+	(4) 크롬 테스팅 
+
+[11] Create 구현3 : <form>를 구현 
+    (1) App.js 
+		class App extends Component{
+		  constructor(props){
+			super(props);
+			this.state = {
+			  mode: "create", 
+
+	(2) CreateContent.js 
+		 <article>
+          <h3>Create</h3>
+          <form action="/create_process" method="post" onSubmit={function(e){
+            e.preventDefault();
+            alert("전송!");
+          }.bind(this)}>
+            <p><input name="title" placeholder="제목"/></p>
+            <p><input name="desc" placeholder="설명"/></p>
+            <p><input type="submit" value="입력"/></p>
+          </form>
+        </article>
+
+[11] Create 구현4 : onSubmit 이벤트 처리 
+	(1) App.js 
+	   }else if(this.state.mode === "create"){
+		  _article =<CreateContent onSubmit={function(_title, _desc){
+			//this.state.navc 에 추가
+		  }.bind(this)}/>  
+		}
+
+	(2) CreateContent.js 
+		<form action="/create_process" method="post" onSubmit={function(e){
+            e.preventDefault();
+            alert("전송!");
+            debugger;
+            //this.props.onSubmit(param1, param2);
+          }.bind(this)}>
+
+	(3) value값 찾기 
+		1) '전송' click -> F12 -> Source탭 -> CreateContent.js의 debugger;에서 멈춤
+		2) Console탭 -> e -> 엔터*2 
+		3) form -> target -> input -> value -> ... 클릭 
+		4) Console탭에서 출력 
+		   e.target.title.value -> 엔터!
+		   e.target.desc.value -> 엔터! 
+
+    (4) CreateContent.js 
+		<form action="/create_process" method="post" onSubmit={function(e){
+            e.preventDefault();
+            //debugger;
+            this.props.onSubmit(e.target.title.value, e.target.desc.value);
+			alert("전송완료!");
+          }.bind(this)}>
+
+	(5) App.js에서 넘어온 param 확인
+		  }else if(this.state.mode === "create"){
+			  _article =<CreateContent onSubmit={function(_title, _desc){
+				console.log(_title, _desc);
+				//this.state.navc 에 추가
+			  }.bind(this)}/> //추가3 
+		  }
+
+	(6) 확인 
+		제출click -> F12 -> Console탭 
+
+[13] Create 구현5: Content 변경
+	(1) App.js 
+		class App extends Component{
+		  constructor(props){
+			super(props);
+			this.max_navc_id = 3; //UI에 영향이 없는 속성이기때문에 멤버변수로 뺌 
+			this.state = {
+				...
+
+	(2) navc에 객체를 추가 
+		 }else if(this.state.mode === "create"){
+		  _article =<CreateContent onSubmit={function(_title, _desc){
+			//console.log(_title, _desc);
+			//this.state.navc 에 추가
+			this.max_navc_id = this.max_navc_id + 1; //step1
+			this.state.navc.push(
+			  {id:this.max_navc_id, title:_title, desc:_desc}
+			); //step2 
+			this.setState({
+			  navc:this.state.navc
+			}); //step3
+		  }.bind(this)}/> //추가3 
+		 }
+
+	(3) 크롬에서 추가 확인
+
+    (4) push()와 concat() 테스트 ( at 크롬 Console탭 )
+		1) push() //가변메소드 
+	       var a = [1, 2]; 
+		   a.push(3);
+		   a; //[1, 2, 3]
+
+		2) concat() //불변메소드 
+		   var b = [1, 2]; 
+           var c = b.concat(3);
+		   b; //[1, 2]
+		   c; //[1, 2, 3]
+
+    (5) 복사본 배열 적용( concat()을 이용해서 )
+		}else if(this.state.mode === "create"){
+		  _article =<CreateContent onSubmit={function(_title, _desc){
+			this.max_navc_id = this.max_navc_id + 1; //step1
+			/*this.state.navc.push(
+			  {id:this.max_navc_id, title:_title, desc:_desc}
+			); */
+			var _navc = this.state.navc.concat(
+			  {id:this.max_navc_id, title:_title, desc:_desc}
+			); //step2 
+			this.setState({
+			  navc:_navc
+			}); //step3
+		  }.bind(this)}/> //추가3 
+		}
+
+    (6) 크롬에서 추가 확인 
+		
+[14] Create 구현6: shouldComponentUpdate()
+	(1) NavC.js ( 파라미터 X )
+	    1) true 일때
+	        shouldComponentUpdate(){
+				console.log("#NavC shouldComponentUpdate()");
+				return true;
+			}
+			render(){
+				console.log("#NavC render()");
+
+		    #결과) log 출력 
+                "#NavC shouldComponentUpdate()"
+				"#NavC render()"
+			
+		2) false 일때 
+			shouldComponentUpdate(){
+				console.log("#NavC shouldComponentUpdate()");
+				return false;
+			}
+
+			#결과) log 출력 
+                "#NavC shouldComponentUpdate()"
+
+	(2) NavC.js ( 파라미터 O )
+		1) 새로운 data와 기존 data를 비교 
+			shouldComponentUpdate(newProps){
+				console.log("#NavC shouldComponentUpdate()", newProps.data, this.props.data);
+				return false;
+			}
+
+			#결과) log 출력 
+		       #NavC shouldComponentUpdate() (4) [...] (3) [...]
+
+		2) '새로운 props객체의 data'와 '기존 props객체의 data'가 다른 경우에만 render() 호출 
+			shouldComponentUpdate(newProps){
+				console.log("#NavC shouldComponentUpdate()", newProps.data, this.props.data);
+				if(this.props.data === newProps.data){
+					return false;
+				}
+				return true;
+			}
+		    
+			#결과) log 출력 
+		        #NavC shouldComponentUpdate() (4) [...] (3) [...]
+				#NavC render()
+
+
+[15] Array복제와 Object복제 ( Immutable 이슈 )
+	(1) Array복제 
+	    1) 테스트 ( at Console탭 )
+	       var a = [1, 2];
+           var b = Array.from(a);
+		   console.log(a, b, a===b); //[1,2] [1,2] false
+
+           var a = [1,2];
+           var b = Array.from(a);
+		   b.push(3);
+           console.log(a, b, a===b); //[1,2] [1,2,3] false
+
+		2) App.js에 적용 
+			}else if(this.state.mode === "create"){
+			  _article =<CreateContent onSubmit={function(_title, _desc){
+				this.max_navc_id = this.max_navc_id + 1; //step1
+				/*this.state.navc.push(
+				  {id:this.max_navc_id, title:_title, desc:_desc}
+				); */
+				/*var _navc = this.state.navc.concat(
+				  {id:this.max_navc_id, title:_title, desc:_desc}
+				);*/
+				var copy_navc = Array.from(this.state.navc);
+				copy_navc.push(
+				  {id:this.max_navc_id, title:_title, desc:_desc}
+				);//step2 
+				this.setState({
+				  //navc:_navc
+				  navc:copy_navc //step3
+				}); 
+			  }.bind(this)}/> //추가3 
+			}
+
+		  #결과) log 출력 
+		  '#NavC shouldComponentUpdate()' 
+		  '#NavC render()'
+  
+
+	(2) Object복제 ( at Console탭 )
+		var a = {name:'kim'};
+	    var b = Object.assign({}, a);
+		console.log(a, b, a===b); //{name: 'kim'} {name: 'kim'} false
+
+        var a = {name:'kim'}; 
+		var b = Object.assign({}, a);
+		b.name = 'soo';
+        console.log(a, b, a===b); //{name: 'kim'} {name: 'soo'} false
+
+
+		var a = {name:'kim'}; 
+		var b = Object.assign({left:1, right:2}, a);
+        console.log(a, b, a===b); //{name: 'kim'} {left: 1, right: 2, name: 'kim'} false
+
+
+[16] Update 구현1: 수정폼
+	(1) UpdateContent.js 생성 ( CreateContent.js를 복사해서.. )
+		import { Component } from "react";
+		class UpdateContent extends Component{
+			render(){
+			  console.log("#UpdateContent render()");
+			  return(
+				<article>
+				  <h3>Update</h3>
+				  <form action="/update_process" method="post" onSubmit={function(e){
+					e.preventDefault();
+					//debugger;
+					this.props.onSubmit(e.target.title.value, e.target.desc.value);
+						  alert("전송완료!");
+				  }.bind(this)}>
+					<p><input name="title" placeholder="제목"/></p>
+					<p><input name="desc" placeholder="설명"/></p>
+					<p><input type="submit" value="수정"/></p>
+				  </form>
+				</article>
+			  );
+			}
+		  }
+		  export default UpdateContent;
+
+	(2) App.js에 추가 
+		}else if(this.state.mode === "update"){
+		  _article = <UpdateContent onSubmit={function(_title, _desc){
+			var copy_navc = Array.from(this.state.navc);
+			copy_navc.push(
+			  {title:_title, desc:_desc}
+			);
+		  }.bind(this)}/>
+		}
+
+	(3) 테스팅 
+		'수정'링크click -> 수정폼으로 변경됨 
+
+	(4) #과제: App.js에서 UpdateContent.js로 데이터를 넘겨서 폼에 셋팅 방법?
+
+
+[17] Update 구현2: '리펙토링' & '데이터' 넘기기 
+	(1) App.js 리펙토링1
+		
