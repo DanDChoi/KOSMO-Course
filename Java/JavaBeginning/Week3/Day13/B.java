@@ -8,7 +8,7 @@ class B {
 		new BUser(this).use(); //(2)
 	}
 	void m(){
-		System.out.println("m의 age " + age);
+		System.out.println("m() age " + age);
 	}
 	public static void main(String[] args) {
 		new B();
@@ -21,7 +21,7 @@ class BUser {
 		this.b = b;
 	}
 	void use(){
-		System.out.println("b.age: " + b.age); //멤버
-		b.m(); //메소드
+		System.out.println("b.age: " + b.age); 
+		b.m(); 
 	}
 }

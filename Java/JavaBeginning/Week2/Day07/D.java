@@ -21,7 +21,7 @@ class D
 	public static void main(String[] args) 
 	{
 		D d = new D();
-		int result1 = d.m(10, 20);
+		int result1 = d.m1(10, 20);
 		System.out.println("result1: "+ result1);
 		String result2 = d.m2(true);
 		System.out.println("result2: "+ result2);

@@ -56,7 +56,15 @@
 		</dependency> 
 	   
 
-    
+    3) soo.md.controller.AjaxT03Controller.java  
+	   ajax/test03.jsp
+
+	   cf)  호출시 .json 또는 .xml 
+
+	4) soo.md.controller.AjaxT04Controller.java  
+	   ajax/test04.jsp
+
+	   cf)  호출시 .json 또는 .xml 
      
 
 

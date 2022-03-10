@@ -1,20 +1,20 @@
 class C {
-	String name = "È«±æµ¿";
+	String name = "í™ê¸¸ë™";
 	C(){
 		super(); //(1)
 	}
-	void m(){ //¿À¹ö¶óÀÌµù Àü 
-		System.out.println("CÀÇ m()");
+	void m(){ //ì˜¤ë²„ë¼ì´ë”© ì „ 
+		System.out.println("Cì˜ m()");
 	}
 }
 class CChild extends C{
-	String name = "ÀÌ¼ø½Å";
+	String name = "ì´ìˆœì‹ ";
 	CChild(){
 		super.m();
 		System.out.println("name: " +super.name);
 	}
-	void m(){ //¿À¹ö¶óÀÌµù ÈÄ 
-		System.out.println("CChildÀÇ m()");
+	void m(){ //ì˜¤ë²„ë¼ì´ë”© í›„ 
+		System.out.println("CChildì˜ m()");
 	}	
 	public static void main(String[] args) {
 		new CChild();

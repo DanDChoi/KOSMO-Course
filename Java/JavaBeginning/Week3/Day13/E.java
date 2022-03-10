@@ -1,5 +1,5 @@
 class E {
-	//(1) »ı¼ºÀÚ ¿À¹ö·Îµù 
+	//(1) ìƒì„±ì ì˜¤ë²„ë¡œë”© 
 	E(){
 	}
 	E(String str){
@@ -9,7 +9,7 @@ class E {
 	E(String str, int i){
 	}
 
-    //(2) ¸Ş¼Òµå ¿À¹ö·Îµù
+    //(2) ë©”ì†Œë“œ ì˜¤ë²„ë¡œë”©
 	void m(String name){
 	}
 	int m(int age){
@@ -21,7 +21,7 @@ class E {
 	}
 }
 class EChild extends E {
-	void m(String name, int age){ //¿À¹ö·Îµù 
+	void m(String name, int age){ //ì˜¤ë²„ë¡œë”© 
 	}
 }
 

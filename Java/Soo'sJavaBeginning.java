@@ -511,7 +511,7 @@ import javax.swing.plaf.basic.BasicInternalFrameTitlePane.TitlePaneLayout;
 		1) 클래스, 변수(지역변수 포함), 메소드 앞에 붙을 수 있음
 		2) 클래스 앞에 붙으면 자식을 못낳고,
 		   변수 앞에 붙으면 초기값을 못바꾸고,
-		   	메소드 앞에 붙으면 오버라이딩을 막음
+		   메소드 앞에 붙으면 오버라이딩을 막음
 
 			//ex) Day12/E.java
 			
