@@ -1,8 +1,0 @@
-package dan.ct.domain;
-
-import java.util.Date;
-
-public class ToDoDTO {
-	private String subject;
-	private Date cdate;
-}
