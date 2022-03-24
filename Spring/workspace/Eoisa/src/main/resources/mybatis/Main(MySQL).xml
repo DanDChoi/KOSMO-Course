@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ksj.bitcamp.eoisa.dto.MainDTO">
+	<resultMap type="MainDTO" id="MainResult">
+		<result property="dealno" column="DEALNO"/>
+		<result property="site_src" column="SITE_SRC"/>
+		<result property="url_src" column="URL_SRC"/>
+		<result property="site_buy" column="SITE_BUY"/>
+		<result property="url_buy" column="URL_BUY"/>
+		<result property="category" column="CATEGORY"/>
+		<result property="region" column="REGION"/>
+		<result property="goods_title" column="GOODS_TITLE"/>
+		<result property="goods_pic" column="GOODS_PIC"/>
+		<result property="price" column="PRICE"/>
+		<result property="price_naver" column="PRICE_NAVER"/>
+		<result property="merit" column="MERIT"/>
+		<result property="deliever_fee" column="DELIEVER_FEE"/>
+		<result property="writetime" column="WRITETIME"/>
+		<result property="isended" column="ISENDED"/>
+		<result property="replycount" column="REPLYCOUNT"/>
+		<result property="replycount_src" column="REPLYCOUNT_SRC"/>
+		<result property="likeit" column="LIKEIT"/>
+		<result property="likeit_src" column="LIKEIT_SRC"/>
+		<result property="dislikeit_src" column="DISLIKEIT_SRC"/>
+		<result property="viewcount" column="VIEWCOUNT"/>
+	</resultMap>
+	
+	<insert id="cinsert" parameterType="MainDTO">
+		insert ignore into DEALINFO values (null, #{site_src}, #{url_src}, #{site_buy}, #{url_buy}, #{category}, #{region}, #{goods_title}, #{goods_pic}, 
+		#{price}, #{price_naver}, #{merit}, #{deliever_fee}, #{writetime}, #{isended}, #{replycount}, #{replycount_src}, #{likeit}, #{likeit_src}, #{dislikeit_src}, #{viewcount})
+	</insert>
+	
+	<update id="cupdate" parameterType="MainDTO">
+		update DEALINFO set WRITETIME = #{writetime}, ISENDED = #{isended}, REPLYCOUNT_SRC = #{replycount_src}, LIKEIT_SRC = #{likeit_src}, DISLIKEIT_SRC = #{dislikeit_src}
+		where URL_SRC = #{url_src}
+	</update>
+	
+	<select id="dealpage" resultType="MainDTO" parameterType="map">
+		select DEALNO, SITE_SRC, URL_SRC, SITE_BUY, URL_BUY, CATEGORY, region, GOODS_TITLE, GOODS_PIC, PRICE, PRICE_NAVER, MERIT, DELIEVER_FEE, WRITETIME, ISENDED, (select COUNT(*) from REPLY_DEALINFO where REPLYNO = DEALNO) REPLYCOUNT, REPLYCOUNT_SRC, LIKEIT, LIKEIT_SRC, DISLIKEIT_SRC, VIEWCOUNT
+		from (select @rownum:=@rownum+1 RNUM, aa.* from (select * from DEALINFO, (select @rownum:=0) R
+		<choose>
+			<when test="title != null and title.equals('issue')"><![CDATA[ where REPLYCOUNT_SRC >= 20 ]]></when>
+			<when test="title != null and title.equals('likeit')"><![CDATA[ where LIKEIT_SRC >= 10 ]]></when>
+			<when test="title != null and title.equals('coffee')"> where cast(regexp_replace(PRICE, '[^[:digit:]]', '') as unsigned) between 1 and 5000 </when>
+			<when test="title != null and title.equals('merit')"><![CDATA[ where MERIT not like '-%' and cast(regexp_replace(MERIT, '[^[:digit:]]', '') as unsigned) > 0 ]]></when>
+			<when test="keyword != null">where GOODS_TITLE like #{keyword}</when>
+			<otherwise></otherwise>
+		</choose>
+		<if test="region != null">
+			where REGION in <foreach item="region" collection="region" index="index" open="(" separator="," close=")">#{region}</foreach>
+		</if>
+		<if test="site != null">
+			and SITE_SRC in <foreach item="site" collection="site" index="index" open="(" separator="," close=")">#{site}</foreach>
+		</if>
+		<if test="shop != null">
+			and SITE_BUY in <foreach item="shop" collection="shop" index="index" open="(" separator="," close=")">#{shop}</foreach>
+		</if>
+		<if test="isended != null">
+			and ISENDED not in ('종료')
+		</if>
+		order by (case when WRITETIME = '방금' then 1 when WRITETIME like '%분 전' then 2 when WRITETIME like '%시간 전' then 3 when WRITETIME like '%일 전' then 4 end), cast(WRITETIME as unsigned)
+		<choose>
+			<when test="title != null and title.equals('issue')">, REPLYCOUNT_SRC desc</when>
+			<when test="title != null and title.equals('likeit')">, LIKEIT_SRC desc</when>
+			<when test="title != null and title.equals('merit')">, cast(regexp_replace(MERIT, '[^[:digit:]]', '') as unsigned) desc</when>
+			<otherwise></otherwise>
+		</choose>
+		) aa) ORD
+		<choose>
+			<when test="rownum != null">
+				<![CDATA[ where RNUM > ${rownum[0]} and RNUM <= ${rownum[1]} ]]>
+			</when>
+			<otherwise>
+				<![CDATA[ where RNUM > ${startRownum} and RNUM <= ${endRownum} ]]>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="dealcount" resultType="int" parameterType="map">
+		select COUNT(*) as COUNT from DEALINFO
+		<choose>
+			<when test="title != null and title.equals('issue')"><![CDATA[ where REPLYCOUNT_SRC >= 20 ]]></when>
+			<when test="title != null and title.equals('likeit')"><![CDATA[ where LIKEIT_SRC >= 10 ]]></when>
+			<when test="title != null and title.equals('coffee')">where cast(regexp_replace(PRICE, '[^[:digit:]]', '') as unsigned) between 1 and 5000</when>
+			<when test="title != null and title.equals('merit')"><![CDATA[ where MERIT not like '-%' and cast(regexp_replace(MERIT, '[^[:digit:]]', '') as unsigned) > 0 ]]></when>
+			<when test="keyword != null">where GOODS_TITLE like #{keyword}</when>
+			<otherwise></otherwise>
+		</choose>
+		<if test="region != null">
+			where region in <foreach item="region" collection="region" index="index" open="(" separator="," close=")">#{region}</foreach>
+		</if>
+		<if test="site != null">
+			and SITE_SRC in <foreach item="site" collection="site" index="index" open="(" separator="," close=")">#{site}</foreach>
+		</if>
+		<if test="shop != null">
+			and SITE_BUY in <foreach item="shop" collection="shop" index="index" open="(" separator="," close=")">#{shop}</foreach>
+		</if>
+		<if test="isended != null">
+			and ISENDED is null
+		</if>
+	</select>
+	
+	<select id="rankpage" resultType="MainDTO">
+		<![CDATA[
+			select * from (select DEALNO, SITE_SRC, URL_SRC, SITE_BUY, URL_BUY, CATEGORY, REGION, GOODS_TITLE, GOODS_PIC, PRICE, PRICE_NAVER, MERIT, DELIEVER_FEE, WRITETIME, ISENDED, 
+			(select COUNT(*) from REPLY_DEALINFO where REPLYNO = DEALNO) REPLYCOUNT, REPLYCOUNT_SRC, LIKEIT, LIKEIT_SRC, DISLIKEIT_SRC, VIEWCOUNT,
+			ROW_NUMBER() OVER (order by (LIKEIT_SRC + REPLYCOUNT_SRC + REPLYCOUNT + LIKEIT - DISLIKEIT_SRC) desc) RK from DEALINFO) ORD where RK <= 10
+		]]>
+	</select>
+	
+	<select id="ranking" resultType="map">
+		select DEALNO, URL_SRC, GOODS_TITLE, ROW_NUMBER() OVER (order by (LIKEIT_SRC + REPLYCOUNT_SRC + REPLYCOUNT + LIKEIT - DISLIKEIT_SRC) desc) RK from DEALINFO
+	</select>
+</mapper>
