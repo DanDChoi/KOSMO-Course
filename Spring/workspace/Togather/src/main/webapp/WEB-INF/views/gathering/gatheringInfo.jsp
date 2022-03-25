@@ -48,7 +48,7 @@
     <link href="/assets/css/style.css" rel="stylesheet" />
     
     <!-- Kakao Map API Key -->
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=848fde99e6a95bc00c5478ca8ff86a8b&libraries=services,clusterer"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=11400a9267d93835389eb9255fcaad0b&libraries=services,clusterer"></script>
   
     <!-- alert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -99,6 +99,7 @@
 				console.log(result.isConfirmed);
 			  if (result.isConfirmed) {
 				var mnum = ${m.mnum};
+					var gseq = ${gatheringInfo.gseq};
 		  			var ga_seq = ${gatheringInfo.ga_seq};
 		  			var result = {"mnum":mnum,"ga_seq":ga_seq};
   		  		$(function(){
@@ -107,9 +108,13 @@
 	   					type: "POST",
 	   					data: result,
 	   					success: function(data){
+	   						if(data == 0){
+	   loacation.href="../groupTab/groupInfo.do?gseq=${gatheringInfo.gseq}&mnum=${m.mnum}";
+	   						}else{
+	   							loaction.reload();
+	   						}
 	   					}
-    				});
-    				location.reload(); 
+    				}); 
   		  		});
   		  		
 			  }  			  
@@ -179,7 +184,7 @@
 		location="gatheringUpdate.do?ga_seq=${gatheringInfo.ga_seq}";
 	}
 	function gatheringDelete(){
-		location="gatheringDelete.do?ga_seq=${gatheringInfo.ga_seq}";
+		location="gatheringDelete.do?ga_seq=${gatheringInfo.ga_seq}&gseq=${gatheringInfo.gseq}&mnum=${m.mnum}";
 	}
 	function memberInfo(index){
 		var arr = new Array();
@@ -192,66 +197,11 @@
     	  "../member/memberInfo?mnum="+arr[index].mnum+"&ga_seq=${gatheringInfo.ga_seq}", "memberInfo", 
     	   "width=1000, height=900, top=100, left=100");
     }
-	Kakao.init('11400a9267d93835389eb9255fcaad0b');
-    function signout(){
-      if(Kakao.Auth.getAccessToken() != null){
-  	  Kakao.Auth.logout(function(){
-  	    setTimeout(function(){
-            location.href="member/logout.do";
-         },500);
-       });
-      }else{
-      	location.href="member/logout.do";
-      }
-    }
+	
 	
 	</script>
 	
-	<script type="text/javascript">
-				var inputData = ['${gatheringInfo.ga_place}']
-				var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-					mapOption = {
-						center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-						level: 3 // 지도의 확대 레벨
-					};
-				// 지도를 표시할 div와 지도 옵션으로 지도를 생성합니다
-				var map = new kakao.maps.Map(mapContainer, mapOption);
-				var count = 0;
-				var ps = new kakao.maps.services.Places();
-				var bounds = new kakao.maps.LatLngBounds();
-				if (inputData != null) {
-					kewwordSearch(inputData[count]);
-				}
-				function kewwordSearch(keword) {
-					ps.keywordSearch(keword, placesSearchCB);
-					count = count + 1;
-				}
-				function placesSearchCB(data, status, pagination) {
-					if (status === kakao.maps.services.Status.OK) {
-						displayMarker(data[0]);
-						bounds.extend(new kakao.maps.LatLng(data[0].y, data[0].x));
-							if (count < inputData.length) {
-								kewwordSearch(inputData[count]);
-							} else if (count == inputData.length) {
-								setBounds();
-							}
-					}
-				}
-				function displayMarker(place) {
-					var marker = new kakao.maps.Marker({
-						map: map,
-						position: new kakao.maps.LatLng(place.y, place.x),
-					});
-					kakao.maps.event.addListener(marker, 'click', function () {
-						var position = this.getPosition();
-						var url = 'https://map.kakao.com/link/map/' + place.id;
-						window.open(url, '_blank');
-					});
-				}
-				function setBounds() {
-					map.setBounds(bounds, 90, 30, 10, 30);
-				}
-	</script>
+	
 	
   </head>
 
@@ -331,6 +281,51 @@
             allowfullscreen
           ></iframe>-->
           <div id="map" style="width:100%;height:500px;"></div>
+          <script type="text/javascript">
+				var inputData = ['${gatheringInfo.ga_place}']
+				var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+					mapOption = {
+						center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+						level: 3 // 지도의 확대 레벨
+					};
+				// 지도를 표시할 div와 지도 옵션으로 지도를 생성합니다
+				var map = new kakao.maps.Map(mapContainer, mapOption);
+				var count = 0;
+				var ps = new kakao.maps.services.Places();
+				var bounds = new kakao.maps.LatLngBounds();
+				if (inputData != null) {
+					kewwordSearch(inputData[count]);
+				}
+				function kewwordSearch(keword) {
+					ps.keywordSearch(keword, placesSearchCB);
+					count = count + 1;
+				}
+				function placesSearchCB(data, status, pagination) {
+					if (status === kakao.maps.services.Status.OK) {
+						displayMarker(data[0]);
+						bounds.extend(new kakao.maps.LatLng(data[0].y, data[0].x));
+							if (count < inputData.length) {
+								kewwordSearch(inputData[count]);
+							} else if (count == inputData.length) {
+								setBounds();
+							}
+					}
+				}
+				function displayMarker(place) {
+					var marker = new kakao.maps.Marker({
+						map: map,
+						position: new kakao.maps.LatLng(place.y, place.x),
+					});
+					kakao.maps.event.addListener(marker, 'click', function () {
+						var position = this.getPosition();
+						var url = 'https://map.kakao.com/link/map/' + place.id;
+						window.open(url, '_blank');
+					});
+				}
+				function setBounds() {
+					map.setBounds(bounds, 90, 30, 10, 30);
+				}
+	</script>
           
               </div>
               

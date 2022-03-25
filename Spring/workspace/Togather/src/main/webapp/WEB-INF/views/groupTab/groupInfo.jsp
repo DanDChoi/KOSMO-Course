@@ -191,18 +191,6 @@
         	  "../member/memberInfo?mnum="+arr[index].mnum+"&gseq=${groupInfo.gseq}", "memberInfo", 
         	   "width=1000, height=900, top=100, left=100");
         }
-    	Kakao.init('11400a9267d93835389eb9255fcaad0b');
-        function signout(){
-          if(Kakao.Auth.getAccessToken() != null){
-      	  Kakao.Auth.logout(function(){
-      	    setTimeout(function(){
-                location.href="member/logout.do";
-             },500);
-           });
-          }else{
-          	location.href="member/logout.do";
-          }
-        }
     </script>
     <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
     <script>
@@ -295,6 +283,19 @@
       <!-- ======= Cource Details Section ======= -->
       <section id="course-details" class="course-details">
         <div class="container" data-aos="fade-up">
+        <!-- 상단부 nav 바 -->
+        <ul class="nav nav-tabs mb-3">
+        	<li class="nav-item">
+        		<a class="nav-link active" aria-current="page" href="#">정보</a>
+        	</li>
+        	<li class="nav-item">
+        		<a class="nav-link" href="#">사진첩</a>
+        	</li>
+        	<li class="nav-item">
+        		<a class="nav-link" href="#">게시판</a>
+        	</li>
+        </ul>
+        
           <div class="row">
             <div class="col-lg-8">
               <img
@@ -424,6 +425,7 @@
 	          </nav>
 	          </div>
               <div class="d-grid gap-2 mt-3 mb-3">
+               <c:if test="${memInGroupName.mnum != null}">
                 <button
                   type="button"
                   class="btn btn-outline-success"
@@ -431,6 +433,8 @@
                 >
                  	정모만들기
                 </button>
+                </c:if>
+                
                 <button type="button" class="btn btn-outline-secondary" 
                 	onclick="location.href='javascript:groupUpdateCheck()'">
                   	모임 수정하기

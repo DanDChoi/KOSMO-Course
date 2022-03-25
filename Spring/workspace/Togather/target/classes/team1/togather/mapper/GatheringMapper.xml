@@ -74,6 +74,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			select count(*) from Gathering where gseq=#{gseq}
 		</select>
 		
+		<!-- 모임 가입한 멤버만 정모 만들 수 있게 하는 sql
+		<select id="onlyMemberCreateGathering" resultType="Mem_In_Group" parameterType="long" >
+			select * from mem_in_group where mnum=(select mnum from member where mnum=#{mnum}) and gseq =#{gseq}
+		</select>
+		-->
 		
 		
 	</mapper>

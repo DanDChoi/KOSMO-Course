@@ -69,7 +69,7 @@ public class GatheringController {
 		GroupTab groupInfo = groupTabService.selectByGSeqS(gathering.getGseq());
 		Member m = (Member)session.getAttribute("m");
 		log.info("#mnum in Controller: " + m.getMnum());
-		return "redirect:../groupTab/groupInfo.do?gseq=" + groupInfo.getGseq() +"&mnum="+m.getMnum();
+		return "redirect:../gathering/gatheringInfo.do?ga_seq=" + g.getGa_seq() +"&mnum="+m.getMnum();
 	}
 	@PostMapping("gatheringDeleteCheck")
 	@ResponseBody
@@ -84,10 +84,10 @@ public class GatheringController {
 	}
 	
 	@GetMapping("gatheringDelete.do") //정모삭제
-	public String gatheringDelete(long ga_seq) {
+	public String gatheringDelete(long ga_seq, long gseq, long mnum) {
 		gatheringService.memInGatheringDelete(ga_seq);
 		gatheringService.ga_deleteS(ga_seq);
-		return "redirect:../";
+		return "redirect:../groupTab/groupInfo.do?gseq="+gseq+"&mnum="+mnum;
 	}
 	
 	@PostMapping("gatheringUpdateCheck")
