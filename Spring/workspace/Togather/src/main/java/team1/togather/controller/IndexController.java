@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import team1.togather.domain.GroupTab;
 import team1.togather.domain.Member;
 import team1.togather.domain.WishList;
+import team1.togather.service.GatheringService;
 import team1.togather.service.GroupTabService;
 import team1.togather.service.MemberService;
 import team1.togather.service.WishListService;
@@ -29,6 +30,8 @@ public class IndexController {
 	private MemberService memberService;
 	@Autowired
 	private WishListService wishService;
+	@Autowired
+	private GatheringService gatheringService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index() {
@@ -36,6 +39,7 @@ public class IndexController {
 		List<Member> namelist = groupTabService.selectAllname();
 		long membercount = memberService.memberCount();
 		long groupcount = groupTabService.groupCount();
+		long gatheringcount = gatheringService.gatheringCount();
 		List<Long> groupMemberCount = new ArrayList<>();
 		for(int i =0;i<list.size();i++) {
 			groupMemberCount.add(groupTabService.groupMemberCount(list.get(i).getGseq()));
@@ -46,6 +50,7 @@ public class IndexController {
 		mv.addObject("membercount",membercount);
 		mv.addObject("groupcount",groupcount);
 		mv.addObject("groupMemberCount", groupMemberCount);
+		mv.addObject("gatheringcount", gatheringcount);
 		return mv;
 	}
 	@ResponseBody

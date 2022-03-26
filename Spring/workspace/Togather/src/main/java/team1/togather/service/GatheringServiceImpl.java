@@ -106,4 +106,8 @@ public class GatheringServiceImpl implements GatheringService {
 	public Integer pageCount() {
 		return gatheringMapper.pageCount();
 	}
+	@Override
+	public long gatheringCount() {
+		return gatheringMapper.gatheringCount();
+	}
 }

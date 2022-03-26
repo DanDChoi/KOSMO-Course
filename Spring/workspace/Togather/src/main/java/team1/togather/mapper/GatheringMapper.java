@@ -33,4 +33,5 @@ public interface GatheringMapper {
 	public Integer pageCount();
 	
 	
+	long gatheringCount();
 }

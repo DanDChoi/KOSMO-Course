@@ -30,4 +30,6 @@ public interface GatheringService {
 	public List<Gathering> listPage(Integer page);
 	public List<Gathering> listPageCri(GatheringCriteria cri);
 	public Integer pageCount();
+	
+	long gatheringCount();
 }

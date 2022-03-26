@@ -110,11 +110,10 @@ public class GatheringController {
 	}
 	
 	@PostMapping("gatheringUpdate.do")
-	public String gatheringUpdate(Gathering gathering, HttpServletRequest request) {
+	public String gatheringUpdate(Gathering gathering, long mnum) {
 		long ga_seq = gathering.getGa_seq();
-		
 		gatheringService.ga_updateS(gathering);
-		return "redirect:gatheringInfo.do?ga_seq="+ga_seq;
+		return "redirect:gatheringInfo.do?ga_seq="+ga_seq+"&mnum="+mnum;
 	}
 	
 	@PostMapping("memInGathering")

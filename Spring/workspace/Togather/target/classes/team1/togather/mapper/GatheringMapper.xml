@@ -18,7 +18,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<delete id="ga_delete" parameterType="long">
 			delete from GATHERING where ga_seq=#{ga_seq}
 		</delete>
-		
+		<!-- 인덱스 정모 갯수 -->
+		<select id="gatheringCount" resultType="long">
+			select count(*) from GATHERING
+		</select>
 		<!-- 정모 안에 참여 인원을 구하는 sql -->
 		<select id="gatheringMemberCount" resultType="Long">
 			select count(*) from MEM_IN_GATHERING where ga_seq=#{ga_seq}

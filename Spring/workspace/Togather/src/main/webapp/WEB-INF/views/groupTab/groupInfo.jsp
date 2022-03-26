@@ -425,7 +425,7 @@
 	          </nav>
 	          </div>
               <div class="d-grid gap-2 mt-3 mb-3">
-               <c:if test="${memInGroupName.mnum != null}">
+               <c:if test="${memInGroupCheck ne null}">
                 <button
                   type="button"
                   class="btn btn-outline-success"

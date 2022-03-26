@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=utf-8" session="false" %>
+<%@ page contentType="text/html;charset=utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,6 +46,24 @@
 
     <!-- Template Main CSS File -->
     <link href="/assets/css/style.css" rel="stylesheet" />
+    <script language="javascript">
+    function check()
+	   {
+	       for(var i=0; i<document.input.elements.length; i++)
+		   {
+		      if(document.input.ga_name.value == "" || 
+	    		  document.input.ga_place.value == "" || 
+	    		  document.input.time.value == "" ||
+	    		  document.input.price.value == "" ||
+	    		  document.input.ga_limit.value == "")
+			  {
+			     alert("필수입력란이 비었습니다.Test");
+			     return false;
+			  }
+		   }
+		   document.input.submit();
+       }
+    </script>
   </head>
 
   <body>
@@ -111,14 +129,16 @@
           >
             <!--정모이름, 정모날짜, 정모장소, 정모시간, 회비, 정원-->
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-              <form name="f" action="gatheringUpdate.do" method="post">
+              <form name="input" action="gatheringUpdate.do" method="post">
               <input type="hidden" id="ga_seq" name="ga_seq" value="${updateList.ga_seq}"/>
+              <input type="hidden" id="mnum" name="mnum" value="${m.mnum }"/>
                 <div class="form-outline mb-4">
                   <input
                     type="text"
                     name="ga_name"
                     class="form-control form-control-lg"
                     placeholder="${updateList.ga_name}"
+                    required
                   />
                 </div>
                 <div class="form-outline mb-4">
@@ -127,6 +147,7 @@
                     name="ga_place"
                     class="form-control form-control-lg"
                     placeholder="${updateList.ga_place}"
+                    required
                   />
                 </div>
                 <div class="form-outline mb-4">
@@ -135,6 +156,7 @@
                     name="time"
                     class="form-control form-control-lg"
                     placeholder="${updateList.time}"
+                    required
                   />
                 </div>
                 <div class="form-outline mb-4">
@@ -152,6 +174,7 @@
                     name="price"
                     class="form-control form-control-lg"
                     placeholder="${updateList.price}"
+                    required
                   />
                 </div>
                 <div class="form-outline mb-4">
@@ -162,10 +185,11 @@
                     min="2"
                     max="20"
                     placeholder="${updateList.ga_limit}"
+                    required
                   />
                 </div>
 
-                <button class="btn btn-success" type="submit">수정하기</button>
+                <button class="btn btn-success" onclick="location.href='javascript:check()'">수정하기</button>
                 <button class="btn btn-secondary" onclick="location.href='gatheringInfo.do?ga_seq=${updateList.ga_seq}'">취소</button>
               </form>
             </div>

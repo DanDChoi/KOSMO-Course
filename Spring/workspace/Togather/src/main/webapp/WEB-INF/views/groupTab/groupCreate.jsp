@@ -120,7 +120,7 @@
                   <div class="row justify-content-center">
                     <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                       <!--모임지역/이름/모임소개/관심사/정원/모임사진-->
-                      <form class="mx-1 mx-md-4" method="post" action="groupCreate.do">
+                      <form class="mx-1 mx-md-4" method="post" action="groupCreate.do" enctype="multipart/form-data">
                         <div class="d-flex flex-row align-items-center mb-0">
                           <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-2">

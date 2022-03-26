@@ -68,7 +68,16 @@
 			  confirmButtonText: 'Yes'
 			}).then((result) => {
 				console.log(result.isConfirmed);
-			  if (result.isConfirmed) {
+				if(${gatheringMemberCount} >= ${gatheringInfo.ga_limit}){
+					Swal.fire({
+						title: '정모 참여 인원이 다 찼습니다',
+						icon: 'warning',
+						showCancelButton: false,
+						confirmButtonColor: '#3085d6',
+						confirmButtonText: 'Yes'
+					});
+					return false;
+				}else if (result.isConfirmed) {
 				var mnum = ${m.mnum};
 	  			var ga_seq = ${gatheringInfo.ga_seq};
 	  			var result = {"mnum":mnum,"ga_seq":ga_seq};
@@ -181,7 +190,7 @@
 	}
 	
 	function gatheringUpdate(){
-		location="gatheringUpdate.do?ga_seq=${gatheringInfo.ga_seq}";
+		location="gatheringUpdate.do?ga_seq=${gatheringInfo.ga_seq}&mnum=${m.mnum}";
 	}
 	function gatheringDelete(){
 		location="gatheringDelete.do?ga_seq=${gatheringInfo.ga_seq}&gseq=${gatheringInfo.gseq}&mnum=${m.mnum}";
@@ -209,15 +218,15 @@
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top">
       <div class="container d-flex align-items-center">
-        <h1 class="logo me-auto"><a href="index.html">Togather</a></h1>
+        <h1 class="logo me-auto"><a href="../">Togather</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html" class="logo me-auto"><img src="/assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
         <nav id="navbar" class="navbar order-last order-lg-0">
           <ul>
-            <li><a class="active" href="index.html">Home</a></li>
+            <li><a class="active" href="../">Home</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="myGroup.html">나의 모임</a></li>
+            <li><a href="myGroup.do?mnum=${m.mnum }">나의 모임</a></li>
             <!--로그인시에만 보이게 하기-->
             <li><a href="boardMain.html">게시판</a></li>
             <li>
@@ -236,19 +245,32 @@
               <ul>
                 <li><a href="notice.html">공지사항</a></li>
                 <li><a href="FAQ.html">자주묻는 질문</a></li>
-                <li><a href="QA.html">Q&A</a></li>
+                <li><a href="qa">Q&A</a></li>
                 <li><a href="contact.html">Contact</a></li>
               </ul>
             </li>
-            <li><a href="login.html">로그인</a></li>
-          </ul>
+            <c:choose>
+           		<c:when test="${m eq null}">
+		            <li><a href="login.html">로그인</a></li>		       
+	          	</c:when>
+       			<c:otherwise>
+       			<li><a href="javascript:void(0);" onclick="signout();">로그아웃</a></li>
+            	</c:otherwise>
+         	</c:choose>
+            </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>
         <!-- .navbar -->
 
         <!--로그인전에는 회원가입만 보이고 로그인하면 모임만들기만 보이게 하는건 어떤지??-->
-        <a href="join.html" class="get-started-btn">회원가입</a>
-        <a href="groupCreate.html" class="get-started-btn">모임만들기</a>
+        <c:choose>
+           		<c:when test="${m eq null}">
+		        	<a href="../member/joinform.do" class="get-started-btn">회원가입</a>
+		        </c:when>
+		        <c:otherwise>
+		        	<a href="groupCreate.do" class="get-started-btn">모임만들기</a>
+		        </c:otherwise>
+         </c:choose>
       </div>
     </header>
     <!-- End Header -->
@@ -258,7 +280,6 @@
       <div class="breadcrumbs" data-aos="fade-in">
         <div class="container">
           <h1>${gatheringInfo.ga_name}</h1>
-          <p>모임 이름</p>
         </div>
       </div>
       <!-- End Breadcrumbs -->
@@ -273,13 +294,6 @@
 
               </div>
             <div class="col-lg-4">
-                <!--  <iframe
-                id="map"
-            style="border: 0; width: 100%; height: 400px"
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
-            frameborder="0"
-            allowfullscreen
-          ></iframe>-->
           <div id="map" style="width:100%;height:500px;"></div>
           <script type="text/javascript">
 				var inputData = ['${gatheringInfo.ga_place}']
@@ -421,19 +435,19 @@
               
               <div class="d-grid gap-2 mt-3 mb-3">
               <c:choose>
-              <c:when test="${memInGatheringCheck eq null}">
-                <button type="button" class="btn btn-outline-primary"
-                onclick="location.href='javascript:gatheringJoin()'">
-                    참석하기
-                  </button>
+	              <c:when test="${memInGatheringCheck eq null}">
+	                <button type="button" class="btn btn-outline-primary"
+	                onclick="location.href='javascript:gatheringJoin()'">
+	                    참석하기
+	                  </button>
                   </c:when>
                   <c:otherwise>
-                   <button type="button" class="btn btn-outline-danger"
-                onclick="location.href='javascript:gatheringQuit()'">
-                    참석 취소
-                  </button>
+	                   <button type="button" class="btn btn-outline-danger"
+	                onclick="location.href='javascript:gatheringQuit()'">
+	                    참석 취소
+	                  </button>
                   </c:otherwise>
-                  </c:choose>
+               </c:choose>
                 <button type="button" class="btn btn-outline-secondary" 
                 onclick="location.href='javascript:gatheringUpdateCheck()'">
                   정모 수정하기

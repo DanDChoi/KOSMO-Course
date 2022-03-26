@@ -69,4 +69,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<select id="insertGroupInfo" resultType="GroupTab" parameterType="GroupTab">
 			select * from grouptab where gseq=(select max(gseq) from grouptab where mnum=#{mnum})
 		</select>
+		
+		<!-- 그룹 탈퇴시 본인이 만든 정모를 모두 삭제 -->
+		<!-- 
+		<delete id="quitGroupDeleteGathering" parameterType="long">
+			delete GATHERING where mnum=#{mnum}
+		</delete>
+		-->
 	</mapper>

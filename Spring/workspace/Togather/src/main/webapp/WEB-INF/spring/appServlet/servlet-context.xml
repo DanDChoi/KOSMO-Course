@@ -53,6 +53,7 @@
 	<interceptors>
         <interceptor>
                <mapping path="/groupTab/*"/>
+               <mapping path="/gathering/*"/>
                    <beans:bean id="LoginInterceptor" class="team1.togather.interceptor.LoginInterceptor"/>
         </interceptor>
         <interceptor>

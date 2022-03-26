@@ -252,7 +252,7 @@
                 <div class="col-lg-3 col-6 text-center">
                   <span
                     data-purecounter-start="0"
-                    data-purecounter-end="629"
+                    data-purecounter-end="${gatheringcount }"
                     data-purecounter-duration="1"
                     class="purecounter"
                   ></span>
