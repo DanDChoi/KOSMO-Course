@@ -1,0 +1,13 @@
+dan.md.service.AddressService (class아닌 interface로 생성)
+
+
+(1)게시판
+
+dan.md.controller.BoardController
+dan.md.domain.Board
+dan.md.mapper.BoardMapper(interface)
+dan.md.service.BoardService(interface)
+dan.md.service.BoardServiceImple
+
+
+

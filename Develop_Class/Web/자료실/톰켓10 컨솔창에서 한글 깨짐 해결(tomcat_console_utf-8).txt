@@ -1,0 +1,19 @@
+< Windows 경우 >
+
+tomcat10\bin\catalina.bat 파일을 열어서 아래와 같이 수정()!!
+
+(1) 주석처리 ( line 211 )
+rem set "JAVA_OPTS=%JAVA_OPTS% %JSSE_OPTS%"
+
+(2) 그 아래에 다음을 추가 
+set JAVA_OPTS=%JAVA_OPTS% %LOGGING_MANAGER% "-Dfile.encoding=utf-8"
+
+
+
+cf) 결과 
+rem set "JAVA_OPTS=%JAVA_OPTS% %JSSE_OPTS%"
+set JAVA_OPTS=%JAVA_OPTS% %LOGGING_MANAGER% "-Dfile.encoding=utf-8"
+
+
+
+

@@ -1,0 +1,67 @@
+import java.io.*;
+
+//keyboard -> file 
+class B 
+{
+	InputStream is = System.in;
+	OutputStream os; 
+	B(){
+		try{
+			os = new FileOutputStream("b.txt");
+		}catch(FileNotFoundException fe){
+		}
+	}
+	void in1(){
+		try{
+			int i = 0;
+			while((i=is.read()) != -1){
+				os.write(i);
+				if(i==13){
+					break;
+				}
+			}
+			os.flush();
+		}catch(IOException ie){
+		}
+	}
+	void in2(){//int read(byte bs[])를 이용해서 in1()의 메소드를 구현하시요 
+		byte bs []= new byte[2];
+		int i = 0;
+		try{
+			
+			while((bs[i]=(byte)is.read()) != -1){
+				os.write(bs);
+				if(i==13){
+					break;
+				}
+			}
+			os.flush();
+		}catch(IOException ie){
+			ie.printStackTrace();
+		}
+	} 
+
+	void in3() { //중요!!
+            byte[] bs = new byte[8]; //계란판
+			try{
+				int i = 0;
+				while ((i=is.read(bs)) != -1){
+					os.write(bs, 0, i);
+				}
+				os.flush();
+        } catch (IOException ie) {
+        } finally{
+			try{
+				is.close();
+				os.close();
+			}catch(IOException ie){}
+		}
+   }
+	public static void main(String[] args) 
+	{
+		B b = new B();
+		//b.in1();
+		//b.in2();
+		b.in3();
+	}
+}

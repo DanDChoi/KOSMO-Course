@@ -1,0 +1,5 @@
+(1) 다운로드 
+http://www.servlets.com/cos/
+
+(2) API
+http://www.servlets.com/cos/javadoc/com/oreilly/servlet/MultipartRequest.html

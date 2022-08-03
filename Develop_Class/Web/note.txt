@@ -1,0 +1,52 @@
+M
+board.mvc.model.BoardDAO(class, package)
+board.mvc.model.BoardSQL(class, public)
+mvc.domain.Board(class, public)
+Board.mvc.model.BoardService
+
+V
+board/list.jsp
+
+C
+board.jstl.control.BoardController(servlet)
+<1>M
+
+join.mvc.model.JoinDAO(class, package)
+join.mvc.model.JoinSQL(class, public)
+mvc.domain.Join (class, public)
+
+join.mvc.model.JoinService(class,public)
+
+<2>V
+join/join.jsp
+join/msg.jsp
+
+<3>C
+join.jstl.control.JoinController(servlet)
+
+============================
+-파일 업로드-
+
+<1>M
+file.mvc.model.FileSet(class, public)
+file.mvc.model.File..
+file.mvc.model.File..
+mvc.domain..
+
+<2>V
+
+<3>C
+file.mvc.control.FileController(servlet)
+
+=================================
+
+<1>M
+team1.togather.model.GroupTabService
+team1.togather.model.GroupTabSQL
+		    GroupTabDAO
+team1.togatehr.domain.GroupTab
+
+<2>V
+grouplist.jsp
+<3>C
+team1.togather.control.GroupTabController(servlet)

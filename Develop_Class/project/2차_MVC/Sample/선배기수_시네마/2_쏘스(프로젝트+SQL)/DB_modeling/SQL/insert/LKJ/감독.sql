@@ -1,0 +1,125 @@
+/*
+--감독
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'김민호', DIRECTOR_SEQ.currval);
+*/
+
+--패치아담스
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'톰 새디악', DIRECTOR_SEQ.currval);
+
+--블러드 다이아몬드
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'에드워드 즈윅', DIRECTOR_SEQ.currval);
+
+--국가대표
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'김용화', DIRECTOR_SEQ.currval);
+
+
+--파워 오브 원
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'존 G 아빌드센', DIRECTOR_SEQ.currval);
+
+--아는 여자
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'장진', DIRECTOR_SEQ.currval);
+
+--클릭
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'프랭크 코라치', DIRECTOR_SEQ.currval);
+
+--우드잡
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'야구치 시노부', DIRECTOR_SEQ.currval);
+
+--타짜
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'최동훈', DIRECTOR_SEQ.currval);
+
+--뱀파이어와의 인터뷰
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'닐조던', DIRECTOR_SEQ.currval);
+
+--오직 그대만
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'송일곤', DIRECTOR_SEQ.currval);
+
+--철가방 우수씨
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'윤학렬', DIRECTOR_SEQ.currval);
+
+--피아니스트 세이모어의 뉴욕 소네트
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'에단 호크', DIRECTOR_SEQ.currval);
+
+--카메라를 멈추면 안 돼!
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'우에다 신이치로', DIRECTOR_SEQ.currval);
+
+--불량소녀, 너를 응원해!
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'도이 노부히로', DIRECTOR_SEQ.currval);
+
+--댄서 2016
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'스티븐 캔터', DIRECTOR_SEQ.currval);
+
+--7인의 사무라이
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'구로사와 아키라', DIRECTOR_SEQ.currval);
+
+--겨울왕국 2013
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'크리스 벅', DIRECTOR_SEQ.currval);
+
+--스트레인저-무황인담
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'안도 마사히로', DIRECTOR_SEQ.currval);
+
+--빅뱅 메이드
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'변진호', DIRECTOR_SEQ.currval);
+
+--코렐라인: 비밀의 문
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'헨리 셀릭', DIRECTOR_SEQ.currval);
+
+--명탐정 코난 : 제로의 집행인
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'타치카와 유즈루', DIRECTOR_SEQ.currval);
+
+--웨딩 드레스
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'권형진', DIRECTOR_SEQ.currval);
+
+--나는 고양이로소이다
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'조은성', DIRECTOR_SEQ.currval);
+
+--투캅스 3
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'김상진', DIRECTOR_SEQ.currval);
+
+--노킹 온 헤븐스 도어
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'토머스 얀', DIRECTOR_SEQ.currval);
+
+--에너미 오브 스테이트
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'토니 스콧', DIRECTOR_SEQ.currval);
+
+--에이리언 1979
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'리들리 스콧', DIRECTOR_SEQ.currval);
+
+--호로비츠를 위하여
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'권형진', DIRECTOR_SEQ.currval);
+
+--써니
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'강형철', DIRECTOR_SEQ.currval);
+
+--제자, 옥한흠
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'김상철', DIRECTOR_SEQ.currval);
+
+--늑대아이
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'호소다 마모루', DIRECTOR_SEQ.currval);
+
+--빽 투 더 퓨쳐3
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'로버트 저메키스', DIRECTOR_SEQ.currval);
+
+--패딩턴2
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'폴 킹', DIRECTOR_SEQ.currval);
+
+--무간도
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'맥조휘', DIRECTOR_SEQ.currval);
+
+--빅 히어로
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'돈 홀', DIRECTOR_SEQ.currval);
+
+--시스터 액트2
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'빌 듀크', DIRECTOR_SEQ.currval);
+
+--분노의 질주: 더 세븐
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'제임스 완', DIRECTOR_SEQ.currval);
+
+--하울의 움직이는 성
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'미야자키 하야오', DIRECTOR_SEQ.currval);
+
+--정무문
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'나유', DIRECTOR_SEQ.currval);
+
+--감독
+INSERT INTO DIRECTOR VALUES(DIRECTOR_SEQ.nextval,'우베르토 파솔리니', DIRECTOR_SEQ.currval);
