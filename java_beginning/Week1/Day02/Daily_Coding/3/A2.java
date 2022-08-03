@@ -1,0 +1,16 @@
+package cc.dd;
+
+import java.lang.*;
+import java.util.*;
+
+public class A2{
+	Random r = new Random();
+	String shape = "¶×¶×ÇÑ ";
+	public A2(){
+		System.out.println(shape + "ÇÏ¸¶°¡ ");
+	}
+	public void m(){
+		System.out.print("Çì¾öÄ£´Ù");
+	}
+
+}

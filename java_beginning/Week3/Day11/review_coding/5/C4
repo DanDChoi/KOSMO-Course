@@ -1,0 +1,28 @@
+class C4 {
+	C4() throws MyException {
+		boolean flag = false;
+		if(flag){
+			throw new MyException();
+		}
+	}
+	void m1() throws MyException {
+		boolean flag = true;
+		if(flag){
+			throw new MyException();
+		}
+	}
+}
+
+class C4User{
+	public static void main(String[] args) {
+		try{
+			C4 c = new C4();
+			System.out.println("예외 발생 안함 at C()");
+			c.m1();
+			System.out.println("예외 발생 안함 at m1()");
+		}catch(MyException me){
+			System.out.println("예외 발생 함");
+			me.use();
+		}
+	}
+}
