@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                      https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+  version="5.0"
+  metadata-complete="true">
+
+  <display-name>NewContext</display-name>
+  <description>
+      Wellcome NewContext
+  </description>
+
+  <servlet>
+      <servlet-name>AddrServletListPoolName</servlet-name>
+      <servlet-class>soo.sv.addr.pool.AddrServletListPool</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>AddrServletListPoolName</servlet-name>
+      <url-pattern>/addr_pool/list.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+      <servlet-name>AddrServletInPoolName</servlet-name>
+      <servlet-class>soo.sv.addr.pool.AddrServletInPool</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>AddrServletInPoolName</servlet-name>
+      <url-pattern>/addr_pool/insert.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+      <servlet-name>AddrServletDelPoolName</servlet-name>
+      <servlet-class>soo.sv.addr.pool.AddrServletDelPool</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>AddrServletDelPoolName</servlet-name>
+      <url-pattern>/addr_pool/del.do</url-pattern>
+  </servlet-mapping>
+
+</web-app>
